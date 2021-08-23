@@ -1,5 +1,5 @@
 package am.service;
 
-public class CustomerService {
+public interface CustomerService {
 
 }
