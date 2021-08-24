@@ -18,7 +18,7 @@
             <tbody>
                 <tr>
                     <th scope="row">1</th>
-                    <td><img src=""></td>
+                    <td><img id="myimg" src="../assets/cherry.jpeg"></td>
                     <td>Otto</td>
                     <td>@mdo</td>
                     <td>@mdo</td>
@@ -52,5 +52,7 @@ export default {
 </script>
 
 <style scoped>
-
+myimg {
+    
+}
 </style>
