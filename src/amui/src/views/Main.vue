@@ -65,131 +65,10 @@
           <div class="row">
             <div class="col-md-4">
               <div class="card mb-4 box-shadow">
-                <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" alt="Thumbnail [100%x225]" style="height: 225px; width: 100%; display: block;" src="https://shop.hansalim.or.kr/im/is/activeDesigner/050307006_content1.jpg" data-holder-rendered="true">
-                <div class="card-body">
-                  <p class="card-text">밭에서 충분히 익혀 수확한 '완숙토마토' 밭에서 충분히 익혀 수확한 '완숙토마토' 밭에서 충분히 익혀 수확한 '완숙토마토'</p>
-                  <div class="d-flex justify-content-between align-items-center">
-                    <div class="btn-group">
-                      <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                      <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                    </div>
-                    <small class="text-muted">9 mins</small>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-4">
-              <div class="card mb-4 box-shadow">
-                <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" alt="Thumbnail [100%x225]" src="https://shop.hansalim.or.kr/im/is/activeDesigner/050139001_content1.jpg" data-holder-rendered="true" style="height: 225px; width: 100%; display: block;">
-                <div class="card-body">
-                  <p class="card-text">아삭하면서도 잎이 부드러운 유기농 '생채' 아삭하면서도 잎이 부드러운 유기농 '생채' 아삭하면서도 잎이 부드러운 유기농 '생채'</p>
-                  <div class="d-flex justify-content-between align-items-center">
-                    <div class="btn-group">
-                      <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                      <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                    </div>
-                    <small class="text-muted">9 mins</small>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-4">
-              <div class="card mb-4 box-shadow">
-                <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" alt="Thumbnail [100%x225]" src="https://shop.hansalim.or.kr/im/is/activeDesigner/051106023_content1.jpg" data-holder-rendered="true" style="height: 225px; width: 100%; display: block;">
-                <div class="card-body">
-                  <p class="card-text">잎이 풍성하고 싱싱한 대표 쌈채소 '상추' 잎이 풍성하고 싱싱한 대표 쌈채소 '상추' 잎이 풍성하고 싱싱한 대표 쌈채소 '상추'</p>
-                  <div class="d-flex justify-content-between align-items-center">
-                    <div class="btn-group">
-                      <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                      <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                    </div>
-                    <small class="text-muted">9 mins</small>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-md-4">
-              <div class="card mb-4 box-shadow">
                 <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" alt="Thumbnail [100%x225]" src="https://shop.hansalim.or.kr/im/is/activeDesigner/090502105_content1.jpg" data-holder-rendered="true" style="height: 225px; width: 100%; display: block;">
-                <div class="card-body">
-                  <p class="card-text">조선된장과 한우 육수로 맛을 낸 ‘강된장양념’ 조선된장과 한우 육수로 맛을 낸 ‘강된장양념’</p>
-                  <div class="d-flex justify-content-between align-items-center">
-                    <div class="btn-group">
-                      <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                      <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                    </div>
-                    <small class="text-muted">9 mins</small>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-4">
-              <div class="card mb-4 box-shadow">
-                <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" alt="Thumbnail [100%x225]" src="https://shop.hansalim.or.kr/im/is/activeDesigner/100601012_content1.jpg" data-holder-rendered="true" style="height: 225px; width: 100%; display: block;">
-                <div class="card-body">
-                  <p class="card-text">바로 데워 먹는 간편한 찌개 '김치청국장찌개' 바로 데워 먹는 간편한 찌개 '김치청국장찌개' </p>
-                  <div class="d-flex justify-content-between align-items-center">
-                    <div class="btn-group">
-                      <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                      <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                    </div>
-                    <small class="text-muted">9 mins</small>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-4">
-              <div class="card mb-4 box-shadow">
-                <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" alt="Thumbnail [100%x225]" src="https://shop.hansalim.or.kr/im/is/activeDesigner/100203001_content1.jpg" data-holder-rendered="true" style="height: 225px; width: 100%; display: block;">
-                <div class="card-body">
-                  <p class="card-text">국산 콩을 통째로 갈아 고소하고 진한 '콩비지' 국산 콩을 통째로 갈아 고소하고 진한 '콩비지'</p>
-                  <div class="d-flex justify-content-between align-items-center">
-                    <div class="btn-group">
-                      <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                      <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                    </div>
-                    <small class="text-muted">9 mins</small>
-                  </div>
-                </div>
-              </div>
-            </div>
 
-            <div class="col-md-4">
-              <div class="card mb-4 box-shadow">
-                <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" alt="Thumbnail [100%x225]" src="https://shop.hansalim.or.kr/im/is/activeDesigner/090104023_content1.jpg" data-holder-rendered="true" style="height: 225px; width: 100%; display: block;">
-                <div class="card-body">
-                  <p class="card-text">유기재배 브로콜리의 맛과 영양을 그대로 담은 ‘브로콜리가루’ 유기재배 브로콜리의 맛과 영양을 그대로 담은 브로콜리의 맛과 영양을 그대로 담은 ‘브로콜리가루’</p>
-                  <div class="d-flex justify-content-between align-items-center">
-                    <div class="btn-group">
-                      <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                      <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                    </div>
-                    <small class="text-muted">9 mins</small>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-4">
-              <div class="card mb-4 box-shadow">
-                <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" alt="Thumbnail [100%x225]" src="https://shop.hansalim.or.kr/im/is/activeDesigner/090104022_content1.jpg" data-holder-rendered="true" style="height: 225px; width: 100%; display: block;">
-                <div class="card-body">
-                  <p class="card-text">국산 양배추를 동결건조해 맛과 영양을 그대로 담은 '양배추가루'  국산 양배추를 동결건조해 맛과 영양을 그대로 담은 '양배추가루'</p>
-                  <div class="d-flex justify-content-between align-items-center">
-                    <div class="btn-group">
-                      <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                      <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                    </div>
-                    <small class="text-muted">9 mins</small>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-4">
-              <div class="card mb-4 box-shadow">
-                <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" alt="Thumbnail [100%x225]" src="https://shop.hansalim.or.kr/im/is/activeDesigner/060307008_content1.jpg" data-holder-rendered="true" style="height: 225px; width: 100%; display: block;">
-                <div class="card-body">
-                  <p class="card-text">한우고기만을 사용해 기름기를 줄인 '한우고기육수' 한우고기만을 사용해 기름기를 줄인 '한우고기육수' 한우고기만을 사용해 기름기를 줄인 '한우고기육수'</p>
+                <div class="card-body" v-for="item in items" v-bind:key="item.productPk">
+                  <p class="card-text" v-on:click="productDetail(item.productPk)">{{ item.productName }}</p>
                   <div class="d-flex justify-content-between align-items-center">
                     <div class="btn-group">
                       <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
@@ -204,23 +83,60 @@
         </div>
       </div>
 
-        <div class="content p-0">
-        </div>
+  <div class="container-sm">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th class="text-left">제목</th>
+                <th class="text-right">작성일</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr v-for="item in items" v-bind:key="item.productPk">
+                <td class="text-left" v-on:click="productDetail(item.productPk)">{{ item.produectName }}</td>
+                <td class="text-right">{{ item.productDetail }}</td>
+            </tr>
+        </tbody>
+    </table>
+  </div>
 
     </main>
 </template>
 
 <script>
 export default {
-    
+    data() {
+      return {
+        items: []
+      }
+    },
+    methods: {
+      productDetail(productPk) {
+        this.$router.push({ name: 'Detail', query: {productPk: productPk}}
+        );
+      }
+    },
+    mounted() {
+      let obj = this;
+
+      obj.$axios.get("http://localhost:9000/productMain")
+        .then(function(res) {
+            console.log("axios로 비동기 통신 성공");
+            obj.items = res.data;
+        })
+        .catch(function(err) {
+            console.log("axios 비동기 통신 오류");
+            console.log(err);
+        });
+    }
 
 }
 </script>
 
 <style>
 .carousel-fade .carousel-item, .carousel-item img {
-   max-height: 90vh;
-   min-height: 50vh;
+  max-height: 90vh;
+  min-height: 50vh;
 }
 
 </style>

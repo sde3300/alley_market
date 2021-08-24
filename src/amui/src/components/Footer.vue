@@ -58,6 +58,7 @@ export default {
 .footer {
     font-size: 13px;
     
+    
 }
 
 ul li {
@@ -65,6 +66,5 @@ ul li {
     float: left;
     margin-left: 10px;
     }
-
 
 </style>
