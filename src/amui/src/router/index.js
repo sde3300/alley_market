@@ -5,6 +5,12 @@ import ReviewsVue from '../views/Reviews.vue'
 import QnAVue from '../views/QnA.vue'
 import DetailVue from '../views/Detail.vue'
 import Main from '../views/Main.vue'
+import Login from '../views/Login.vue'
+import Join from '../views/Join.vue'
+import ReviewWrite from '../views/ReviewWrite.vue'
+import QnAWrite from '../views/QnAWrite.vue'
+import NoticeWrite from '../views/NoticeWrite.vue'
+import Mypage from '../views/Mypage.vue'
 
 Vue.use(VueRouter)
 
@@ -62,18 +68,32 @@ const routes = [
   {
     path: '/login',
     name: 'Login',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/Login.vue')
+    component: Login
   },
   {
     path: '/join',
     name: 'Join',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/Join.vue')
+    component: Join
+  },
+  {
+    path: '/reviewWrite',
+    name: 'ReviewWrite',
+    component: ReviewWrite
+  },
+  {
+    path: '/qnaWrite',
+    name: 'QnAWrite',
+    component: QnAWrite
+  },
+  {
+    path: '/noticeWrite',
+    name: 'NoticeWrite',
+    component: NoticeWrite
+  },
+  {
+    path: '/mypage',
+    name: 'Mypage',
+    component: Mypage
   }
 ]
 
