@@ -1,8 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import InfoVue from '../views/Info.vue'
-import ReviewsVue from '../views/Reviews.vue'
-import QnAVue from '../views/QnA.vue'
+
+
 import DetailVue from '../views/Detail.vue'
 import Main from '../views/Main.vue'
 import AdminMainVue from '../views/AdminMain.vue'
@@ -25,28 +24,32 @@ const routes = [
     path: '/',
     name: 'Main',
     component: Main
+<<<<<<< HEAD
+},
+=======
   },
+>>>>>>> origin/daeun
   {
     path: '/detail',
     name: 'detail',
     component: DetailVue,
-    children: [
-              {
-            path: '/info',
-            name: 'Info',
-            component: InfoVue
-        },
-        {
-            path: '/reviews',
-            name: 'reviews',
-            component: ReviewsVue
-        },
-        {
-            path: '/qna',
-            name: 'qna',
-            component: QnAVue
-          }
-        ]
+    // children: [
+    //           {
+    //         path: '/info',
+    //         name: 'Info',
+    //         component: InfoVue
+    //     },
+    //     {
+    //         path: '/reviews',
+    //         name: 'reviews',
+    //         component: ReviewsVue
+    //     },
+    //     {
+    //         path: '/qna',
+    //         name: 'qna',
+    //         component: QnAVue
+    //       }
+    //     ]
   },
   
   // 정민언니
