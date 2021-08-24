@@ -10,6 +10,12 @@ import AdminNoticeVue from '../views/AdminNotice.vue'
 import AdminProductVue from '../views/AdminProduct.vue'
 import CusManagementVue from '../views/CusManagement.vue'
 import AdminQnaVue from '../views/AdminQna.vue'
+import Login from '../views/Login.vue'
+import Join from '../views/Join.vue'
+import ReviewWrite from '../views/ReviewWrite.vue'
+import QnAWrite from '../views/QnAWrite.vue'
+import NoticeWrite from '../views/NoticeWrite.vue'
+import Mypage from '../views/Mypage.vue'
 
 Vue.use(VueRouter)
 
@@ -47,12 +53,12 @@ const routes = [
   {
     path: '/login',
     name: 'Login',
-    component: () => import(/* webpackChunkName: "about" */ '../views/Login.vue')
+    component: Login
   },
   {
     path: '/join',
     name: 'Join',
-    component: () => import(/* webpackChunkName: "about" */ '../views/Join.vue')
+    component: Join
   },
 
   {
@@ -80,6 +86,26 @@ const routes = [
     name: 'AdminQna',
     component: AdminQnaVue
   },
+  {
+    path: '/reviewWrite',
+    name: 'ReviewWrite',
+    component: ReviewWrite
+  },
+  {
+    path: '/qnaWrite',
+    name: 'QnAWrite',
+    component: QnAWrite
+  },
+  {
+    path: '/noticeWrite',
+    name: 'NoticeWrite',
+    component: NoticeWrite
+  },
+  {
+    path: '/mypage',
+    name: 'Mypage',
+    component: Mypage
+  }
 ]
 
 const router = new VueRouter({

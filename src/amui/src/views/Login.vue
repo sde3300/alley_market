@@ -1,9 +1,9 @@
 <template>
-    <div class="login mr-auto">
+    <div class="container mr-auto">
         <div class="jumbotron text-center">
             <h1>로그인</h1>
         </div>
-        <div class="container">
+        <div class="container" id="login">
             <form>
                 <div class="form-group row ">
                     <label for="staticEmail" class="col-sm-2 col-form-label">이메일</label>
@@ -32,8 +32,8 @@
                     <label class="form-check-label" for="inlineCheckbox2">로그인유지</label>
                 </div>
                 <div>
-                <button type="button" class="btn btn-secondary  btn-lg btn-block">로그인</button><br>
-                <button type="button" class="btn btn-secondary  btn-lg btn-block">회원가입</button>
+                <button type="button" class="btn btn-primary  btn-lg btn-block">로그인</button><br>
+                <button type="button" class="btn btn-warning  btn-lg btn-block">회원가입</button>
                 </div>
             </form>
         </div>
