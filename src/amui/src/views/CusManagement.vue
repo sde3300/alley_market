@@ -52,8 +52,6 @@
                 </ul>
             </nav>
 
-            <button type="button" class="btn btn-dark float-right my-3" v-on:click="ProductInsert">상품등록</button>
-
         </div>
     </div>
 </template>

@@ -45,7 +45,10 @@
                 </ul>
             </nav>
 
-            <button type="button" class="btn btn-dark float-right my-3" v-on:click="noticeInsert">글쓰기</button>
+            <!-- 버튼 -->
+            <div class="row">
+                    <button type="button" class="btn btn-dark col-sm-1 ml-auto" id="btnmodi">글쓰기</button>
+            </div>
             
         </div>
     </div>

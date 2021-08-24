@@ -57,14 +57,14 @@ export default {
 <style scoped>
 .footer {
     font-size: 13px;
+    
+    
 }
-
 
 ul li {
     list-style-type: none; 
     float: left;
     margin-left: 10px;
     }
-
 
 </style>
