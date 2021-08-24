@@ -24,11 +24,7 @@ const routes = [
     path: '/',
     name: 'Main',
     component: Main
-<<<<<<< HEAD
 },
-=======
-  },
->>>>>>> origin/daeun
   {
     path: '/detail',
     name: 'detail',
