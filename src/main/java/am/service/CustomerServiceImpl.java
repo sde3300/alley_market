@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import am.dto.CustomersDto;
 import am.dto.ProductDto;
 import am.mapper.CustomerMapper;
 
@@ -20,8 +19,17 @@ public class CustomerServiceImpl implements CustomerService {
 		return cusMapper.productMainPage();
 	}
 	
+	
+//	
 	@Override
-	public CustomersDto SelectCustomerDetailBoard(int customer_pk) throws Exception {
-		return cusMapper.SelectCustomerDetailBoard(customer_pk);
+	public void vueInsertBoard(ProductDto board) throws Exception {
+		cusMapper.vueInsertBoard(board);
 	}
+//	
+	@Override
+	public ProductDto vueSelectDetailBoard(int productPk) throws Exception{
+		return cusMapper.vueSelectDetailBoard(productPk);
+	}
+	
+
 }

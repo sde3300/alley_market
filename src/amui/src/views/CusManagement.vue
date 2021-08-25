@@ -18,23 +18,11 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>홍길동</td>
-                        <td>hong@naver.com</td>
-                        <td>01012345678</td>
-                        <td>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                                <label class="form-check-label" for="defaultCheck1"></label>
-                            </div>
-                        </td>
-                    </tr>
                     <tr v-for="item in items" v-bind:key="item.customer_pk">
-                        <td>{{ item.customer_pk}}</td>
-                        <td>{{ item.customer_name }}</td>
-                        <td>{{ item.customer_email }}</td>
-                        <td>{{ item.customer_phone }}</td>
+                        <td>{{ item.customerPk}}</td>
+                        <td>{{ item.customerName }}</td>
+                        <td>{{ item.customerEmail }}</td>
+                        <td>{{ item.customerPhone }}</td>
                         <td>
                             <div class="form-check">
                                 <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">

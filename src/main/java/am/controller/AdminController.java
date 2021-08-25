@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import am.dto.CustomersDto;
 import am.dto.OrdersDto;
 import am.service.AdminService;
 
@@ -22,5 +23,13 @@ public class AdminController {
 		List<OrdersDto> dataList = adService.adminMainPage();
 		
 		return dataList;
+	}
+	
+//	회원관리 게시판 글 확인하기
+	@RequestMapping(value="/cusManage", method=RequestMethod.GET)
+	public Object SelectCustomerBoardList() throws Exception {
+		List<CustomersDto> cusdataList = adService.SelectCustomerBoardList();
+		
+		return cusdataList;
 	}
 }

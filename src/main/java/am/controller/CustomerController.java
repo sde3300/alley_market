@@ -26,10 +26,16 @@ public class CustomerController {
 		return dataList;
 	}
 	
-//	회원관리 게시판 글 확인하기
-	@RequestMapping(value="/cusManage", method=RequestMethod.GET)
-	public Object SelectCustomerBoardDetail(@RequestParam("customer_pk") int customer_pk) throws Exception {
-		CustomersDto board = cusService.SelectCustomerDetailBoard(customer_pk);
+
+	//지정한 게시판 글 확인하기
+	// 이 아래로는 수정해야됨
+	
+	@RequestMapping(value="/productDetail", method=RequestMethod.GET)
+	public Object vueSelectBoardDetail(@RequestParam("productPk") int productPk) throws Exception {
+		ProductDto board = cusService.vueSelectDetailBoard(productPk);
+			
 		return board;
 	}
+	
+
 }
