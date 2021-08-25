@@ -212,15 +212,38 @@
 
 <script>
 export default {
-    
+    data() {
+      return {
+        items: []
+      }
+    },
+    methods: {
+      productDetail(productPk) {
+        this.$router.push({ name: 'Detail', query: {productPk: productPk}}
+        );
+      }
+    },
+    mounted() {
+      let obj = this;
+
+      obj.$axios.get("http://localhost:9000/productMain")
+        .then(function(res) {
+            console.log("axios로 비동기 통신 성공");
+            obj.items = res.data;
+        })
+        .catch(function(err) {
+            console.log("axios 비동기 통신 오류");
+            console.log(err);
+        });
+    }
 
 }
 </script>
 
 <style>
 .carousel-fade .carousel-item, .carousel-item img {
-   max-height: 90vh;
-   min-height: 50vh;
+  max-height: 90vh;
+  min-height: 50vh;
 }
 
 </style>

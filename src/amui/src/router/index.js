@@ -1,13 +1,21 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+
+
 import DetailVue from '../views/Detail.vue'
 import Main from '../views/Main.vue'
+import AdminMainVue from '../views/AdminMain.vue'
+import AdminNoticeVue from '../views/AdminNotice.vue'
+import AdminProductVue from '../views/AdminProduct.vue'
+import CusManagementVue from '../views/CusManagement.vue'
+import AdminQnaVue from '../views/AdminQna.vue'
 import Login from '../views/Login.vue'
 import Join from '../views/Join.vue'
 import ReviewWrite from '../views/ReviewWrite.vue'
 import QnAWrite from '../views/QnAWrite.vue'
 import NoticeWrite from '../views/NoticeWrite.vue'
 import Mypage from '../views/Mypage.vue'
+import Order from '../views/Order.vue'
 
 Vue.use(VueRouter)
 
@@ -22,6 +30,23 @@ const routes = [
     path: '/detail',
     name: 'detail',
     component: DetailVue,
+    // children: [
+    //           {
+    //         path: '/info',
+    //         name: 'Info',
+    //         component: InfoVue
+    //     },
+    //     {
+    //         path: '/reviews',
+    //         name: 'reviews',
+    //         component: ReviewsVue
+    //     },
+    //     {
+    //         path: '/qna',
+    //         name: 'qna',
+    //         component: QnAVue
+    //       }
+    //     ]
   },
   
   // 정민언니
@@ -34,6 +59,32 @@ const routes = [
     path: '/join',
     name: 'Join',
     component: Join
+  },
+
+  {
+  path: '/adminMain',
+  name: 'AdminMain',
+  component: AdminMainVue
+  },
+  {
+    path: '/adminNotice',
+    name: 'AdminNotice',
+    component: AdminNoticeVue
+  },
+  {
+    path: '/adminProduct',
+    name: 'AdminProduct',
+    component: AdminProductVue
+  },
+  {
+    path: '/cusManagement',
+    name: 'CusManagement',
+    component: CusManagementVue
+  },
+  {
+    path: '/adminQna',
+    name: 'AdminQna',
+    component: AdminQnaVue
   },
   {
     path: '/reviewWrite',
@@ -54,6 +105,11 @@ const routes = [
     path: '/mypage',
     name: 'Mypage',
     component: Mypage
+  },
+  {
+    path: '/order',
+    name: 'Order',
+    component: Order
   }
 ]
 
