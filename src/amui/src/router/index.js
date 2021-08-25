@@ -18,6 +18,7 @@ import ProductInsertVue from '../views/ProductInsert.vue'
 import IntroductionVue from '../views/Introduction.vue'
 import NoticeListVue from '../views/NoticeList.vue'
 import NoticeDetailVue from '../views/NoticeDetail.vue'
+import Order from '../views/Order.vue'
 
 Vue.use(VueRouter)
 
@@ -27,7 +28,7 @@ const routes = [
     path: '/',
     name: 'Main',
     component: Main
-},
+  },
   {
     path: '/detail',
     name: 'detail',
@@ -127,6 +128,11 @@ const routes = [
     path: '/noticeDetail',
     name: 'NoticeDetail',
     component: NoticeDetailVue
+  },
+  {
+    path: '/order',
+    name: 'Order',
+    component: Order
   },
 ]
 
