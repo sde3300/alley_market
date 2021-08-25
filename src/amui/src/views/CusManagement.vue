@@ -30,6 +30,18 @@
                             </div>
                         </td>
                     </tr>
+                    <tr v-for="item in items" v-bind:key="item.customer_pk">
+                        <td>{{ item.customer_pk}}</td>
+                        <td>{{ item.customer_name }}</td>
+                        <td>{{ item.customer_email }}</td>
+                        <td>{{ item.customer_phone }}</td>
+                        <td>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                                <label class="form-check-label" for="defaultCheck1"></label>
+                            </div>
+                        </td>
+                    </tr>
                 </tbody>
             </table>
 
@@ -58,7 +70,24 @@
 
 <script>
 export default {
-    
+    data() {
+        return {
+            items: []
+        }
+    },
+    mounted() {
+        let obj = this;
+
+        obj.$axios.get("http://localhost:9000/cusManage")
+        .then(function(res) {
+            console.log("axios로 비동기 통신 성공");
+            obj.items = res.data;
+        })
+        .catch(function(err) {
+            console.log("axios 비동기 통신 오류");
+            console.log(err);
+        });
+    }
 }
 </script>
 
