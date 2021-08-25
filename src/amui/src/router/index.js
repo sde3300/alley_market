@@ -19,6 +19,7 @@ import IntroductionVue from '../views/Introduction.vue'
 import NoticeListVue from '../views/NoticeList.vue'
 import NoticeDetailVue from '../views/NoticeDetail.vue'
 import Order from '../views/Order.vue'
+import CartList from '../views/CartList.vue'
 
 Vue.use(VueRouter)
 
@@ -33,24 +34,13 @@ const routes = [
     path: '/detail',
     name: 'detail',
     component: DetailVue,
-    // children: [
-    //           {
-    //         path: '/info',
-    //         name: 'Info',
-    //         component: InfoVue
-    //     },
-    //     {
-    //         path: '/reviews',
-    //         name: 'reviews',
-    //         component: ReviewsVue
-    //     },
-    //     {
-    //         path: '/qna',
-    //         name: 'qna',
-    //         component: QnAVue
-    //       }
-    //     ]
   },
+  {
+    path: '/cartli',
+    name: 'cartli',
+    component: CartList,
+  },
+
   
   // 정민언니
   {

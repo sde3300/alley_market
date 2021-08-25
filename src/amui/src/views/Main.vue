@@ -204,6 +204,28 @@
         </div>
       </div>
 
+      <!-- 210825 혜수 수정 -->
+      <div>
+          <p>상품 리스트 형식으로 보기</p>
+                <table class="table table-hover table-danger">
+                    <thead>
+                        <tr>
+                            <th>상품번호</th>
+                            <th>상품명</th>
+                            <th>가격</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr v-for = "item in items" v-bind:key = "item.productPk">
+                            <td> {{ item.productPk }}</td>
+                            <td class = "text-center" v-on:click="productDetail(item.productPk)"> {{ item.productName }}</td>
+                            <td> {{ item.productPrice }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+      </div>
+
         <div class="content p-0">
         </div>
 
@@ -211,6 +233,7 @@
 </template>
 
 <script>
+
 export default {
     data() {
       return {
@@ -219,8 +242,7 @@ export default {
     },
     methods: {
       productDetail(productPk) {
-        this.$router.push({ name: 'Detail', query: {productPk: productPk}}
-        );
+        this.$router.push({ name: 'Detail', query: {productPk: productPk}})
       }
     },
     mounted() {
@@ -236,7 +258,6 @@ export default {
             console.log(err);
         });
     }
-
 }
 </script>
 
