@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
-
 import DetailVue from '../views/Detail.vue'
 import Main from '../views/Main.vue'
 import AdminMainVue from '../views/AdminMain.vue'
@@ -15,6 +14,10 @@ import ReviewWrite from '../views/ReviewWrite.vue'
 import QnAWrite from '../views/QnAWrite.vue'
 import NoticeWrite from '../views/NoticeWrite.vue'
 import Mypage from '../views/Mypage.vue'
+import ProductInsertVue from '../views/ProductInsert.vue'
+import IntroductionVue from '../views/Introduction.vue'
+import NoticeListVue from '../views/NoticeList.vue'
+import NoticeDetailVue from '../views/NoticeDetail.vue'
 
 Vue.use(VueRouter)
 
@@ -104,7 +107,27 @@ const routes = [
     path: '/mypage',
     name: 'Mypage',
     component: Mypage
-  }
+  },
+  {
+    path: '/productInsert',
+    name: 'ProductInsert',
+    component: ProductInsertVue
+  },
+  {
+    path: '/introduction',
+    name: 'Introduction',
+    component: IntroductionVue
+  },
+  {
+    path: '/noticeList',
+    name: 'NoticeList',
+    component: NoticeListVue
+  },
+  {
+    path: '/noticeDetail',
+    name: 'NoticeDetail',
+    component: NoticeDetailVue
+  },
 ]
 
 const router = new VueRouter({

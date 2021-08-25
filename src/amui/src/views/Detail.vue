@@ -6,7 +6,7 @@
             <div class="row" style="margin-bottom: 50px">
                 <div class="col-6" id = "detailPic">
                     <img src="https://shop.hansalim.or.kr/im/is/activeDesigner/050307006_content1.jpg" class="rounded float-left" 
-                         alt="..." width="500px" height="400px">
+                        alt="..." width="500px" height="400px">
                 </div>
 
                 <div class="col-6" id = "detailText">
