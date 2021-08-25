@@ -30,7 +30,7 @@
                     <td>상품금액</td>
                     <td>
                         <button type="button" class="btn btn-warning">
-                            리뷰작성
+                            <router-link to="/reviewWrite">리뷰작성</router-link>
                         </button>
                     </td>
                 </tr>
@@ -48,7 +48,7 @@
                     <td>상품금액</td>
                     <td>
                         <button type="button" class="btn btn-warning">
-                            리뷰작성
+                            <router-link to="/reviewWrite">리뷰작성</router-link>
                         </button>
                     </td>
                 </tr>
@@ -66,7 +66,7 @@
                     <td>상품금액</td>
                     <td>
                         <button type="button" class="btn btn-warning">
-                            리뷰작성
+                            <router-link to="/reviewWrite">리뷰작성</router-link>
                         </button>
                     </td>
                 </tr>
