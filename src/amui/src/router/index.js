@@ -11,7 +11,6 @@ import Login from '../views/Login.vue'
 import Join from '../views/Join.vue'
 import ReviewWrite from '../views/ReviewWrite.vue'
 import QnAWrite from '../views/QnAWrite.vue'
-import NoticeWrite from '../views/NoticeWrite.vue'
 import Mypage from '../views/Mypage.vue'
 import ProductInsertVue from '../views/ProductInsert.vue'
 import IntroductionVue from '../views/Introduction.vue'
@@ -84,11 +83,6 @@ const routes = [
     path: '/qnaWrite',
     name: 'QnAWrite',
     component: QnAWrite
-  },
-  {
-    path: '/noticeWrite',
-    name: 'NoticeWrite',
-    component: NoticeWrite
   },
   {
     path: '/mypage',
