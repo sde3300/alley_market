@@ -55,6 +55,54 @@
 		      ]]>
 		   </select> -->
 			
+			
+		<!-- 리뷰 보기 -->
+		<select id="reviewRead" parameterType="int" resultType="am.dto.ReviewDto">
+			<![CDATA[
+				SELECT
+					review_pk, board_category_pk, review_title, review_contents, review_score,
+					create_id, product_pk, order_pk,
+					DATE_FORMAT(create_date, '%Y.%m.%d %H:%i') AS create_date,
+					DATE_FORMAT(update_date, '%Y.%m.%d %H:%i') AS update_date
+				FROM
+					review
+				WHERE
+					product_pk = #{productPk}
+				AND
+					deleted_yn = 'N'
+				ORDER BY
+					product_pk DESC
+			]]>
+		</select>
+		
+		<!-- 문의 보기 -->
+		<select id="qnaRead" parameterType="int" resultType="am.dto.QnaDto">
+			<![CDATA[
+				SELECT
+					qna_pk, board_category_pk, qna_title, qna_contents,
+					create_id, product_pk, answer_contents, answer_yn,
+					DATE_FORMAT(create_date, '%Y.%m.%d %H:%i') AS create_date
+				FROM
+					qna
+				WHERE
+					product_pk = 1
+				AND
+					deleted_yn = 'N'
+				ORDER BY
+					product_pk DESC
+			]]>
+		</select>
+		
+		<!-- 문의 등록 -->
+		<insert id="qnaInsert" parameterType="am.dto.QnaDto">
+			<![CDATA[				
+				INSERT INTO
+					qna (product_pk, qna_title, qna_contents, create_id, create_date)
+				VALUES
+					(1, #{qnaTitle}, #{qnaContents}, #{createId}, NOW())
+			]]>
+		</insert>
+		
 	</mapper>
 	
 	
