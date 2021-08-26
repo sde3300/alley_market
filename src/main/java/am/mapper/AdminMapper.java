@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 
 import am.dto.CustomersDto;
+import am.dto.NoticeDto;
 import am.dto.OrdersDto;
 
 @Mapper
@@ -15,7 +16,12 @@ public interface AdminMapper {
 	
 
 //	회원관리 페이지 불러오기
+	List<CustomersDto> SelectCustomerList() throws Exception;
 
-	List<CustomersDto> SelectCustomerBoardList() throws Exception;
+//	공지사항 페이지 불러오기
+	List<NoticeDto> SelectNoticeBoardList() throws Exception;
+
+//	공지사항 작성하기
+	void NoticeWrite(NoticeDto notice) throws Exception;
 
 }

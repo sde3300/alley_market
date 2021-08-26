@@ -4,7 +4,6 @@ import VueRouter from 'vue-router'
 import DetailVue from '../views/Detail.vue'
 import Main from '../views/Main.vue'
 import AdminMainVue from '../views/AdminMain.vue'
-import AdminNoticeVue from '../views/AdminNotice.vue'
 import AdminProductVue from '../views/AdminProduct.vue'
 import CusManagementVue from '../views/CusManagement.vue'
 import AdminQnaVue from '../views/AdminQna.vue'
@@ -20,6 +19,8 @@ import NoticeListVue from '../views/NoticeList.vue'
 import NoticeDetailVue from '../views/NoticeDetail.vue'
 import Order from '../views/Order.vue'
 import CartList from '../views/CartList.vue'
+import AdminNoticeList from '../views/AdminNoticeList.vue'
+import AdminNoticeWrite from '../views/AdminNoticeWrite.vue'
 
 Vue.use(VueRouter)
 
@@ -58,11 +59,6 @@ const routes = [
   path: '/adminMain',
   name: 'AdminMain',
   component: AdminMainVue
-  },
-  {
-    path: '/adminNotice',
-    name: 'AdminNotice',
-    component: AdminNoticeVue
   },
   {
     path: '/adminProduct',
@@ -124,6 +120,16 @@ const routes = [
     name: 'Order',
     component: Order
   },
+  {
+    path: '/adminNoticeList',
+    name: 'AdminNoticeList',
+    component: AdminNoticeList
+  },
+  {
+    path: '/adminNoticeWrite',
+    name: 'AdminNoticeWrite',
+    component: AdminNoticeWrite
+  }
 ]
 
 const router = new VueRouter({

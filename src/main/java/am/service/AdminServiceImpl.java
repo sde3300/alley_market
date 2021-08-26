@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import am.dto.CustomersDto;
+import am.dto.NoticeDto;
 import am.dto.OrdersDto;
 import am.mapper.AdminMapper;
 
@@ -22,8 +23,20 @@ public class AdminServiceImpl implements AdminService{
 	
 //	회원관리 페이지 불러오기
 	@Override
-	public List<CustomersDto> SelectCustomerBoardList() throws Exception {
-		return adMapper.SelectCustomerBoardList();
+	public List<CustomersDto> SelectCustomerList() throws Exception {
+		return adMapper.SelectCustomerList();
+	}
+	
+//	공지사항 페이지 불러오기
+	@Override
+	public List<NoticeDto> SelectNoticeBoardList() throws Exception {
+		return adMapper.SelectNoticeBoardList();
+	}
+	
+//	공지사항 작성하기
+	@Override
+	public void NoticeWrite(NoticeDto notice) throws Exception {
+		adMapper.NoticeWrite(notice);
 	}
 	
 }

@@ -6,18 +6,46 @@
 	
 <mapper namespace="am.mapper.AdminMapper">
 
-		<select id="SelectCustomerBoardList" resultType="am.dto.CustomersDto">
+		<!--회원관리 페이지-->
+		<select id="SelectCustomerList" resultType="am.dto.CustomersDto">
 		<![CDATA[
 		
 			SELECT
 				customer_pk, customer_email, customer_phone, customer_name
 			FROM
 				customers
-			WHERE
-				admin_yn = 'N'
 			ORDER BY
-				customer_pk DESC
+				customer_pk asc
 		]]>
 		</select>
+		
+		<!--공지사항 페이지-->
+		<select id="SelectNoticeBoardList" resultType="am.dto.NoticeDto">
+		<![CDATA[
+		
+			SELECT
+				notice_pk, notice_title, create_id, create_date,
+				DATE_FORMAT(create_date, '%Y.%m.%d %H:%i:%s') AS create_date
+			FROM
+				notice
+			where
+			 	deleted_yn = 'N'
+			ORDER BY
+				notice_pk asc
+		]]>
+		</select>
+		
+		<!-- 공지사항 작성 페이지-->
+		<insert id="NoticeWrite" parameterType="am.dto.NoticeDto">
+		<![CDATA[ 
+	      
+	         INSERT INTO
+		            notice
+		            (board_category_pk, notice_title, notice_contents, create_id, create_date)
+	         VALUES
+	            	('b1', #{noticeTitle}, #{noticeContents}, #{createId}, NOW())
+      	
+      	]]>
+	</insert>
 
 </mapper>

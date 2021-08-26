@@ -32,6 +32,10 @@
                     </tr>
                 </tbody>
             </table>
+            <!-- 삭제버튼 -->
+            <div class="d-flex justify-content-end"> 
+                <button class="btn btn-danger">삭제하기</button>
+            </div>
 
             <!-- 페이징 -->
             <nav aria-label="Page navigation example">
@@ -52,6 +56,7 @@
                 </ul>
             </nav>
 
+            
         </div>
     </div>
 </template>
@@ -80,5 +85,7 @@ export default {
 </script>
 
 <style>
-
+#button {
+    justify-content: center;
+}
 </style>
