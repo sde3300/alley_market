@@ -253,14 +253,14 @@
                                     class=""
                                     type=""
                                     data-toggle="collapse"
-                                    data-target="#collapseExample1"
+                                    v-bind:data-target="'#review' + item.reviewPk"
                                     aria-expanded="false"
                                     aria-controls="collapseExample"
                                 >
                                     {{ item.reviewTitle }}
                                 </div>
                                 <br />
-                                <div class="collapse" id="collapseExample1">
+                                <div class="collapse" v-bind:id="'review' + item.reviewPk">
                                     <div class="card card-body">
                                         {{ item.reviewContents }}
                                     </div>
@@ -356,18 +356,19 @@
                                     class=""
                                     type=""
                                     data-toggle="collapse"
-                                    data-target="#collapseExample4"
+                                    v-bind:data-target="'#qna' + item.qnaPk"
                                     aria-expanded="false"
-                                    aria-controls="collapseExample"
+                                    v-bind:aria-controls="'qna' + item.qnaPk"
                                 >
                                     {{ item.qnaTitle }}
                                 </div>
                                 <br />
-                                <div class="collapse" id="collapseExample4">
+                                <div class="collapse" v-bind:id="'qna' + item.qnaPk">
                                     <div class="card card-body">
                                         {{ item.qnaContents }}
                                     </div>
-                                    <div class="collapse" id="collapseExample4">
+                                    <!-- <div class="collapse" id="'qna' + item.qnaPk"> -->
+                                    <div>
                                         <div class="card card-body">
                                             {{ item.answerContents }}
                                         </div>
@@ -390,11 +391,11 @@
 export default {
     data() {
         return {
-            qnaPk: 0,
+            // qnaPk: 0,
             qnaTitle: "",
             qnaContents: "",
             createId: "",
-            createDate: "",
+            // createDate: "",
             qnas: [],
             reviews: [],
         }

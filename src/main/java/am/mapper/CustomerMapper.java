@@ -27,6 +27,6 @@ public interface CustomerMapper {
 	List<QnaDto> qnaRead(@Param("productPk") int productPk) throws Exception;
 	
 //	문의 등록
-	void qnaInsert(@Param("productPk") QnaDto qna) throws Exception;
+	void qnaInsert(QnaDto qna) throws Exception;
 
 }
