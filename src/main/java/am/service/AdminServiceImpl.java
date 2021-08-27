@@ -17,6 +17,7 @@ public class AdminServiceImpl implements AdminService{
 	private AdminMapper adMapper;
 	
 //	관리자 메인페이지 불러오기
+	@Override
 	public List<OrdersDto> adminMainPage() throws Exception {
 		return adMapper.adminMainPage();
 	}
