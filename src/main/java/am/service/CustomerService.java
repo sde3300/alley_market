@@ -12,6 +12,6 @@ public interface CustomerService {
 	//데이터에 DB저장	
 	void vueInsertBoard(ProductDto board) throws Exception;
 	
-	//게시판 글 확인
-	ProductDto vueSelectDetailBoard(int productPk) throws Exception;
+	//상세페이지 데이터 확인
+	ProductDto productDetailBoard(int productPk) throws Exception;
 }

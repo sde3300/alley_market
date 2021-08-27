@@ -5,7 +5,7 @@ import lombok.Data;
 @Data
 public class QnaDto {
 	private int qnaPk;
-	private int boardCategoryPk;
+	private String boardCategoryPk;
 	private String qnaTitle;
 	private String qnaContents;
 	private String createId;

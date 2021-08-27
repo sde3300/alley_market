@@ -24,14 +24,15 @@ public class CustomerController {
 		
 		return dataList;
 	}
-	
-	//지정한 게시판 글 확인하기
-	// 이 아래로는 수정해야됨
+
+
+	//0827 : 상세페이지 데이터 불러오기
 	
 	@RequestMapping(value="/productDetail", method=RequestMethod.GET)
-	public Object vueSelectBoardDetail(@RequestParam("productPk") int productPk) throws Exception {
-		ProductDto board = cusService.vueSelectDetailBoard(productPk);
-			
-		return board;
+	public Object productBoardDetail(@RequestParam("productPk") int productPk) throws Exception {
+		ProductDto board = cusService.productDetailBoard(productPk);
+				
+	return board;
 	}
+
 }

@@ -24,9 +24,10 @@ public class CustomerServiceImpl implements CustomerService {
 	public void vueInsertBoard(ProductDto board) throws Exception {
 		cusMapper.vueInsertBoard(board);
 	}
-//	
+	
+//	상세페이지 데이터 가져오기
 	@Override
-	public ProductDto vueSelectDetailBoard(int productPk) throws Exception{
-		return cusMapper.vueSelectDetailBoard(productPk);
+	public ProductDto productDetailBoard(int productPk) throws Exception{
+		return cusMapper.productDetailBoard(productPk);
 	}
 }

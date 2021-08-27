@@ -13,4 +13,10 @@ public class WebMvcConfiguration implements WebMvcConfigurer {
 		.allowedOrigins("*")
 		.allowedMethods("GET", "POST", "PUT", "DELETE");
 	}
+	
+	
+//	@Override
+//	public void addResourceHandlers(ResourceHandlerRegistry registry) {
+//		registry.addResourceHandler("/outsideImg/**").addResourceLocations("file:///C:/AMPROJECT/outsideImages");
+//	}
 }

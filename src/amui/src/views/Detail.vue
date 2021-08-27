@@ -9,11 +9,11 @@
                         alt="..." width="500px" height="400px">
                 </div>
 
-                <div class="col-6" id = "detailText">
+                <div class="col-6" id = "detailText" v-for = "item in items" v-bind:key = "item.productPk">
                         <div class="container">
                             <div class="row text-left" >
                                 <div class="col-8" >
-                                <h1>완숙토마토(2kg)</h1>
+                                <h1>{{ item.productName }}</h1>
                                 </div>
                                 <div class="col text-right">
                                 <!--  공유하는 링크 넣기 -->
@@ -23,7 +23,7 @@
 
                             <div class="row text-left">
                                 <div class="col-4">
-                                <h2>9,000원 </h2>
+                                <h2>{{ item.productPrice }} 원</h2>
                                 </div>
                                 <div class="col">
                                 </div>
@@ -33,41 +33,23 @@
                         <hr/>
                             <div class="row">
                                 <div class="col" id="detailtext">
-                                공급유형 
+                                판매처 
                                 </div>
                                 <div class="col"></div>
                                 <div class="col-6" style="text-align:left">
-                                일반공급
+                                {{ item.productStore }}
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col " id="detailtext">
-                                보관방법
+                                남은 재고 수량
                                 </div>
                                 <div class="col"></div>
                                 <div class="col-6" style="text-align:left">
-                                냉장
+                                {{ item.productStockCnt }}
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="col " id="detailtext">
-                                혜택
-                                </div>
-                                <div class="col"></div>
-                                <div class="col-6" style="text-align:left">
-                                결제 시 135원 적립 예상
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col " id="detailtext">
-                                알레르기 성분
-                                </div>
-                                <div class="col"></div>
-                                <div class="col-6" style="text-align:left">
-                                토마토
-                                </div>
 
-                            </div>
                             <div class="row">
                                 <div class="col " id="detailtext">
                                 구매수량
@@ -94,8 +76,9 @@
                                 <i class="fab fa-2x fa-gratipay"></i>
                                 <!-- 찜하기 버튼? 모달창?-->
                                 </div>
-                                <div class="col-10">
-                                <button type="button" class="btn btn-success btn-lg btn-block">장바구니</button>
+                                <div class="" style="margin:auto">
+                                    <button style="margin-right:50px" type="button" class="btn btn-success btn-lg ">장바구니</button>
+                                    <button type="button" class="btn btn-danger btn-lg ">주문하기</button>
                                 </div>
                             </div>
                     </div>
@@ -313,6 +296,30 @@
 export default {
     
 
+// 혜수 추가
+ data() {
+      return {
+        items: []
+      }
+    },
+    methods: {
+      productDetail(productPk) {
+        this.$router.push({ name: 'Detail', query: {productPk: productPk}})
+      }
+    },
+    mounted() {
+      let obj = this;
+
+      obj.$axios.get("http://localhost:9000/productMain")
+        .then(function(res) {
+            console.log("axios로 비동기 통신 성공");
+            obj.items = res.data;
+        })
+        .catch(function(err) {
+            console.log("axios 비동기 통신 오류");
+            console.log(err);
+        });
+    }
 }
 </script>
 
