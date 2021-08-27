@@ -20,7 +20,7 @@ public interface CustomerService {
 //	ProductDto vueSelectDetailBoard(int productPk) throws Exception;
 	
 	//게시판 글 확인
-	ProductDto vueSelectDetailBoard(int productPk) throws Exception;
+//	ProductDto vueSelectDetailBoard(int productPk) throws Exception;
 	
 
 //	리뷰 보기
