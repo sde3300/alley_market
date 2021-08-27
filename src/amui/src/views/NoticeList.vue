@@ -17,9 +17,9 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr v-for="item in items" v-bind:key="item.notice_pk">
+                    <tr v-for="item in items" v-bind:key="item.noticePk">
                         <td>{{ item.noticePk}}</td>
-                        <td v-on:click="moveNoticeDetail(item.notice_pk)">{{ item.noticeTitle}}</td>
+                        <td v-on:click="moveNoticeDetail(item.noticePk)">{{ item.noticeTitle}}</td>
                         <td>{{ item.createId}}</td>
                         <td>{{ item.createDate}}</td>
                     </tr>

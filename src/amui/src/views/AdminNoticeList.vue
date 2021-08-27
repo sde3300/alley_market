@@ -17,9 +17,9 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr v-for="item in items" v-bind:key="item.notice_pk">
+                    <tr v-for="item in items" v-bind:key="item.noticePk">
                         <td>{{ item.noticePk}}</td>
-                        <td v-on:click="moveNoticeDetail(item.notice_pk)">{{ item.noticeTitle}}</td>
+                        <td v-on:click="moveNoticeDetail(item.noticePk)">{{ item.noticeTitle}}</td>
                         <td>{{ item.createId}}</td>
                         <td>{{ item.createDate}}</td>
                     </tr>
@@ -28,7 +28,7 @@
 
             <!-- 글쓰기 버튼  -->
             <div class="row">
-                <button type="button" class="btn btn-dark col-sm-1 ml-auto" id="btnmodi">글쓰기</button>
+                <button type="button" class="btn btn-dark col-sm-1 ml-auto" id="btnmodi" v-on:click="moveNoticeWrite">글쓰기</button>
             </div>
 
             <!-- 페이징 -->
@@ -69,7 +69,7 @@ export default {
         },
     
         moveNoticeWrite() {
-            this.$router.push({name: 'Insert'});
+            this.$router.push({name: 'AdminNoticeWrite'});
         }
     },
     mounted() {

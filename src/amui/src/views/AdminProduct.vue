@@ -5,6 +5,7 @@
         </div>
         <hr>
 
+        <div class="container">
         <div class="col-md-12">
             <table class="table table-hover">
                 <thead>
@@ -50,7 +51,7 @@
             <div class="row">
                     <button type="button" class="btn btn-dark col-sm-1 ml-auto" id="btnmodi">상품등록</button>
             </div>
-            
+        </div>
         </div>
     </div>
 </template>
