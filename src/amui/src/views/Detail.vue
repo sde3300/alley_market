@@ -253,14 +253,19 @@
                                     class=""
                                     type=""
                                     data-toggle="collapse"
-                                    v-bind:data-target="'#review' + item.reviewPk"
+                                    v-bind:data-target="
+                                        '#review' + item.reviewPk
+                                    "
                                     aria-expanded="false"
                                     aria-controls="collapseExample"
                                 >
                                     {{ item.reviewTitle }}
                                 </div>
                                 <br />
-                                <div class="collapse" v-bind:id="'review' + item.reviewPk">
+                                <div
+                                    class="collapse"
+                                    v-bind:id="'review' + item.reviewPk"
+                                >
                                     <div class="card card-body">
                                         {{ item.reviewContents }}
                                     </div>
@@ -294,45 +299,49 @@
                     외부 광고성 글은 삭제하고 있으니 양해를 부탁드립니다.<br />
                     <br />
 
-                <div class="row">
-                    <div class="col-md mx-auto text-left">
-                    <div class="form-group">
-                        <input
-                            type="text"
-                            class="form-control"
-                            id="qnaTitle"
-                            name="qnaTitle"
-                            placeholder="문의제목을 입력하세요"
-                            v-model="qnaTitle"
-                            size="1"
-                        />
+                    <div class="row">
+                        <div class="col-md mx-auto text-left">
+                            <div class="form-group">
+                                <input
+                                    type="text"
+                                    class="form-control"
+                                    id="qnaTitle"
+                                    name="qnaTitle"
+                                    placeholder="문의제목을 입력하세요"
+                                    v-model="qnaTitle"
+                                    size="1"
+                                />
+                            </div>
+                            <div class="form-group">
+                                <textarea
+                                    name="qnaContents"
+                                    id="qnaContents"
+                                    cols="50"
+                                    rows="5"
+                                    class="form-control"
+                                    placeholder="문의내용을 입력하세요"
+                                    v-model="qnaContents"
+                                ></textarea>
+                            </div>
+                            <div class="form-group">
+                                <input
+                                    type="text"
+                                    class="form-control"
+                                    id="createId"
+                                    name="createId"
+                                    placeholder="아이디를 입력하세요"
+                                    v-model="createId"
+                                    size="1"
+                                />
+                            </div>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <textarea
-                            name="qnaContents"
-                            id="qnaContents"
-                            cols="50"
-                            rows="5"
-                            class="form-control"
-                            placeholder="문의내용을 입력하세요"
-                            v-model="qnaContents"
-                        ></textarea>
-                    </div>
-                    <div class="form-group">
-                        <input
-                            type="text"
-                            class="form-control"
-                            id="createId"
-                            name="createId"
-                            placeholder="아이디를 입력하세요"
-                            v-model="createId"
-                            size="1"
-                        />
-                    </div>
-                </div>
-            </div>
 
-                    <button type="button" class="btn btn btn-outline-secondary btn-lg btn-block" v-on:click="qnaInsert">
+                    <button
+                        type="button"
+                        class="btn btn btn-outline-secondary btn-lg btn-block"
+                        v-on:click="qnaInsert"
+                    >
                         문의 작성
                     </button>
                 </div>
@@ -363,7 +372,10 @@
                                     {{ item.qnaTitle }}
                                 </div>
                                 <br />
-                                <div class="collapse" v-bind:id="'qna' + item.qnaPk">
+                                <div
+                                    class="collapse"
+                                    v-bind:id="'qna' + item.qnaPk"
+                                >
                                     <div class="card card-body">
                                         {{ item.qnaContents }}
                                     </div>
@@ -391,14 +403,12 @@
 export default {
     data() {
         return {
-            // qnaPk: 0,
             qnaTitle: "",
             qnaContents: "",
             createId: "",
-            // createDate: "",
             qnas: [],
             reviews: [],
-        }
+        };
     },
     methods: {
         reviewRead(reviewPk) {
@@ -409,27 +419,28 @@ export default {
         },
 
         qnaRead(qnaPk) {
-            this.$router.push({ name: "Detail", params: { qnaPk: qnaPk } });
+            this.$router.push({ name: "Detail", params: { qnaPk: qnaPk }});
         },
 
         qnaInsert() {
-        let obj = this;
-        obj.$axios.post("http://localhost:9000/qnaInsert", {
-                productPk: this.productPk,
-                qnaTitle: this.qnaTitle,
-                qnaContents: this.qnaContents,
-                createdDate: this.createdDate,
-                createId: this.createId,
-            })
-            .then(function () {
-                console.log("비동기 통신 성공");
-                obj.qnaContents = "";
-                obj.$router.go(obj.$router.currentRouter);
-            })
-            .catch(function (err) {
-                console.log("비동기 통신 실패");
-                console.log(err);
-            });
+            let obj = this;
+            obj.$axios
+                .post("http://localhost:9000/qnaInsert", {
+                    productPk: this.productPk,
+                    qnaTitle: this.qnaTitle,
+                    qnaContents: this.qnaContents,
+                    createdDate: this.createdDate,
+                    createId: this.createId,
+                })
+                .then(function () {
+                    console.log("비동기 통신 성공");
+                    obj.qnaContents = "";
+                    obj.$router.go(obj.$router.currentRouter);
+                })
+                .catch(function (err) {
+                    console.log("비동기 통신 실패");
+                    console.log(err);
+                });
         },
     },
 

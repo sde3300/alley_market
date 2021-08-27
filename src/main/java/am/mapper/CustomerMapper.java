@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
+import am.dto.OrdersDto;
 import am.dto.ProductDto;
 import am.dto.QnaDto;
 import am.dto.ReviewDto;
@@ -28,5 +29,10 @@ public interface CustomerMapper {
 	
 //	문의 등록
 	void qnaInsert(QnaDto qna) throws Exception;
+	
+//	주문하기 - 상품정보 불러오기
+	List<ProductDto> orderProduct(@Param("orderPk") int orderPk) throws Exception;
 
+//	주문하기 - 주문입력
+	void orderInsert(OrdersDto order) throws Exception;
 }

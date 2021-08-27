@@ -29,31 +29,6 @@
 		            product_pk DESC
 		      ]]>
 		   </select>
-
-
-		   	<!-- 210825 혜수: 제품 상세 페이지 확인
-			<select id="productDetailBoard" parameterType="int" resultType="am.dto.ProductDto">
-				<![CDATA[
-				SELECT
-					product_pk, product_name, product_price, product_stock_cnt, product_store, product_detail
-				FROM
-					product
-				ORDER BY
-					product_pk DESC
-				]]>
-			</select>
-		
-			 210825 혜수: 장바구니 테스트용
-			<select id="productCartlist" resultType="am.dto.ProductDto">
-		      <![CDATA[
-		         SELECT
-		            product_pk, product_name, product_price
-		         FROM
-		            product
-		         ORDER BY
-		            product_pk DESC
-		      ]]>
-		   </select> -->
 			
 			
 		<!-- 리뷰 보기 -->
@@ -103,6 +78,32 @@
 			]]>
 		</insert>
 		
+		<!-- 주문하기 - 상품정보 불러오기 -->
+		<select id="orderProduct" parameterType="int" resultType="am.dto.ProductDto">
+			<![CDATA[
+				SELECT 
+					a.product_pk, a.product_name, a.product_price, a.product_store, b.order_pk, b.order_cnt, b.order_sum, b.product_pk
+				FROM 
+					product as a
+				JOIN 
+					orders_detail as b
+				ON 
+					a.product_pk = b.product_pk
+				AND
+					b.order_pk = 1
+			]]>
+		</select>
+		
+		<!-- 주문하기 - 주문입력 -->
+		<insert id="orderInsert" parameterType="am.dto.OrdersDto">
+			<![CDATA[				
+				INSERT INTO
+					orders (order_pk, customer_pk, order_name, order_phone, zip, addr1, addr2, order_date)
+				VALUES
+					(#{orderPk}, 1, #{orderName}, #{orderPhone}, #{zip}, #{addr1}, #{addr2}, NOW())
+			]]>
+		</insert>
+
 	</mapper>
 	
 	

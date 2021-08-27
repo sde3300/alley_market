@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import am.dto.OrdersDto;
 import am.dto.ProductDto;
 import am.dto.QnaDto;
 import am.dto.ReviewDto;
@@ -54,4 +55,19 @@ public class CustomerServiceImpl implements CustomerService {
 		cusMapper.qnaInsert(qna);
 	}
 	
+//	주문하기 - 상품정보 불러오기
+	@Override
+	public List<ProductDto> orderProduct(int orderPk) throws Exception {
+		List<ProductDto> list = cusMapper.orderProduct(orderPk);
+		
+		return list;
+	}
+	
+//	주문하기 - 주문입력
+	@Override
+	public void orderInsert(OrdersDto order) throws Exception {
+		cusMapper.orderInsert(order);
+	}
+	
+
 }

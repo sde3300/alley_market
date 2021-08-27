@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import am.dto.OrdersDto;
 import am.dto.ProductDto;
 import am.dto.QnaDto;
 import am.dto.ReviewDto;
@@ -58,5 +59,19 @@ public class CustomerController {
 	@RequestMapping(value="/qnaInsert", method=RequestMethod.POST)
 	public void qnaInsert(@RequestBody QnaDto qna) throws Exception {
 		cusService.qnaInsert(qna);
+	}
+	
+//	주문하기 - 상품정보 불러오기
+	@RequestMapping(value="/orderProduct", method=RequestMethod.GET)
+	public Object orderProduct(@RequestParam("orderPk") int orderPk) throws Exception {
+		List<ProductDto> dataList = cusService.orderProduct(orderPk);
+		
+		return dataList;
+	}
+	
+//	주문하기 - 주문입력
+	@RequestMapping(value="/orderInsert", method=RequestMethod.POST)
+	public void orderInsert(@RequestBody OrdersDto order) throws Exception {
+		cusService.orderInsert(order);
 	}
 }
