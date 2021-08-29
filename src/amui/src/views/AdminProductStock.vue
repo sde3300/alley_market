@@ -1,7 +1,7 @@
 <template>
     <div class="container">
         <div class="jumbotron text-center">
-            <h1>상품관리</h1>
+            <h1>상품재고관리</h1>
         </div>
         <hr>
 
@@ -19,13 +19,13 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr v-for="item in items" v-bind:key="item.productPk">
+                    <tr v-for="item in items" v-bind:key="item.boardIdx">
                         <td>{{ item.boardIdx}}</td>
-                        <td>{{ item.productPK}}}}</td>
-                        <td>{{ item.productCategoryPk}}}}</td>
-                        <td>{{ item.productName}}}}</td>
-                        <td>{{ item.productStore}}}}</td>
-                        <td>{{ item.productStockCnt}}}}</td>
+                        <td>{{ item.productPK}}</td>
+                        <td>{{ item.productCategoryPk}}</td>
+                        <td>{{ item.productName}}</td>
+                        <td>{{ item.productStore}}</td>
+                        <td>{{ item.productStockCnt}}</td>
                     </tr>
                 </tbody>
             </table>
@@ -75,7 +75,7 @@ export default {
 
         obj.$axios.get("http://localhost:9000/stockList", {
             params: {
-                productPk: 1
+                boardIdx: 1
             }
         })
         .then(function(res) {

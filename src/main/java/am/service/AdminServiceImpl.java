@@ -61,8 +61,8 @@ public class AdminServiceImpl implements AdminService{
 	
 //	상품재고 목록 확인하기
 	@Override
-	public List<ProductDto> SelectStockList() throws Exception {
-		return adMapper.SelectStockList();
+	public List<ProductDto> SelectStockList(int boardIdx) throws Exception {
+		return adMapper.SelectStockList(boardIdx);
 	}
 	
 //	상품정보 등록하기

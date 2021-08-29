@@ -94,7 +94,7 @@
 		</update>
 		
 		<!-- 상품재고 목록 페이지-->
-		<select id="SelectStockList" resultType="am.dto.ProductDto">
+		<select id="SelectStockList" parameterType="int" resultType="am.dto.ProductDto">
 		<![CDATA[
 		
 			SELECT 

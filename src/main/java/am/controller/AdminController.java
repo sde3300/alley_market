@@ -72,8 +72,8 @@ public class AdminController {
 	
 //	상품재고 목록 확인하기
 	@RequestMapping(value="/stockList", method=RequestMethod.GET)
-	public Object StockList() throws Exception {
-		List<ProductDto> stockdataList = adService.SelectStockList();
+	public Object StockList(@RequestParam("boardIdx") int boardIdx) throws Exception {
+		List<ProductDto> stockdataList = adService.SelectStockList(boardIdx);
 		
 		return stockdataList;
 	}

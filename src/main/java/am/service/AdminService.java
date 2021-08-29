@@ -31,7 +31,7 @@ public interface AdminService {
 	void noticeDelete(int noticePk) throws Exception;
 
 //	상품재고 목록 확인하기
-	List<ProductDto> SelectStockList() throws Exception;
+	List<ProductDto> SelectStockList(int boardIdx) throws Exception;
 	
 //	상품정보 등록하기
 	void ProductInsert(ProductDto productIn) throws Exception;
