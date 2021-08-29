@@ -19,7 +19,7 @@
 		]]>
 		</select>
 		
-		<!--공지사항 페이지-->
+		<!--공지사항 리스트 페이지-->
 		<select id="SelectNoticeBoardList" resultType="am.dto.NoticeDto">
 		<![CDATA[
 		
@@ -46,6 +46,51 @@
 	            	('b1', #{noticeTitle}, #{noticeContents}, #{createId}, NOW())
       	
       	]]>
-	</insert>
+		</insert>
+		
+		<!-- 공지사항 상세내용 페이지-->
+		<select id="NoticeDetail" parameterType="int" resultType="am.dto.NoticeDto">
+		<![CDATA[
+		
+	         SELECT
+	            notice_pk, notice_title, create_id, notice_contents,
+	            DATE_FORMAT(create_date, '%Y.%m.%d %H:%i:%s') AS create_date
+	         FROM
+	            notice
+	         WHERE
+	            notice_pk = #{noticePk}
+	         ORDER BY
+	            notice_pk asc
+			
+			]]>
+		</select>
+	
+		<!-- 공지사항 상세내용 수정-->
+		<update id="noticeUpdate" parameterType="am.dto.NoticeDto">
+			<![CDATA[ 
+			
+		         UPDATE
+		            notice
+		         SET
+		            notice_title= #{noticeTitle},
+		            notice_contents= #{noticeContents},
+		            update_date= NOW(),
+		            create_id= 'yoo'
+		         WHERE
+		            notice_pk = #{noticePk}
+	      
+	      ]]>
+		</update>
+		
+		<!-- 공지사항 상세내용 삭제(목록에서만 안 보이게 하는 삭제방법)-->
+		<update id="noticeDelete" parameterType="int">
+			<![CDATA[ 
+			
+					UPDATE notice SET
+						deleted_yn = 'Y'
+					WHERE
+		            	notice_pk = #{noticePk}
+			]]>
+		</update>
 
 </mapper>

@@ -17,6 +17,7 @@ public class AdminServiceImpl implements AdminService{
 	private AdminMapper adMapper;
 	
 //	관리자 메인페이지 불러오기
+	@Override
 	public List<OrdersDto> adminMainPage() throws Exception {
 		return adMapper.adminMainPage();
 	}
@@ -27,7 +28,7 @@ public class AdminServiceImpl implements AdminService{
 		return adMapper.SelectCustomerList();
 	}
 	
-//	공지사항 페이지 불러오기
+//	공지사항 리스트 불러오기
 	@Override
 	public List<NoticeDto> SelectNoticeBoardList() throws Exception {
 		return adMapper.SelectNoticeBoardList();
@@ -39,4 +40,21 @@ public class AdminServiceImpl implements AdminService{
 		adMapper.NoticeWrite(notice);
 	}
 	
+//	공지사항 상세내용 확인하기
+	@Override
+	public NoticeDto NoticeDetail(int noticePk) throws Exception {
+		return adMapper.NoticeDetail(noticePk);
+	}
+	
+//	공지사항 상세내용 수정하기
+	@Override
+	public void noticeUpdate(NoticeDto noticeupdate) throws Exception {
+		adMapper.noticeUpdate(noticeupdate);
+	}
+	
+//	공지사항 상세내용 삭제하기
+	@Override
+	   public void noticeDelete(int noticePk) throws Exception {
+		adMapper.noticeDelete(noticePk);
+	  }
 }

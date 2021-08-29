@@ -58,8 +58,6 @@
                 </div>
                 </div>
 
-                <hr>
-
                 <div class="form-group row">
                     <label for="text" class="col-2-1 col-form-label">상품이름
                     </label>

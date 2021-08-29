@@ -18,10 +18,19 @@ public interface AdminMapper {
 //	회원관리 페이지 불러오기
 	List<CustomersDto> SelectCustomerList() throws Exception;
 
-//	공지사항 페이지 불러오기
+//	공지사항 리스트 불러오기
 	List<NoticeDto> SelectNoticeBoardList() throws Exception;
 
 //	공지사항 작성하기
 	void NoticeWrite(NoticeDto notice) throws Exception;
+
+//	공지사항 상세내용 확인하기
+	NoticeDto NoticeDetail(int noticePk) throws Exception;
+
+//	공지사항 상세내용 수정하기
+	void noticeUpdate(NoticeDto noticeupdate) throws Exception;
+	
+//	공지사항 상세내용 삭제하기
+	void noticeDelete(int noticePk) throws Exception;
 
 }

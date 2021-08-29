@@ -11,6 +11,9 @@
                 <a class="nav-link" href="#">전체상품 <span class="sr-only">(current)</span></a>
             </li> -->
             <li class="nav-item">
+                <a class="nav-link" href="#">공지사항</a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link" href="#">로그인</a>
             </li>
             <li class="nav-item">
