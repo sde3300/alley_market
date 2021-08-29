@@ -92,5 +92,35 @@
 		            	notice_pk = #{noticePk}
 			]]>
 		</update>
+		
+		<!-- 상품재고 목록 페이지-->
+		<select id="SelectStockList" resultType="am.dto.ProductDto">
+		<![CDATA[
+		
+			SELECT 
+				a.product_pk, a.product_category_pk, a.product_name, product_stock_cnt, a.product_store, b.board_Idx
+			FROM 
+				product as a
+			JOIN 
+				product_stock as b
+			ON 
+				a.product_pk = b.product_pk
+			AND
+				b.board_idx = #{boardIdx}
+		]]>
+		</select>
+		
+		<!-- 상품정보 등록 페이지-->
+		<insert id="ProductInsert" parameterType="am.dto.ProductDto">
+		<![CDATA[ 
+	      
+	         INSERT INTO
+		            product
+		            (product_category_pk, product_name, product_price, product_stock_cnt, product_store, product_detail)
+	         VALUES
+	            	(#{productCategoryPk}, #{productName}, #{productPrice}, #{productStockCnt}, #{productStore}, #{productDetail});
+      	
+      	]]>
+		</insert>
 
 </mapper>

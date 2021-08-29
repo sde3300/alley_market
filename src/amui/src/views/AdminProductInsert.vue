@@ -92,6 +92,44 @@
 
 <script>
 export default {
+    data() {
+        return {
+            productCategoryPk:'',
+            productName:'',
+            productPrice:'',
+            productStockCnt:'',
+            productStore:'',
+            productDetail:'',
+        }
+    },
+    methods: {
+        //axios를 사용하여 서버와 통신
+        ProductInsert() {
+            let obj = this;
+            obj.$axios.post('http://localhost:9000/productInsert', {
+                
+                productCategoryPk: this.productCategoryPk,
+                productName: this.productName,
+                productPrice: this.productPrice,
+                productStockCnt: this.productStockCnt,
+                productStore: this.productStore,
+                productDetail: this.productDetail
+            })
+            .then(function() {
+                console.log("비동기 통신 성공");
+                obj.$router.push({name:'AdminProduct'});
+                
+            })
+            .catch(function(err) {
+                console.log("비동기 통신 실패");
+                console.log(err);
+            })
+        },
+        //리스트 화면으로 이동
+        moveAdminNoticeList() {
+            this.$router.push({ name: 'AdminProduct'});
+        }
+    },
     
 }
 </script>

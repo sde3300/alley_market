@@ -5,6 +5,7 @@ import java.util.List;
 import am.dto.CustomersDto;
 import am.dto.NoticeDto;
 import am.dto.OrdersDto;
+import am.dto.ProductDto;
 
 public interface AdminService {
 
@@ -28,5 +29,12 @@ public interface AdminService {
 
 //	공지사항 상세내용 삭제하기
 	void noticeDelete(int noticePk) throws Exception;
+
+//	상품재고 목록 확인하기
+	List<ProductDto> SelectStockList() throws Exception;
+	
+//	상품정보 등록하기
+	void ProductInsert(ProductDto productIn) throws Exception;
+
 	
 }

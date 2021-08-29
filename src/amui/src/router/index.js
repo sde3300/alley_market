@@ -4,7 +4,7 @@ import VueRouter from 'vue-router'
 import DetailVue from '../views/Detail.vue'
 import Main from '../views/Main.vue'
 import AdminMainVue from '../views/AdminMain.vue'
-import AdminProductVue from '../views/AdminProduct.vue'
+import AdminProductStock from '../views/AdminProductStock.vue'
 import CusManagementVue from '../views/CusManagement.vue'
 import AdminQnaVue from '../views/AdminQna.vue'
 import Login from '../views/Login.vue'
@@ -12,7 +12,7 @@ import Join from '../views/Join.vue'
 import ReviewWrite from '../views/ReviewWrite.vue'
 import QnAWrite from '../views/QnAWrite.vue'
 import Mypage from '../views/Mypage.vue'
-import ProductInsertVue from '../views/ProductInsert.vue'
+import AdminProductInsert from '../views/AdminProductInsert.vue'
 import IntroductionVue from '../views/Introduction.vue'
 import NoticeListVue from '../views/NoticeList.vue'
 import NoticeDetailVue from '../views/NoticeDetail.vue'
@@ -60,9 +60,9 @@ const routes = [
   component: AdminMainVue
   },
   {
-    path: '/adminProduct',
-    name: 'AdminProduct',
-    component: AdminProductVue
+    path: '/adminProductStock',
+    name: 'AdminProductStock',
+    component: AdminProductStock
   },
   {
     path: '/cusManagement',
@@ -90,9 +90,9 @@ const routes = [
     component: Mypage
   },
   {
-    path: '/productInsert',
-    name: 'ProductInsert',
-    component: ProductInsertVue
+    path: '/adminProductInsert',
+    name: 'AdminProductInsert',
+    component: AdminProductInsert
   },
   {
     path: '/introduction',

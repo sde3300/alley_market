@@ -10,5 +10,6 @@ public class ProductDto {
 	private int productPrice;
 	private int productStockCnt;
 	private String productStore;
+	private String productDetail;
 
 }

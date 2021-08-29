@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import am.dto.CustomersDto;
 import am.dto.NoticeDto;
 import am.dto.OrdersDto;
+import am.dto.ProductDto;
 import am.mapper.AdminMapper;
 
 @Service
@@ -57,4 +58,16 @@ public class AdminServiceImpl implements AdminService{
 	   public void noticeDelete(int noticePk) throws Exception {
 		adMapper.noticeDelete(noticePk);
 	  }
+	
+//	상품재고 목록 확인하기
+	@Override
+	public List<ProductDto> SelectStockList() throws Exception {
+		return adMapper.SelectStockList();
+	}
+	
+//	상품정보 등록하기
+	@Override
+	public void ProductInsert(ProductDto productIn) throws Exception {
+		adMapper.ProductInsert(productIn);
+	}
 }

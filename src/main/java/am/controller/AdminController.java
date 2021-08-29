@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import am.dto.CustomersDto;
 import am.dto.NoticeDto;
 import am.dto.OrdersDto;
+import am.dto.ProductDto;
 import am.service.AdminService;
 
 @RestController
@@ -67,6 +68,20 @@ public class AdminController {
 	@RequestMapping(value="/noticeDelete", method=RequestMethod.DELETE)
 	public void noticeDeleteDetail(@RequestParam("noticePk") int noticePk) throws Exception {
 		adService.noticeDelete(noticePk);
+	}
+	
+//	상품재고 목록 확인하기
+	@RequestMapping(value="/stockList", method=RequestMethod.GET)
+	public Object StockList() throws Exception {
+		List<ProductDto> stockdataList = adService.SelectStockList();
+		
+		return stockdataList;
+	}
+	
+//	주문하기 - 상품정보 입력하기
+	@RequestMapping(value="/productInsert", method=RequestMethod.POST)
+	public void ProductInsert(@RequestBody ProductDto productIn) throws Exception {
+		adService.ProductInsert(productIn);
 	}
 	
 }
