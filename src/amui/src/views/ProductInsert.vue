@@ -5,11 +5,11 @@
         </div>
         <hr>
 
-        <div class="container" id="qnawri">
+        <div class="container">
             <form>
                 <div class="form-group row">
-                    <label for="text" class="col-2-1 col-form-label">상품번호</label>
-                    <div class="col-sm-4">
+                    <label for="text" class="col-2-4 col-form-label">상품번호</label>
+                    <div class="col-sm-5">
                         <input type="text" class="form-control" id="exampleFormControlInput1">
                     </div>
                     <label for="text" class="col-sm-2-1
@@ -102,4 +102,6 @@ export default {
 #btnmodi {
     margin-right: 5px;
 }
+
+#center { display: inline-block;}
 </style>

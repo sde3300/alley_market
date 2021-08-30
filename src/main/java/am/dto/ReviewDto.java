@@ -11,7 +11,7 @@ public class ReviewDto {
 	private String createId;
 	private String createDate;
 	private String updateDate;
-	private int reviewscore;
+	private int reviewScore;
 	private int productPk;
 	private int orderPk;
 	
