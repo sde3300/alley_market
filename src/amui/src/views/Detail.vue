@@ -11,6 +11,7 @@
                             width="500px"
                             height="400px"
                         />
+                        
                     </div>
 
                     <div class="col-6" id = "detailText">

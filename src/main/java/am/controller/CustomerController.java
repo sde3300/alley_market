@@ -12,11 +12,8 @@ import org.springframework.web.bind.annotation.RestController;
 import am.dto.OrdersDto;
 import am.dto.ProductDto;
 import am.dto.ProductInfoDto;
-<<<<<<< HEAD
-=======
 import am.dto.QnaDto;
 import am.dto.ReviewDto;
->>>>>>> a97a840fffb337cd233a588f74469ea7e4f72b22
 import am.service.CustomerService;
 
 @RestController
@@ -32,17 +29,8 @@ public class CustomerController {
 		
 		return dataList;
 	}
-<<<<<<< HEAD
 
 
-	//0827 : 상세페이지 데이터 불러오기
-	
-	@RequestMapping(value="/productDetail", method=RequestMethod.GET)
-	public Object productBoardDetail(@RequestParam("productPk") int productPk) throws Exception {
-		ProductDto board = cusService.productDetailBoard(productPk);
-				
-	return board;
-=======
 	
 //	상품 상세페이지 불러오기
 	@RequestMapping(value="/productDetail", method=RequestMethod.GET)
@@ -86,7 +74,7 @@ public class CustomerController {
 	@RequestMapping(value="/orderInsert", method=RequestMethod.POST)
 	public void orderInsert(@RequestBody OrdersDto order) throws Exception {
 		cusService.orderInsert(order);
->>>>>>> a97a840fffb337cd233a588f74469ea7e4f72b22
+
 	}
 
 }

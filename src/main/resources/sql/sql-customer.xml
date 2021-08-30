@@ -34,20 +34,6 @@
 		      ]]>
 		   </select> -->
 		   
-		   	<!-- 210830 혜수: 메인에서 상품 리스트 사진까지보기-->
-		<select id="productInfoMainPage" resultType="am.dto.ProductInfoDto">
-		      <![CDATA[
-		         SELECT
-				   a.product_pk, a.product_category_pk, a.product_name, a.product_price, 
-				   b.original_file_name, b.stored_file_path
-		         FROM
-		            product as a
-		         JOIN
-		         	board_file as b
-		         ON
-		         	a.product_pk = b.board_idx
-		      ]]>
-		   </select> 
 		   
 		   <!-- 210825 혜수: 메인에서 상품 리스트 보기 (join)
 		   	 <select id="productMainPage" resultType="am.dto.ProductDto">
@@ -66,26 +52,9 @@
 		      ]]>
 		   </select> -->
 		   
-		   <!-- 0827 혜수 : 상품 상세페이지 데이터 불러오기-->
-		   <select id="productDetailBoard" parameterType="int" resultType="am.dto.ProductDto">
-		      <![CDATA[
-					SELECT
-		            product_pk,
-		            product_name, product_price, product_store, product_stock_cnt
-		         FROM
-		            product
-		         ORDER BY
-		            product_pk 1;
-		      ]]>
-		   </select>
-<<<<<<< HEAD
-		   		   	<!-- 210825 혜수: 장바구니 테스트용
-			<select id="productCartlist" resultType="am.dto.ProductDto">
-=======
 		   
 		<!-- 상품 상세페이지 불러오기 -->
 		<select id="productDetail" parameterType="int" resultType="am.dto.ProductDto">
->>>>>>> a97a840fffb337cd233a588f74469ea7e4f72b22
 		      <![CDATA[
 				SELECT
 		            product_pk, product_name, product_price, product_store, product_stock_cnt

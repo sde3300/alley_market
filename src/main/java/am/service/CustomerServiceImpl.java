@@ -8,11 +8,8 @@ import org.springframework.stereotype.Service;
 import am.dto.OrdersDto;
 import am.dto.ProductDto;
 import am.dto.ProductInfoDto;
-<<<<<<< HEAD
-=======
 import am.dto.QnaDto;
 import am.dto.ReviewDto;
->>>>>>> a97a840fffb337cd233a588f74469ea7e4f72b22
 import am.mapper.CustomerMapper;
 
 @Service
@@ -34,12 +31,8 @@ public class CustomerServiceImpl implements CustomerService {
 		cusMapper.vueInsertBoard(board);
 	}
 	
-<<<<<<< HEAD
-//	상세페이지 데이터 가져오기
-	@Override
-	public ProductDto productDetailBoard(int productPk) throws Exception{
-		return cusMapper.productDetailBoard(productPk);
-=======
+
+
 //	상품 상세페이지 불러오기
 	@Override
 	public ProductDto productDetail(int productPk) throws Exception{
@@ -52,7 +45,6 @@ public class CustomerServiceImpl implements CustomerService {
 		List<ReviewDto> list = cusMapper.reviewRead(productPk);
 		
 		return list;
->>>>>>> a97a840fffb337cd233a588f74469ea7e4f72b22
 	}
 	
 //	문의 보기

@@ -20,6 +20,7 @@ import NoticeListVue from '../views/NoticeList.vue'
 import NoticeDetailVue from '../views/NoticeDetail.vue'
 import Order from '../views/Order.vue'
 import CartList from '../views/CartList.vue'
+import Intro from '../views/Introduction.vue'
 
 Vue.use(VueRouter)
 
@@ -39,6 +40,11 @@ const routes = [
     path: '/cartli',
     name: 'Cartli',
     component: CartList,
+  },
+  {
+    path: '/intro',
+    name: 'Intro',
+    component: Intro,
   },
 
   
