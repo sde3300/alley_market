@@ -36,7 +36,7 @@ public interface AdminService {
 	List<ProductDto> SelectStockList(int boardIdx) throws Exception;
 	
 //	상품정보 등록하기
-	void ProductInsert(ProductDto productIn) throws Exception;
+	void ProductInsert(ProductDto productIn, MultipartHttpServletRequest mgsr) throws Exception;
 
 //	상품이미지 등록하기
 //	void insertBoardImg(ProductDto imgin, MultipartHttpServletRequest mhsr) throws Exception;

@@ -82,8 +82,8 @@ public class AdminController {
 	
 //	주문하기 - 상품정보 입력하기
 	@RequestMapping(value="/productInsert", method=RequestMethod.POST)
-	public void ProductInsert(@RequestBody ProductDto productIn) throws Exception {
-		adService.ProductInsert(productIn);
+	public void ProductInsert(@RequestBody ProductDto productIn, MultipartHttpServletRequest mhsr) throws Exception {
+		adService.ProductInsert(productIn, mhsr);
 	}
 	
 //	상품정보 사진등록하기

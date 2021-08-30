@@ -133,6 +133,21 @@
 		]]>
 		</insert>
 		
+		<insert id="productFileInsert" parameterType="am.dto.ProductFileDto">
+			<![CDATA[
+				INSERT INFO
+					product_file (product_pk, original_file_name, stored_file_path)
+				VALUES
+			]]>
+			<foreach collection="list" item="item" separator=",">
+				(
+					#{item.productPk},
+					#{item.originalFileName},
+					#{item.storedFilePath},
+				)
+			</foreach>
+		</insert>
+		
 		
 
 </mapper>

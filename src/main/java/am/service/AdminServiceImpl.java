@@ -7,11 +7,12 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
-
+import am.common.AmFileUtils;
 import am.dto.CustomersDto;
 import am.dto.NoticeDto;
 import am.dto.OrdersDto;
 import am.dto.ProductDto;
+import am.dto.ProductFileDto;
 import am.mapper.AdminMapper;
 
 @Service
@@ -70,10 +71,19 @@ public class AdminServiceImpl implements AdminService{
 	
 //	상품정보 등록하기
 	@Override
-	public void ProductInsert(ProductDto productIn) throws Exception {
+	public void ProductInsert(ProductDto productIn, MultipartHttpServletRequest mhsr) throws Exception {
+		
+//		adMapper.productStockInsert(productIn);
+//		List<ProductDto> list = AmFileUtils.parseFileInfo(productIn.getProductPk(), mhsr);
+		
 		adMapper.ProductInsert(productIn);
-		adMapper.productStockInsert(productIn);
+		List<ProductFileDto> list = AmFileUtils.parseFileInfo(productIn.getProductPk(), mhsr);
+		
+		if (CollectionUtils.isEmpty(list) == false) {
+			adMapper.productFileInsert(list);
+		}
 	}
+
 	
 //	상품이미지 등록하기
 //	@Override

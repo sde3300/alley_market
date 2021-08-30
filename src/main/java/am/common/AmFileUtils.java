@@ -12,21 +12,21 @@ import org.springframework.util.ObjectUtils;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
-import am.dto.ProductDto;
+import am.dto.ProductFileDto;
 
 @Component
 // 사용자가 업로드한 파일을 서버에 저장하기 위해서 사용자가 직접 생성한 클래스
-public class FileUtils {
+public class AmFileUtils {
 	
 //	매개변수로 boardIdx와 MultipartHttpServletRequest 타입의 변수를 넘겨 받음
-	public List<ProductDto> parseFileInfo(int productPk, MultipartHttpServletRequest mhsr) throws Exception {
+	public static List<ProductFileDto> parseFileInfo(int productPk, MultipartHttpServletRequest mhsr) throws Exception {
 //		ObjectUtils.isEmpty() 는 스프링프레임워크에서 지원하는 클래스 함수로 해당 오브젝트 타입의 변수가 비었는지 아닌지를 확인해줌(비었을 경우 true)
 		if (ObjectUtils.isEmpty(mhsr)) {	
 			return null;
 		}
 		
 //		ArrayList 타입의 변수 fileList를 생성
-		List<ProductDto> fileList = new ArrayList<>();
+		List<ProductFileDto> fileList = new ArrayList<>();
 		
 //		날짜를 표시하는 형식을 지원하는 클래스
 		DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyyMMdd");
@@ -85,8 +85,8 @@ public class FileUtils {
 					newFileName = Long.toString(System.nanoTime()) + originalFileExtension;
 					
 //					위에서 확인한 파일의 정보를 DB에 저장하기 위해서 Board1FileDto 타입에 저장하기 위한 Board1FileDto 클래스 타입의 변수 boardFile 생성
-					ProductDto ProductFile = new ProductDto();
-					ProductFile.setBoardIdx(productPk);
+					ProductFileDto ProductFile = new ProductFileDto();
+					ProductFile.setProductPk(productPk);
 //					ProductFile.setFileSize(multiFile.getSize());
 					ProductFile.setOriginalFileName(multiFile.getOriginalFilename());
 //					실제로 저장된 경로 및 파일명 저장

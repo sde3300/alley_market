@@ -9,6 +9,7 @@ import am.dto.CustomersDto;
 import am.dto.NoticeDto;
 import am.dto.OrdersDto;
 import am.dto.ProductDto;
+import am.dto.ProductFileDto;
 
 @Mapper
 public interface AdminMapper {
@@ -41,9 +42,11 @@ public interface AdminMapper {
 //	상품정보 등록하기
 	void ProductInsert(ProductDto productIn) throws Exception;
 
-	void productStockInsert(ProductDto productIn) throws Exception;
+//	void productStockInsert(ProductDto productIn) throws Exception;
 
-//	이미지 파일 등록
-	void insertBoardImg(List<ProductDto> list) throws Exception;
+//	상품정보 이미지 넣기
+	void productFileInsert(List<ProductFileDto> files) throws Exception;
+
+
 	
 }

@@ -1,5 +1,7 @@
 package am.dto;
 
+import java.util.List;
+
 import lombok.Data;
 
 @Data
@@ -12,6 +14,7 @@ public class ProductDto {
 	private String productStore;
 	private String productDetail;
 	private int boardIdx;
-	private String originalFileName;
-	private String storedFilePath;
+//	private String originalFileName;
+//	private String storedFilePath;
+	private List<ProductFileDto> fileList;
 }
