@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import am.dto.OrdersDto;
 import am.dto.ProductDto;
+import am.dto.ProductInfoDto;
 import am.dto.QnaDto;
 import am.dto.ReviewDto;
 import am.service.CustomerService;
@@ -24,20 +25,18 @@ public class CustomerController {
 //	메인페이지 불러오기
 	@RequestMapping(value="/productMain", method=RequestMethod.GET)
 	public Object productMainPage() throws Exception {
-		List<ProductDto> dataList = cusService.productMainPage();
+		List<ProductInfoDto> dataList = cusService.productInfoMainPage();
 		
 		return dataList;
 	}
 	
-	//지정한 게시판 글 확인하기
-	// 이 아래로는 수정해야됨
-	
-//	@RequestMapping(value="/productDetail", method=RequestMethod.GET)
-//	public Object vueSelectBoardDetail(@RequestParam("productPk") int productPk) throws Exception {
-//		ProductDto board = cusService.vueSelectDetailBoard(productPk);
-//			
-//		return board;
-//	}
+//	상품 상세페이지 불러오기
+	@RequestMapping(value="/productDetail", method=RequestMethod.GET)
+	public Object productDetail(@RequestParam("productPk") int productPk) throws Exception {
+		ProductDto product = cusService.productDetail(productPk);
+				
+		return product;
+	}
 	
 //	리뷰 보기
 	@RequestMapping(value="/reviewRead", method=RequestMethod.GET)

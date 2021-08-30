@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import am.dto.OrdersDto;
 import am.dto.ProductDto;
+import am.dto.ProductInfoDto;
 import am.dto.QnaDto;
 import am.dto.ReviewDto;
 import am.mapper.CustomerMapper;
@@ -17,21 +18,24 @@ public class CustomerServiceImpl implements CustomerService {
 	@Autowired
 	private CustomerMapper cusMapper;
 	
+//	메인페이지 불러오기
 	@Override
-	public List<ProductDto> productMainPage() throws Exception {
-		return cusMapper.productMainPage();
+	public List<ProductInfoDto> productInfoMainPage() throws Exception {
+//		return cusMapper.productMainPage();
+		return cusMapper.productInfoMainPage();
 	}
 	
-////	
-//	@Override
-//	public void vueInsertBoard(ProductDto board) throws Exception {
-//		cusMapper.vueInsertBoard(board);
-//	}
-////	
-//	@Override
-//	public ProductDto vueSelectDetailBoard(int productPk) throws Exception{
-//		return cusMapper.vueSelectDetailBoard(productPk);
-//	}
+//	
+	@Override
+	public void vueInsertBoard(ProductDto board) throws Exception {
+		cusMapper.vueInsertBoard(board);
+	}
+	
+//	상품 상세페이지 불러오기
+	@Override
+	public ProductDto productDetail(int productPk) throws Exception{
+		return cusMapper.productDetail(productPk);
+	}
 	
 //	리뷰 보기
 	@Override

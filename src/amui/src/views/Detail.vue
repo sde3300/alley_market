@@ -13,99 +13,88 @@
                         />
                     </div>
 
-                    <div class="col-6" id="detailText">
+                    <div class="col-6" id = "detailText">
                         <div class="container">
-                            <div class="row text-left">
-                                <div class="col-8">
-                                    <h1>완숙토마토(2kg)</h1>
+                            <div class="row text-left" >
+                                <div class="col-8" >
+                                <h1>{{ productName }}</h1>
                                 </div>
                                 <div class="col text-right">
-                                    <!--  공유하는 링크 넣기 -->
-                                    <i
-                                        class="
-                                            fas
-                                            fa-3x fa-external-link-square-alt
-                                        "
-                                    ></i>
+                                <!--  공유하는 링크 넣기 -->
+                                <i class="fas fa-3x fa-external-link-square-alt"></i> 
                                 </div>
                             </div>
 
                             <div class="row text-left">
                                 <div class="col-4">
-                                    <h2>9,000원</h2>
+                                <h2>{{ productPrice }} 원</h2>
                                 </div>
-                                <div class="col"></div>
-                                <div class="col"></div>
-                            </div>
-                            <hr />
-                            <div class="row">
-                                <div class="col" id="detailtext">공급유형</div>
-                                <div class="col"></div>
-                                <div class="col-6" style="text-align: left">
-                                    일반공급
+                                <div class="col">
+                                </div>
+                                <div class="col">                           
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="col" id="detailtext">보관방법</div>
-                                <div class="col"></div>
-                                <div class="col-6" style="text-align: left">
-                                    냉장
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col" id="detailtext">혜택</div>
-                                <div class="col"></div>
-                                <div class="col-6" style="text-align: left">
-                                    결제 시 135원 적립 예상
-                                </div>
-                            </div>
+                        <hr/>
                             <div class="row">
                                 <div class="col" id="detailtext">
-                                    알레르기 성분
+                                판매처 
                                 </div>
                                 <div class="col"></div>
-                                <div class="col-6" style="text-align: left">
-                                    토마토
+                                <div class="col-6" style="text-align:left">
+                                {{ productStore }}
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col" id="detailtext">구매수량</div>
+                                <div class="col " id="detailtext">
+                                남은 수량
+                                </div>
                                 <div class="col"></div>
-                                <div class="col-6" style="text-align: left">
-                                    카운팅 하는 스트립트 넣기
+                                <div class="col-6" style="text-align:left">
+                                {{ productStockCnt }}
                                 </div>
                             </div>
-                            <hr />
+
                             <div class="row">
-                                <div
-                                    class="col text-left"
-                                    style="font-weight: bold"
-                                >
-                                    총 물품금액
+                                <div class="col " id="detailtext">
+                                구매수량
+                                </div>
+                                <div class="col"></div>
+                                <div class="col-6" style="text-align:left">
+                                <form name="form" method="get">
+                                수량 : <input type=hidden name="sell_price" value="5500">
+                                <input type="text" name="amount" value="1" size="3" onchange="change();">
+                                <input type="button" value=" + " onclick="add();"><input type="button" value=" - " onclick="del();"><br>
+
+                                금액 : <input type="text" name="sum" size="11" readonly>원
+                                </form>
+                                </div>
+                            
+                            </div>
+                        <hr/>
+                            <div class="row">
+                                <div class="col text-left" style="font-weight:bold">
+                                총 물품금액
                                 </div>
                                 <div class="col-6">
-                                    (갯수에 따른 가격/ 스크립트)
+                                (갯수에 따른 가격/ 스크립트) 
                                 </div>
-                                <div class="col"></div>
+                                <div class="col">
+                                </div>
                             </div>
-                            <div class="row" style="margin-top: 50px">
+                            <div class="row" style="margin-top:50px">
                                 <div class="col-2" style="text-right">
-                                    <i class="fab fa-2x fa-gratipay"></i>
-                                    <!-- 찜하기 버튼? 모달창?-->
+                                <i class="fab fa-2x fa-gratipay"></i>
+                                <!-- 찜하기 버튼? 모달창?-->
                                 </div>
-                                <div class="col-10">
-                                    <button
-                                        type="button"
-                                        class="btn btn-success btn-lg btn-block"
-                                    >
-                                        장바구니
-                                    </button>
+                                <div class="" style="margin:auto">
+                                    <button style="margin-right:50px" type="button" class="btn btn-success btn-lg ">장바구니</button>
+                                    <button type="button" class="btn btn-danger btn-lg ">주문하기</button>
                                 </div>
                             </div>
-                        </div>
                     </div>
                 </div>
             </div>
+        </div>
 
             <div class="d-flex bg-dark" id="btnStyle">
                 <div class="btn flex-fill text-white py-3 px-4">
@@ -122,75 +111,7 @@
             <!-- 물품 정보 -->
             <div id="info" class="bg-light text-dark text-left px-3 py-4">
                 <div class="container" style="margin-top: 30px">
-                    <h1>골목시장이 전하는 물품이야기</h1>
-                    <br />
-                    <hr />
-                    <p2 id="p2tag"><i class="fab fa-envira"></i>생산지</p2
-                    ><br />
-                    <p3 id="p3tag">청주청원, 아산, 홍천 외</p3><br />
-
-                    <br /><p2 id="p2tag"><i class="fab fa-envira"></i>중량</p2
-                    ><br />
-                    <p3 id="p3tag">2kg</p3><br />
-
-                    <br /><p2 id="p2tag"
-                        ><i class="fab fa-envira"></i>재배방법</p2
-                    ><br />
-                    <p3 id="p3tag">무농약 이상</p3><br />
-
-                    <br /><p2 id="p2tag"><i class="fab fa-envira"></i>특징</p2
-                    ><br />
-                    <p3 id="p3tag"
-                        >골목시장 토마토는 완숙한 상태로 수확해도 육질이 단단한
-                        품종으로 재배하였기에,토마토 고유의 풍부한 맛과 향을
-                        듬뿍 느끼실 수 있습니다. 가장 맛있는 품질로 공급해
-                        드리기 위해 완숙된 토마토만을 수확합니다. 골목시장
-                        토마토는 인위적인 수정이 아닌 벌에 의한 수정으로 열매를
-                        맺게 하며, 과실의 크기를 키우기 위한 생장조절제를
-                        사용하지 않아 상대적으로 크기는 작을 수 있지만 속이 꽉
-                        차 있습니다. 수확한 다음날 바로 공급해 드리기 때문에
-                        수확 직후의 신선한 토마토를 그대로 맛보실 수 있습니다.
-                        토마토의 붉은색을 내는 색소인 리코펜은 탁월한 항암제로,
-                        익혀 드시면 몸에 흡수가 더 잘됩니다. 생즙은 피를 맑게
-                        하는 효과가 있어 동맥경화와 간장병에 매우 좋습니다.
-                        펙틴이라는 성분이 장 속에 있는 음식물을 빨리 배설시켜,
-                        장에 독성이 있어 생기는 기미, 여드름 등을 예방합니다
-                        지방질이 많은 음식의 소화를 돕는 작용을 하기 때문에 육식
-                        등 산성식품을 많이 드시는 분들에게 좋습니다. 칼로리가
-                        낮으면서도 포만감이 커서 다이어트 식품으로도
-                        좋습니다.</p3
-                    ><br />
-
-                    <br /><p2 id="p2tag"
-                        ><i class="fab fa-envira"></i>이용방법</p2
-                    ><br />
-                    <p3 id="p3tag"
-                        >그냥 드셔도 좋고 갈거나 즙을 내어서 드셔도 좋습니다
-                        요리의 곁들임이나 잼, 샐러드, 스튜, 미트소스 등에
-                        사용됩니다. 토마토 특유의 풋내는 비린내를 없애는 작용을
-                        하기 때문에 고기와 함께 삶으면 잡내를 없애줍니다.</p3
-                    ><br />
-
-                    <br /><p2 id="p2tag"
-                        ><i class="fab fa-envira"></i>보관방법</p2
-                    ><br />
-                    <p3 id="p3tag">냉장보관</p3><br />
-
-                    <br /><p2 id="p2tag"
-                        ><i class="fab fa-envira"></i>포장 이야기</p2
-                    ><br />
-                    <p3 id="p3tag"
-                        >농산물 상자는 표백하지 않은 펄프 원지(UKP : Unbleached
-                        Kraft Pulp)를 사용하고 있습니다. 물품명, 로고 등을
-                        상자에 인쇄할 때 환경에 덜 유해한 수성잉크를 사용하고,
-                        불필요한 잉크 소비를 줄이기 위해 인쇄도수를 2도 내로
-                        적용하고 있습니다. (2019년부터 재고 소진 후 순차 적용)
-                        사용 후 일반 종이쓰레기로 분리배출해주세요.</p3
-                    ><br />
-
-                    <br /><p2 id="p2tag"><i class="fab fa-envira"></i>원재료</p2
-                    ><br />
-                    <p3 id="p3tag">완숙토마토</p3><br />
+                    {{ productDetail }}
                 </div>
             </div>
 
@@ -403,14 +324,27 @@
 export default {
     data() {
         return {
+            productPk: 1, //아직 지정되지 않음
+            productName: "",
+            productPrice: "",
+            productStockCnt: "",
+            productStore: "",
+            productDetail: "",
             qnaTitle: "",
             qnaContents: "",
             createId: "",
             qnas: [],
             reviews: [],
+            items: [],
         };
     },
     methods: {
+        // productDetail(productPk) {
+        // this.$router.push({ name: 'Detail', query: {productPk: productPk}
+        //     });
+        // },
+        
+
         reviewRead(reviewPk) {
             this.$router.push({
                 name: "Detail",
@@ -442,11 +376,32 @@ export default {
                     console.log(err);
                 });
         },
+        
     },
 
     mounted() {
         let obj = this;
-        obj.seq = obj.$route.query.seq;
+        // obj.productPk = obj.$route.query.productPk;
+
+        obj.$axios.get("http://localhost:9000/productDetail", {
+            params: {
+                productPk: 1,
+                },
+            })
+            .then(function(res) {
+                console.log("axios로 비동기 통신 성공");
+
+                obj.productPk = res.data.productPk;
+                obj.productName = res.data.productName;
+                obj.productPrice = res.data.productPrice;
+                obj.productStockCnt = res.data.productStockCnt;
+                obj.productStore = res.data.productStore;
+                obj.productDetail = res.data.productDetail;
+            })
+            .catch(function(err) {
+                console.log("axios 비동기 통신 오류");
+                console.log(err);
+            });
 
         obj.$axios
             .get("http://localhost:9000/reviewRead", {
