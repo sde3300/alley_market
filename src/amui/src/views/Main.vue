@@ -227,7 +227,7 @@ export default {
         productDetail(productPk) {
             this.$router.push({
                 name: "Detail",
-                params: { productPk: productPk },
+                query: { productPk: productPk },
             });
         },
     },

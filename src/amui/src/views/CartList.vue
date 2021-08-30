@@ -55,27 +55,18 @@
 
 <script>
 export default {
-    
-    // 카트 아이템 추가, 삭제
-    // 수량 증가, 감소 스크립트 필요
-    //     computed: {
-    //         'cart', {
-    //         cartItems: state => state.items
-    //       })
-    //     },
-    //     methods: {
-    //       delItem(id) {
-    //         this.$store.dispatch('cart/delItem', id);
-    //       },
-    //       increase(id) {
-    //         this.$store.dispatch('cart/increaseQty', id);
-    //       },
-    //       decrease(id) {
-    //         this.$store.dispatch('cart/decreaseQty', id);
-    //       }
-    //     }
-    //   }
-}
+    data() {
+        return {
+
+        };
+    },
+    methods: {
+
+    },
+    mounted: {
+        
+    },
+};
 </script>
 
 <style scoped>

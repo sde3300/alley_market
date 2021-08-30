@@ -21,7 +21,6 @@ public interface CustomerMapper {
 	
 	//사진파일 불러오기 
 	List<ProductFileDto> productFileMainPage() throws Exception;
-	
 	void vueInsertBoard(ProductDto board) throws Exception;
 
 //	상품 상세페이지 불러오기
@@ -41,4 +40,7 @@ public interface CustomerMapper {
 
 //	주문하기 - 주문입력
 	void orderInsert(OrdersDto order) throws Exception;
+	
+//	장바구니에 담기
+	void cartInsert(OrdersDto cart) throws Exception;
 }

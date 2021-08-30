@@ -73,5 +73,11 @@ public class CustomerServiceImpl implements CustomerService {
 		cusMapper.orderInsert(order);
 	}
 	
+//	장바구니에 담기
+	@Override
+	public void cartInsert(OrdersDto cart) throws Exception {
+		cusMapper.cartInsert(cart);
+	}
+	
 
 }

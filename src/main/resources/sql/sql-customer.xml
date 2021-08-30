@@ -119,6 +119,16 @@
 					(#{orderPk}, 1, #{orderName}, #{orderPhone}, #{zip}, #{addr1}, #{addr2}, NOW())
 			]]>
 		</insert>
+		
+		<!-- 장바구니에 담기 -->
+		<insert id="cartInsert" parameterType="am.dto.OrdersDto">
+			<![CDATA[				
+				INSERT INTO
+					orders_detail (order_pk, product_pk, order_cnt, order_sum)
+				VALUES
+					(1, #{productPk}, #{orderCnt}, #{orderSum});
+			]]>
+		</insert>
 
 	</mapper>
 	

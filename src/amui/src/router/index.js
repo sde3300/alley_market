@@ -36,8 +36,8 @@ const routes = [
     component: DetailVue,
   },
   {
-    path: '/cartli',
-    name: 'Cartli',
+    path: '/cartlist',
+    name: 'Cartlist',
     component: CartList,
   },
 

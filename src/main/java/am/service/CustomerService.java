@@ -14,7 +14,7 @@ public interface CustomerService {
 //	List<ProductDto> productMainPage() throws Exception;
 	List<ProductInfoDto> productInfoMainPage() throws Exception;
 	
-	//데이터에 DB저장	
+//	데이터에 DB저장	
 	void vueInsertBoard(ProductDto board) throws Exception;
 	
 //	상품 상세페이지 불러오기
@@ -33,5 +33,8 @@ public interface CustomerService {
 	List<ProductDto> orderProduct(int orderPk) throws Exception;
 	
 //	주문하기 - 주문입력
-	void orderInsert(OrdersDto qna) throws Exception;
+	void orderInsert(OrdersDto order) throws Exception;
+	
+//	장바구니에 담기
+	void cartInsert(OrdersDto cart) throws Exception;
 }

@@ -37,6 +37,15 @@
                         <hr/>
                             <div class="row">
                                 <div class="col" id="detailtext">
+                                상품번호 
+                                </div>
+                                <div class="col"></div>
+                                <div class="col-6" style="text-align:left">
+                                {{ productPk }}
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col" id="detailtext">
                                 판매처 
                                 </div>
                                 <div class="col"></div>
@@ -45,7 +54,7 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col " id="detailtext">
+                                <div class="col" id="detailtext">
                                 남은 수량
                                 </div>
                                 <div class="col"></div>
@@ -55,40 +64,39 @@
                             </div>
 
                             <div class="row">
-                                <div class="col " id="detailtext">
+                                <div class="col" id="detailtext">
                                 구매수량
                                 </div>
                                 <div class="col"></div>
                                 <div class="col-6" style="text-align:left">
                                 <form name="form" method="get">
-                                수량 : <input type=hidden name="sell_price" value="5500">
-                                <input type="text" name="amount" value="1" size="3" onchange="change();">
-                                <input type="button" value=" + " onclick="add();"><input type="button" value=" - " onclick="del();"><br>
-
-                                금액 : <input type="text" name="sum" size="11" readonly>원
+                                수량 : 
+                                <input type="button" value=" - " v-on:click="priceDel()">
+                                <input type="text" name="amount" value="1" size="1" readonly v-model="orderCnt">
+                                <input type="button" value=" + " v-on:click="priceAdd()">
                                 </form>
                                 </div>
                             
                             </div>
                         <hr/>
                             <div class="row">
-                                <div class="col text-left" style="font-weight:bold">
+                                <div class="col-5 text-left" id="detailtext" style="font-weight:bold">
                                 총 물품금액
                                 </div>
                                 <div class="col-6">
-                                (갯수에 따른 가격/ 스크립트) 
+                                <input type="text" name="totalPrice" size="11" readonly v-model="orderSum">원
                                 </div>
                                 <div class="col">
                                 </div>
                             </div>
                             <div class="row" style="margin-top:50px">
                                 <div class="col-2" style="text-right">
-                                <i class="fab fa-2x fa-gratipay"></i>
+                                <!-- <i class="fab fa-2x fa-gratipay"></i> -->
                                 <!-- 찜하기 버튼? 모달창?-->
                                 </div>
                                 <div class="" style="margin:auto">
-                                    <button style="margin-right:50px" type="button" class="btn btn-success btn-lg ">장바구니</button>
-                                    <button type="button" class="btn btn-danger btn-lg ">주문하기</button>
+                                    <button type="button" class="btn btn-success btn-lg" v-on:click="cartInsert" style="margin-right:10px">장바구니</button>
+                                    <button type="button" class="btn btn-danger btn-lg" v-on:click="moveOrder">주문하기</button>
                                 </div>
                             </div>
                     </div>
@@ -324,9 +332,11 @@
 export default {
     data() {
         return {
-            productPk: 1, //아직 지정되지 않음
+            productPk: 0,
             productName: "",
             productPrice: "",
+            orderSum: 0,
+            orderCnt: 0,
             productStockCnt: "",
             productStore: "",
             productDetail: "",
@@ -343,8 +353,18 @@ export default {
         // this.$router.push({ name: 'Detail', query: {productPk: productPk}
         //     });
         // },
-        
-
+        moveOrder(productPk) {
+            this.$router.push({
+                name: "Order",
+                query: { productPk: productPk },
+            });
+        },
+        moveCart(productPk) {
+            this.$router.push({
+                name: "CartCartList",
+                query: { productPk: productPk },
+            });
+        },
         reviewRead(reviewPk) {
             this.$router.push({
                 name: "Detail",
@@ -360,7 +380,7 @@ export default {
             let obj = this;
             obj.$axios
                 .post("http://localhost:9000/qnaInsert", {
-                    productPk: this.productPk,
+                    productPk: this.qnaPk,
                     qnaTitle: this.qnaTitle,
                     qnaContents: this.qnaContents,
                     createdDate: this.createdDate,
@@ -376,16 +396,44 @@ export default {
                     console.log(err);
                 });
         },
-        
+
+        cartInsert() {
+            let obj = this;
+            obj.$axios
+                .post("http://localhost:9000/cartInsert", {
+                    productPk: this.productPk,
+                    orderCnt: this.orderCnt,
+                    orderSum: this.orderSum,
+                    orderPk: this.orderPk,
+                })
+                .then(function () {
+                    console.log("비동기 통신 성공");
+                    obj.qnaContents = "";
+                    obj.$router.go(obj.$router.currentRouter);
+                })
+                .catch(function (err) {
+                    console.log("비동기 통신 실패");
+                    console.log(err);
+                });
+        },
+
+        priceAdd() {
+            this.orderSum += this.productPrice;
+            this.orderCnt ++ ;
+        },
+        priceDel() {
+            this.orderSum -= this.productPrice;
+            this.orderCnt -- ;
+        },
     },
 
     mounted() {
         let obj = this;
-        // obj.productPk = obj.$route.query.productPk;
+        obj.productPk = obj.$route.query.productPk;
 
         obj.$axios.get("http://localhost:9000/productDetail", {
             params: {
-                productPk: 1,
+                productPk: obj.$route.query.productPk,
                 },
             })
             .then(function(res) {
@@ -403,10 +451,9 @@ export default {
                 console.log(err);
             });
 
-        obj.$axios
-            .get("http://localhost:9000/reviewRead", {
+        obj.$axios.get("http://localhost:9000/reviewRead", {
                 params: {
-                    productPk: 1, // 상품 코드 입력부분이 현재 개발되지 않음
+                    productPk: obj.productPk,
                 },
             })
             .then(function (res) {
@@ -421,7 +468,7 @@ export default {
         obj.$axios
             .get("http://localhost:9000/qnaRead", {
                 params: {
-                    productPk: 1, // 상품 코드 입력부분이 현재 개발되지 않음
+                    productPk: obj.productPk,
                 },
             })
             .then(function (res) {

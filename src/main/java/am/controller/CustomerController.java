@@ -73,4 +73,10 @@ public class CustomerController {
 	public void orderInsert(@RequestBody OrdersDto order) throws Exception {
 		cusService.orderInsert(order);
 	}
+	
+//	장바구니에 담기
+	@RequestMapping(value="/cartInsert", method=RequestMethod.POST)
+	public void cartInsert(@RequestBody OrdersDto cart) throws Exception {
+		cusService.cartInsert(cart);
+	}
 }
