@@ -2,6 +2,8 @@ package am.service;
 
 import java.util.List;
 
+import org.springframework.web.multipart.MultipartHttpServletRequest;
+
 import am.dto.CustomersDto;
 import am.dto.NoticeDto;
 import am.dto.OrdersDto;
@@ -35,6 +37,9 @@ public interface AdminService {
 	
 //	상품정보 등록하기
 	void ProductInsert(ProductDto productIn) throws Exception;
+
+//	상품이미지 등록하기
+//	void insertBoardImg(ProductDto imgin, MultipartHttpServletRequest mhsr) throws Exception;
 
 	
 }

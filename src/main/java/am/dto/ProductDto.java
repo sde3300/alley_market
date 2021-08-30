@@ -11,5 +11,7 @@ public class ProductDto {
 	private int productStockCnt;
 	private String productStore;
 	private String productDetail;
-
+	private int boardIdx;
+	private String originalFileName;
+	private String storedFilePath;
 }

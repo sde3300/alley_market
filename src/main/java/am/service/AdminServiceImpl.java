@@ -4,6 +4,9 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
+
 
 import am.dto.CustomersDto;
 import am.dto.NoticeDto;
@@ -69,5 +72,17 @@ public class AdminServiceImpl implements AdminService{
 	@Override
 	public void ProductInsert(ProductDto productIn) throws Exception {
 		adMapper.ProductInsert(productIn);
+		adMapper.productStockInsert(productIn);
 	}
+	
+//	상품이미지 등록하기
+//	@Override
+//	public void insertBoardImg(ProductDto imgin, MultipartHttpServletRequest mhsr) throws Exception {
+//		adMapper.insertBoardImg(imgin);
+//		List<ProductDto> list = fileUtils.parseFileInfo(imgin.getBoardIdx(), mhsr);
+//		
+//		if (CollectionUtils.isEmpty(list) == false) {
+//			adMapper.insertBoardImg(list);
+//		}
+//	}
 }
