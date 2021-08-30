@@ -42,7 +42,7 @@
 		         FROM
 		            product
 		         WHERE
-					product_pk = 1
+					product_pk = #{productPk}
 		      ]]>
 		</select>
 			
@@ -76,7 +76,7 @@
 				FROM
 					qna
 				WHERE
-					product_pk = 1
+					product_pk = #{productPk}
 				AND
 					deleted_yn = 'N'
 				ORDER BY
@@ -90,7 +90,7 @@
 				INSERT INTO
 					qna (product_pk, qna_title, qna_contents, create_id, create_date)
 				VALUES
-					(1, #{qnaTitle}, #{qnaContents}, #{createId}, NOW())
+					(#{productPk}, #{qnaTitle}, #{qnaContents}, #{createId}, NOW())
 			]]>
 		</insert>
 		

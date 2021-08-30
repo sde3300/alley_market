@@ -222,6 +222,7 @@ export default {
             items: [],
         };
     },
+
     methods: {
         productDetail(productPk) {
             this.$router.push({
