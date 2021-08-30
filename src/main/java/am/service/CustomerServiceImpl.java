@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import am.dto.ProductDto;
+import am.dto.ProductInfoDto;
 import am.mapper.CustomerMapper;
 
 @Service
@@ -15,8 +16,9 @@ public class CustomerServiceImpl implements CustomerService {
 	private CustomerMapper cusMapper;
 	
 	@Override
-	public List<ProductDto> productMainPage() throws Exception {
-		return cusMapper.productMainPage();
+	public List<ProductInfoDto> productInfoMainPage() throws Exception {
+//		return cusMapper.productMainPage();
+		return cusMapper.productInfoMainPage();
 	}
 	
 //	

@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import am.dto.ProductDto;
+import am.dto.ProductInfoDto;
 import am.service.CustomerService;
 
 @RestController
@@ -20,7 +21,7 @@ public class CustomerController {
 //	메인페이지 불러오기
 	@RequestMapping(value="/productMain", method=RequestMethod.GET)
 	public Object productMainPage() throws Exception {
-		List<ProductDto> dataList = cusService.productMainPage();
+		List<ProductInfoDto> dataList = cusService.productInfoMainPage();
 		
 		return dataList;
 	}

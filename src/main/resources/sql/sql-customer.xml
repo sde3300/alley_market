@@ -18,7 +18,7 @@
 		</select>-->
 		
 			<!-- 210825 혜수: 메인에서 상품 리스트 보기-->
-		<select id="productMainPage" resultType="am.dto.ProductDto">
+	<!--	<select id="productMainPage" resultType="am.dto.ProductDto">
 		      <![CDATA[
 		         SELECT
 		            product_pk,
@@ -28,10 +28,10 @@
 		         ORDER BY
 		            product_pk DESC
 		      ]]>
-		   </select> 
+		   </select> -->
 		   
-		   	<!-- 210826 혜수: 메인에서 상품 리스트 사진까지보기
-		<select id="productFileMainPage" resultType="am.dto.ProductFileDto">
+		   	<!-- 210830 혜수: 메인에서 상품 리스트 사진까지보기-->
+		<select id="productInfoMainPage" resultType="am.dto.ProductInfoDto">
 		      <![CDATA[
 		         SELECT
 				   a.product_pk, a.product_category_pk, a.product_name, a.product_price, 
@@ -42,10 +42,8 @@
 		         	board_file as b
 		         ON
 		         	a.product_pk = b.board_idx
-				and 
-					a.product_pk = 1;
 		      ]]>
-		   </select> -->
+		   </select> 
 		   
 		   <!-- 210825 혜수: 메인에서 상품 리스트 보기 (join)
 		   	 <select id="productMainPage" resultType="am.dto.ProductDto">

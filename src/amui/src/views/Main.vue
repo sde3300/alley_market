@@ -64,9 +64,9 @@
         <!-- 포토앨범 -->
           <div class="row" >
               <div class="card mb-4 box-shadow" v-for = "item in items" v-bind:key = "item.productPk" style="margin-left:20px">
-                 <img class="card-img-top" 
-                    data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" alt="Thumbnail [100%x225]" style="height: 225px; width: 100%; display: block;" 
-                    src="https://shop.hansalim.or.kr/im/is/activeDesigner/050307006_content1.jpg" data-holder-rendered="true"> 
+                 <!--210830 혜수 사진불러오기 추가 -->
+                <img class="card-img-top" alt="Thumbnail [100%x225]" style="height: 50%; width: 100%; display: block;" 
+                v-bind:src="item.storedFilePath" data-holder-rendered="true"> 
 
                     <div class="card-body">
                         <p class="card-text">{{ item.productPk }}</p>
@@ -126,7 +126,7 @@ export default {
     },
     methods: {
       productDetail(productPk) {
-        this.$router.push({ name: 'Detail', query: {productPk: productPk}})
+        this.$router.push({ name: 'Detail', params: {productPk: productPk}})
       }
     },
     mounted() {

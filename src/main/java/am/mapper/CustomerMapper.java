@@ -6,12 +6,14 @@ import org.apache.ibatis.annotations.Mapper;
 
 import am.dto.ProductDto;
 import am.dto.ProductFileDto;
+import am.dto.ProductInfoDto;
 
 @Mapper
 public interface CustomerMapper {
 	
 	//	메인페이지 불러오기
-	List<ProductDto> productMainPage() throws Exception;
+//	List<ProductDto> productMainPage() throws Exception;
+	List<ProductInfoDto> productInfoMainPage() throws Exception;
 	
 	//사진파일 불러오기 
 	List<ProductFileDto> productFileMainPage() throws Exception;
@@ -20,5 +22,7 @@ public interface CustomerMapper {
 
 	//상세페이지 확인하기
 	ProductDto productDetailBoard(int productPk) throws Exception;
+	
+	
 
 }
