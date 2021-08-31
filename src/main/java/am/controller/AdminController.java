@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
-
 import am.dto.CustomersDto;
 import am.dto.NoticeDto;
 import am.dto.OrdersDto;
@@ -80,7 +79,7 @@ public class AdminController {
 		return stockdataList;
 	}
 	
-//	주문하기 - 상품정보 입력하기
+//	주문하기 - 상품정보 + 이미지 입력하기
 	@RequestMapping(value="/productInsert", method=RequestMethod.POST)
 	public void ProductInsert(@RequestBody ProductDto productIn, MultipartHttpServletRequest mhsr) throws Exception {
 		adService.ProductInsert(productIn, mhsr);

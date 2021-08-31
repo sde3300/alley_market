@@ -69,7 +69,7 @@ public class AdminServiceImpl implements AdminService{
 		return adMapper.SelectStockList(boardIdx);
 	}
 	
-//	상품정보 등록하기
+//	상품정보 + 이미지 등록하기
 	@Override
 	public void ProductInsert(ProductDto productIn, MultipartHttpServletRequest mhsr) throws Exception {
 		

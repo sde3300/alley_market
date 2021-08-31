@@ -16,5 +16,6 @@ public class ProductDto {
 	private int boardIdx;
 //	private String originalFileName;
 //	private String storedFilePath;
+//	파일경로 가져오는 부분
 	private List<ProductFileDto> fileList;
 }
