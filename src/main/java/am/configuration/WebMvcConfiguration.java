@@ -16,10 +16,14 @@ public class WebMvcConfiguration implements WebMvcConfigurer {
 	}
 	
 	// 이미지 넣기
-	
 	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
-		registry.addResourceHandler("/images/**")
-		.addResourceLocations("file:///C:/java602/outsideImages/");
+		registry.addResourceHandler("/outsideImg/**").addResourceLocations("file:///C:/AMPROJECT/outsideImages/");
 	}
+	
+//	@Override
+//	public void addResourceHandlers(ResourceHandlerRegistry registry) {
+//		registry.addResourceHandler("/images/**")
+//		.addResourceLocations("file:///C:/java602/outsideImages/");
+//	}
 }

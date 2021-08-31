@@ -8,7 +8,9 @@ public class OrdersDto {
 	private int customerPk;
 	private String orderName;
 	private String orderPhone;
-	private String orderAddress;
+	private String zip;
+	private String addr1;
+	private String addr2;
 	private String orderDate;
 	private int productPk;
 	private int orderCnt;

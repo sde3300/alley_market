@@ -32,12 +32,12 @@ const routes = [
   },
   {
     path: '/detail',
-    name: 'detail',
+    name: 'Detail',
     component: DetailVue,
   },
   {
-    path: '/cartli',
-    name: 'cartli',
+    path: '/cartlist',
+    name: 'Cartlist',
     component: CartList,
   },
 

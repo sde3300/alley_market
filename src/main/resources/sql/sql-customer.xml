@@ -6,47 +6,25 @@
 	
 	<mapper namespace="am.mapper.CustomerMapper">
 	
-<!-- 		<select id="productMainPage" resultType="am.dto.ProductDto">
-			<![CDATA[
-				SELECT
-					product_pk, product_name, product_price, product_stock_cnt, product_store, product_detail
-				FROM
-					product
-				ORDER BY
-					product_pk DESC
-			]]>
-		</select>-->
+   		<!-- 210830 혜수: 메인에서 상품 리스트 사진까지보기-->
+		<select id="productInfoMainPage" resultType="am.dto.ProductInfoDto">
+		      <![CDATA[
+		         SELECT
+				   a.product_pk, a.product_category_pk, a.product_name, a.product_price, 
+				   b.original_file_name, b.stored_file_path
+		         FROM
+		            product as a
+		         JOIN
+		         	board_file as b
+		         ON
+		         	a.product_pk = b.board_idx
+		      ]]>
+		   </select> 
 		
 		
 		
 			<!-- 210825 혜수: 메인에서 상품 리스트 보기-->
 			<select id="productMainPage" resultType="am.dto.ProductDto">
-		      <![CDATA[
-		         SELECT
-		            product_pk,
-		            product_name, product_price
-		         FROM
-		            product
-		         ORDER BY
-		            product_pk DESC
-		      ]]>
-		   </select>
-
-
-		   	<!-- 210825 혜수: 제품 상세 페이지 확인
-			<select id="productDetailBoard" parameterType="int" resultType="am.dto.ProductDto">
-				<![CDATA[
-				SELECT
-					product_pk, product_name, product_price, product_stock_cnt, product_store, product_detail
-				FROM
-					product
-				ORDER BY
-					product_pk DESC
-				]]>
-			</select>
-		
-			 210825 혜수: 장바구니 테스트용
-			<select id="productCartlist" resultType="am.dto.ProductDto">
 		      <![CDATA[
 		         SELECT
 		            product_pk, product_name, product_price
@@ -55,9 +33,20 @@
 		         ORDER BY
 		            product_pk DESC
 		      ]]>
-		   </select> -->
-		<!-- 회원관리-->
-	
+		   </select>
+		   
+		<!-- 상품 상세페이지 불러오기 -->
+		<select id="productDetail" parameterType="int" resultType="am.dto.ProductDto">
+		      <![CDATA[
+				SELECT
+		            product_pk, product_name, product_price, product_store, product_stock_cnt
+		         FROM
+		            product
+		         WHERE
+					product_pk = #{productPk}
+		      ]]>
+		</select>
+
 			
 			
 		<!-- 리뷰 보기 -->
@@ -89,7 +78,7 @@
 				FROM
 					qna
 				WHERE
-					product_pk = 1
+					product_pk = #{productPk}
 				AND
 					deleted_yn = 'N'
 				ORDER BY
@@ -103,10 +92,46 @@
 				INSERT INTO
 					qna (product_pk, qna_title, qna_contents, create_id, create_date)
 				VALUES
-					(1, #{qnaTitle}, #{qnaContents}, #{createId}, NOW())
+					(#{productPk}, #{qnaTitle}, #{qnaContents}, #{createId}, NOW())
 			]]>
 		</insert>
 		
+		<!-- 주문하기 - 상품정보 불러오기 -->
+		<select id="orderProduct" parameterType="int" resultType="am.dto.ProductDto">
+			<![CDATA[
+				SELECT 
+					a.product_pk, a.product_name, a.product_price, a.product_store, b.order_pk, b.order_cnt, b.order_sum, b.product_pk
+				FROM 
+					product as a
+				JOIN 
+					orders_detail as b
+				ON 
+					a.product_pk = b.product_pk
+				AND
+					b.order_pk = 1
+			]]>
+		</select>
+		
+		<!-- 주문하기 - 주문입력 -->
+		<insert id="orderInsert" parameterType="am.dto.OrdersDto">
+			<![CDATA[				
+				INSERT INTO
+					orders (order_pk, customer_pk, order_name, order_phone, zip, addr1, addr2, order_date)
+				VALUES
+					(#{orderPk}, 1, #{orderName}, #{orderPhone}, #{zip}, #{addr1}, #{addr2}, NOW())
+			]]>
+		</insert>
+		
+		<!-- 장바구니에 담기 -->
+		<insert id="cartInsert" parameterType="am.dto.OrdersDto">
+			<![CDATA[				
+				INSERT INTO
+					orders_detail (order_pk, product_pk, order_cnt, order_sum)
+				VALUES
+					(1, #{productPk}, #{orderCnt}, #{orderSum});
+			]]>
+		</insert>
+
 	</mapper>
 	
 	
