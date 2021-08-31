@@ -1,7 +1,7 @@
 <template>
     <div class="container">
         <div class="jumbotron text-center">
-            <h1>상품관리</h1>
+            <h1>상품재고관리</h1>
         </div>
         <hr>
 
@@ -14,16 +14,18 @@
                         <th>상품번호</th>
                         <th>카테고리</th>
                         <th>상품이름</th>
+                        <th>가게이름</th>
                         <th>재고</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>11</td>
-                        <td>농수산</td>
-                        <td>사과</td>
-                        <td>20</td>
+                    <tr v-for="item in items" v-bind:key="item.boardIdx">
+                        <td>{{ item.boardIdx}}</td>
+                        <td>{{ item.productPk}}</td>
+                        <td>{{ item.productCategoryPk}}</td>
+                        <td>{{ item.productName}}</td>
+                        <td>{{ item.productStore}}</td>
+                        <td>{{ item.productStockCnt}}</td>
                     </tr>
                 </tbody>
             </table>
@@ -49,7 +51,7 @@
 
             <!-- 버튼 -->
             <div class="row">
-                    <button type="button" class="btn btn-dark col-sm-1 ml-auto" id="btnmodi">상품등록</button>
+                    <button type="button" class="btn btn-dark col-sm-2 ml-auto" id="btnmodi" v-on:click="moveProductInsert">상품등록</button>
             </div>
         </div>
         </div>
@@ -58,7 +60,33 @@
 
 <script>
 export default {
-    
+    data() {
+        return {
+            items: []
+        }
+    },
+    methods: {
+        moveProductInsert() {
+            this.$router.push({name: 'AdminProductInsert'});
+        }
+    },
+    mounted() {
+        let obj = this;
+
+        obj.$axios.get("http://localhost:9000/stockList", {
+            params: {
+                boardIdx: 1
+            }
+        })
+        .then(function(res) {
+            console.log("axios로 비동기 통신 성공");
+            obj.items = res.data;
+        })
+        .catch(function(err) {
+            console.log("axios 비동기 통신 오류");
+            console.log(err);
+        });
+    }
 }
 </script>
 

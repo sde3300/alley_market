@@ -8,10 +8,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
+
 
 import am.dto.CustomersDto;
 import am.dto.NoticeDto;
 import am.dto.OrdersDto;
+import am.dto.ProductDto;
 import am.service.AdminService;
 
 @RestController
@@ -68,5 +71,54 @@ public class AdminController {
 	public void noticeDeleteDetail(@RequestParam("noticePk") int noticePk) throws Exception {
 		adService.noticeDelete(noticePk);
 	}
+	
+//	상품재고 목록 확인하기
+	@RequestMapping(value="/stockList", method=RequestMethod.GET)
+	public Object StockList(@RequestParam("boardIdx") int boardIdx) throws Exception {
+		List<ProductDto> stockdataList = adService.SelectStockList(boardIdx);
+		
+		return stockdataList;
+	}
+	
+//	주문하기 - 상품정보 입력하기
+	@RequestMapping(value="/productInsert", method=RequestMethod.POST)
+	public void ProductInsert(@RequestBody ProductDto productIn, MultipartHttpServletRequest mhsr) throws Exception {
+		adService.ProductInsert(productIn, mhsr);
+	}
+	
+//	상품정보 사진등록하기
+//	@RequestMapping(value="/imgInsert", method=RequestMethod.POST)
+//	public String insertImg(ProductDto imgin, MultipartHttpServletRequest mhsr) throws Exception {
+//		adService.insertBoardImg(imgin, mhsr);
+//		
+//		return "redirect:/stockList";
+//	}
+//	
+	
+	
+//	@RequestMapping("/filePath")
+//	public String filePath() throws Exception {
+//		return "/filePath";
+//	}
+//	
+//	@CrossOrigin(origins="http://localhost:8080")
+//	@ResponseBody
+//	@RequestMapping("/imgPath")
+//	public String imgPath(MultipartHttpServletRequest request) {
+//		List<ProductFileDto> dataList = new ArrayList<ProductFileDto>();		
+//		ProductFileDto file = new ProductFileDto();
+//		file.setName("");
+//		file.setPath("/images/star004.jpg");
+//		
+//		dataList.add(file);
+//		
+//		return dataList;
+//		ProductFileDto file1 = new ProductFileDto();
+//		
+//		file1.setName("별2");
+//		file1.setPath("/images/star002.jpg");
+//		return file1;
+		
+//	}
 	
 }

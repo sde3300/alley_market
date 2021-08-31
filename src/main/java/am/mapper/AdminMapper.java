@@ -3,10 +3,13 @@ package am.mapper;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import am.dto.CustomersDto;
 import am.dto.NoticeDto;
 import am.dto.OrdersDto;
+import am.dto.ProductDto;
+import am.dto.ProductFileDto;
 
 @Mapper
 public interface AdminMapper {
@@ -32,5 +35,18 @@ public interface AdminMapper {
 	
 //	공지사항 상세내용 삭제하기
 	void noticeDelete(int noticePk) throws Exception;
+	
+//	상품재고 목록 확인하기
+	List<ProductDto> SelectStockList(@Param("boardIdx") int boardIdx) throws Exception;
+	
+//	상품정보 등록하기
+	void ProductInsert(ProductDto productIn) throws Exception;
 
+//	void productStockInsert(ProductDto productIn) throws Exception;
+
+//	상품정보 이미지 넣기
+	void productFileInsert(List<ProductFileDto> files) throws Exception;
+
+
+	
 }

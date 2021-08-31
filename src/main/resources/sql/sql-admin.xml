@@ -92,5 +92,62 @@
 		            	notice_pk = #{noticePk}
 			]]>
 		</update>
+		
+		<!-- 상품재고 목록 페이지-->
+		<select id="SelectStockList" parameterType="int" resultType="am.dto.ProductDto">
+		<![CDATA[
+		
+			SELECT 
+				a.product_pk, a.product_category_pk, a.product_name, a.product_stock_cnt, a.product_store, b.board_Idx
+			FROM 
+				product as a
+			JOIN 
+				product_stock as b
+			ON 
+				a.product_pk = b.product_pk
+		
+		]]>
+		</select>
+		
+		<!-- 상품정보 등록 페이지-->
+		<insert id="ProductInsert" parameterType="am.dto.ProductDto"
+			useGeneratedKeys="true" keyProperty="productPk" keyColumn="product_pk">
+			<![CDATA[ 
+	      
+	         INSERT INTO
+		            product
+		            (product_category_pk, product_name, product_price, product_stock_cnt, product_store, product_detail)
+	         VALUES
+	            	(#{productCategoryPk}, #{productName}, #{productPrice}, #{productStockCnt}, #{productStore}, #{productDetail})
+      	
+      	]]>
+		</insert>
+
+		<insert id="productStockInsert" parameterType="am.dto.ProductDto">
+		<![CDATA[
+			INSERT INTO
+		            product_stock
+		            (product_pk)
+	         VALUES
+	            	(#{productPk})
+		]]>
+		</insert>
+		
+		<insert id="productFileInsert" parameterType="am.dto.ProductFileDto">
+			<![CDATA[
+				INSERT INFO
+					product_file (product_pk, original_file_name, stored_file_path)
+				VALUES
+			]]>
+			<foreach collection="list" item="item" separator=",">
+				(
+					#{item.productPk},
+					#{item.originalFileName},
+					#{item.storedFilePath},
+				)
+			</foreach>
+		</insert>
+		
+		
 
 </mapper>
