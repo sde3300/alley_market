@@ -25,8 +25,7 @@
 			<select id="productMainPage" resultType="am.dto.ProductDto">
 		      <![CDATA[
 		         SELECT
-		            product_pk,
-		            product_name, product_price
+		            product_pk, product_name, product_price
 		         FROM
 		            product
 		         ORDER BY
