@@ -29,8 +29,8 @@
                     <td>배송비</td>
                     <td>상품금액</td>
                     <td>
-                        <button type="button" class="btn btn-warning">
-                            <router-link to="/reviewWrite">리뷰작성</router-link>
+                        <button type="button" class="btn btn" id="btnRe">
+                            <router-link to="/reviewWrite" id="routerlink">리뷰작성</router-link>
                         </button>
                     </td>
                 </tr>
@@ -47,8 +47,8 @@
                     <td>배송비</td>
                     <td>상품금액</td>
                     <td>
-                        <button type="button" class="btn btn-warning">
-                            <router-link to="/reviewWrite">리뷰작성</router-link>
+                        <button type="button" class="btn btn" id="btnRe">
+                            <router-link to="/reviewWrite" id="routerlink">리뷰작성</router-link>
                         </button>
                     </td>
                 </tr>
@@ -65,8 +65,8 @@
                     <td>배송비</td>
                     <td>상품금액</td>
                     <td>
-                        <button type="button" class="btn btn-warning">
-                            <router-link to="/reviewWrite">리뷰작성</router-link>
+                        <button type="button" class="btn btn" id="btnRe">
+                            <router-link to="/reviewWrite" id="routerlink">리뷰작성</router-link>
                         </button>
                     </td>
                 </tr>
@@ -106,5 +106,9 @@ th {
 }
 #tdbottom {
     border-bottom: 0.8px solid lightgray;
+}
+
+#routerlink {
+    color: white;
 }
 </style>

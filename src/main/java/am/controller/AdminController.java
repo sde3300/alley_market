@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
-
 import am.dto.CustomersDto;
 import am.dto.NoticeDto;
 import am.dto.OrdersDto;
@@ -82,8 +81,15 @@ public class AdminController {
 	
 //	주문하기 - 상품정보 입력하기
 	@RequestMapping(value="/productInsert", method=RequestMethod.POST)
-	public void ProductInsert(@RequestBody ProductDto productIn, MultipartHttpServletRequest mhsr) throws Exception {
-		adService.ProductInsert(productIn, mhsr);
+	public void ProductInsert(ProductDto productIn, MultipartHttpServletRequest mhsr) throws Exception {
+		System.out.println(productIn.getBoardIdx());
+//		adService.ProductInsert(productIn, mhsr);
+	}
+	
+	@RequestMapping(value="/productInsert2", method=RequestMethod.POST)
+	public void ProductInsert() throws Exception {
+		System.out.println("131321231");
+//		adService.ProductInsert(productIn, mhsr);
 	}
 	
 //	상품정보 사진등록하기
