@@ -5,14 +5,10 @@
                     margin-left:64px; 
                     font-size: 64px;">About</h1>
         </section>
-            <div class="container" style="text-align:center">
-            <img class="introImg" src="../assets/Intro001.png"
+            <div class="container" style="text-align:center; margin-bottom:64px; " >
+            <img class="introImg" src="../assets/Intro/Intro001.png"
                 alt="First slide" width="" height=""/>
-            <img class="introImg" src="../assets/Intro002.png"
-                alt="First slide" width="가로 길이" height=""/>
-            <img class="introImg" src="../assets/Intro003.png"
-                alt="First slide" width="가로 길이" height=""/>
-            <img class="introImg" src="../assets/Intro004.png"
+            <img class="introImg" src="../assets//Intro/companyInfo514.png"
                 alt="First slide" width="가로 길이" height=""/>
             </div>
     </div>

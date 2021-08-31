@@ -18,11 +18,11 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>홍길동</td>
-                        <td>hong@naver.com</td>
-                        <td>01012345678</td>
+                    <tr v-for="item in items" v-bind:key="item.customer_pk">
+                        <td>{{ item.customerPk}}</td>
+                        <td>{{ item.customerName }}</td>
+                        <td>{{ item.customerEmail }}</td>
+                        <td>{{ item.customerPhone }}</td>
                         <td>
                             <div class="form-check">
                                 <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
@@ -32,6 +32,10 @@
                     </tr>
                 </tbody>
             </table>
+            <!-- 삭제버튼 -->
+            <div class="d-flex justify-content-end"> 
+                <button class="btn btn-danger">삭제하기</button>
+            </div>
 
             <!-- 페이징 -->
             <nav aria-label="Page navigation example">
@@ -52,16 +56,36 @@
                 </ul>
             </nav>
 
+            
         </div>
     </div>
 </template>
 
 <script>
 export default {
-    
+    data() {
+        return {
+            items: []
+        }
+    },
+    mounted() {
+        let obj = this;
+
+        obj.$axios.get("http://localhost:9000/cusManage")
+        .then(function(res) {
+            console.log("axios로 비동기 통신 성공");
+            obj.items = res.data;
+        })
+        .catch(function(err) {
+            console.log("axios 비동기 통신 오류");
+            console.log(err);
+        });
+    }
 }
 </script>
 
 <style>
-
+#button {
+    justify-content: center;
+}
 </style>

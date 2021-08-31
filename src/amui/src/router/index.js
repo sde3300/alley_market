@@ -4,23 +4,28 @@ import VueRouter from 'vue-router'
 import DetailVue from '../views/Detail.vue'
 import Main from '../views/Main.vue'
 import AdminMainVue from '../views/AdminMain.vue'
-import AdminNoticeVue from '../views/AdminNotice.vue'
-import AdminProductVue from '../views/AdminProduct.vue'
+import AdminProductStock from '../views/AdminProductStock.vue'
 import CusManagementVue from '../views/CusManagement.vue'
 import AdminQnaVue from '../views/AdminQna.vue'
 import Login from '../views/Login.vue'
 import Join from '../views/Join.vue'
 import ReviewWrite from '../views/ReviewWrite.vue'
 import QnAWrite from '../views/QnAWrite.vue'
-import NoticeWrite from '../views/NoticeWrite.vue'
 import Mypage from '../views/Mypage.vue'
-import ProductInsertVue from '../views/ProductInsert.vue'
+import AdminProductInsert from '../views/AdminProductInsert.vue'
 import IntroductionVue from '../views/Introduction.vue'
 import NoticeListVue from '../views/NoticeList.vue'
 import NoticeDetailVue from '../views/NoticeDetail.vue'
 import Order from '../views/Order.vue'
 import CartList from '../views/CartList.vue'
-import Intro from '../views/Introduction.vue'
+import AdminNoticeList from '../views/AdminNoticeList.vue'
+import AdminNoticeWrite from '../views/AdminNoticeWrite.vue'
+import P1board from '../views/P1Board.vue'
+import P2board from '../views/P2Board.vue'
+import P3board from '../views/P3Board.vue'
+import P4board from '../views/P4Board.vue'
+import P5board from '../views/P5Board.vue'
+
 
 Vue.use(VueRouter)
 
@@ -37,14 +42,34 @@ const routes = [
     component: DetailVue,
   },
   {
-    path: '/cartli',
-    name: 'Cartli',
+    path: '/cartlist',
+    name: 'Cartlist',
     component: CartList,
   },
   {
-    path: '/intro',
-    name: 'Intro',
-    component: Intro,
+    path: '/p1board',
+    name: 'P1board',
+    component: P1board,
+  },
+  {
+    path: '/p2board',
+    name: 'P2board',
+    component: P2board,
+  },
+  {
+    path: '/p3board',
+    name: 'P3board',
+    component: P3board,
+  },
+  {
+    path: '/p4board',
+    name: 'P4board',
+    component: P4board,
+  },
+  {
+    path: '/p5board',
+    name: 'P5board',
+    component: P5board,
   },
 
   
@@ -66,14 +91,9 @@ const routes = [
   component: AdminMainVue
   },
   {
-    path: '/adminNotice',
-    name: 'AdminNotice',
-    component: AdminNoticeVue
-  },
-  {
-    path: '/adminProduct',
-    name: 'AdminProduct',
-    component: AdminProductVue
+    path: '/adminProductStock',
+    name: 'AdminProductStock',
+    component: AdminProductStock
   },
   {
     path: '/cusManagement',
@@ -96,19 +116,14 @@ const routes = [
     component: QnAWrite
   },
   {
-    path: '/noticeWrite',
-    name: 'NoticeWrite',
-    component: NoticeWrite
-  },
-  {
     path: '/mypage',
     name: 'Mypage',
     component: Mypage
   },
   {
-    path: '/productInsert',
-    name: 'ProductInsert',
-    component: ProductInsertVue
+    path: '/adminProductInsert',
+    name: 'AdminProductInsert',
+    component: AdminProductInsert
   },
   {
     path: '/introduction',
@@ -130,6 +145,16 @@ const routes = [
     name: 'Order',
     component: Order
   },
+  {
+    path: '/adminNoticeList',
+    name: 'AdminNoticeList',
+    component: AdminNoticeList
+  },
+  {
+    path: '/adminNoticeWrite',
+    name: 'AdminNoticeWrite',
+    component: AdminNoticeWrite
+  }
 ]
 
 const router = new VueRouter({

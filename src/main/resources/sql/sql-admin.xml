@@ -6,4 +6,148 @@
 	
 <mapper namespace="am.mapper.AdminMapper">
 
+		<!--회원관리 페이지-->
+		<select id="SelectCustomerList" resultType="am.dto.CustomersDto">
+		<![CDATA[
+		
+			SELECT
+				customer_pk, customer_email, customer_phone, customer_name
+			FROM
+				customers
+			ORDER BY
+				customer_pk asc
+		]]>
+		</select>
+		
+		<!--공지사항 리스트 페이지-->
+		<select id="SelectNoticeBoardList" resultType="am.dto.NoticeDto">
+		<![CDATA[
+		
+			SELECT
+				notice_pk, notice_title, create_id, create_date,
+				DATE_FORMAT(create_date, '%Y.%m.%d %H:%i:%s') AS create_date
+			FROM
+				notice
+			where
+			 	deleted_yn = 'N'
+			ORDER BY
+				notice_pk asc
+		]]>
+		</select>
+		
+		<!-- 공지사항 작성 페이지-->
+		<insert id="NoticeWrite" parameterType="am.dto.NoticeDto">
+		<![CDATA[ 
+	      
+	         INSERT INTO
+		            notice
+		            (board_category_pk, notice_title, notice_contents, create_id, create_date)
+	         VALUES
+	            	('b1', #{noticeTitle}, #{noticeContents}, #{createId}, NOW())
+      	
+      	]]>
+		</insert>
+		
+		<!-- 공지사항 상세내용 페이지-->
+		<select id="NoticeDetail" parameterType="int" resultType="am.dto.NoticeDto">
+		<![CDATA[
+		
+	         SELECT
+	            notice_pk, notice_title, create_id, notice_contents,
+	            DATE_FORMAT(create_date, '%Y.%m.%d %H:%i:%s') AS create_date
+	         FROM
+	            notice
+	         WHERE
+	            notice_pk = #{noticePk}
+	         ORDER BY
+	            notice_pk asc
+			
+			]]>
+		</select>
+	
+		<!-- 공지사항 상세내용 수정-->
+		<update id="noticeUpdate" parameterType="am.dto.NoticeDto">
+			<![CDATA[ 
+			
+		         UPDATE
+		            notice
+		         SET
+		            notice_title= #{noticeTitle},
+		            notice_contents= #{noticeContents},
+		            update_date= NOW(),
+		            create_id= 'yoo'
+		         WHERE
+		            notice_pk = #{noticePk}
+	      
+	      ]]>
+		</update>
+		
+		<!-- 공지사항 상세내용 삭제(목록에서만 안 보이게 하는 삭제방법)-->
+		<update id="noticeDelete" parameterType="int">
+			<![CDATA[ 
+			
+					UPDATE notice SET
+						deleted_yn = 'Y'
+					WHERE
+		            	notice_pk = #{noticePk}
+			]]>
+		</update>
+		
+		<!-- 상품재고 목록 페이지-->
+		<select id="SelectStockList" parameterType="int" resultType="am.dto.ProductDto">
+		<![CDATA[
+		
+			SELECT 
+				a.product_pk, a.product_category_pk, a.product_name, a.product_stock_cnt, a.product_store, b.board_Idx
+			FROM 
+				product as a
+			JOIN 
+				product_stock as b
+			ON 
+				a.product_pk = b.product_pk
+		
+		]]>
+		</select>
+		
+		<!-- 상품정보 등록 페이지-->
+		<insert id="ProductInsert" parameterType="am.dto.ProductDto"
+			useGeneratedKeys="true" keyProperty="productPk" keyColumn="product_pk">
+			<![CDATA[ 
+	      
+	         INSERT INTO
+		            product
+		            (product_category_pk, product_name, product_price, product_stock_cnt, product_store, product_detail)
+	         VALUES
+	            	(#{productCategoryPk}, #{productName}, #{productPrice}, #{productStockCnt}, #{productStore}, #{productDetail})
+      	
+      	]]>
+		</insert>
+
+		<insert id="productStockInsert" parameterType="am.dto.ProductDto">
+		<![CDATA[
+			INSERT INTO
+		            product_stock
+		            (product_pk)
+	         VALUES
+	            	(#{productPk})
+		]]>
+		</insert>
+		
+		<insert id="productFileInsert" parameterType="am.dto.ProductFileDto">
+			<![CDATA[
+				INSERT INFO
+					product_file (product_pk, original_file_name, stored_file_path)
+				VALUES
+			]]>
+			<foreach collection="list" item="item" separator=",">
+				(
+					#{item.productPk},
+					#{item.originalFileName},
+					#{item.storedFilePath},
+				)
+			</foreach>
+		</insert>
+		
+		
+
 </mapper>
