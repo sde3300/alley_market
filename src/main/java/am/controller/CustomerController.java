@@ -30,6 +30,7 @@ public class CustomerController {
 		return dataList;
 	}
 	
+
 //	상품 상세페이지 불러오기
 	@RequestMapping(value="/productDetail", method=RequestMethod.GET)
 	public Object productDetail(@RequestParam("productPk") int productPk) throws Exception {
@@ -37,6 +38,7 @@ public class CustomerController {
 				
 		return product;
 	}
+
 	
 //	리뷰 보기
 	@RequestMapping(value="/reviewRead", method=RequestMethod.GET)

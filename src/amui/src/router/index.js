@@ -4,22 +4,22 @@ import VueRouter from 'vue-router'
 import DetailVue from '../views/Detail.vue'
 import Main from '../views/Main.vue'
 import AdminMainVue from '../views/AdminMain.vue'
-import AdminNoticeVue from '../views/AdminNotice.vue'
-import AdminProductVue from '../views/AdminProduct.vue'
+import AdminProductStock from '../views/AdminProductStock.vue'
 import CusManagementVue from '../views/CusManagement.vue'
 import AdminQnaVue from '../views/AdminQna.vue'
 import Login from '../views/Login.vue'
 import Join from '../views/Join.vue'
 import ReviewWrite from '../views/ReviewWrite.vue'
 import QnAWrite from '../views/QnAWrite.vue'
-import NoticeWrite from '../views/NoticeWrite.vue'
 import Mypage from '../views/Mypage.vue'
-import ProductInsertVue from '../views/ProductInsert.vue'
+import AdminProductInsert from '../views/AdminProductInsert.vue'
 import IntroductionVue from '../views/Introduction.vue'
 import NoticeListVue from '../views/NoticeList.vue'
 import NoticeDetailVue from '../views/NoticeDetail.vue'
 import Order from '../views/Order.vue'
 import CartList from '../views/CartList.vue'
+import AdminNoticeList from '../views/AdminNoticeList.vue'
+import AdminNoticeWrite from '../views/AdminNoticeWrite.vue'
 
 Vue.use(VueRouter)
 
@@ -60,14 +60,9 @@ const routes = [
   component: AdminMainVue
   },
   {
-    path: '/adminNotice',
-    name: 'AdminNotice',
-    component: AdminNoticeVue
-  },
-  {
-    path: '/adminProduct',
-    name: 'AdminProduct',
-    component: AdminProductVue
+    path: '/adminProductStock',
+    name: 'AdminProductStock',
+    component: AdminProductStock
   },
   {
     path: '/cusManagement',
@@ -90,19 +85,14 @@ const routes = [
     component: QnAWrite
   },
   {
-    path: '/noticeWrite',
-    name: 'NoticeWrite',
-    component: NoticeWrite
-  },
-  {
     path: '/mypage',
     name: 'Mypage',
     component: Mypage
   },
   {
-    path: '/productInsert',
-    name: 'ProductInsert',
-    component: ProductInsertVue
+    path: '/adminProductInsert',
+    name: 'AdminProductInsert',
+    component: AdminProductInsert
   },
   {
     path: '/introduction',
@@ -124,6 +114,16 @@ const routes = [
     name: 'Order',
     component: Order
   },
+  {
+    path: '/adminNoticeList',
+    name: 'AdminNoticeList',
+    component: AdminNoticeList
+  },
+  {
+    path: '/adminNoticeWrite',
+    name: 'AdminNoticeWrite',
+    component: AdminNoticeWrite
+  }
 ]
 
 const router = new VueRouter({

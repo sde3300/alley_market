@@ -17,11 +17,11 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>공지사항입니다</td>
-                        <td>admin</td>
-                        <td>2021-08-24</td>
+                    <tr v-for="item in items" v-bind:key="item.noticePk">
+                        <td>{{ item.noticePk}}</td>
+                        <td v-on:click="moveNoticeDetail(item.noticePk)">{{ item.noticeTitle}}</td>
+                        <td>{{ item.createId}}</td>
+                        <td>{{ item.createDate}}</td>
                     </tr>
                 </tbody>
             </table>
@@ -52,10 +52,37 @@
 
 <script>
 export default {
+    data() {
+        return {
+            items: []
+        }
+    },
+    methods: {
+        moveNoticeDetail(noticePk) {
+            // push() - <router-link> 태그와 동일한 기능을 하는 함수
+            // 화면 이동 시 파라미터값을 전송하려면 params 객체를 사용하여 데이터를 전송
+            this.$router.push({ name: 'NoticeDetail', params: { noticePk: noticePk }});
+        },
+    },
+    mounted() {
+        let obj = this;
+
+        obj.$axios.get("http://localhost:9000/noticeList")
+        .then(function(res) {
+            console.log("axios로 비동기 통신 성공");
+            obj.items = res.data;
+        })
+        .catch(function(err) {
+            console.log("axios 비동기 통신 오류");
+            console.log(err);
+        });
+    }
     
 }
 </script>
 
 <style>
-
+table {
+    text-align: center;
+}
 </style>
