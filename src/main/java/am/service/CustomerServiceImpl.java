@@ -21,19 +21,17 @@ public class CustomerServiceImpl implements CustomerService {
 //	메인페이지 불러오기
 	@Override
 	public List<ProductInfoDto> productInfoMainPage() throws Exception {
-//		return cusMapper.productMainPage();
 		return cusMapper.productInfoMainPage();
 	}
 	
-//	
 	@Override
 	public void vueInsertBoard(ProductDto board) throws Exception {
 		cusMapper.vueInsertBoard(board);
 	}
-	
+
 //	상품 상세페이지 불러오기
 	@Override
-	public ProductDto productDetail(int productPk) throws Exception{
+	public ProductInfoDto productDetail(int productPk) throws Exception{
 		return cusMapper.productDetail(productPk);
 	}
 	
@@ -106,6 +104,37 @@ public class CustomerServiceImpl implements CustomerService {
 		List<OrdersDto> list = cusMapper.myPageOrder(customerPk);
 		
 		return list;
+	}
+		
+//	상단 카테고리별 페이지 조회
+	// 밀키트
+	@Override
+	public List<ProductInfoDto> p1BoardDetail() throws Exception {
+		return cusMapper.p1BoardDetail();
+	}
+	
+	// 농수산물
+	@Override
+	public List<ProductInfoDto> p2BoardDetail() throws Exception {
+		return cusMapper.p2BoardDetail();
+	}
+	
+	// 축산물
+	@Override
+	public List<ProductInfoDto> p3BoardDetail() throws Exception {
+		return cusMapper.p3BoardDetail();
+	}
+	
+	// 식품
+	@Override
+	public List<ProductInfoDto> p4BoardDetail() throws Exception {
+		return cusMapper.p4BoardDetail();
+	}
+	
+	// 기타
+	@Override
+	public List<ProductInfoDto> p5BoardDetail() throws Exception {
+		return cusMapper.p5BoardDetail();
 	}
 	
 }

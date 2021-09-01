@@ -30,10 +30,19 @@ public class CustomerController {
 		return dataList;
 	}
 	
-//	상품 상세페이지 불러오기
+////	상품 상세페이지 불러오기
+//	@RequestMapping(value="/productDetail", method=RequestMethod.GET)
+//	public Object productDetail(@RequestParam("productPk") int productPk) throws Exception {
+//		ProductDto product = cusService.productDetail(productPk);
+//				
+//		return product;
+//	}
+//	
+//	상품 상세페이지 불러오기 + 사진 
+
 	@RequestMapping(value="/productDetail", method=RequestMethod.GET)
 	public Object productDetail(@RequestParam("productPk") int productPk) throws Exception {
-		ProductDto product = cusService.productDetail(productPk);
+		ProductInfoDto product = cusService.productDetail(productPk);
 				
 		return product;
 	}
@@ -87,6 +96,7 @@ public class CustomerController {
 	public void orderInsert(@RequestBody OrdersDto order) throws Exception {
 		cusService.orderInsert(order);
 	}
+
 	
 //	장바구니에 담기
 	@RequestMapping(value="/cartInsert", method=RequestMethod.POST)
@@ -109,6 +119,48 @@ public class CustomerController {
 		
 		return dataList;
 	}
+		
+
+//	상단 카테고리별 페이지 조회
+	// 밀키트
+	@RequestMapping(value="/productb1", method=RequestMethod.GET)
+	public Object p1MainPage() throws Exception {
+		List<ProductInfoDto> dataList = cusService.p1BoardDetail();
+				
+		return dataList;
+	}
 	
+	// 농수산물
+	@RequestMapping(value="/productb2", method=RequestMethod.GET)
+	public Object p2MainPage() throws Exception {
+		List<ProductInfoDto> dataList = cusService.p2BoardDetail();
+				
+		return dataList;
+	}
+	
+	// 축산물
+	@RequestMapping(value="/productb3", method=RequestMethod.GET)
+	public Object p3MainPage() throws Exception {
+		List<ProductInfoDto> dataList = cusService.p3BoardDetail();
+				
+		return dataList;
+	}
+	
+	// 식품
+	@RequestMapping(value="/productb4", method=RequestMethod.GET)
+	public Object p4MainPage() throws Exception {
+		List<ProductInfoDto> dataList = cusService.p4BoardDetail();
+				
+		return dataList;
+	}
+	
+	// 기타
+	@RequestMapping(value="/productb5", method=RequestMethod.GET)
+	public Object p5MainPage() throws Exception {
+		List<ProductInfoDto> dataList = cusService.p5BoardDetail();
+				
+		return dataList;
+	}
 	
 }
+

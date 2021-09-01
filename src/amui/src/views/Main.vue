@@ -1,8 +1,7 @@
 <template>
     <main>
-        <section class="jumbotron text-center">
-            <!-- 캐러셀 -->
-            <div class="container">
+        <section class="">
+            <!-- 캐러셀 -->           
                 <div
                     id="myCarousel"
                     class="carousel slide"
@@ -31,7 +30,7 @@
                         <div class="carousel-item">
                             <img
                                 class="first-slide"
-                                src="../assets/a1.jpg"
+                                src="../assets/Carousel/banner1.jpg"
                                 alt="First slide"
                                 width="가로 길이"
                                 height=""
@@ -41,23 +40,22 @@
                                     class="carousel-caption text-left"
                                     style="color: black"
                                 >
-                                    <h1>캐러셀 헤드라인</h1>
+                                    <!-- <h1>캐러셀 헤드라인</h1>
                                     <p>어쩌고 저쩌고 가입하세요</p>
                                     <p>
                                         <a
                                             class="btn btn-lg btn-primary"
                                             href="#"
                                             role="button"
-                                            >클릭해서 이동하기</a
-                                        >
-                                    </p>
+                                            >클릭해서 이동하기</a>
+                                    </p> -->
                                 </div>
                             </div>
                         </div>
                         <div class="carousel-item">
                             <img
                                 class="second-slide"
-                                src="../assets/a2.jpg"
+                                src="../assets/Carousel/banner2.jpg"
                                 alt="Second slide"
                             />
                             <div class="container">
@@ -65,7 +63,7 @@
                                     class="carousel-caption text-right"
                                     style="color: black"
                                 >
-                                    <h1>두번째 헤드라인</h1>
+                                    <!-- <h1>두번째 헤드라인</h1>
                                     <p>쓰려면 쓰고 지우려면 지우고</p>
                                     <p>
                                         <a
@@ -74,14 +72,14 @@
                                             role="button"
                                             >버튼으로 클릭</a
                                         >
-                                    </p>
+                                    </p> -->
                                 </div>
                             </div>
                         </div>
                         <div class="carousel-item active">
                             <img
                                 class="third-slide"
-                                src="../assets/a3.jpg"
+                                src="../assets/Carousel/banner3.jpg"
                                 alt="Third slide"
                             />
                             <div class="container">
@@ -89,7 +87,7 @@
                                     class="carousel-caption text-right"
                                     style="color: black"
                                 >
-                                    <h2>검색하세요</h2>
+                                    <!-- <h2>검색하세요</h2>
                                     <p>
                                         <a
                                             class="btn btn-lg btn-primary"
@@ -97,7 +95,7 @@
                                             role="button"
                                             >추후 수정</a
                                         >
-                                    </p>
+                                    </p> -->
                                 </div>
                             </div>
                         </div>
@@ -129,7 +127,7 @@
                         <span class="sr-only">Next</span>
                     </a>
                 </div>
-            </div>
+            
             <!-- 캐러셀 끝 -->
         </section>
 
@@ -149,7 +147,7 @@
                         <img
                             class="card-img-top"
                             alt="Thumbnail [100%x225]"
-                            style="height: 50%; width: 100%; display: block"
+                            style="height: 200px; width: 200px; display: block"
                             v-bind:src="item.storedFilePath"
                             data-holder-rendered="true"
                         />

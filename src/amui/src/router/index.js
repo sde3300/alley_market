@@ -20,6 +20,12 @@ import Order from '../views/Order.vue'
 import CartList from '../views/CartList.vue'
 import AdminNoticeList from '../views/AdminNoticeList.vue'
 import AdminNoticeWrite from '../views/AdminNoticeWrite.vue'
+import P1board from '../views/P1Board.vue'
+import P2board from '../views/P2Board.vue'
+import P3board from '../views/P3Board.vue'
+import P4board from '../views/P4Board.vue'
+import P5board from '../views/P5Board.vue'
+
 
 Vue.use(VueRouter)
 
@@ -39,6 +45,31 @@ const routes = [
     path: '/cartlist',
     name: 'CartList',
     component: CartList,
+  },
+  {
+    path: '/p1board',
+    name: 'P1board',
+    component: P1board,
+  },
+  {
+    path: '/p2board',
+    name: 'P2board',
+    component: P2board,
+  },
+  {
+    path: '/p3board',
+    name: 'P3board',
+    component: P3board,
+  },
+  {
+    path: '/p4board',
+    name: 'P4board',
+    component: P4board,
+  },
+  {
+    path: '/p5board',
+    name: 'P5board',
+    component: P5board,
   },
 
   

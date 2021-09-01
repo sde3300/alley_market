@@ -12,11 +12,12 @@ import am.dto.ProductInfoDto;
 import am.dto.QnaDto;
 import am.dto.ReviewDto;
 
+
 @Mapper
 public interface CustomerMapper {
 	
+
 //	메인페이지 불러오기
-//	List<ProductDto> productMainPage() throws Exception;
 	List<ProductInfoDto> productInfoMainPage() throws Exception;
 	
 //	사진파일 불러오기 
@@ -24,7 +25,7 @@ public interface CustomerMapper {
 	void vueInsertBoard(ProductDto board) throws Exception;
 
 //	상품 상세페이지 불러오기
-	ProductDto productDetail(int productPk) throws Exception;
+	ProductInfoDto productDetail(int productPk) throws Exception;
 	
 //	리뷰보기
 	List<ReviewDto> reviewRead(@Param("productPk") int productPk) throws Exception;
@@ -56,4 +57,21 @@ public interface CustomerMapper {
 	
 //	마이페이지 - 주문내역
 	List<OrdersDto> myPageOrder(@Param("customerPk") int customerPk) throws Exception;
+	
+//	상단 카테고리별 페이지 조회
+	// 밀키트
+	List<ProductInfoDto> p1BoardDetail() throws Exception;
+	
+	// 농수산물
+	List<ProductInfoDto> p2BoardDetail() throws Exception;
+	
+	// 축산물
+	List<ProductInfoDto> p3BoardDetail() throws Exception;
+	
+	// 식품
+	List<ProductInfoDto> p4BoardDetail() throws Exception;
+	
+	// 기타
+	List<ProductInfoDto> p5BoardDetail() throws Exception;
+	
 }

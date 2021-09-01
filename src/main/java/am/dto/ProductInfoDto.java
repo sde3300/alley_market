@@ -11,4 +11,10 @@ public class ProductInfoDto {
 	private int productPrice;
 	private String originalFileName;
 	private String storedFilePath;
+	private String productStore;
+	private int productStockCnt;
+
 }
+
+
+

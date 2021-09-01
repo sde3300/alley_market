@@ -3,14 +3,15 @@
         <div class="container">
             <div class="container-sm">
                 <div class="row" style="margin-bottom: 50px">
-                    <div class="col-6" id="detailPic">
+                    <div class="col-6" id="detailPic" >
                         <img
-                            src="https://shop.hansalim.or.kr/im/is/activeDesigner/050307006_content1.jpg"
+                            v-bind:src="storedFilePath"
                             class="rounded float-left"
-                            alt="..."
+                            alt="http://localhost:9000/#/에서 확인"
                             width="500px"
                             height="400px"
                         />
+                        
                     </div>
 
                     <div class="col-6" id = "detailText">
@@ -452,6 +453,10 @@ export default {
                 obj.productStockCnt = res.data.productStockCnt;
                 obj.productStore = res.data.productStore;
                 obj.productDetail = res.data.productDetail;
+                //혜수추가
+                obj.storedFilePath = res.data.storedFilePath;
+                obj.originalFileName = res.data.originalFileName;
+
             })
             .catch(function(err) {
                 console.log("axios 비동기 통신 오류");

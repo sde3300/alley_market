@@ -1,5 +1,5 @@
-const path = require('path')
+const path = require('path');
 
 module.exports = {
-  outputDir: path.resolve(__dirname, "../main/resource/static")
+  outputDir: path.resolve(__dirname, "../main/resources/static")
 }

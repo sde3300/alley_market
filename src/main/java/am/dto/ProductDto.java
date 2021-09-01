@@ -12,6 +12,8 @@ public class ProductDto {
 	private int productPrice;
 	private int productStockCnt;
 	private String productStore;
+
+	//정민 추가
 	private String productDetail;
 	private int boardIdx;
 	private int orderCnt;
@@ -20,4 +22,5 @@ public class ProductDto {
 //	private String originalFileName;
 //	private String storedFilePath;
 	private List<ProductFileDto> fileList;
+
 }

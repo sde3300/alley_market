@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
@@ -13,6 +13,14 @@
 	
 
 		<div class="container">
+		
+			  <img src="/outsideImg/data1.jpg">
+			  
+			  
+			  <img alt="image" th:src="@{/outsideImages/data1.jpg}">
+			  <img alt="image" th:src="@{/outsideImages/data2.jpg}">
+			  <img alt="image" th:src="@{/outsideImages/data3.jpg}">
+			  <img alt="image" th:src="@{/outsideImages/data4.jpg}">
 			<p class="text-center">210825</p>
 		</div>
 	
