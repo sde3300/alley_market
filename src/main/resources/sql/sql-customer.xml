@@ -61,7 +61,7 @@
 		         ON
 		         	a.product_pk = b.idx
 		         WHERE
-					product_pk = #{productPk}
+					idx = #{idx}
 		      ]]>
 		</select>
 			
