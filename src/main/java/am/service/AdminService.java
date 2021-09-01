@@ -8,6 +8,7 @@ import am.dto.CustomersDto;
 import am.dto.NoticeDto;
 import am.dto.OrdersDto;
 import am.dto.ProductDto;
+import am.dto.QnaDto;
 
 public interface AdminService {
 
@@ -41,5 +42,7 @@ public interface AdminService {
 //	상품이미지 등록하기
 //	void insertBoardImg(ProductDto imgin, MultipartHttpServletRequest mhsr) throws Exception;
 
+//	관리자 문의리스트 불러오기
+	List<QnaDto> qnaList() throws Exception;
 	
 }

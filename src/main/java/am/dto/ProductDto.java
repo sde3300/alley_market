@@ -14,6 +14,9 @@ public class ProductDto {
 	private String productStore;
 	private String productDetail;
 	private int boardIdx;
+	private int orderCnt;
+	private int orderSum;
+	private int customerPk;
 //	private String originalFileName;
 //	private String storedFilePath;
 	private List<ProductFileDto> fileList;

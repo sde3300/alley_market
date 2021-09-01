@@ -11,6 +11,7 @@ public class QnaDto {
 	private String createId;
 	private String createDate;
 	private int productPk;
+	private String productName;
 	private String answerContents;
 	private String answerYn;
 }

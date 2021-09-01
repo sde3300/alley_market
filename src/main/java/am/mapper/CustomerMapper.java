@@ -19,7 +19,7 @@ public interface CustomerMapper {
 //	List<ProductDto> productMainPage() throws Exception;
 	List<ProductInfoDto> productInfoMainPage() throws Exception;
 	
-	//사진파일 불러오기 
+//	사진파일 불러오기 
 	List<ProductFileDto> productFileMainPage() throws Exception;
 	void vueInsertBoard(ProductDto board) throws Exception;
 
@@ -32,15 +32,28 @@ public interface CustomerMapper {
 //	문의 보기
 	List<QnaDto> qnaRead(@Param("productPk") int productPk) throws Exception;
 	
+//	문의 상세 보기
+	QnaDto qnaDetail(int qnaPk) throws Exception;
+		
 //	문의 등록
 	void qnaInsert(QnaDto qna) throws Exception;
 	
+//	문의 답변하기(관리자)
+	void answerUpdate(QnaDto qna) throws Exception;
+	
 //	주문하기 - 상품정보 불러오기
-	List<ProductDto> orderProduct(@Param("orderPk") int orderPk) throws Exception;
+	List<ProductDto> orderProduct(@Param("customerPk") int customerPk) throws Exception;
 
 //	주문하기 - 주문입력
 	void orderInsert(OrdersDto order) throws Exception;
+	void orderDetailUpdate(OrdersDto order) throws Exception;
 	
 //	장바구니에 담기
 	void cartInsert(OrdersDto cart) throws Exception;
+	
+//	장바구니 불러오기
+	List<ProductDto> cartList(@Param("customerPk") int customerPk) throws Exception;
+	
+//	마이페이지 - 주문내역
+	List<OrdersDto> myPageOrder(@Param("customerPk") int customerPk) throws Exception;
 }

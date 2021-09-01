@@ -10,11 +10,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
-
 import am.dto.CustomersDto;
 import am.dto.NoticeDto;
 import am.dto.OrdersDto;
 import am.dto.ProductDto;
+import am.dto.QnaDto;
 import am.service.AdminService;
 
 @RestController
@@ -121,4 +121,11 @@ public class AdminController {
 		
 //	}
 	
+//	관리자 문의리스트 불러오기
+	@RequestMapping(value="/qnaList", method=RequestMethod.GET)
+	public Object qnaList() throws Exception {
+		List<QnaDto> list = adService.qnaList();
+		
+		return list;
+	}
 }

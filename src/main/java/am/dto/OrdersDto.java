@@ -16,4 +16,7 @@ public class OrdersDto {
 	private int orderCnt;
 	private int orderSum;
 	private String orderAsk;
+	private String productName;
+	private String productStore;
+	private int productPrice;
 }

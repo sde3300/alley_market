@@ -53,16 +53,28 @@ public class CustomerServiceImpl implements CustomerService {
 		return list;
 	}
 	
+//	문의 상세 보기
+	@Override
+	public QnaDto qnaDetail(int qnaPk) throws Exception{
+		return cusMapper.qnaDetail(qnaPk);
+	}
+		
 //	문의 등록
 	@Override
 	public void qnaInsert(QnaDto qna) throws Exception {
 		cusMapper.qnaInsert(qna);
 	}
 	
+//	문의 답변하기(관리자)
+	@Override
+	public void answerUpdate(QnaDto qna) throws Exception {
+		cusMapper.answerUpdate(qna);
+	}
+	
 //	주문하기 - 상품정보 불러오기
 	@Override
-	public List<ProductDto> orderProduct(int orderPk) throws Exception {
-		List<ProductDto> list = cusMapper.orderProduct(orderPk);
+	public List<ProductDto> orderProduct(int customerPk) throws Exception {
+		List<ProductDto> list = cusMapper.orderProduct(customerPk);
 		
 		return list;
 	}
@@ -71,13 +83,29 @@ public class CustomerServiceImpl implements CustomerService {
 	@Override
 	public void orderInsert(OrdersDto order) throws Exception {
 		cusMapper.orderInsert(order);
+		cusMapper.orderDetailUpdate(order);
 	}
-	
+		
 //	장바구니에 담기
 	@Override
 	public void cartInsert(OrdersDto cart) throws Exception {
 		cusMapper.cartInsert(cart);
 	}
 	
-
+//	장바구니 불러오기
+	@Override
+	public List<ProductDto> cartList(int customerPk) throws Exception {
+		List<ProductDto> list = cusMapper.cartList(customerPk);
+		
+		return list;
+	}
+	
+//	마이페이지 - 주문내역
+	@Override
+	public List<OrdersDto> myPageOrder(int customerPk) throws Exception {
+		List<OrdersDto> list = cusMapper.myPageOrder(customerPk);
+		
+		return list;
+	}
+	
 }

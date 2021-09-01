@@ -37,7 +37,7 @@ const routes = [
   },
   {
     path: '/cartlist',
-    name: 'Cartlist',
+    name: 'CartList',
     component: CartList,
   },
 
