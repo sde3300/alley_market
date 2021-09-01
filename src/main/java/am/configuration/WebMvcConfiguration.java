@@ -27,7 +27,6 @@ public class WebMvcConfiguration implements WebMvcConfigurer {
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
 		String imgPath = "file///" + uploadImagePath;
 		
-//		registry.addResourceHandler("/outsideImg/**").addResourceLocations("file:///C:/AMPROJECT/outsideImages/");
 		registry.addResourceHandler("/outsideImg/**").addResourceLocations(imgPath);
 	}
 	
@@ -35,7 +34,7 @@ public class WebMvcConfiguration implements WebMvcConfigurer {
 	@Bean
 	public CommonsMultipartResolver multipartResolver() {
 		CommonsMultipartResolver cmpr = new CommonsMultipartResolver();
-		cmpr.setDefaultEncoding("UTF-8"); // 업로드될 파일의 문자셋을 UTF-8 설정
+		cmpr.setDefaultEncoding("UTF-8"); 
 		cmpr.setMaxUploadSizePerFile(10 * 1024 * 1024);
 		
 		return cmpr;

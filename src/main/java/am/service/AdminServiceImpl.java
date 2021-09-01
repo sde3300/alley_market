@@ -72,7 +72,7 @@ public class AdminServiceImpl implements AdminService{
 		return adMapper.SelectStockList(boardIdx);
 	}
 	
-//	상품정보 + 이미지 등록하기
+//	상품정보 + 이미지 등록하기 + 재고에 productPk 추가하기
 	@Override
 	public void ProductInsert(ProductDto productIn, MultipartHttpServletRequest mhsr) throws Exception {
 		adMapper.ProductInsert(productIn);
@@ -83,16 +83,5 @@ public class AdminServiceImpl implements AdminService{
 			adMapper.productFileInsert(list);
 		}
 	}
-
 	
-//	상품이미지 등록하기
-//	@Override
-//	public void insertBoardImg(ProductDto imgin, MultipartHttpServletRequest mhsr) throws Exception {
-//		adMapper.insertBoardImg(imgin);
-//		List<ProductDto> list = fileUtils.parseFileInfo(imgin.getBoardIdx(), mhsr);
-//		
-//		if (CollectionUtils.isEmpty(list) == false) {
-//			adMapper.insertBoardImg(list);
-//		}
-//	}
 }

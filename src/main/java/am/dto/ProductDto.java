@@ -14,8 +14,6 @@ public class ProductDto {
 	private String productStore;
 	private String productDetail;
 	private int boardIdx;
-//	private String originalFileName;
-//	private String storedFilePath;
-//	파일경로 가져오는 부분
+//	파일경로 가져오는 부분(originalFileName, storedFilePath포함하는 리스트)
 	private List<ProductFileDto> fileList;
 }
