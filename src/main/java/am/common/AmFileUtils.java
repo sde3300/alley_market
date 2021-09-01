@@ -99,7 +99,7 @@ public class AmFileUtils {
 					ProductFile.setOriginalFileName(multiFile.getOriginalFilename());
 //					실제로 저장된 경로 및 파일명 저장
 //					ProductFile.setStoredFilePath(newFileName);
-					ProductFile.setStoredFilePath(storedPath + newFileName);
+					ProductFile.setStoredFilePath(storedPath + "/" + newFileName);
 					
 					
 //					생성된 Board1FileDto 클래스 타입의 데이터를 List<Board1FileDto> 타입의 변수 fileList에 저장
