@@ -7,6 +7,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
+
 import am.common.AmFileUtils;
 import am.dto.CustomersDto;
 import am.dto.NoticeDto;
@@ -95,4 +98,12 @@ public class AdminServiceImpl implements AdminService{
 //			adMapper.insertBoardImg(list);
 //		}
 //	}
+	
+	//페이징테스트
+
+	   @Override
+	   public Page<CustomersDto> getEmpName(int pageNo) throws Exception {
+	      PageHelper.startPage(pageNo, 10);
+	        return adMapper.findUser();
+	   }
 }

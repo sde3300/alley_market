@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
-
 import am.dto.CustomersDto;
 import am.dto.NoticeDto;
 import am.dto.OrdersDto;
@@ -22,6 +21,9 @@ public class AdminController {
 
 	@Autowired
 	private AdminService adService;
+	
+	
+
 	
 //	관리자 메인페이지 불러오기
 	@RequestMapping(value="/adminMain", method=RequestMethod.GET)
@@ -38,6 +40,18 @@ public class AdminController {
 		
 		return cusdataList;
 	}
+
+	//0901 혜수 : 페이징테스트 
+
+//	    @RequestMapping("/page")
+//	    public ModelAndView page(@RequestParam(required = false, defaultValue = "1") int pageNum) throws Exception {
+//	       ModelAndView mv = new ModelAndView("cusManage");
+//
+//	        PageInfo<CustomersDto> p = new PageInfo<CustomersDto>(adService.getEmpName(pageNum), 3);
+//	        
+//	        mv.addObject("users", p);
+//	        return mv;
+//	    }
 	
 //	공지사항 게시판 목록 확인하기
 	@RequestMapping(value="/noticeList", method=RequestMethod.GET)
@@ -120,5 +134,7 @@ public class AdminController {
 //		return file1;
 		
 //	}
+	
+
 	
 }

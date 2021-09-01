@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import com.github.pagehelper.Page;
+
 import am.dto.CustomersDto;
 import am.dto.NoticeDto;
 import am.dto.OrdersDto;
@@ -41,5 +43,6 @@ public interface AdminService {
 //	상품이미지 등록하기
 //	void insertBoardImg(ProductDto imgin, MultipartHttpServletRequest mhsr) throws Exception;
 
-	
+	//페이징 서비스 : 회원정보
+	 public Page<CustomersDto> getEmpName(int pageNo) throws Exception;
 }

@@ -5,6 +5,8 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
+import com.github.pagehelper.Page;
+
 import am.dto.CustomersDto;
 import am.dto.NoticeDto;
 import am.dto.OrdersDto;
@@ -47,6 +49,8 @@ public interface AdminMapper {
 //	상품정보 이미지 넣기
 	void productFileInsert(List<ProductFileDto> files) throws Exception;
 
-
+	//페이징 테스트
+	
+	   Page<CustomersDto> findUser() throws Exception;
 	
 }
