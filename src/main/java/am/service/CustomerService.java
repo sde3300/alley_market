@@ -23,6 +23,9 @@ public interface CustomerService {
 //	리뷰 보기
 	List<ReviewDto> reviewRead(int productPk) throws Exception;
 	
+//	리뷰작성하기
+	void ReviewWrite(ReviewDto reviewWri) throws Exception;
+	
 //	문의 보기
 	List<QnaDto> qnaRead(int productPk) throws Exception;
 	

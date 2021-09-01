@@ -22,6 +22,9 @@ public class AdminServiceImpl implements AdminService{
 	@Autowired
 	private AdminMapper adMapper;
 	
+	@Autowired
+	private AmFileUtils amFileUtils;
+	
 //	관리자 메인페이지 불러오기
 	@Override
 	public List<OrdersDto> adminMainPage() throws Exception {
@@ -70,15 +73,11 @@ public class AdminServiceImpl implements AdminService{
 		return adMapper.SelectStockList(boardIdx);
 	}
 	
-//	상품정보 등록하기
+//	상품정보 + 이미지 등록하기
 	@Override
 	public void ProductInsert(ProductDto productIn, MultipartHttpServletRequest mhsr) throws Exception {
-		
-//		adMapper.productStockInsert(productIn);
-//		List<ProductDto> list = AmFileUtils.parseFileInfo(productIn.getProductPk(), mhsr);
-		
-		adMapper.ProductInsert(productIn);
-		List<ProductFileDto> list = AmFileUtils.parseFileInfo(productIn.getProductPk(), mhsr);
+//		adMapper.ProductInsert(productIn);
+		List<ProductFileDto> list = amFileUtils.parseFileInfo(productIn.getProductPk(), mhsr);
 		
 		if (CollectionUtils.isEmpty(list) == false) {
 			adMapper.productFileInsert(list);

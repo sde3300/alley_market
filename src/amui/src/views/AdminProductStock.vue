@@ -51,7 +51,7 @@
 
             <!-- 버튼 -->
             <div class="row">
-                    <button type="button" class="btn btn-dark col-sm-2 ml-auto" id="btnmodi" v-on:click="moveProductInsert">상품등록</button>
+                    <button type="button" class="btn btn col-sm-2 ml-auto" id="btnmodi" v-on:click="moveProductInsert">상품등록</button>
             </div>
         </div>
         </div>

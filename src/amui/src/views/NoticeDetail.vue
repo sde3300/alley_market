@@ -32,9 +32,9 @@
                 </div>
 
                 <div class="row ">
-                    <button type="button" class="btn btn-primary col-sm-1 ml-auto" id="btnwrite" v-on:click="moveNoticeList">목록으로</button>
-                    <button type="button" class="btn btn-warning col-sm-1 " id="btnwrite" v-on:click="noticeUpdate">수정하기</button>
-                    <button type="button" class="btn btn-danger col-sm-1 " v-on:click="noticeDelete">삭제하기</button>
+                    <button type="button" class="btn btn col-sm-1 ml-auto" id="btnList" v-on:click="moveNoticeList">목록으로</button>
+                    <button type="button" class="btn btn col-sm-1 " id="btnmodi" v-on:click="noticeUpdate">수정하기</button>
+                    <button type="button" class="btn btn col-sm-1 " id="btndel" v-on:click="noticeDelete">삭제하기</button>
                 </div>
             </form> 
         </div>
@@ -122,7 +122,7 @@ export default {
 </script>
 
 <style>
-    #btnmodi {
+#btnmodi {
     margin-right: 20px;
 }
 
@@ -131,5 +131,6 @@ export default {
     box-sizing: border-box;
     text-align: left;
 }
+
 
 </style>

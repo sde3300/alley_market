@@ -29,6 +29,9 @@ public interface CustomerMapper {
 	
 //	리뷰보기
 	List<ReviewDto> reviewRead(@Param("productPk") int productPk) throws Exception;
+	
+//	리뷰작성하기
+	void ReviewWrite(ReviewDto reviewWri) throws Exception;
 
 //	문의 보기
 	List<QnaDto> qnaRead(@Param("productPk") int productPk) throws Exception;

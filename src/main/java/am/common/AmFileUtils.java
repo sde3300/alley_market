@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.util.ObjectUtils;
 import org.springframework.web.multipart.MultipartFile;
@@ -18,8 +19,11 @@ import am.dto.ProductFileDto;
 // 사용자가 업로드한 파일을 서버에 저장하기 위해서 사용자가 직접 생성한 클래스
 public class AmFileUtils {
 	
+	@Value("${spring.servlet.multipart.location}")
+	private String uploadImagePath;
+	
 //	매개변수로 boardIdx와 MultipartHttpServletRequest 타입의 변수를 넘겨 받음
-	public static List<ProductFileDto> parseFileInfo(int productPk, MultipartHttpServletRequest mhsr) throws Exception {
+	public List<ProductFileDto> parseFileInfo(int productPk, MultipartHttpServletRequest mhsr) throws Exception {
 //		ObjectUtils.isEmpty() 는 스프링프레임워크에서 지원하는 클래스 함수로 해당 오브젝트 타입의 변수가 비었는지 아닌지를 확인해줌(비었을 경우 true)
 		if (ObjectUtils.isEmpty(mhsr)) {	
 			return null;
@@ -35,7 +39,7 @@ public class AmFileUtils {
 		ZonedDateTime current = ZonedDateTime.now();
 //		ZonedDateTime클래스 타입의 변수 current에 DateTimeFormatter 클래스 타입의 변수 format의 형식대로 날짜 및 시간을 표시함
 //		현재 format 변수에는 yyyyMMdd 형식으로 표시되어 있기 때문에 '년도월일'형식으로 날짜를 표시함
-		String path = "images/" + current.format(format);
+		String path = uploadImagePath + current.format(format);
 		
 		File file = new File(path);
 //		File 클래스타입의 변수 file에 지정한 폴더와 동일한 폴더가 존재하는지 확인
@@ -90,7 +94,7 @@ public class AmFileUtils {
 //					ProductFile.setFileSize(multiFile.getSize());
 					ProductFile.setOriginalFileName(multiFile.getOriginalFilename());
 //					실제로 저장된 경로 및 파일명 저장
-					ProductFile.setStoredFilePath(path + "/" + newFileName);
+					ProductFile.setStoredFilePath(newFileName);
 					
 //					생성된 Board1FileDto 클래스 타입의 데이터를 List<Board1FileDto> 타입의 변수 fileList에 저장
 					fileList.add(ProductFile);

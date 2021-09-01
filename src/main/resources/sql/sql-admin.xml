@@ -122,7 +122,8 @@
       	
       	]]>
 		</insert>
-
+		
+		<!--상품 재고 등록페이지 -->
 		<insert id="productStockInsert" parameterType="am.dto.ProductDto">
 		<![CDATA[
 			INSERT INTO
@@ -133,6 +134,7 @@
 		]]>
 		</insert>
 		
+		<!-- 상품이미지 등록페이지-->
 		<insert id="productFileInsert" parameterType="am.dto.ProductFileDto">
 			<![CDATA[
 				INSERT INFO

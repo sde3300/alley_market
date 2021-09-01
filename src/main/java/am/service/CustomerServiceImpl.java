@@ -43,6 +43,12 @@ public class CustomerServiceImpl implements CustomerService {
 		return list;
 	}
 	
+//	리뷰작성하기
+	@Override
+	public void ReviewWrite(ReviewDto reviewWri) throws Exception {
+		cusMapper.ReviewWrite(reviewWri);
+	}
+	
 //	문의 보기
 	@Override
 	public List<QnaDto> qnaRead(int productPk) throws Exception {

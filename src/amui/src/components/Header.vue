@@ -1,7 +1,9 @@
 <template>
     <div class="header">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <span style="font-size: 1.5em;"><i class="fas fa-truck" v-on:click="moveMain"></i></span> <a class="navbar-brand" href="#" v-on:click="moveMain"> 골목시장</a>
+        <!-- <span style="font-size: 1.5em;"><i class="fas fa-truck" v-on:click="moveMain"></i></span> <a class="navbar-brand" href="#" v-on:click="moveMain"> 골목시장</a> -->
+        <span style="font-size: 1.5em;"><router-link to="/" id="routerlink"><i class="fas fa-truck"> 골목시장</i></router-link></span> 
+        <!-- <a class="navbar-brand" href="#"> 골목시장</a> -->
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -11,16 +13,19 @@
                 <a class="nav-link" href="#">전체상품 <span class="sr-only">(current)</span></a>
             </li> -->
             <li class="nav-item">
-                <a class="nav-link" href="#">공지사항</a>
+                <a class="nav-link"><router-link to="/adminMain" id="routerlink">관리자(임시)</router-link></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">로그인</a>
+                <a class="nav-link" href="#" @click="moveNoticeList">공지사항</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">회원가입</a>
+                <a class="nav-link" href="#" @click="moveLogin">로그인</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#" v-on:click="moveMypage">마이페이지</a>
+                <a class="nav-link" href="#" @click="moveJoin">회원가입</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#" @click="moveMypage">마이페이지</a>
             </li>
             </ul>
         </div>
@@ -56,8 +61,8 @@
                 <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
                 &nbsp; &nbsp; &nbsp;
-                <span style="font-size: 2em;">
-                    <i class="fas fa-shopping-cart" href="#" v-on:click="moveCart"></i>
+                <span style="font-size: 2em; ">
+                    <i id="cart" class="fas fa-shopping-cart" href="#" v-on:click="moveCart"></i>
                 </span>
             </form>
         </div>
@@ -74,9 +79,24 @@ export default {
         };
     },
     methods: {
-        moveMain () {
+        // moveMain () {
+        //     this.$router.push({
+        //         name: "Main",
+        //     });
+        // },
+        moveLogin () {
             this.$router.push({
-                name: "Main",
+                name: "Login",
+            });
+        },
+        moveJoin () {
+            this.$router.push({
+                name: "Join",
+            });
+        },
+        moveNoticeList () {
+            this.$router.push({
+                name: "NoticeList",
             });
         },
         moveCart (customerPk) {
@@ -85,11 +105,13 @@ export default {
                 query: { customerPk: customerPk },
             });
         },
-        moveMypage () {
+        moveMypage (customerPk) {
             this.$router.push({
                 name: "Mypage",
+                query: { customerPk: customerPk },
             });
         },
+
     },
     mounted() {
 
@@ -98,5 +120,13 @@ export default {
 </script>
 
 <style scoped>
-
+/* router-link {
+    color: black;
+} */
+/* #router {
+    color: rgb(62, 64, 68);
+} */
+#cart {
+    margin-left: 10px;
+}
 </style>

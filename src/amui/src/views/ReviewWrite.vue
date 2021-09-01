@@ -3,14 +3,14 @@
         <div class="jumbotron text-center">
             <h1>이용후기</h1>
         </div>
-        <hr>
+        <!-- <hr> -->
         <div class="container" id="reviewwri">
             <form>
                 <div class="form-group row">
                     <div class="col">
                         <div class="row">
                             <label for="text" class="col-sm-4 col-form-label">상품번호</label>
-                            <input type="number" class="form-control col" id="exampleInputName" aria-describedby="nameHelp" placeholder="이름을 입력하세요" >
+                            <input type="number" class="form-control col" id="exampleInputName" aria-describedby="nameHelp" placeholder=" 입력하세요" >
                         </div>
                     </div>
                     <div class="col">
@@ -48,8 +48,8 @@
                 </div>
 
                 <div class="row ">
-                    <button type="button" class="btn btn-primary col-sm-1 ml-auto" id="btnmodi">수정하기</button>
-                    <button type="button" class="btn btn-warning col-sm-1 ">등록하기</button>
+                    <button type="button" class="btn btn col-sm-1 ml-auto" id="btnmodi">수정하기</button>
+                    <button type="button" class="btn btn col-sm-1 " id="btnwrite">등록하기</button>
                 </div>
             </form> 
         </div>
@@ -58,7 +58,29 @@
 
 <script>
 export default {
-    
+    data() {
+        return {
+
+        };
+    },
+    methods: {
+        moveReviewWrite (customerPk) {
+            this.$router.push({
+                name: "Mypage",
+                query: { customerPk: customerPk },
+            });
+        },
+        moveReviewModi (customerPk) {
+            this.$router.push({
+                name: "Mypage",
+                query: { customerPk: customerPk },
+            });
+        },
+
+    },
+    mounted() {
+
+    },
 }
 </script>
 
