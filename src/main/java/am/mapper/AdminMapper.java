@@ -42,7 +42,7 @@ public interface AdminMapper {
 //	상품정보 등록하기
 	void ProductInsert(ProductDto productIn) throws Exception;
 
-//	void productStockInsert(ProductDto productIn) throws Exception;
+	void productStockInsert(ProductDto productIn) throws Exception;
 
 //	상품정보 이미지 넣기
 	void productFileInsert(List<ProductFileDto> files) throws Exception;

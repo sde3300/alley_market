@@ -137,7 +137,7 @@
 		<!-- 상품이미지 등록페이지-->
 		<insert id="productFileInsert" parameterType="am.dto.ProductFileDto">
 			<![CDATA[
-				INSERT INFO
+				INSERT INTO
 					product_file (product_pk, original_file_name, stored_file_path)
 				VALUES
 			]]>
@@ -145,7 +145,7 @@
 				(
 					#{item.productPk},
 					#{item.originalFileName},
-					#{item.storedFilePath},
+					#{item.storedFilePath}
 				)
 			</foreach>
 		</insert>

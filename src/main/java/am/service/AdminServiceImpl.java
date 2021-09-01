@@ -75,7 +75,8 @@ public class AdminServiceImpl implements AdminService{
 //	상품정보 + 이미지 등록하기
 	@Override
 	public void ProductInsert(ProductDto productIn, MultipartHttpServletRequest mhsr) throws Exception {
-//		adMapper.ProductInsert(productIn);
+		adMapper.ProductInsert(productIn);
+		adMapper.productStockInsert(productIn);
 		List<ProductFileDto> list = amFileUtils.parseFileInfo(productIn.getProductPk(), mhsr);
 		
 		if (CollectionUtils.isEmpty(list) == false) {

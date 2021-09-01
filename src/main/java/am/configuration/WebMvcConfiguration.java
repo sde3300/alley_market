@@ -2,7 +2,9 @@ package am.configuration;
 
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
@@ -20,7 +22,7 @@ public class WebMvcConfiguration implements WebMvcConfigurer {
 		.allowedMethods("GET", "POST", "PUT", "DELETE");
 	}
 	
-	// 이미지 넣기
+	// 이미지 넣기(외부파일 경로 설정)
 	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
 		String imgPath = "file///" + uploadImagePath;
@@ -29,9 +31,14 @@ public class WebMvcConfiguration implements WebMvcConfigurer {
 		registry.addResourceHandler("/outsideImg/**").addResourceLocations(imgPath);
 	}
 	
-//	@Override
-//	public void addResourceHandlers(ResourceHandlerRegistry registry) {
-//		registry.addResourceHandler("/images/**")
-//		.addResourceLocations("file:///C:/java602/outsideImages/");
-//	}
+//	업로드 될 파일의 문자셋 UTF-8로 설정, 업로드 될 파일크기 설정
+	@Bean
+	public CommonsMultipartResolver multipartResolver() {
+		CommonsMultipartResolver cmpr = new CommonsMultipartResolver();
+		cmpr.setDefaultEncoding("UTF-8"); // 업로드될 파일의 문자셋을 UTF-8 설정
+		cmpr.setMaxUploadSizePerFile(10 * 1024 * 1024);
+		
+		return cmpr;
+	}
+	
 }
