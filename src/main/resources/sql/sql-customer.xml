@@ -49,6 +49,7 @@
 		</select>-->
 		
 		<!-- 210831 혜수: 상품 상세페이지 사진까지 불러오기 -->
+		<!-- 210901 : 최종 수정 -->
 		<select id="productDetail" parameterType="int" resultType="am.dto.ProductInfoDto">
 		      <![CDATA[
 				SELECT
