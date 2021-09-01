@@ -38,6 +38,12 @@ public class CustomerController {
 				
 		return product;
 	}
+	
+//	리뷰작성하기
+	@RequestMapping(value="/reviewWrite", method=RequestMethod.POST)
+	public void ReviewWrite(@RequestBody ReviewDto reviewWri) throws Exception {
+		cusService.ReviewWrite(reviewWri);
+	}
 
 	
 //	리뷰 보기

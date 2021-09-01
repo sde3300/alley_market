@@ -82,14 +82,7 @@ public class AdminController {
 //	주문하기 - 상품정보 + 이미지 입력하기
 	@RequestMapping(value="/productInsert", method=RequestMethod.POST)
 	public void ProductInsert(ProductDto productIn, MultipartHttpServletRequest mhsr) throws Exception {
-		System.out.println(productIn.getBoardIdx());
-//		adService.ProductInsert(productIn, mhsr);
-	}
-	
-	@RequestMapping(value="/productInsert2", method=RequestMethod.POST)
-	public void ProductInsert() throws Exception {
-		System.out.println("131321231");
-//		adService.ProductInsert(productIn, mhsr);
+		adService.ProductInsert(productIn, mhsr);
 	}
 	
 //	상품정보 사진등록하기

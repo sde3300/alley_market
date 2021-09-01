@@ -10,7 +10,7 @@
                     <div class="col">
                         <div class="row">
                             <label for="text" class="col-sm-4 col-form-label">상품번호</label>
-                            <input type="number" class="form-control col" id="exampleInputName" aria-describedby="nameHelp" placeholder="이름을 입력하세요" >
+                            <input type="number" class="form-control col" id="exampleInputName" aria-describedby="nameHelp" placeholder=" 입력하세요" >
                         </div>
                     </div>
                     <div class="col">

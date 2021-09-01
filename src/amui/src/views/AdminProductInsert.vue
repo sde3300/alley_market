@@ -104,7 +104,7 @@
 export default {
     data() {
         return {
-                productPk: '',
+                productPk: 0,
                 productCategoryPk:'',
                 productName:'',
                 productPrice:'',
@@ -123,14 +123,16 @@ export default {
             let obj = this;
 
             const formData = new FormData();
-            // formData.append('productPk', this.productPk);
-            // formData.append('productCategoryPk', this.productCategoryPk)
-            // formData.append('productName', this.productName)
-            // formData.append('productPrice', this.productPrice)
-            // formData.append('productStockCnt', this.productStockCnt)
-            // formData.append('productStore', this.productStore)
-            // formData.append('productDetail', this.productDetail)
-            // formData.append('image', this.image);
+            
+            formData.append('productPk', this.productPk);
+            formData.append('productCategoryPk', this.productCategoryPk)
+            formData.append('productName', this.productName)
+            formData.append('productPrice', this.productPrice)
+            formData.append('productStockCnt', this.productStockCnt)
+            formData.append('productStore', this.productStore)
+            formData.append('productDetail', this.productDetail)
+            // boardIdx
+            formData.append('image', this.image);
             
             // obj.$axios.post('http://localhost:9000/productInsert', {
             //     productPk: this.productPk,

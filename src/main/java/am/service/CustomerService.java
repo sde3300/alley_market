@@ -37,4 +37,7 @@ public interface CustomerService {
 	
 //	장바구니에 담기
 	void cartInsert(OrdersDto cart) throws Exception;
+
+//	리뷰작성하기
+	void ReviewWrite(ReviewDto reviewWri) throws Exception;
 }

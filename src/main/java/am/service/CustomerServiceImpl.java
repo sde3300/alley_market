@@ -79,5 +79,11 @@ public class CustomerServiceImpl implements CustomerService {
 		cusMapper.cartInsert(cart);
 	}
 	
+//	리뷰작성하기
+	@Override
+	public void ReviewWrite(ReviewDto reviewWri) throws Exception {
+		cusMapper.ReviewWrite(reviewWri);
+	}
+	
 
 }

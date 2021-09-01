@@ -47,7 +47,18 @@
 		      ]]>
 		</select>
 
-			
+		<!-- 리뷰작성하기-->	
+		<insert id="reviewWrite" parameterType="am.dto.ReviewDto">
+		<![CDATA[ 
+	      
+	         INSERT INTO
+		            review
+		            (board_category_pk, review_title, review_contents, create_id, create_date)
+	         VALUES
+	            	('b2', #{reviewTitle}, #{reviewContents}, #{createId}, NOW())
+      	
+      	]]>
+		</insert>
 			
 		<!-- 리뷰 보기 -->
 		<select id="reviewRead" parameterType="int" resultType="am.dto.ReviewDto">
