@@ -21,19 +21,17 @@ public class CustomerServiceImpl implements CustomerService {
 //	메인페이지 불러오기
 	@Override
 	public List<ProductInfoDto> productInfoMainPage() throws Exception {
-//		return cusMapper.productMainPage();
 		return cusMapper.productInfoMainPage();
 	}
 	
-//	
 	@Override
 	public void vueInsertBoard(ProductDto board) throws Exception {
 		cusMapper.vueInsertBoard(board);
 	}
-	
+
 //	상품 상세페이지 불러오기
 	@Override
-	public ProductDto productDetail(int productPk) throws Exception{
+	public ProductInfoDto productDetail(int productPk) throws Exception{
 		return cusMapper.productDetail(productPk);
 	}
 	
@@ -45,6 +43,12 @@ public class CustomerServiceImpl implements CustomerService {
 		return list;
 	}
 	
+//	리뷰작성하기
+	@Override
+	public void ReviewWrite(ReviewDto reviewWri) throws Exception {
+		cusMapper.ReviewWrite(reviewWri);
+	}
+	
 //	문의 보기
 	@Override
 	public List<QnaDto> qnaRead(int productPk) throws Exception {
@@ -53,16 +57,28 @@ public class CustomerServiceImpl implements CustomerService {
 		return list;
 	}
 	
+//	문의 상세 보기
+	@Override
+	public QnaDto qnaDetail(int qnaPk) throws Exception{
+		return cusMapper.qnaDetail(qnaPk);
+	}
+		
 //	문의 등록
 	@Override
 	public void qnaInsert(QnaDto qna) throws Exception {
 		cusMapper.qnaInsert(qna);
 	}
 	
+//	문의 답변하기(관리자)
+	@Override
+	public void answerUpdate(QnaDto qna) throws Exception {
+		cusMapper.answerUpdate(qna);
+	}
+	
 //	주문하기 - 상품정보 불러오기
 	@Override
-	public List<ProductDto> orderProduct(int orderPk) throws Exception {
-		List<ProductDto> list = cusMapper.orderProduct(orderPk);
+	public List<ProductDto> orderProduct(int customerPk) throws Exception {
+		List<ProductDto> list = cusMapper.orderProduct(customerPk);
 		
 		return list;
 	}
@@ -71,19 +87,60 @@ public class CustomerServiceImpl implements CustomerService {
 	@Override
 	public void orderInsert(OrdersDto order) throws Exception {
 		cusMapper.orderInsert(order);
+		cusMapper.orderDetailUpdate(order);
 	}
-	
+		
 //	장바구니에 담기
 	@Override
 	public void cartInsert(OrdersDto cart) throws Exception {
 		cusMapper.cartInsert(cart);
 	}
 	
-//	리뷰작성하기
+//	장바구니 불러오기
 	@Override
-	public void ReviewWrite(ReviewDto reviewWri) throws Exception {
-		cusMapper.ReviewWrite(reviewWri);
+	public List<ProductDto> cartList(int customerPk) throws Exception {
+		List<ProductDto> list = cusMapper.cartList(customerPk);
+		
+		return list;
 	}
 	
-
+//	마이페이지 - 주문내역
+	@Override
+	public List<OrdersDto> myPageOrder(int customerPk) throws Exception {
+		List<OrdersDto> list = cusMapper.myPageOrder(customerPk);
+		
+		return list;
+	}
+		
+//	상단 카테고리별 페이지 조회
+	// 밀키트
+	@Override
+	public List<ProductInfoDto> p1BoardDetail() throws Exception {
+		return cusMapper.p1BoardDetail();
+	}
+	
+	// 농수산물
+	@Override
+	public List<ProductInfoDto> p2BoardDetail() throws Exception {
+		return cusMapper.p2BoardDetail();
+	}
+	
+	// 축산물
+	@Override
+	public List<ProductInfoDto> p3BoardDetail() throws Exception {
+		return cusMapper.p3BoardDetail();
+	}
+	
+	// 식품
+	@Override
+	public List<ProductInfoDto> p4BoardDetail() throws Exception {
+		return cusMapper.p4BoardDetail();
+	}
+	
+	// 기타
+	@Override
+	public List<ProductInfoDto> p5BoardDetail() throws Exception {
+		return cusMapper.p5BoardDetail();
+	}
+	
 }

@@ -9,23 +9,23 @@
             <thead>
                 <tr>
                 <th></th>
-                <th>상품이름</th>
+                <th>상품명</th>
+                <th id="th3" scope="col">가게이름</th>
                 <th id="th2" scope="col">가격</th>
-                <th id="th3" scope="col">가게이름</th>
-                <th id="th3" scope="col">배송비</th>
-                <th id="th3" scope="col">가게이름</th>
+                <th id="th3" scope="col">수량</th>
+                <th id="th3" scope="col">총합계</th>
                 </tr>
             </thead>
             <tbody>
-                <tr v-for="item in orderProducts" v-bind:key="item.orderPk">
+                <tr v-for="item in cartLists" v-bind:key="item.customerPk">
                     <th id="th1" scope="row">
                         <img id="myimg" src="../assets/cherry.jpeg">
                     </th>
                     <td>{{ item.productName }}</td>
-                    <td>{{ item.productPrice }}</td>
                     <td>{{ item.productStore }}</td>
-                    <td>2500</td>
-                    <td>{{ item.productPrice }}</td>
+                    <td>{{ item.productPrice }}원</td>
+                    <td>{{ item.orderCnt }} </td>
+                    <td>{{ item.orderSum }}원</td>
                 </tr>
             </tbody>
         </table>
@@ -117,7 +117,21 @@
                         </div>
                         </div>
                         <div class="col-sm">
-                            <p><b>결제금액</b></p>
+                            <p><b>결제상세</b></p>
+                            <div class="row">
+                                <div class="col">상품금액</div> 
+                                <div class="col">{{ totalAdd() }}원</div>
+                            </div>
+                            <div class="row">
+                                <div class="col">배송비</div> 
+                                <div class="col">2500원</div> 
+                            </div>
+                            <hr>
+                            <div class="row">
+                            <div class="col"><h5>총 결제금액</h5></div>
+                            <div class="col"><h5>{{ totalAddDelivery() }}원</h5></div>
+                            </div>
+                            
                         </div>
                     </div>
                 </div>
@@ -140,7 +154,10 @@ export default {
             orderName: "",
             orderPhone: "",
             orderDate: "",
+            totalPrice: "",
+            totalPriceDelivery: "",
             orderProducts: [],
+            cartLists: [],
             } 
     }, 
     methods: {
@@ -189,7 +206,6 @@ export default {
         },
         orderInsert() {
             let obj = this;
-
             obj.$axios.post('http://localhost:9000/orderInsert', {
                 orderName: this.orderName,
                 orderPhone: this.orderPhone,
@@ -197,7 +213,9 @@ export default {
                 addr1: this.addr1,
                 addr2: this.addr2,
                 orderDate: this.orderDate,
-                orderAsk: this.orderAsk
+                orderAsk: this.orderAsk,
+                totalPrice: this.totalPrice,
+                totalPriceDelivery: this.totalPriceDelivery,
             })
             .then(function() {
                 console.log('비동기 통신 성공');
@@ -208,20 +226,39 @@ export default {
                 console.log(err);
             });
         },
+        totalAdd() {
+            let total = 0;
+            if (this.cartLists.length > 0) {
+                for (let i = 0; i < this.cartLists.length; i++) {
+                    total += this.cartLists[i].orderSum;
+                }
+            }
+            this.totalPrice = total;
+            return this.totalPrice;
+        },
+        totalAddDelivery() {
+            let total = 0;
+            if (this.cartLists.length > 0) {
+                for (let i = 0; i < this.cartLists.length; i++) {
+                    total += this.cartLists[i].orderSum;
+                }
+            }
+            this.totalPriceDelivery = total + 2500;
+            return this.totalPriceDelivery;
+        }
     },
     mounted() {
         let obj = this;
-        // obj.seq = obj.$route.query.seq;
 
         obj.$axios
-            .get("http://localhost:9000/orderProduct", {
+            .get("http://localhost:9000/cartList", {
                 params: {
-                    orderPk: 1, // 상품 코드 입력부분이 현재 개발되지 않음
+                    customerPk: 1, // 상품 코드 입력부분이 현재 개발되지 않음
                 },
             })
             .then(function (res) {
                 console.log("axios로 비동기 통신 성공");
-                obj.orderProducts = res.data;
+                obj.cartLists = res.data;
             })
             .catch(function (err) {
                 console.log("axios 비동기 통신 오류");

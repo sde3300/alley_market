@@ -3,14 +3,15 @@
         <div class="container">
             <div class="container-sm">
                 <div class="row" style="margin-bottom: 50px">
-                    <div class="col-6" id="detailPic">
+                    <div class="col-6" id="detailPic" >
                         <img
-                            src="https://shop.hansalim.or.kr/im/is/activeDesigner/050307006_content1.jpg"
+                            v-bind:src="storedFilePath"
                             class="rounded float-left"
-                            alt="..."
+                            alt="http://localhost:9000/#/에서 확인"
                             width="500px"
                             height="400px"
                         />
+                        
                     </div>
 
                     <div class="col-6" id = "detailText">
@@ -359,9 +360,9 @@ export default {
                 query: { productPk: productPk },
             });
         },
-        moveCart(productPk) {
+        insertCart(productPk) {
             this.$router.push({
-                name: "CartCartList",
+                name: "CartList",
                 query: { productPk: productPk },
             });
         },
@@ -422,8 +423,15 @@ export default {
             this.orderCnt ++ ;
         },
         priceDel() {
-            this.orderSum -= this.productPrice;
             this.orderCnt -- ;
+
+            if (this.orderCnt < 0) {
+                this.orderCnt = 0;
+                this.orderSum = 0;
+            }
+            else {
+                this.orderSum -= this.productPrice;
+            }
         },
     },
 
@@ -445,6 +453,10 @@ export default {
                 obj.productStockCnt = res.data.productStockCnt;
                 obj.productStore = res.data.productStore;
                 obj.productDetail = res.data.productDetail;
+                //혜수추가
+                obj.storedFilePath = res.data.storedFilePath;
+                obj.originalFileName = res.data.originalFileName;
+
             })
             .catch(function(err) {
                 console.log("axios 비동기 통신 오류");
@@ -465,8 +477,7 @@ export default {
                 console.log(err);
             });
 
-        obj.$axios
-            .get("http://localhost:9000/qnaRead", {
+        obj.$axios.get("http://localhost:9000/qnaRead", {
                 params: {
                     productPk: obj.productPk,
                 },

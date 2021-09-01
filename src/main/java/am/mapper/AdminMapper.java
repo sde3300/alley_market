@@ -10,6 +10,7 @@ import am.dto.NoticeDto;
 import am.dto.OrdersDto;
 import am.dto.ProductDto;
 import am.dto.ProductFileDto;
+import am.dto.QnaDto;
 
 @Mapper
 public interface AdminMapper {
@@ -48,6 +49,7 @@ public interface AdminMapper {
 //	상품정보 이미지 넣기
 	void productFileInsert(List<ProductFileDto> files) throws Exception;
 
-
+//	관리자 문의리스트 불러오기
+	List<QnaDto> qnaList() throws Exception;
 	
 }

@@ -13,6 +13,7 @@ import am.dto.NoticeDto;
 import am.dto.OrdersDto;
 import am.dto.ProductDto;
 import am.dto.ProductFileDto;
+import am.dto.QnaDto;
 import am.mapper.AdminMapper;
 
 @Service
@@ -84,4 +85,9 @@ public class AdminServiceImpl implements AdminService{
 		}
 	}
 	
+//	관리자 문의리스트 불러오기
+	@Override
+	public List<QnaDto> qnaList() throws Exception {
+		return adMapper.qnaList();
+	}
 }

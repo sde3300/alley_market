@@ -1,6 +1,7 @@
 <template>
     <div class="header">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <!-- <span style="font-size: 1.5em;"><i class="fas fa-truck" v-on:click="moveMain"></i></span> <a class="navbar-brand" href="#" v-on:click="moveMain"> 골목시장</a> -->
         <span style="font-size: 1.5em;"><router-link to="/" id="routerlink"><i class="fas fa-truck"> 골목시장</i></router-link></span> 
         <!-- <a class="navbar-brand" href="#"> 골목시장</a> -->
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -37,28 +38,30 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">전체상품 <span class="sr-only">(current)</span></a>
+                    <!-- <a class="nav-link" href="#" v-on:click="moveMain">전체상품 <span class="sr-only">(current)</span></a> -->
+                    <a class="nav-link" href="#/">전체상품 <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">밀키트</a>
+                    <a class="nav-link" href="#/p1board">밀키트</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">농/수산물</a>
+                    <a class="nav-link" href="#/p2board">농/수산물</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">축산물</a>
+                    <a class="nav-link" href="#/p3board">축산물</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">식품</a>
+                    <a class="nav-link" href="#/p4board">식품</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">기타</a>
+                    <a class="nav-link" href="#/p5board">기타</a>
                 </li>
             </ul>
             <form class="form-inline my-2 my-lg-0">
                 <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                <span style="font-size: 1.5em; ">
+                &nbsp; &nbsp; &nbsp;
+                <span style="font-size: 2em; ">
                     <i id="cart" class="fas fa-shopping-cart" href="#" v-on:click="moveCart"></i>
                 </span>
             </form>
