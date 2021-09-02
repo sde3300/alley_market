@@ -261,6 +261,60 @@
             ]]>
       </select>
 
+
+      
+      <!-- 0831 혜수 : 상단 카테고리별 페이지 조회-->
+      <!-- 밀키트 p1board-->
+      <select id="p1BoardDetail" resultType="am.dto.ProductInfoDto">
+            <![CDATA[
+            SELECT
+               a.product_pk, a.product_category_pk, a.product_name, a.product_price, 
+               b.original_file_name, b.stored_file_path
+               FROM
+                  product as a
+               JOIN
+                  product_file as b
+               ON
+                  a.product_pk = b.idx
+             AND 
+               a.product_category_pk = "p1"
+            ]]>
+      </select>
+      
+      <!-- 농/수산물 p2board-->
+      <select id="p2BoardDetail" resultType="am.dto.ProductInfoDto">
+            <![CDATA[
+            SELECT
+               a.product_pk, a.product_category_pk, a.product_name, a.product_price, 
+               b.original_file_name, b.stored_file_path
+               FROM
+                  product as a
+               JOIN
+                  product_file as b
+               ON
+                  a.product_pk = b.idx
+             AND 
+               a.product_category_pk = "p2"
+            ]]>
+      </select>
+      
+      <!-- 축산물 p3board-->
+      <select id="p3BoardDetail" resultType="am.dto.ProductInfoDto">
+            <![CDATA[
+            SELECT
+               a.product_pk, a.product_category_pk, a.product_name, a.product_price, 
+               b.original_file_name, b.stored_file_path
+               FROM
+                  product as a
+               JOIN
+                  product_file as b
+               ON
+                  a.product_pk = b.idx
+             AND 
+               a.product_category_pk = "p3"
+            ]]>
+      </select>
+
       <!-- 식품 p4board-->
       <select id="p4BoardDetail" resultType="am.dto.ProductInfoDto">
             <![CDATA[

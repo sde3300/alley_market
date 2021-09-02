@@ -41,7 +41,6 @@ public interface AdminService {
 //	상품정보 등록하기
 	void ProductInsert(ProductDto productIn, MultipartHttpServletRequest mgsr) throws Exception;
 
-<<<<<<< HEAD
 //	상품이미지 등록하기
 //	void insertBoardImg(ProductDto imgin, MultipartHttpServletRequest mhsr) throws Exception;
 
@@ -49,8 +48,6 @@ public interface AdminService {
 	//페이징 서비스 : 회원정보
 	 public Page<CustomersDto> getEmpName(int pageNo) throws Exception;
 
-=======
->>>>>>> origin/정민_테스트
 //	관리자 문의리스트 불러오기
 	List<QnaDto> qnaList() throws Exception;
 	
