@@ -36,7 +36,8 @@
 		</select>
 		
 		<!-- 공지사항 작성 페이지-->
-		<insert id="NoticeWrite" parameterType="am.dto.NoticeDto">
+		<insert id="NoticeWrite" parameterType="am.dto.NoticeDto"
+		useGeneratedKeys="true" keyProperty="noticePk" keyColumn="notice_pk">
 		<![CDATA[ 
 	      
 	         INSERT INTO
@@ -48,19 +49,38 @@
       	]]>
 		</insert>
 		
+		<!-- 이미지 등록 페이지-->
+		<insert id="boardImageInsert" parameterType="am.dto.BoardFileDto">
+			<![CDATA[
+				INSERT INTO
+					board_file (board_category_pk, review_pk, notice_pk, qna_pk, original_file_name, stored_file_path, create_date)
+				VALUES
+			]]>
+			<foreach collection="list" item="item" separator=",">
+				(
+					#{item.boardCategoryPk},
+					#{item.reviewPk},
+					#{item.noticePk},
+					#{item.qnaPk},
+					#{item.originalFileName},
+					#{item.storedFilePath},
+					NOW()
+				)
+			</foreach>
+		</insert>
+		
 		<!-- 공지사항 상세내용 페이지-->
 		<select id="NoticeDetail" parameterType="int" resultType="am.dto.NoticeDto">
 		<![CDATA[
 		
-	         SELECT
-	            notice_pk, notice_title, create_id, notice_contents,
-	            DATE_FORMAT(create_date, '%Y.%m.%d %H:%i:%s') AS create_date
-	         FROM
-	            notice
-	         WHERE
-	            notice_pk = #{noticePk}
-	         ORDER BY
-	            notice_pk asc
+	            SELECT 
+				a.notice_pk, a.notice_title, a.notice_contents, a.create_id, b.stored_file_path
+			FROM 
+				notice as a
+			JOIN 
+				board_file as b
+			ON 
+				a.notice_pk = b.notice_pk
 			
 			]]>
 		</select>

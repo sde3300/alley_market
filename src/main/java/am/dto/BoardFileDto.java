@@ -6,9 +6,11 @@ import lombok.Data;
 public class BoardFileDto {
 	private int idx;
 	private String boardCategoryPk;
-	private int boardIdx;
 	private String originalFileName;
 	private String storedFilePath;
-	private String createId;
+//	private String createId;
 	private String createDate;
+	private int noticePk;
+	private int reviewPk;
+	private int qnaPk;
 }

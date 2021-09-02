@@ -10,7 +10,9 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 
+import am.common.AmBoardFileUtils;
 import am.common.AmFileUtils;
+import am.dto.BoardFileDto;
 import am.dto.CustomersDto;
 import am.dto.NoticeDto;
 import am.dto.OrdersDto;
@@ -27,6 +29,9 @@ public class AdminServiceImpl implements AdminService{
 	
 	@Autowired
 	private AmFileUtils amFileUtils;
+	
+	@Autowired
+	private AmBoardFileUtils amboardFileUtils;
 	
 //	관리자 메인페이지 불러오기
 	@Override
@@ -62,8 +67,13 @@ public class AdminServiceImpl implements AdminService{
 	
 //	공지사항 작성하기
 	@Override
-	public void NoticeWrite(NoticeDto notice) throws Exception {
+	public void NoticeWrite(NoticeDto notice, MultipartHttpServletRequest mhsr) throws Exception {
 		adMapper.NoticeWrite(notice);
+		List<BoardFileDto> list = amboardFileUtils.parseFileInfo(notice.getBoardCategoryPk(), notice.getNoticePk(), mhsr);
+		
+		if (CollectionUtils.isEmpty(list) == false) {
+			adMapper.boardImageInsert(list);
+		}
 	}
 	
 //	공지사항 상세내용 확인하기

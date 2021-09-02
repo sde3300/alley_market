@@ -1,5 +1,7 @@
 package am.dto;
 
+import java.util.List;
+
 import lombok.Data;
 
 @Data
@@ -11,5 +13,7 @@ public class NoticeDto {
 	private String createId;
 	private String createDate;
 	private String updateDate;
+	private List<BoardFileDto> fileList;
+	private String storedFilePath;
 	
 }

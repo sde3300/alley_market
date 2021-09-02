@@ -28,7 +28,7 @@
 
             <!-- 글쓰기 버튼  -->
             <div class="row">
-                <button type="button" class="btn btn-dark col-sm-1 ml-auto" id="btnmodi" v-on:click="moveNoticeWrite">글쓰기</button>
+                <button type="button" class="btn btn col-sm-1 ml-auto" id="btnmodi" v-on:click="moveNoticeWrite">글쓰기</button>
             </div>
             <!-- 0902 : 페이징 -->
                 <nav aria-label="Page navigation example">
