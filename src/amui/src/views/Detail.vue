@@ -1,17 +1,16 @@
 <template>
-    <section class="container text-center">
+    <section class="container text-center" id="likejumbotron">
         <div class="container">
             <div class="container-sm">
                 <div class="row" style="margin-bottom: 50px">
-                    <div class="col-6" id="detailPic" >
+                    <div class="col-6" id="detailPic">
                         <img
-                            v-bind:src="storedFilePath"
+                            src="https://shop.hansalim.or.kr/im/is/activeDesigner/050307006_content1.jpg"
                             class="rounded float-left"
-                            alt="http://localhost:9000/#/에서 확인"
+                            alt="..."
                             width="500px"
                             height="400px"
                         />
-                        
                     </div>
 
                     <div class="col-6" id = "detailText">
@@ -96,8 +95,8 @@
                                 <!-- 찜하기 버튼? 모달창?-->
                                 </div>
                                 <div class="" style="margin:auto">
-                                    <button type="button" class="btn btn-success btn-lg" v-on:click="cartInsert" style="margin-right:10px">장바구니</button>
-                                    <button type="button" class="btn btn-danger btn-lg" v-on:click="moveOrder">주문하기</button>
+                                    <button type="button" class="btn btn btn-lg" v-on:click="cartInsert" style="margin-right:10px" id="btnRe">장바구니</button>
+                                    <button type="button" class="btn btn btn-lg" v-on:click="moveOrder" id="btndel">주문하기</button>
                                 </div>
                             </div>
                     </div>
@@ -126,7 +125,7 @@
 
             <!-- 이용 후기 -->
             <div class="table-responsive" id="reviews">
-                <div class="container text-left">
+                <div class="container text-left" id="likejumbotron">
                     <h1><b>이용후기</b></h1>
                     <br />물품 이용 후 1개월 이내에 후기를 작성할 수
                     있습니다.<br />
@@ -212,7 +211,7 @@
 
             <!-- 물품 문의 -->
             <div class="table-responsive" id="qna">
-                <div class="container text-left">
+                <div class="container text-left" id="likejumbotron">
                     <h1><b>물품문의</b></h1>
                     <br />
                     <h5>
@@ -360,9 +359,9 @@ export default {
                 query: { productPk: productPk },
             });
         },
-        insertCart(productPk) {
+        moveCart(productPk) {
             this.$router.push({
-                name: "CartList",
+                name: "CartCartList",
                 query: { productPk: productPk },
             });
         },
@@ -423,15 +422,8 @@ export default {
             this.orderCnt ++ ;
         },
         priceDel() {
+            this.orderSum -= this.productPrice;
             this.orderCnt -- ;
-
-            if (this.orderCnt < 0) {
-                this.orderCnt = 0;
-                this.orderSum = 0;
-            }
-            else {
-                this.orderSum -= this.productPrice;
-            }
         },
     },
 
@@ -453,10 +445,6 @@ export default {
                 obj.productStockCnt = res.data.productStockCnt;
                 obj.productStore = res.data.productStore;
                 obj.productDetail = res.data.productDetail;
-                //혜수추가
-                obj.storedFilePath = res.data.storedFilePath;
-                obj.originalFileName = res.data.originalFileName;
-
             })
             .catch(function(err) {
                 console.log("axios 비동기 통신 오류");
@@ -477,7 +465,8 @@ export default {
                 console.log(err);
             });
 
-        obj.$axios.get("http://localhost:9000/qnaRead", {
+        obj.$axios
+            .get("http://localhost:9000/qnaRead", {
                 params: {
                     productPk: obj.productPk,
                 },
@@ -518,6 +507,13 @@ export default {
     text-decoration: none;
     text-decoration-color: aliceblue;
     text-decoration: underline none;
+}
+#likejumbotron {
+    padding:2rem 1rem;
+    margin-bottom:2rem;
+    border-radius:.3rem
+
+
 }
 </style>
 

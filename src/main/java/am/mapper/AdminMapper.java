@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
+import am.dto.BoardFileDto;
 import am.dto.CustomersDto;
 import am.dto.NoticeDto;
 import am.dto.OrdersDto;
@@ -27,6 +28,9 @@ public interface AdminMapper {
 
 //	공지사항 작성하기
 	void NoticeWrite(NoticeDto notice) throws Exception;
+	
+//	공지사항 이미지 넣기
+	void boardImageInsert(List<BoardFileDto> files) throws Exception;
 
 //	공지사항 상세내용 확인하기
 	NoticeDto NoticeDetail(int noticePk) throws Exception;

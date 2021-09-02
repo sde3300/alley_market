@@ -22,14 +22,18 @@
                 <div class="form-group row">
                     <label for="text" class="col-sm-2 col-form-label">내용</label>
                     <div class="col-sm-10">
-                        <textarea class="form-control-plaintext" id="exampleFormControlTextarea1"  rows="8" v-model="noticeContents"></textarea>
+                        <textarea class="form-control-plaintext" id="exampleFormControlTextarea1"  rows="8" v-model="noticeContents">
+                        </textarea>
+                        <div>
+                            <img alt="Thumbnail [100%x225]" data-holder-rendered="true" v-bind:src="storedFilePath" style="height: 200px; width: 200px; display: block">
+                        </div>
                     </div>
                 </div>
 
-                <div class="form-group row">
+                <!-- <div class="form-group row">
                 <label for="text" class="col-sm-2 col-form-label">첨부파일</label>
                 <input type="file" class="form-control-file col" id="exampleFormControlFile1">
-                </div>
+                </div> -->
 
                 <div class="row ">
                     <button type="button" class="btn btn col-sm-1 ml-auto" id="btnList" v-on:click="moveNoticeList">목록으로</button>
@@ -51,7 +55,8 @@ export default {
             noticeTitle:'',
             createDate:'',
             createId:'yoo',
-            noticeContents:''
+            noticeContents:'',
+            storedFilePath:''
         }
     },
     methods: {
@@ -64,7 +69,8 @@ export default {
                 noticePk: this.noticePk,
                 noticeTitle: this.noticeTitle,
                 noticeContents: this.noticeContents,
-                createId: this.createId
+                createId: this.createId,
+                storedFilePath: this.storedFilePath
             })
             .then(function() {
                 console.log('비동기 통신 성공');
@@ -111,6 +117,7 @@ export default {
             obj.createId = res.data.createId;
             obj.noticeTitle = res.data.noticeTitle;
             obj.noticeContents = res.data.noticeContents;
+            obj.storedFilePath = res.data.storedFilePath;
 
         })
         .catch(function(err) {

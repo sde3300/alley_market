@@ -137,7 +137,7 @@
 
                 <!-- 포토앨범 -->
                 <div class="row">
-                    <div
+                    <div @click="productDetail" id="photoAlbum"
                         class="card mb-4 box-shadow"
                         v-for="item in items"
                         v-bind:key="item.productPk"
@@ -251,5 +251,8 @@ export default {
 .carousel-item img {
     max-height: 90vh;
     min-height: 50vh;
+}
+#photoAlbum:hover {
+    border-inline: 6px solid rgb(255, 251, 215);
 }
 </style>

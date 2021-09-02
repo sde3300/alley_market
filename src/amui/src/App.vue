@@ -64,4 +64,12 @@ export default {
     color: white;
     border-radius: 50px;
 }
+* {
+  /* font-family: 'Jua', sans-serif; */
+  /* font-family: 'Do Hyeon', sans-serif; */
+  /* font-family: 'IBM Plex Sans KR', sans-serif; */
+  /* font-family: 'Noto Sans KR', sans-serif; */
+  /* font-family: 'Nanum Gothic', sans-serif; */
+  font-family: 'IBM Plex Sans KR', sans-serif;
+}
 </style>

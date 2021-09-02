@@ -22,7 +22,7 @@ public interface AdminService {
 	List<NoticeDto> SelectNoticeBoardList() throws Exception;
 
 //	공지사항 작성하기
-	void NoticeWrite(NoticeDto notice) throws Exception;
+	void NoticeWrite(NoticeDto notice, MultipartHttpServletRequest mgsr) throws Exception;
 
 //	공지사항 상세내용 확인하기
 	NoticeDto NoticeDetail(int noticePk) throws Exception;
