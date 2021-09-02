@@ -1,5 +1,5 @@
 <template>
-    <section class="jumbotron text-center">
+    <section class="container text-center">
         <div class="container">
             <div class="container-sm">
                 <div class="row" style="margin-bottom: 50px">
@@ -126,7 +126,7 @@
 
             <!-- 이용 후기 -->
             <div class="table-responsive" id="reviews">
-                <div class="jumbotron text-left">
+                <div class="container text-left">
                     <h1><b>이용후기</b></h1>
                     <br />물품 이용 후 1개월 이내에 후기를 작성할 수
                     있습니다.<br />
@@ -212,7 +212,7 @@
 
             <!-- 물품 문의 -->
             <div class="table-responsive" id="qna">
-                <div class="jumbotron text-left">
+                <div class="container text-left">
                     <h1><b>물품문의</b></h1>
                     <br />
                     <h5>
