@@ -34,16 +34,30 @@ public class AdminServiceImpl implements AdminService{
 		return adMapper.adminMainPage();
 	}
 	
-//	회원관리 페이지 불러오기
-	@Override
-	public List<CustomersDto> SelectCustomerList() throws Exception {
-		return adMapper.SelectCustomerList();
-	}
+////	회원관리 페이지 불러오기(수정전)
+//	@Override
+//	public List<CustomersDto> SelectCustomerList() throws Exception {
+//		return adMapper.SelectCustomerList();
+//	}
+
+	//회원관리 페이지 불러오기에 페이징추가
+	 @Override
+	 public Page<CustomersDto> getCusList(int pageNo) throws Exception {
+	     PageHelper.startPage(pageNo, 3);
+	     return adMapper.SelectCustomerList();
+	 }	
 	
-//	공지사항 리스트 불러오기
+////	공지사항 리스트 불러오기(수정전)
+//	@Override
+//	public List<NoticeDto> SelectNoticeBoardList() throws Exception {
+//		return adMapper.SelectNoticeBoardList();
+//	}
+	
+//	공지사항 리스트 불러오기에 페이징 추가
 	@Override
-	public List<NoticeDto> SelectNoticeBoardList() throws Exception {
-		return adMapper.SelectNoticeBoardList();
+	public Page<NoticeDto> getNotiList(int pageNo) throws Exception {
+	     PageHelper.startPage(pageNo, 3);
+	     return adMapper.SelectNoticeBoardList();	
 	}
 	
 //	공지사항 작성하기
@@ -70,10 +84,17 @@ public class AdminServiceImpl implements AdminService{
 		adMapper.noticeDelete(noticePk);
 	  }
 	
-//	상품재고 목록 확인하기
+//	상품재고 목록 확인하기(수정전)
+//	@Override
+//	public List<ProductDto> SelectStockList(int boardIdx) throws Exception {
+//		return adMapper.SelectStockList(boardIdx);
+//	}
+	
+//	상품재고 목록 확인하기 + 페이징추가
 	@Override
-	public List<ProductDto> SelectStockList(int boardIdx) throws Exception {
-		return adMapper.SelectStockList(boardIdx);
+	public Page<ProductDto> SelectStockList(int pageNo) throws Exception {
+	     PageHelper.startPage(pageNo, 3);
+		return adMapper.SelectStockList();
 	}
 	
 //	상품정보 + 이미지 등록하기 + 재고에 productPk 추가하기
@@ -88,16 +109,16 @@ public class AdminServiceImpl implements AdminService{
 		}
 	}
 	
-	//페이징테스트
-
-	   @Override
-	   public Page<CustomersDto> getEmpName(int pageNo) throws Exception {
-	      PageHelper.startPage(pageNo, 10);
-	        return (Page<CustomersDto>) adMapper.SelectCustomerList();
-	   }
-//	관리자 문의리스트 불러오기
+//	관리자 문의리스트 불러오기(수정전)
+//	@Override
+//	public List<QnaDto> qnaList() throws Exception {
+//		return adMapper.qnaList();
+//	}
+	
+//	관리자 문의리스트 불러오기 + 페이징추가
 	@Override
-	public List<QnaDto> qnaList() throws Exception {
-		return adMapper.qnaList();
+	public Page<QnaDto> getqnaList(int pageNo) throws Exception {
+	     PageHelper.startPage(pageNo, 3);
+		return adMapper.SelectqnaList();
 	}
 }

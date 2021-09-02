@@ -24,6 +24,11 @@ public class ProductDto {
 	private int orderSum;
 	private int customerPk;
 	
+//혜수추가(장바구니, 마이페이지용)
+	
+	private String originalFileName;
+	private String storedFilePath;
+	
 	
 
 }

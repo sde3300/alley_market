@@ -18,7 +18,14 @@
             <tbody>
                 <tr v-for="item in myPageOrders" v-bind:key="item.orderPk">
                     <th id="th1" scope="row">
-                        <img id="myimg" src="../assets/cherry.jpeg">
+                        <!--210902 사진불러오기 추가 -->
+                        <img
+                            id="myimg"
+                            alt="localhost9000으로확인"
+                            style=""
+                            v-bind:src="item.storedFilePath"
+                            data-holder-rendered="true"
+                        />
                     </th>
                     <td>{{ item.productName }}</td>
                     <td>{{ item.productStore }}</td>

@@ -20,7 +20,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr v-for="item in qnas" v-bind:key="item.qnaPk">
+                    <tr v-for="item in items" v-bind:key="item.qnaPk">
                         <td>{{ item.qnaPk}}</td>
                         <td>{{ item.productName }}</td>
                         <td>
@@ -43,56 +43,106 @@
                 </tbody>
             </table>
 
-            <!-- 페이징 -->
-            <nav aria-label="Page navigation example">
-                <ul class="pagination" style="justify-content: center;">
-                    <li class="page-item">
-                    <a class="page-link" href="#" aria-label="Previous">
-                        <span aria-hidden="true">&laquo;</span>
-                    </a>
-                    </li>
-                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item">
-                    <a class="page-link" href="#" aria-label="Next">
-                        <span aria-hidden="true">&raquo;</span>
-                    </a>
-                    </li>
-                </ul>
-            </nav>
+            <!-- 0902 : 페이징 -->
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination" style="justify-content: center;">
+                        <!-- 이전으로 --> 
+                        <li class="page-item">
+                            <a class="page-link" href="#" aria-label="Previous" v-on:click="paging(prePage)">         
+                                <span aria-hidden="true">&laquo;</span>
+                                <span class="sr-only">Previous</span>
+                            </a> 
+                        </li>
+                            <!-- 숫자 --> 
+                            <li class="page-item" v-for="(item, index) in navigatepageNums" v-bind:key="item.index">
+                                <a class="page-link" href="#" v-on:click="paging(navigatepageNums[index])">{{navigatepageNums[index]}}</a>
+                            </li>
+                        <!-- 다음으로 --> 
+                        <li class="page-item" >
+                            <a class="page-link" href="#" aria-label="Previous" v-on:click="paging(nextPage)">         
+                                <span aria-hidden="true">&raquo;</span>
+                                <span class="sr-only">Next</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
 
         </div>
     </div>
 </template>
 
 <script>
+
 export default {
     data() {
         return {
-            productName: "",
-            qnas: []
-        }
-    },
-    methods: {
-        answerUpdate(qnaPk) {
-            this.$router.push({ name: 'QnAWrite', query: { qnaPk: qnaPk }});
+                        productName: "",
+            items: [],
+            navigatepageNums: [],
+            prePage: 0,
+            nextPage: 0,
+                    }
         },
-    },
+
     mounted() {
         let obj = this;
-
-        obj.$axios.get("http://localhost:9000/qnaList")
+        this.$axios.get("http://localhost:9000/qnaList")
         .then(function(res) {
             console.log("axios로 비동기 통신 성공");
-            obj.qnas = res.data;
+                    obj.items = res.data.list;
+                    obj.navigatepageNums = res.data.navigatepageNums
+                    obj.nextPage = res.data.nextPage
+                    obj.pageNum = res.data.pageNum
+                    obj.prePage = res.data.prePage
         })
         .catch(function(err) {
             console.log("axios 비동기 통신 오류");
             console.log(err);
         });
     },
-    
+        methods: {
+            answerUpdate(qnaPk) {
+            this.$router.push({ 
+                name: 'QnAWrite', 
+                query: { qnaPk: qnaPk 
+                }});
+        },
+            paging(pageNum) {
+            let obj = this;
+            this.$axios.get("http://localhost:9000/qnaList", {
+                params: {
+                    pageNum: pageNum
+                }
+            })
+            .then(function(res) {
+            console.log("axios로 비동기 통신 성공");
+            // obj.items = res.data;
+            obj.items = res.data.list;
+            obj.endRow = res.data.endRow;
+            obj.hasNextPage = res.data.hasNextPage;
+            obj.hasPreviousPage = res.data.hasPreviousPage
+            obj.isFirstPage = res.data.isFirstPage
+            obj.isLastPage = res.data.isLastPage
+            obj.navigateFirstPage = res.data.navigateFirstPage
+            obj.navigateLastPage = res.data.navigateLastPage
+            obj.navigatePages = res.data.navigatePages
+            obj.navigatepageNums = res.data.navigatepageNums
+            obj.nextPage = res.data.nextPage
+            obj.pageNum = res.data.pageNum
+            obj.pageSize = res.data.pageSize
+            obj.pages = res.data.pages
+            obj.prePage = res.data.prePage
+            obj.size = res.data.size
+            obj.startRow = res.data.startRow
+            obj.total = res.data.total
+            
+        })
+        .catch(function(err) {
+            console.log("axios 비동기 통신 오류");
+            console.log(err);
+        });
+    },
+    },
 }
 </script>
 

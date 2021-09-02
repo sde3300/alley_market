@@ -19,7 +19,13 @@
             <tbody>
                 <tr v-for="item in cartLists" v-bind:key="item.customerPk">
                     <td class="column-1">
-                        <img id="myimg" src="../assets/cherry.jpeg">
+                        <img
+                            id="myimg"
+                            alt="localhost9000으로확인"
+                            style=""
+                            v-bind:src="item.storedFilePath"
+                            data-holder-rendered="true"
+                        />
                         <!-- <div class="cart-img-product" @click="delItem(item.id)">
                             <img :src="item.image" alt="IMG-PRODUCT">
                             데이터 연결 후, 클릭하면 장바구니에서 아이템이 삭제되도록

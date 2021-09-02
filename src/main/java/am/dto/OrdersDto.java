@@ -19,4 +19,7 @@ public class OrdersDto {
 	private String productName;
 	private String productStore;
 	private int productPrice;
+	
+	private String originalFileName;
+	private String storedFilePath;
 }

@@ -31,7 +31,7 @@ dependencies {
 	
 	//0901 혜수 : 페이징테스트
 	// https://mvnrepository.com/artifact/com.github.pagehelper/pagehelper-spring-boot-starter
-	implementation group: 'com.github.pagehelper', name: 'pagehelper-spring-boot-starter', version: '1.3.1'
+	implementation 'com.github.pagehelper:pagehelper-spring-boot-starter:1.3.1'
 	
 	//정민
 	//multifile사용으로 파일업로드 위해서 설치

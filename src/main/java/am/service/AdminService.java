@@ -17,11 +17,17 @@ public interface AdminService {
 //	관리자 메인페이지 불러오기
 	List<OrdersDto> adminMainPage() throws Exception;
 
-//	회원관리 페이지 불러오기
-	List<CustomersDto> SelectCustomerList() throws Exception;
+//	회원관리 페이지 불러오기 (수정전)
+//	List<CustomersDto> SelectCustomerList() throws Exception;
 
-//	공지사항 리스트 불러오기
-	List<NoticeDto> SelectNoticeBoardList() throws Exception;
+//회원관리 페이지 불러오기에 페이징 추가
+	 public Page<CustomersDto> getCusList(int pageNo) throws Exception;
+
+//	공지사항 리스트 불러오기(수정전)
+//	List<NoticeDto> SelectNoticeBoardList() throws Exception;
+	
+//	공지사항 리스트 불러오기에 페이징 추가
+	public Page<NoticeDto> getNotiList(int pageNo) throws Exception;
 
 //	공지사항 작성하기
 	void NoticeWrite(NoticeDto notice) throws Exception;
@@ -35,8 +41,11 @@ public interface AdminService {
 //	공지사항 상세내용 삭제하기
 	void noticeDelete(int noticePk) throws Exception;
 
-//	상품재고 목록 확인하기
-	List<ProductDto> SelectStockList(int boardIdx) throws Exception;
+//	상품재고 목록 확인하기(수정전)
+//	List<ProductDto> SelectStockList(int boardIdx) throws Exception;
+	
+//  상품재고 목록 확인하기 + 페이징추가 
+	public Page<ProductDto> SelectStockList(int pageNo) throws Exception;
 	
 //	상품정보 등록하기
 	void ProductInsert(ProductDto productIn, MultipartHttpServletRequest mgsr) throws Exception;
@@ -44,12 +53,10 @@ public interface AdminService {
 //	상품이미지 등록하기
 //	void insertBoardImg(ProductDto imgin, MultipartHttpServletRequest mhsr) throws Exception;
 
-
-	//페이징 서비스 : 회원정보
-	 public Page<CustomersDto> getEmpName(int pageNo) throws Exception;
-
-//	관리자 문의리스트 불러오기
-	List<QnaDto> qnaList() throws Exception;
+//	관리자 문의리스트 불러오기(수정전)
+//	List<QnaDto> qnaList() throws Exception;
 	
+//	관리자 문의리스트 불러오기 + 페이징추가
+	public Page<QnaDto> getqnaList(int pageNo) throws Exception;	
 
 }
