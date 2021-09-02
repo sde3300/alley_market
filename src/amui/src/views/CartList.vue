@@ -10,13 +10,14 @@
                 <tr>
                     <th class="column-1"></th>
                     <th class="column-2">상품명</th>
+                    <th class="column-6">가게이름</th>
                     <th class="column-3">가격</th>
                     <th class="column-4">수량</th>
                     <th class="column-5">총합계</th>
                 </tr>
             </thead>
             <tbody>
-                <tr class="">
+                <tr v-for="item in cartLists" v-bind:key="item.customerPk">
                     <td class="column-1">
                         <img id="myimg" src="../assets/cherry.jpeg">
                         <!-- <div class="cart-img-product" @click="delItem(item.id)">
@@ -24,32 +25,17 @@
                             데이터 연결 후, 클릭하면 장바구니에서 아이템이 삭제되도록
                         </div> -->
                     </td>
-                    <td class="column-2">상품 이름 가져오기</td> 
-                        <!-- <td class="column-2">{{ item.title }}</td> -->
-                    <td class="column-3">상품 가격 가져오기</td>
-                        <!-- <td class="column-3">${{ item.price }}</td> -->
-                    <td class="column-4">
-                        버튼 넣고 상품 수량 증가 감소 스크립트
-                        <!-- <div >
-                            <button class="btn-num-product-down" @click="decrease(item.id)">
-                            <i class="fs-12 fa fa-minus" aria-hidden="true"></i>
-                            </button> 감소버튼
+                    <td class="column-2">{{ item.productName }}</td>
+                    <td class="column-6">{{ item.productStore }}</td>
+                    <td class="column-3">{{ item.productPrice }}원</td>
+                    <td class="column-4">{{ item.orderCnt }}</td>
+                    <td class="column-5">{{ item.orderSum }}원</td>
 
-                            수량 넣어주고
-                            <input class="size8 num-product" type="number" name="num-product1" :value="item.qty">
-
-                            <button class="btn-num-product-up " @click="increase(item.id)">
-                            <i class="fs-12 fa fa-plus" aria-hidden="true"></i>
-                            </button> 증가버튼
-                        </div> -->
-                    </td>
-                    <td class="column-5">상품 총합계 가져오기</td>
-                        <!-- <td class="column-5">${{ item.price }}</td> -->
                 </tr>
             </tbody>
         </table>
         <br>
-        <button type="button" class="btn btn-success btn-lg btn-block">구매하기</button>
+        <button type="button" class="btn btn-success btn-lg btn-block" v-on:click="moveOrder">구매하기</button>
     </div>
 </template>
 
@@ -57,15 +43,34 @@
 export default {
     data() {
         return {
-
+            cartLists: [],
         };
     },
     methods: {
-
+        moveOrder(customerPk) {
+            this.$router.push({
+                name: "Order",
+                query: { customerPk: customerPk },
+            });
+        },
     },
-    mounted: {
-        
-    },
+    mounted() {
+        let obj = this;
+        obj.seq = obj.$route.query.seq;
+        obj.$axios.get("http://localhost:9000/cartList", {
+                params: {
+                    customerPk: 1, // 상품 코드 입력부분이 현재 개발되지 않음
+                },
+            })
+            .then(function (res) {
+                console.log("axios로 비동기 통신 성공");
+                obj.cartLists = res.data;
+            })
+            .catch(function (err) {
+                console.log("axios 비동기 통신 오류");
+                console.log(err);
+            });
+    }
 };
 </script>
 

@@ -10,10 +10,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import com.github.pagehelper.PageInfo;
+
 import am.dto.CustomersDto;
 import am.dto.NoticeDto;
 import am.dto.OrdersDto;
 import am.dto.ProductDto;
+import am.dto.QnaDto;
 import am.service.AdminService;
 
 @RestController
@@ -21,9 +24,6 @@ public class AdminController {
 
 	@Autowired
 	private AdminService adService;
-	
-	
-
 	
 //	관리자 메인페이지 불러오기
 	@RequestMapping(value="/adminMain", method=RequestMethod.GET)
@@ -33,25 +33,23 @@ public class AdminController {
 		return dataList;
 	}
 	
-//	회원관리 게시판 글 확인하기
-	@RequestMapping(value="/cusManage", method=RequestMethod.GET)
-	public Object SelectCustomerList() throws Exception {
-		List<CustomersDto> cusdataList = adService.SelectCustomerList();
-		
-		return cusdataList;
-	}
+////	회원관리 게시판 글 확인하기 : 정민
+//	@RequestMapping(value="/cusManage", method=RequestMethod.GET)
+//	public Object SelectCustomerList() throws Exception {
+//		List<CustomersDto> cusdataList = adService.SelectCustomerList();
+//		
+//		return cusdataList;
+//	}
 
-	//0901 혜수 : 페이징테스트 
+	//0901 혜수 : 회원관리 게시판 글 확인 + 페이징 추가 
 
-//	    @RequestMapping("/page")
-//	    public ModelAndView page(@RequestParam(required = false, defaultValue = "1") int pageNum) throws Exception {
-//	       ModelAndView mv = new ModelAndView("cusManage");
-//
-//	        PageInfo<CustomersDto> p = new PageInfo<CustomersDto>(adService.getEmpName(pageNum), 3);
-//	        
-//	        mv.addObject("users", p);
-//	        return mv;
-//	    }
+	    @RequestMapping(value="/cusManage", method=RequestMethod.GET)
+	    public Object page(@RequestParam(required = false, defaultValue = "1") int pageNum) throws Exception {
+
+	        PageInfo<CustomersDto> cusdataList = new PageInfo<CustomersDto>(adService.getEmpName(pageNum), 3);
+	        
+	        return cusdataList;
+	    }
 	
 //	공지사항 게시판 목록 확인하기
 	@RequestMapping(value="/noticeList", method=RequestMethod.GET)
@@ -94,9 +92,9 @@ public class AdminController {
 		return stockdataList;
 	}
 	
-//	주문하기 - 상품정보 입력하기
+//	주문하기 - 상품정보 + 이미지 입력하기
 	@RequestMapping(value="/productInsert", method=RequestMethod.POST)
-	public void ProductInsert(@RequestBody ProductDto productIn, MultipartHttpServletRequest mhsr) throws Exception {
+	public void ProductInsert(ProductDto productIn, MultipartHttpServletRequest mhsr) throws Exception {
 		adService.ProductInsert(productIn, mhsr);
 	}
 	
@@ -136,5 +134,12 @@ public class AdminController {
 //	}
 	
 
-	
+//	관리자 문의리스트 불러오기
+	@RequestMapping(value="/qnaList", method=RequestMethod.GET)
+	public Object qnaList() throws Exception {
+		List<QnaDto> list = adService.qnaList();
+		
+		return list;
+	}
+
 }

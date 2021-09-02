@@ -7,66 +7,27 @@
         <table class="table">
             <thead>
                 <tr>
-                <th scope="col" colspan="2">구매목록</th>
-                <!-- <th scope="col">First</th> -->
-                <th id="th2" scope="col">판매자명</th>
-                <th id="th3" scope="col">배송비</th>
-                <th id="th4" scope="col">상품금액</th>
-                <th id="th5" scope="col"></th>
+                <th></th>
+                <th>상품명</th>
+                <th id="th3" scope="col">가게이름</th>
+                <th id="th2" scope="col">가격</th>
+                <th id="th3" scope="col">수량</th>
+                <th id="th3" scope="col">총합계</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
+                <tr v-for="item in myPageOrders" v-bind:key="item.orderPk">
                     <th id="th1" scope="row">
                         <img id="myimg" src="../assets/cherry.jpeg">
                     </th>
+                    <td>{{ item.productName }}</td>
+                    <td>{{ item.productStore }}</td>
+                    <td>{{ item.productPrice }}원</td>
+                    <td>{{ item.orderCnt }} </td>
+                    <td>{{ item.orderSum }}원</td>
                     <td>
-                        <h6>가게이름 ***</h6>
-                        <h6>상품명 ***</h6>
-                        <h6>상품상세내용 ***</h6>
-                    </td>
-                    <td>판매자명</td>
-                    <td>배송비</td>
-                    <td>상품금액</td>
-                    <td>
-                        <button type="button" class="btn btn-warning">
-                            <router-link to="/reviewWrite">리뷰작성</router-link>
-                        </button>
-                    </td>
-                </tr>
-                <tr>
-                    <th id="th1" scope="row">
-                        <img id="myimg" src="../assets/cherry.jpeg">
-                    </th>
-                    <td>
-                        <h6>가게이름 ***</h6>
-                        <h6>상품명 ***</h6>
-                        <h6>상품상세내용 ***</h6>
-                    </td>
-                    <td>판매자명</td>
-                    <td>배송비</td>
-                    <td>상품금액</td>
-                    <td>
-                        <button type="button" class="btn btn-warning">
-                            <router-link to="/reviewWrite">리뷰작성</router-link>
-                        </button>
-                    </td>
-                </tr>
-                <tr id="tdbottom">
-                    <th id="th1" scope="row">
-                        <img id="myimg" src="../assets/cherry.jpeg">
-                    </th>
-                    <td>
-                        <h6>가게이름 ***</h6>
-                        <h6>상품명 ***</h6>
-                        <h6>상품상세내용 ***</h6>
-                    </td>
-                    <td>판매자명</td>
-                    <td>배송비</td>
-                    <td>상품금액</td>
-                    <td>
-                        <button type="button" class="btn btn-warning">
-                            <router-link to="/reviewWrite">리뷰작성</router-link>
+                        <button type="button" class="btn btn" id="btnRe">
+                            <router-link to="/reviewWrite" id="routerlink">리뷰작성</router-link>
                         </button>
                     </td>
                 </tr>
@@ -77,7 +38,32 @@
 
 <script>
 export default {
-    
+    data() {
+        return {
+            myPageOrders: [],
+        
+        }
+    },
+    methods: {
+        
+    },
+    mounted() {
+        let obj = this;
+
+        obj.$axios.get("http://localhost:9000/myPageOrder", {
+                params: {
+                    customerPk: 3, // 상품 코드 입력부분이 현재 개발되지 않음
+                },
+            })
+            .then(function (res) {
+                console.log("axios로 비동기 통신 성공");
+                obj.myPageOrders = res.data;
+            })
+            .catch(function (err) {
+                console.log("axios 비동기 통신 오류");
+                console.log(err);
+            });
+    },
 }
 </script>
 
@@ -106,5 +92,9 @@ th {
 }
 #tdbottom {
     border-bottom: 0.8px solid lightgray;
+}
+
+#routerlink {
+    color: white;
 }
 </style>

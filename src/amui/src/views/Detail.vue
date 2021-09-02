@@ -360,9 +360,9 @@ export default {
                 query: { productPk: productPk },
             });
         },
-        moveCart(productPk) {
+        insertCart(productPk) {
             this.$router.push({
-                name: "CartCartList",
+                name: "CartList",
                 query: { productPk: productPk },
             });
         },
@@ -423,8 +423,15 @@ export default {
             this.orderCnt ++ ;
         },
         priceDel() {
-            this.orderSum -= this.productPrice;
             this.orderCnt -- ;
+
+            if (this.orderCnt < 0) {
+                this.orderCnt = 0;
+                this.orderSum = 0;
+            }
+            else {
+                this.orderSum -= this.productPrice;
+            }
         },
     },
 
@@ -470,8 +477,7 @@ export default {
                 console.log(err);
             });
 
-        obj.$axios
-            .get("http://localhost:9000/qnaRead", {
+        obj.$axios.get("http://localhost:9000/qnaRead", {
                 params: {
                     productPk: obj.productPk,
                 },

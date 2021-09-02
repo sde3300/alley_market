@@ -27,5 +27,41 @@ export default {
 </script>
 
 <style>
-
+#routerlink {
+    color: rgb(62, 64, 68);
+}
+#routerlink:hover {
+  text-decoration: none;
+}
+.jumbotron {
+  background-color: rgb(255, 251, 215);
+  color: rgb(95, 95, 93);
+}
+/* rgb(255, 251, 215); color */
+#btnwrite {
+    background-color: rgb(250, 197, 25);
+    color: white;
+    border-radius: 50px;
+}
+#btnList {
+    margin-right: 20px;
+    background-color: rgb(106, 110, 105);
+    color: white;
+    border-radius: 50px;
+}
+#btndel {
+    background-color: rgb(228, 86, 30);
+    color: white;
+    border-radius: 50px;
+}
+#btnmodi {
+    background-color: rgb(93,141,91);
+    color: white;
+    border-radius: 50px;
+}
+#btnRe {
+    background-color: rgb(93, 141, 91);
+    color: white;
+    border-radius: 50px;
+}
 </style>

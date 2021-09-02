@@ -32,8 +32,8 @@
                 </div>
 
                 <div class="row ">
-                    <button type="button" class="btn btn-primary col-sm-1 ml-auto" id="btnwrite" v-on:click = "AdminNoticeWrite">등록하기</button>
-                    <button type="button" class="btn btn-warning col-sm-1 " v-on:click = "moveAdminNoticeList">목록으로</button>
+                    <button type="button" class="btn btn col-sm-1 ml-auto" id="btnList" v-on:click = "moveAdminNoticeList">목록으로</button>
+                    <button type="button" class="btn btn col-sm-1 " id="btnwrite" v-on:click = "AdminNoticeWrite">등록하기</button>
                 </div>
             </form> 
         </div>
@@ -81,7 +81,5 @@ export default {
 </script>
 
 <style>
-#btnwrite {
-    margin-right: 20px;
-}
+
 </style>

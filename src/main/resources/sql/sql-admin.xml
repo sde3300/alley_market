@@ -122,7 +122,8 @@
       	
       	]]>
 		</insert>
-
+		
+		<!--상품 재고 등록페이지 -->
 		<insert id="productStockInsert" parameterType="am.dto.ProductDto">
 		<![CDATA[
 			INSERT INTO
@@ -133,6 +134,7 @@
 		]]>
 		</insert>
 		
+		<!-- 상품이미지 등록페이지-->
 		<insert id="productFileInsert" parameterType="am.dto.ProductFileDto">
 			<![CDATA[
 				INSERT INFO
@@ -148,6 +150,20 @@
 			</foreach>
 		</insert>
 		
-		
+		<!-- 관리자 문의리스트 불러오기 -->
+		<select id="qnaList" resultType="am.dto.QnaDto">
+		<![CDATA[
+			SELECT 
+				a.product_pk, a.product_name, b.qna_pk, b.board_category_pk, b.qna_title, b.qna_contents,
+				b.create_id, b.product_pk, b.answer_contents, b.answer_yn,
+				DATE_FORMAT(create_date, '%Y.%m.%d %H:%i') AS create_date
+			FROM 
+				product as a
+			JOIN 
+				qna as b
+			ON 
+				a.product_pk = b.product_pk
+		]]>
+		</select>
 
 </mapper>

@@ -39,14 +39,20 @@ public class CustomerController {
 //	}
 //	
 //	상품 상세페이지 불러오기 + 사진 
+
 	@RequestMapping(value="/productDetail", method=RequestMethod.GET)
 	public Object productDetail(@RequestParam("productPk") int productPk) throws Exception {
 		ProductInfoDto product = cusService.productDetail(productPk);
 				
 		return product;
 	}
-
 	
+//	리뷰작성하기
+	@RequestMapping(value="/reviewWrite", method=RequestMethod.POST)
+	public void ReviewWrite(@RequestBody ReviewDto reviewWri) throws Exception {
+		cusService.ReviewWrite(reviewWri);
+	}
+
 //	리뷰 보기
 	@RequestMapping(value="/reviewRead", method=RequestMethod.GET)
 	public Object reviewRead(@RequestParam("productPk") int productPk) throws Exception {
@@ -63,16 +69,30 @@ public class CustomerController {
 		return dataList;
 	}
 	
+//	문의 상세 보기
+	@RequestMapping(value="/qnaDetail", method=RequestMethod.GET)
+	public Object qnaDetail(@RequestParam("qnaPk") int qnaPk) throws Exception {
+		QnaDto qna = cusService.qnaDetail(qnaPk);
+				
+		return qna;
+	}
+	
 //	문의 등록하기
 	@RequestMapping(value="/qnaInsert", method=RequestMethod.POST)
 	public void qnaInsert(@RequestBody QnaDto qna) throws Exception {
 		cusService.qnaInsert(qna);
 	}
 	
+//	문의 답변하기(관리자)
+	@RequestMapping(value="/answerUpdate", method=RequestMethod.PUT)
+	public void answerUpdate(@RequestBody QnaDto qna) throws Exception {
+		cusService.answerUpdate(qna);
+	}
+	
 //	주문하기 - 상품정보 불러오기
 	@RequestMapping(value="/orderProduct", method=RequestMethod.GET)
-	public Object orderProduct(@RequestParam("orderPk") int orderPk) throws Exception {
-		List<ProductDto> dataList = cusService.orderProduct(orderPk);
+	public Object orderProduct(@RequestParam("customerPk") int customerPk) throws Exception {
+		List<ProductDto> dataList = cusService.orderProduct(customerPk);
 		
 		return dataList;
 	}
@@ -81,7 +101,6 @@ public class CustomerController {
 	@RequestMapping(value="/orderInsert", method=RequestMethod.POST)
 	public void orderInsert(@RequestBody OrdersDto order) throws Exception {
 		cusService.orderInsert(order);
-
 	}
 
 	
@@ -91,6 +110,23 @@ public class CustomerController {
 		cusService.cartInsert(cart);
 	}
 	
+//	장바구니 불러오기
+	@RequestMapping(value="/cartList", method=RequestMethod.GET)
+	public Object cartList(@RequestParam("customerPk") int customerPk) throws Exception {
+		List<ProductDto> dataList = cusService.cartList(customerPk);
+		
+		return dataList;
+	}
+	
+//	마이페이지 - 주문내역
+	@RequestMapping(value="/myPageOrder", method=RequestMethod.GET)
+	public Object myPageOrder(@RequestParam("customerPk") int customerPk) throws Exception {
+		List<OrdersDto> dataList = cusService.myPageOrder(customerPk);
+		
+		return dataList;
+	}
+		
+
 //	상단 카테고리별 페이지 조회
 	// 밀키트
 	@RequestMapping(value="/productb1", method=RequestMethod.GET)
@@ -99,6 +135,7 @@ public class CustomerController {
 				
 		return dataList;
 	}
+	
 	// 농수산물
 	@RequestMapping(value="/productb2", method=RequestMethod.GET)
 	public Object p2MainPage() throws Exception {
@@ -106,6 +143,7 @@ public class CustomerController {
 				
 		return dataList;
 	}
+	
 	// 축산물
 	@RequestMapping(value="/productb3", method=RequestMethod.GET)
 	public Object p3MainPage() throws Exception {
@@ -129,7 +167,6 @@ public class CustomerController {
 				
 		return dataList;
 	}
-
 	
-
 }
+
