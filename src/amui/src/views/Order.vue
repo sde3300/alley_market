@@ -19,7 +19,12 @@
             <tbody>
                 <tr v-for="item in cartLists" v-bind:key="item.customerPk">
                     <th id="th1" scope="row">
-                        <img id="myimg" src="../assets/cherry.jpeg">
+                            <img id="myimg"
+                            alt="localhost9000으로확인"
+                            style=""
+                            v-bind:src="item.storedFilePath"
+                            data-holder-rendered="true"
+                        />
                     </th>
                     <td>{{ item.productName }}</td>
                     <td>{{ item.productStore }}</td>

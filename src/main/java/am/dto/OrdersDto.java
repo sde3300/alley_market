@@ -22,4 +22,7 @@ public class OrdersDto {
 	private int productPrice;
 	private int totalPrice;
 	private int totalPriceDelivery;
+	private String originalFileName;
+	private String storedFilePath;
+
 }

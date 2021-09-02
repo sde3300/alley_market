@@ -1,44 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!DOCTYPE mapper
-	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-	
-	<mapper namespace="am.mapper.CustomerMapper">
-	
-   		<!-- 210830 혜수: 메인에서 상품 리스트 사진까지보기-->
-		<select id="productInfoMainPage" resultType="am.dto.ProductInfoDto">
-		      <![CDATA[
-		         SELECT
-				   a.product_pk, a.product_category_pk, a.product_name, a.product_price, 
-				   b.original_file_name, b.stored_file_path
-		         FROM
-		            product as a
-		         JOIN
-		         	product_file as b
-		         ON
-		         	a.product_pk = b.idx
-		      ]]>
-	   </select> 
-		
-		
-		<!-- 210831 혜수: 상품 상세페이지 사진까지 불러오기 -->
-		<!-- 210901 : 최종 수정 -->
-		<select id="productDetail" parameterType="int" resultType="am.dto.ProductInfoDto">
-		      <![CDATA[
-				SELECT
-					a.product_pk, a.product_name, a.product_price, a.product_store, a.product_stock_cnt,
-				    b.original_file_name, b.stored_file_path
-		         FROM
-		             product as a
-		         JOIN
-		         	product_file as b
-		         ON
-		         	a.product_pk = b.idx
-		         WHERE
-					idx = #{idx}
-		      ]]>
-		</select>
+   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+   
+   <mapper namespace="am.mapper.CustomerMapper">
+   
+         <!-- 210830 혜수: 메인에서 상품 리스트 사진까지보기-->
+      <select id="productInfoMainPage" resultType="am.dto.ProductInfoDto">
+            <![CDATA[
+               SELECT
+               a.product_pk, a.product_category_pk, a.product_name, a.product_price, 
+               b.original_file_name, b.stored_file_path
+               FROM
+                  product as a
+               JOIN
+                  product_file as b
+               ON
+                  a.product_pk = b.idx
+            ]]>
+      </select> 
+      
+      
+      <!-- 210831 혜수: 상품 상세페이지 사진까지 불러오기 -->
+      <!-- 210901 : 최종 수정 -->
+      <select id="productDetail" parameterType="int" resultType="am.dto.ProductInfoDto">
+            <![CDATA[
+            SELECT
+               a.product_pk, a.product_name, a.product_price, a.product_store, a.product_stock_cnt,
+                b.original_file_name, b.stored_file_path
+               FROM
+                   product as a
+               JOIN
+                  product_file as b
+               ON
+                  a.product_pk = b.idx
+               WHERE
+               idx = #{idx}
+            ]]>
+      </select>
 
 		<!-- 리뷰작성하기-->	
 		<insert id="reviewWrite" parameterType="am.dto.ReviewDto">
@@ -85,7 +85,7 @@
 				ORDER BY
 					qna_pk DESC;
 			]]>
-		</select>
+		</select>		
 		
 		<!-- 문의 상세 보기 -->
 		<select id="qnaDetail" parameterType="int" resultType="am.dto.QnaDto">
@@ -124,21 +124,28 @@
 			]]>
 		</update>
 		
-		<!-- 주문하기 - 상품정보 불러오기 -->
-		<select id="orderProduct" parameterType="int" resultType="am.dto.ProductDto">
-			<![CDATA[
-				SELECT 
-					a.product_pk, a.product_name, a.product_price, a.product_store, b.order_pk, b.order_cnt, b.order_sum, b.product_pk, b.customer_pk
-				FROM 
-					product as a
-				JOIN 
-					orders_detail as b
-				ON 
-					a.product_pk = b.product_pk
-				AND
-					b.customer_pk = 6
-			]]>
-		</select>
+		  <!-- 0902 혜수 수정 :주문하기 - 상품정보 불러오기 + 사진 -->
+	      <select id="orderProduct" parameterType="int" resultType="am.dto.ProductDto">
+	         <![CDATA[
+	            SELECT 
+	               a.product_pk, a.product_name, a.product_price, a.product_store,
+	               b.order_pk, b.customer_pk, b.order_cnt, b.order_sum, b.product_pk,
+	               c.original_file_name, c.stored_file_path
+	            FROM 
+	               orders_detail as b
+	            INNER JOIN 
+	            	product as a
+	            ON 
+	            	a.product_pk = b.product_pk
+				INNER JOIN 
+					product_file as c
+	            ON 
+	            	a.product_pk = c.idx
+	            AND
+	               b.customer_pk = 6
+	
+	         ]]>
+	      </select>
 		
 		<!-- 주문하기 - 회원정보입력 -->
 		<insert id="orderInsert" parameterType="am.dto.OrdersDto" useGeneratedKeys="true" keyColumn="order_pk" keyProperty="orderPk">
@@ -166,6 +173,8 @@
 			]]>
 		</update>
 		
+		
+		
 		<!-- 장바구니에 담기 -->
 		<insert id="cartInsert" parameterType="am.dto.OrdersDto">
 			<![CDATA[				
@@ -175,24 +184,31 @@
 					(6, #{productPk}, #{orderCnt}, #{orderSum})
 			]]>
 		</insert>
+
 		
-		<!-- 장바구니 불러오기 -->
-		<select id="cartList" parameterType="int" resultType="am.dto.ProductDto">
-			<![CDATA[
-				SELECT 
-					a.product_pk, a.product_name, a.product_price, a.product_store,
-					b.customer_pk, b.order_cnt, b.order_sum, b.product_pk, b.order_detail_pk, b.order_cmp
-				FROM 
-					product as a
-				JOIN 
-					orders_detail as b
-				ON 
-					a.product_pk = b.product_pk
-				AND
-					b.customer_pk = 6
-				AND b.order_cmp = 'N'
-			]]>
-		</select>
+		      <!-- 0902 혜수 수정 :장바구니 불러오기 + 사진 -->
+	      <select id="cartList" parameterType="int" resultType="am.dto.ProductDto">
+	         <![CDATA[
+	            SELECT 
+	               a.product_pk, a.product_name, a.product_price, a.product_store,
+	               b.customer_pk, b.order_cnt, b.order_sum, b.product_pk, b.order_detail_pk, b.order_cmp,
+	               c.original_file_name, c.stored_file_path
+	            FROM 
+	               	orders_detail as b
+	            INNER JOIN 
+	            	product as a
+	            ON 
+	            	a.product_pk = b.product_pk
+				INNER JOIN 
+					product_file as c
+	            ON 
+	            	a.product_pk = c.idx
+	            AND
+	              	b.customer_pk = 6
+	            AND 
+	            	b.order_cmp = 'N'
+	         ]]>
+	      </select>
 		
 		<!-- 장바구니 목록 삭제하기 -->
 		<delete id="cartDelete" parameterType="int">
@@ -203,25 +219,30 @@
 		            order_detail_pk = #{orderDetailPk}
 		      ]]>
 		</delete>
-		
-		<!-- 마이페이지 - 주문내역 -->
-		<select id="myPageOrder" parameterType="int" resultType="am.dto.OrdersDto">
-			<![CDATA[
-				SELECT 
-					a.product_pk, a.product_name, a.product_price, a.product_store,
-					b.customer_pk, b.order_cnt, b.order_sum, b.product_pk, b.order_pk
-				FROM 
-					orders_detail as b
-				JOIN 
-					product as a
-				ON 
-					a.product_pk = b.product_pk
-				AND
-					b.customer_pk = 6
-				AND
-					b.order_pk is NOT NULL
-				]]>
-		</select>
+
+		   <!-- 0902 혜수 수정 : 마이페이지 - 주문내역  + 사진 -->
+      <select id="myPageOrder" parameterType="int" resultType="am.dto.OrdersDto">
+         <![CDATA[
+            SELECT 
+               a.product_pk, a.product_name, a.product_price, a.product_store,
+               b.customer_pk, b.order_cnt, b.order_sum, b.product_pk, b.order_pk,
+               c.original_file_name, c.stored_file_path
+            FROM 
+               orders_detail as b
+            INNER JOIN 
+            	product as a
+            ON 
+            	a.product_pk = b.product_pk
+			INNER JOIN 
+				product_file as c
+            ON 
+            	a.product_pk = c.idx
+            AND
+               	b.customer_pk = 6
+            AND
+				b.order_pk is NOT NULL
+            ]]>
+      </select>
 		
 		<!-- 0831 혜수 : 상단 카테고리별 페이지 조회-->
 		<!-- 밀키트 p1board-->
@@ -275,39 +296,38 @@
 		      ]]>
 		</select>
 
-		<!-- 식품 p4board-->
-		<select id="p4BoardDetail" resultType="am.dto.ProductInfoDto">
-		      <![CDATA[
-				SELECT
-				   a.product_pk, a.product_category_pk, a.product_name, a.product_price, 
-				   b.original_file_name, b.stored_file_path
-		         FROM
-		            product as a
-		         JOIN
-		         	product_file as b
-		         ON
-		         	a.product_pk = b.idx
-				 AND 
-					a.product_category_pk = "p4"
-		      ]]>
-		</select>
-		
-		<!-- 기타 p5board-->
-		<select id="p5BoardDetail" resultType="am.dto.ProductInfoDto">
-		      <![CDATA[
-				SELECT
-				   a.product_pk, a.product_category_pk, a.product_name, a.product_price, 
-				   b.original_file_name, b.stored_file_path
-		         FROM
-		            product as a
-		         JOIN
-		         	product_file as b
-		         ON
-		         	a.product_pk = b.idx
-				 AND 
-					a.product_category_pk = "p5"
-		      ]]>
-		</select>
-	</mapper>
-	
-	
+      <!-- 식품 p4board-->
+      <select id="p4BoardDetail" resultType="am.dto.ProductInfoDto">
+            <![CDATA[
+            SELECT
+               a.product_pk, a.product_category_pk, a.product_name, a.product_price, 
+               b.original_file_name, b.stored_file_path
+               FROM
+                  product as a
+               JOIN
+                  product_file as b
+               ON
+                  a.product_pk = b.idx
+             AND 
+               a.product_category_pk = "p4"
+            ]]>
+      </select>
+      
+      <!-- 기타 p5board-->
+      <select id="p5BoardDetail" resultType="am.dto.ProductInfoDto">
+            <![CDATA[
+            SELECT
+               a.product_pk, a.product_category_pk, a.product_name, a.product_price, 
+               b.original_file_name, b.stored_file_path
+               FROM
+                  product as a
+               JOIN
+                  product_file as b
+               ON
+                  a.product_pk = b.idx
+             AND 
+               a.product_category_pk = "p5"
+            ]]>
+      </select>
+   </mapper>
+   

@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import com.github.pagehelper.PageInfo;
+
 import am.dto.CustomersDto;
 import am.dto.NoticeDto;
 import am.dto.OrdersDto;
@@ -31,19 +33,35 @@ public class AdminController {
 		return dataList;
 	}
 	
-//	회원관리 게시판 글 확인하기
-	@RequestMapping(value="/cusManage", method=RequestMethod.GET)
-	public Object SelectCustomerList() throws Exception {
-		List<CustomersDto> cusdataList = adService.SelectCustomerList();
-		
-		return cusdataList;
-	}
+	//회원관리 게시판 글 확인하기 수정전
+//	@RequestMapping(value="/cusManage", method=RequestMethod.GET)
+//	public Object SelectCustomerList() throws Exception {
+//		List<CustomersDto> cusdataList = adService.SelectCustomerList();
+//		
+//		return cusdataList;
+//	}
 	
-//	공지사항 게시판 목록 확인하기
+	
+	//0902 혜수 : 회원관리 게시판 글 확인 + 페이징 추가 
+	    @RequestMapping(value="/cusManage", method=RequestMethod.GET)
+	    public Object page(@RequestParam(required = false, defaultValue = "1") int pageNum) throws Exception {
+	        PageInfo<CustomersDto> cusdataList = new PageInfo<CustomersDto>(adService.getCusList(pageNum), 3);
+	        return cusdataList;
+	    }
+	
+	    
+//	공지사항 게시판 목록 확인하기 수정전
+//	@RequestMapping(value="/noticeList", method=RequestMethod.GET)
+//	public Object SelectNoticeBoardList() throws Exception {
+//		List<NoticeDto> noticedataList = adService.SelectNoticeBoardList();
+//		
+//		return noticedataList;
+//	}
+	
+	//0902 혜수 : 공지사항 게시판 목록 확인 + 페이징 추가 
 	@RequestMapping(value="/noticeList", method=RequestMethod.GET)
-	public Object SelectNoticeBoardList() throws Exception {
-		List<NoticeDto> noticedataList = adService.SelectNoticeBoardList();
-		
+	public Object SelectNoticeBoardList(@RequestParam(required = false, defaultValue = "1") int pageNum) throws Exception {
+		PageInfo<NoticeDto> noticedataList = new PageInfo<NoticeDto>(adService.getNotiList(pageNum), 3);
 		return noticedataList;
 	}
 	
@@ -72,13 +90,22 @@ public class AdminController {
 		adService.noticeDelete(noticePk);
 	}
 	
-//	상품재고 목록 확인하기
+////	상품재고 목록 확인하기 (수정전)
+//	@RequestMapping(value="/stockList", method=RequestMethod.GET)
+//	public Object StockList(@RequestParam("boardIdx") int boardIdx) throws Exception {
+//		List<ProductDto> stockdataList = adService.SelectStockList(boardIdx);
+//		
+//		return stockdataList;
+//	}
+	
+//	상품재고 목록 확인하기 + 페이징추가
 	@RequestMapping(value="/stockList", method=RequestMethod.GET)
-	public Object StockList(@RequestParam("boardIdx") int boardIdx) throws Exception {
-		List<ProductDto> stockdataList = adService.SelectStockList(boardIdx);
-		
+	public Object StockList(@RequestParam(required = false, defaultValue = "1") int pageNum) throws Exception {
+		PageInfo<ProductDto> stockdataList = new PageInfo<ProductDto>(adService.SelectStockList(pageNum), 3);
 		return stockdataList;
 	}
+	
+
 	
 //	주문하기 - 상품정보 + 이미지 입력하기
 	@RequestMapping(value="/productInsert", method=RequestMethod.POST)
@@ -86,46 +113,20 @@ public class AdminController {
 		adService.ProductInsert(productIn, mhsr);
 	}
 	
-//	상품정보 사진등록하기
-//	@RequestMapping(value="/imgInsert", method=RequestMethod.POST)
-//	public String insertImg(ProductDto imgin, MultipartHttpServletRequest mhsr) throws Exception {
-//		adService.insertBoardImg(imgin, mhsr);
+//	관리자 문의리스트 불러오기(수정전)
+//	@RequestMapping(value="/qnaList", method=RequestMethod.GET)
+//	public Object qnaList() throws Exception {
+//		List<QnaDto> list = adService.qnaList();
 //		
-//		return "redirect:/stockList";
-//	}
-//	
-	
-	
-//	@RequestMapping("/filePath")
-//	public String filePath() throws Exception {
-//		return "/filePath";
-//	}
-//	
-//	@CrossOrigin(origins="http://localhost:8080")
-//	@ResponseBody
-//	@RequestMapping("/imgPath")
-//	public String imgPath(MultipartHttpServletRequest request) {
-//		List<ProductFileDto> dataList = new ArrayList<ProductFileDto>();		
-//		ProductFileDto file = new ProductFileDto();
-//		file.setName("");
-//		file.setPath("/images/star004.jpg");
-//		
-//		dataList.add(file);
-//		
-//		return dataList;
-//		ProductFileDto file1 = new ProductFileDto();
-//		
-//		file1.setName("별2");
-//		file1.setPath("/images/star002.jpg");
-//		return file1;
-		
+//		return list;
 //	}
 	
-//	관리자 문의리스트 불러오기
+//	관리자 문의리스트 불러오기 + 페이징추가
 	@RequestMapping(value="/qnaList", method=RequestMethod.GET)
-	public Object qnaList() throws Exception {
-		List<QnaDto> list = adService.qnaList();
+	public Object QnaList(@RequestParam(required = false, defaultValue = "1") int pageNum) throws Exception {
+		PageInfo<QnaDto> qnaList = new PageInfo<QnaDto>(adService.getqnaList(pageNum), 3);
 		
-		return list;
+		return qnaList;
 	}
+
 }
