@@ -96,7 +96,9 @@
                                 <!-- 찜하기 버튼? 모달창?-->
                                 </div>
                                 <div class="" style="margin:auto">
+                                    <div id="cartGo">
                                     <button type="button" class="btn btn-success btn-lg" v-on:click="cartInsert" style="margin-right:10px">장바구니</button>
+                                    </div>
                                     <button type="button" class="btn btn-danger btn-lg" v-on:click="moveOrder">주문하기</button>
                                 </div>
                             </div>
@@ -379,8 +381,7 @@ export default {
 
         qnaInsert() {
             let obj = this;
-            obj.$axios
-                .post("http://localhost:9000/qnaInsert", {
+            obj.$axios.post("http://localhost:9000/qnaInsert", {
                     productPk: this.qnaPk,
                     qnaTitle: this.qnaTitle,
                     qnaContents: this.qnaContents,
@@ -400,8 +401,7 @@ export default {
 
         cartInsert() {
             let obj = this;
-            obj.$axios
-                .post("http://localhost:9000/cartInsert", {
+            obj.$axios.post("http://localhost:9000/cartInsert", {
                     productPk: this.productPk,
                     orderCnt: this.orderCnt,
                     orderSum: this.orderSum,
@@ -409,14 +409,20 @@ export default {
                 })
                 .then(function () {
                     console.log("비동기 통신 성공");
-                    obj.qnaContents = "";
                     obj.$router.go(obj.$router.currentRouter);
+                    alert("상품이 장바구니에 담겼습니다.");
                 })
                 .catch(function (err) {
                     console.log("비동기 통신 실패");
                     console.log(err);
                 });
         },
+
+        // cartGo() {
+        //     say: function (message) {
+        //     alert(message)
+        //     };
+        // },
 
         priceAdd() {
             this.orderSum += this.productPrice;

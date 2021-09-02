@@ -24,7 +24,7 @@ public interface CustomerService {
 	List<ReviewDto> reviewRead(int productPk) throws Exception;
 	
 //	리뷰작성하기
-	void ReviewWrite(ReviewDto reviewWri) throws Exception;
+	void reviewWrite(ReviewDto reviewWri) throws Exception;
 	
 //	문의 보기
 	List<QnaDto> qnaRead(int productPk) throws Exception;
@@ -42,7 +42,6 @@ public interface CustomerService {
 	List<ProductDto> orderProduct(int customerPk) throws Exception;
 	
 //	주문하기 - 주문입력
-
 	void orderInsert(OrdersDto order) throws Exception;
 	
 //	장바구니에 담기
@@ -50,6 +49,9 @@ public interface CustomerService {
 	
 //	장바구니 불러오기
 	List<ProductDto> cartList(int cumtomerPk) throws Exception;
+	
+//	장바구니 목록 삭제하기
+	void cartDelete(int orderDetailPk) throws Exception;
 	
 //	마이페이지 - 주문내역
 	List<OrdersDto> myPageOrder(int customerPk) throws Exception;

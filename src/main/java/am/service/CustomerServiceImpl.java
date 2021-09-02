@@ -45,8 +45,8 @@ public class CustomerServiceImpl implements CustomerService {
 	
 //	리뷰작성하기
 	@Override
-	public void ReviewWrite(ReviewDto reviewWri) throws Exception {
-		cusMapper.ReviewWrite(reviewWri);
+	public void reviewWrite(ReviewDto reviewWri) throws Exception {
+		cusMapper.reviewWrite(reviewWri);
 	}
 	
 //	문의 보기
@@ -103,6 +103,13 @@ public class CustomerServiceImpl implements CustomerService {
 		
 		return list;
 	}
+	
+//	장바구니 목록 삭제하기
+	@Override
+	   public void cartDelete(int orderDetailPk) throws Exception {
+		cusMapper.cartDelete(orderDetailPk);
+	  }
+	
 	
 //	마이페이지 - 주문내역
 	@Override

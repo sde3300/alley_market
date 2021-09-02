@@ -42,15 +42,12 @@
 
 		<!-- 리뷰작성하기-->	
 		<insert id="reviewWrite" parameterType="am.dto.ReviewDto">
-		<![CDATA[ 
-	      
-	         INSERT INTO
-		            review
-		            (board_category_pk, review_title, review_contents, create_id, create_date)
-	         VALUES
-	            	('b2', #{reviewTitle}, #{reviewContents}, #{createId}, NOW())
-      	
-      	]]>
+			<![CDATA[
+				INSERT INTO review 
+    				(product_pk, review_title, review_contents, review_score, create_id, create_date)
+				VALUES
+					(#{productPk}, #{reviewTitle}, #{reviewContents}, #{reviewScore}, #{createId}, NOW())
+      		]]>
 		</insert>
 
 		<!-- 리뷰 보기 -->
@@ -58,7 +55,7 @@
 			<![CDATA[
 				SELECT
 					review_pk, board_category_pk, review_title, review_contents, review_score,
-					create_id, product_pk, order_pk,
+					create_id, product_pk,
 					DATE_FORMAT(create_date, '%Y.%m.%d %H:%i') AS create_date,
 					DATE_FORMAT(update_date, '%Y.%m.%d %H:%i') AS update_date
 				FROM
@@ -131,7 +128,7 @@
 		<select id="orderProduct" parameterType="int" resultType="am.dto.ProductDto">
 			<![CDATA[
 				SELECT 
-					a.product_pk, a.product_name, a.product_price, a.product_store, b.order_pk, b.order_cnt, b.order_sum, b.product_pk
+					a.product_pk, a.product_name, a.product_price, a.product_store, b.order_pk, b.order_cnt, b.order_sum, b.product_pk, b.customer_pk
 				FROM 
 					product as a
 				JOIN 
@@ -139,7 +136,7 @@
 				ON 
 					a.product_pk = b.product_pk
 				AND
-					b.order_pk = 1
+					b.customer_pk = 6
 			]]>
 		</select>
 		
@@ -147,9 +144,9 @@
 		<insert id="orderInsert" parameterType="am.dto.OrdersDto" useGeneratedKeys="true" keyColumn="order_pk" keyProperty="orderPk">
 			<![CDATA[				
 				INSERT INTO
-					orders (customer_pk, order_name, order_phone, zip, addr1, addr2, order_date)
+					orders (customer_pk, order_name, order_phone, zip, addr1, addr2, order_date, order_ask, total_price, total_price_delivery)
 				VALUES
-					(3, #{orderName}, #{orderPhone}, #{zip}, #{addr1}, #{addr2}, NOW())
+					(6, #{orderName}, #{orderPhone}, #{zip}, #{addr1}, #{addr2}, NOW(), #{orderAsk}, #{totalPrice}, #{totalPriceDelivery})
 			]]>
 		</insert>
 
@@ -159,11 +156,13 @@
 				UPDATE
 					orders_detail
 				SET
-					order_pk = #{orderPk}
+					order_pk = #{orderPk},
+					order_cmp = 'Y'
 				WHERE
-					customer_pk = 3
+					customer_pk = 6
 				AND
 					order_pk is NULL
+				AND order_cmp = 'N'
 			]]>
 		</update>
 		
@@ -173,7 +172,7 @@
 				INSERT INTO
 					orders_detail (customer_pk, product_pk, order_cnt, order_sum)
 				VALUES
-					(3, #{productPk}, #{orderCnt}, #{orderSum})
+					(6, #{productPk}, #{orderCnt}, #{orderSum})
 			]]>
 		</insert>
 		
@@ -182,7 +181,7 @@
 			<![CDATA[
 				SELECT 
 					a.product_pk, a.product_name, a.product_price, a.product_store,
-					b.customer_pk, b.order_cnt, b.order_sum, b.product_pk
+					b.customer_pk, b.order_cnt, b.order_sum, b.product_pk, b.order_detail_pk, b.order_cmp
 				FROM 
 					product as a
 				JOIN 
@@ -190,16 +189,27 @@
 				ON 
 					a.product_pk = b.product_pk
 				AND
-					b.customer_pk = 3
+					b.customer_pk = 6
+				AND b.order_cmp = 'N'
 			]]>
 		</select>
+		
+		<!-- 장바구니 목록 삭제하기 -->
+		<delete id="cartDelete" parameterType="int">
+			<![CDATA[ 
+	         	DELETE FROM
+		            orders_detail
+		        WHERE
+		            order_detail_pk = #{orderDetailPk}
+		      ]]>
+		</delete>
 		
 		<!-- 마이페이지 - 주문내역 -->
 		<select id="myPageOrder" parameterType="int" resultType="am.dto.OrdersDto">
 			<![CDATA[
 				SELECT 
 					a.product_pk, a.product_name, a.product_price, a.product_store,
-					b.customer_pk, b.order_cnt, b.order_sum, b.product_pk
+					b.customer_pk, b.order_cnt, b.order_sum, b.product_pk, b.order_pk
 				FROM 
 					orders_detail as b
 				JOIN 
@@ -207,9 +217,9 @@
 				ON 
 					a.product_pk = b.product_pk
 				AND
-					b.customer_pk = 3
+					b.customer_pk = 6
 				AND
-					b.order_pk = 8
+					b.order_pk is NOT NULL
 				]]>
 		</select>
 		

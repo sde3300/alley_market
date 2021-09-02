@@ -1,5 +1,5 @@
 <template>
-    <div class="container mr-auto">
+    <div class="container">
         <div class="jumbotron text-center">
             <h1>장바구니 목록</h1>
         </div>
@@ -14,6 +14,7 @@
                     <th class="column-3">가격</th>
                     <th class="column-4">수량</th>
                     <th class="column-5">총합계</th>
+                    <th class="column-6"></th>
                 </tr>
             </thead>
             <tbody>
@@ -30,6 +31,11 @@
                     <td class="column-3">{{ item.productPrice }}원</td>
                     <td class="column-4">{{ item.orderCnt }}</td>
                     <td class="column-5">{{ item.orderSum }}원</td>
+                    <td class="column-6">
+                    <button type="button" class="close" aria-label="Close" v-on:click="cartDelete(item.orderDetailPk)">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    </td>
 
                 </tr>
             </tbody>
@@ -43,6 +49,7 @@
 export default {
     data() {
         return {
+            orderDetailPk: 0,
             cartLists: [],
         };
     },
@@ -53,10 +60,27 @@ export default {
                 query: { customerPk: customerPk },
             });
         },
+        cartDelete(orderDetailPk) {
+            let obj = this;
+            // obj.orderDetailPk = obj.$route.query.orderDetailPk;
+
+            this.$axios.delete('http://localhost:9000/cartDelete', {
+                params: {
+                    orderDetailPk: orderDetailPk
+                }
+            })
+            .then(function() {
+                console.log("비동기 통신 성공");
+                obj.$router.go(obj.$router.currentRouter);
+            })
+            .catch(function(err) {
+                console.log("비동기 통신 실패");
+                console.log(err);
+            });
+        }
     },
     mounted() {
         let obj = this;
-        obj.seq = obj.$route.query.seq;
         obj.$axios.get("http://localhost:9000/cartList", {
                 params: {
                     customerPk: 1, // 상품 코드 입력부분이 현재 개발되지 않음

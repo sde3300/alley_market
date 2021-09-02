@@ -50,7 +50,7 @@ public class CustomerController {
 //	리뷰작성하기
 	@RequestMapping(value="/reviewWrite", method=RequestMethod.POST)
 	public void ReviewWrite(@RequestBody ReviewDto reviewWri) throws Exception {
-		cusService.ReviewWrite(reviewWri);
+		cusService.reviewWrite(reviewWri);
 	}
 
 //	리뷰 보기
@@ -116,6 +116,12 @@ public class CustomerController {
 		List<ProductDto> dataList = cusService.cartList(customerPk);
 		
 		return dataList;
+	}
+
+//	장바구니 목록 삭제하기
+	@RequestMapping(value="/cartDelete", method=RequestMethod.DELETE)
+	public void cartDelete(@RequestParam("orderDetailPk") int orderDetailPk) throws Exception {
+		cusService.cartDelete(orderDetailPk);
 	}
 	
 //	마이페이지 - 주문내역

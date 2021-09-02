@@ -31,7 +31,8 @@ public interface CustomerMapper {
 	List<ReviewDto> reviewRead(@Param("productPk") int productPk) throws Exception;
 	
 //	리뷰작성하기
-	void ReviewWrite(ReviewDto reviewWri) throws Exception;
+//	void ReviewWrite(ReviewDto reviewWri) throws Exception;
+	void reviewWrite(ReviewDto reviewWri) throws Exception;
 
 //	문의 보기
 	List<QnaDto> qnaRead(@Param("productPk") int productPk) throws Exception;
@@ -57,6 +58,9 @@ public interface CustomerMapper {
 	
 //	장바구니 불러오기
 	List<ProductDto> cartList(@Param("customerPk") int customerPk) throws Exception;
+	
+//	장바구니 목록 삭제하기
+	void cartDelete(int orderDetailPk) throws Exception;
 	
 //	마이페이지 - 주문내역
 	List<OrdersDto> myPageOrder(@Param("customerPk") int customerPk) throws Exception;

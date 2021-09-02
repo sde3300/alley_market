@@ -35,14 +35,6 @@
         <!-- 개인정보 입력 부분 -->
         <div class="container">
             <form>
-                <div class="form-group">
-                    <label for="orderName"><b>받는 사람</b></label>
-                    <input type="text" class="form-control" id="orderName" name="orderName" placeholder="이름을 입력하세요" v-model="orderName">
-                </div>
-                <div class="form-group">
-                    <label for="orderPhone"><b>휴대폰 번호</b></label>
-                    <input type="text" class="form-control" id="orderPhone" name="orderPhone" placeholder="휴대폰 번호를 입력하세요" v-model="orderPhone">
-                </div>
                 <div>
                     <div class="form-group">
                     <label for="address"><b>배송지</b></label>
@@ -74,15 +66,33 @@
                             </div>
                     </div>
                 </div>
+                <div class="form-group">
+                    <label for="orderName"><b>받는 사람</b></label>
+                    <input type="text" class="form-control" id="orderName" name="orderName" placeholder="이름을 입력하세요" v-model="orderName">
+                </div>
+                <div class="form-group">
+                    <label for="orderPhone"><b>휴대폰 번호</b></label>
+                    <input type="text" class="form-control" id="orderPhone" name="orderPhone" placeholder="휴대폰 번호를 입력하세요" v-model="orderPhone">
+                </div>
                 <div>
                     <label for="orderAsk"><b>요청사항</b></label>
-                    <select class="form-control" id="orderAsk" name="orderAsk">
-                        <option>요청사항을 선택해주세요</option>
-                        <option>배송전에 연락부탁드립니다</option>
-                        <option>부재시 경비실에 맡겨주세요</option>
-                        <option>문 앞에 놓아주세요</option>
+                    <!-- <select class="form-control" id="orderAsk" name="orderAsk" v-model="orderAsk"> 
+                        <option selected>Open this select menu</option> 
+                        <option value="1">무인택배함에 맡겨주세요</option>
+                        <option value="2">배송전에 연락부탁드립니다</option>
+                        <option value="3">부재시 경비실에 맡겨주세요</option>
+                        <option value="4">문 앞에 놓아주세요</option>
+                    </select> -->
+
+                    <select class="custom-select custom-select-sm" v-model="orderAsk">
+                        <option selected>요청사항을 선택해주세요</option>
+                        <option value="1">배송전에 연락부탁드립니다</option>
+                        <option value="2">부재시 경비실에 맡겨주세요</option>
+                        <option value="3">문 앞에 놓아주세요</option>
+                        <option value="4">무인택배함에 맡겨주세요</option>
                     </select>
                 </div>
+                
                 <br>
                 <!-- 결제금액, 결제수단 그리드 부분 -->
                 <div class="container">
@@ -154,6 +164,7 @@ export default {
             orderName: "",
             orderPhone: "",
             orderDate: "",
+            orderAsk: 0,
             totalPrice: "",
             totalPriceDelivery: "",
             orderProducts: [],
@@ -219,7 +230,8 @@ export default {
             })
             .then(function() {
                 console.log('비동기 통신 성공');
-                obj.$router.push({ name: 'Main' });
+                obj.$router.go({ name: 'Main' });
+                alert("주문이 완료되었습니다");
             })
             .catch(function(err) {
                 console.log("비동기 통신 실패");

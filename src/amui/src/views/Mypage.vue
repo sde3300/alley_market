@@ -3,16 +3,21 @@
         <div class="jumbotron text-center">
             <h1>마이페이지</h1>
         </div>
+        
         <hr>
+        <br>
+        <h2>구매 내역</h2>
         <table class="table">
             <thead>
                 <tr>
                 <th></th>
+                <th>주문번호</th>
                 <th>상품명</th>
                 <th id="th3" scope="col">가게이름</th>
                 <th id="th2" scope="col">가격</th>
                 <th id="th3" scope="col">수량</th>
                 <th id="th3" scope="col">총합계</th>
+                <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -20,15 +25,14 @@
                     <th id="th1" scope="row">
                         <img id="myimg" src="../assets/cherry.jpeg">
                     </th>
+                    <td>{{ item.orderPk }}</td>
                     <td>{{ item.productName }}</td>
                     <td>{{ item.productStore }}</td>
                     <td>{{ item.productPrice }}원</td>
                     <td>{{ item.orderCnt }} </td>
                     <td>{{ item.orderSum }}원</td>
                     <td>
-                        <button type="button" class="btn btn" id="btnRe">
-                            <router-link to="/reviewWrite" id="routerlink">리뷰작성</router-link>
-                        </button>
+                        <button type="button" class="btn btn" id="btnRe" v-on:click= "moveReviewWrite(item.productPk)"> 리뷰작성 </button>
                     </td>
                 </tr>
             </tbody>
@@ -41,11 +45,12 @@ export default {
     data() {
         return {
             myPageOrders: [],
-        
         }
     },
     methods: {
-        
+        moveReviewWrite(productPk) {
+            this.$router.push({ name: 'ReviewWrite', query: { productPk: productPk }});
+        },
     },
     mounted() {
         let obj = this;

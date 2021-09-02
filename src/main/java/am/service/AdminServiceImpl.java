@@ -65,7 +65,7 @@ public class AdminServiceImpl implements AdminService{
 	@Override
 	   public void noticeDelete(int noticePk) throws Exception {
 		adMapper.noticeDelete(noticePk);
-	  }
+	 }
 	
 //	상품재고 목록 확인하기
 	@Override

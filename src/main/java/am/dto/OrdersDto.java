@@ -5,6 +5,7 @@ import lombok.Data;
 @Data
 public class OrdersDto {
 	private int orderPk;
+	private int orderDetailPk;
 	private int customerPk;
 	private String orderName;
 	private String orderPhone;
@@ -19,4 +20,6 @@ public class OrdersDto {
 	private String productName;
 	private String productStore;
 	private int productPrice;
+	private int totalPrice;
+	private int totalPriceDelivery;
 }
