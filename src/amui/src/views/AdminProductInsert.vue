@@ -23,12 +23,6 @@
                     <label for="text" class="col-2-1 col-form-label">카테고리</label>
                     <div class="col-sm-4">
                         <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" v-model="productCategoryPk">
-                        <!-- <option selected >카테고리 선택</option> -->
-                        <!-- <option v-bind:value="{category: p1}">밀키트</option>
-                        <option v-bind:value="{category: p2}">농수산물</option>
-                        <option v-bind:value="{category: p3}">축산물</option>
-                        <option v-bind:value="{category: p4}">식품</option>
-                        <option v-bind:value="{category: p5}">기타</option> -->
                         <option value="p1">밀키트</option>
                         <option value="p2">농수산물</option>
                         <option value="p3">축산물</option>
@@ -55,12 +49,6 @@
                     <div class="col-sm-4">
                         <input type="number" class="form-control" id="exampleFormControlInput1"  v-model="productStockCnt">
                     </div>
-
-                    <!-- <div class="form-group row">
-                    <label for="text" class="col-sm-3
-                        col-form-label">대표사진</label>
-                    <input type="file" class="form-control-file col" id="exampleFormControlFile1">
-                    </div> -->
                 </div>
 
 
@@ -86,11 +74,6 @@
 
                 <br>
 
-                <!-- <div class="row">
-                    <button type="button" class="btn btn col-sm-2 ml-auto" id="btnmodi" v-on:click="moveProductStockList">목록으로</button>
-                    <button type="button" class="btn btn col-sm-2" id="btnwrite" @click="onClickFormButton">등록하기</button> -->
-                    <!-- <button type="button" class="btn btn-danger col-sm-2">삭제하기</button> -->
-                <!-- </div> -->
                 <div class="row ">
                     <button type="button" class="btn btn col-sm-1 ml-auto" id="btnmodi"  v-on:click="moveProductStockList">목록으로</button>
                     <button type="button" class="btn btn col-sm-1 " id="btnwrite" @click="ProductInsert">등록하기</button>
@@ -131,18 +114,8 @@ export default {
             formData.append('productStockCnt', this.productStockCnt)
             formData.append('productStore', this.productStore)
             formData.append('productDetail', this.productDetail)
-            // boardIdx
             formData.append('image', this.image);
             
-            // obj.$axios.post('http://localhost:9000/productInsert', {
-            //     productPk: this.productPk,
-            //     productCategoryPk: this.productCategoryPk,
-            //     productName: this.productName,
-            //     productPrice: this.productPrice,
-            //     productStockCnt: this.productStockCnt,
-            //     productStore: this.productStore,
-            //     productDetail: this.productDetail
-            // })
             obj.$axios.post('http://localhost:9000/productInsert', formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
@@ -163,18 +136,6 @@ export default {
         moveProductStockList() {
             this.$router.push({ name: 'AdminProductStock'});
         },
-        // onInputImage() {
-        //     this.input.image = this.$refs.productImg.files
-        //     console.log("this.input.image")
-        // },
-        // onClickFormButton() {
-        //     this.$router.push({
-        //         name: 'uploadConfirm',
-        //         params: {
-        //             input: this.input
-        //         }
-        //     })
-        // }
     },
     
 }

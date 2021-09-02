@@ -98,40 +98,6 @@ public class AdminController {
 		adService.ProductInsert(productIn, mhsr);
 	}
 	
-//	상품정보 사진등록하기
-//	@RequestMapping(value="/imgInsert", method=RequestMethod.POST)
-//	public String insertImg(ProductDto imgin, MultipartHttpServletRequest mhsr) throws Exception {
-//		adService.insertBoardImg(imgin, mhsr);
-//		
-//		return "redirect:/stockList";
-//	}
-//	
-	
-	
-//	@RequestMapping("/filePath")
-//	public String filePath() throws Exception {
-//		return "/filePath";
-//	}
-//	
-//	@CrossOrigin(origins="http://localhost:8080")
-//	@ResponseBody
-//	@RequestMapping("/imgPath")
-//	public String imgPath(MultipartHttpServletRequest request) {
-//		List<ProductFileDto> dataList = new ArrayList<ProductFileDto>();		
-//		ProductFileDto file = new ProductFileDto();
-//		file.setName("");
-//		file.setPath("/images/star004.jpg");
-//		
-//		dataList.add(file);
-//		
-//		return dataList;
-//		ProductFileDto file1 = new ProductFileDto();
-//		
-//		file1.setName("별2");
-//		file1.setPath("/images/star002.jpg");
-//		return file1;
-		
-//	}
 	
 
 //	관리자 문의리스트 불러오기
