@@ -144,7 +144,7 @@
                         style="margin-left: 20px"
                     >
                         <!--210830 혜수 사진불러오기 추가 -->
-                        <img
+                        <img v-on:click="productDetail(item.productPk)"
                             class="card-img-top"
                             alt="Thumbnail [100%x225]"
                             style="height: 200px; width: 200px; display: block"
@@ -154,7 +154,7 @@
 
                         <div class="card-body">
                             <p class="card-text">{{ item.productPk }}</p>
-                            <p v-on:click="productDetail(item.productPk)">
+                            <p>
                                 {{ item.productName }}
                             </p>
                             <p>{{ item.productPrice }}</p>

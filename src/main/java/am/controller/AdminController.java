@@ -70,18 +70,14 @@ public class AdminController {
 	public void NoticeWrite(NoticeDto notice, MultipartHttpServletRequest mhsr) throws Exception {
 		adService.NoticeWrite(notice, mhsr);
 	}
-//	주문하기 - 상품정보 + 이미지 입력하기
-//	@RequestMapping(value="/productInsert", method=RequestMethod.POST)
-//	public void ProductInsert(ProductDto productIn, MultipartHttpServletRequest mhsr) throws Exception {
-//		adService.ProductInsert(productIn, mhsr);
-//	}
 	
-//	지정한 게시판 글 확인하기
+//	공지사항 게시판 글 확인하기
 	@RequestMapping(value="/noticeDetail", method=RequestMethod.GET)
 	public Object NoticeDetail(@RequestParam("noticePk") int noticePk) throws Exception {
 		NoticeDto noticedetaillist = adService.NoticeDetail(noticePk);
 		return noticedetaillist;
 	}
+	
 	
 //	공지사항 수정하기
 	@RequestMapping(value="/noticeUpdate", method=RequestMethod.PUT)

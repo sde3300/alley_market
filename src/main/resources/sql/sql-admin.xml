@@ -73,14 +73,16 @@
 		<select id="NoticeDetail" parameterType="int" resultType="am.dto.NoticeDto">
 		<![CDATA[
 		
-	            SELECT 
+	       SELECT 
 				a.notice_pk, a.notice_title, a.notice_contents, a.create_id, b.stored_file_path
 			FROM 
 				notice as a
-			JOIN 
+			LEFT OUTER JOIN 
 				board_file as b
 			ON 
 				a.notice_pk = b.notice_pk
+			WHERE 
+				a.notice_pk = #{noticePk}   
 			
 			]]>
 		</select>

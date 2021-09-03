@@ -11,7 +11,7 @@
 
                 <!-- 포토앨범 -->
                 <div class="row">
-                    <div
+                    <div v-on:click="productDetail(item.productPk)"
                         class="card mb-4 box-shadow"
                         v-for="item in items"
                         v-bind:key="item.productPk"
@@ -28,7 +28,7 @@
 
                         <div class="card-body">
                             <p class="card-text">{{ item.productPk }}</p>
-                            <p v-on:click="productDetail(item.productPk)">
+                            <p>
                                 {{ item.productName }}
                             </p>
                             <p>{{ item.productPrice }}</p>

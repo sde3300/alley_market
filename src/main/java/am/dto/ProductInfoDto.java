@@ -13,6 +13,7 @@ public class ProductInfoDto {
 	private String storedFilePath;
 	private String productStore;
 	private int productStockCnt;
+	private String productDetail;
 
 }
 

@@ -137,15 +137,15 @@
 
                 <!-- 포토앨범 -->
                 <div class="row">
-                    <div id="photoAlbum"
+                    <div id="photoAlbum" v-on:click="productDetail(item.productPk)"
                         class="card mb-4 box-shadow"
                         v-for="item in items"
                         v-bind:key="item.productPk"
                         style="margin-left: 20px"
                     >
                         <!--210830 혜수 사진불러오기 추가 -->
-                        <img
-                            class="card-img-top"
+                        <img  id="photoAlbumImg"
+                            class="card-img-top" 
                             alt="Thumbnail [100%x225]"
                             style="height: 200px; width: 200px; display: block"
                             v-bind:src="item.storedFilePath"
@@ -154,7 +154,7 @@
 
                         <div class="card-body">
                             <p class="card-text">{{ item.productPk }}</p>
-                            <p v-on:click="productDetail(item.productPk)">
+                            <p>
                                 {{ item.productName }}
                             </p>
                             <p>{{ item.productPrice }}</p>
@@ -255,4 +255,5 @@ export default {
 #photoAlbum:hover {
     border-inline: 6px solid rgb(255, 251, 215);
 }
+
 </style>
