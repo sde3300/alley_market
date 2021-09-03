@@ -137,7 +137,7 @@
 
                 <!-- 포토앨범 -->
                 <div class="row">
-                    <div @click="productDetail" id="photoAlbum"
+                    <div id="photoAlbum"
                         class="card mb-4 box-shadow"
                         v-for="item in items"
                         v-bind:key="item.productPk"

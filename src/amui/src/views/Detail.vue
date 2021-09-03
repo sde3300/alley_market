@@ -5,9 +5,9 @@
                 <div class="row" style="margin-bottom: 50px">
                     <div class="col-6" id="detailPic">
                         <img
-                            src="https://shop.hansalim.or.kr/im/is/activeDesigner/050307006_content1.jpg"
+                            v-bind:src="storedFilePath"
                             class="rounded float-left"
-                            alt="..."
+                            alt="http://localhost:9000/#/에서 확인"
                             width="500px"
                             height="400px"
                         />
@@ -21,7 +21,7 @@
                                 </div>
                                 <div class="col text-right">
                                 <!--  공유하는 링크 넣기 -->
-                                <i class="fas fa-3x fa-external-link-square-alt"></i> 
+                                <!-- <i class="fas fa-3x fa-external-link-square-alt"></i>  -->
                                 </div>
                             </div>
 
@@ -347,6 +347,7 @@ export default {
             qnas: [],
             reviews: [],
             items: [],
+            storedFilePath:"",
         };
     },
     methods: {
@@ -380,7 +381,7 @@ export default {
         qnaInsert() {
             let obj = this;
             obj.$axios.post("http://localhost:9000/qnaInsert", {
-                    productPk: this.qnaPk,
+                    productPk: this.productPk,
                     qnaTitle: this.qnaTitle,
                     qnaContents: this.qnaContents,
                     createdDate: this.createdDate,
@@ -435,6 +436,7 @@ export default {
     mounted() {
         let obj = this;
         obj.productPk = obj.$route.query.productPk;
+        this.productPk = this.$route.query.productPk;
 
         obj.$axios.get("http://localhost:9000/productDetail", {
             params: {
@@ -450,6 +452,7 @@ export default {
                 obj.productStockCnt = res.data.productStockCnt;
                 obj.productStore = res.data.productStore;
                 obj.productDetail = res.data.productDetail;
+                obj.storedFilePath = res.data.storedFilePath;
             })
             .catch(function(err) {
                 console.log("axios 비동기 통신 오류");

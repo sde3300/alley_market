@@ -105,7 +105,8 @@
 		<insert id="qnaInsert" parameterType="am.dto.QnaDto">
 			<![CDATA[				
 				INSERT INTO
-					qna (product_pk, qna_title, qna_contents, create_id, create_date)
+					qna 
+					(product_pk, qna_title, qna_contents, create_id, create_date)
 				VALUES
 					(#{productPk}, #{qnaTitle}, #{qnaContents}, #{createId}, NOW())
 			]]>
