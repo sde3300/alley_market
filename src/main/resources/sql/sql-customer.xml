@@ -46,7 +46,7 @@
       <select id="productDetail" parameterType="int" resultType="am.dto.ProductInfoDto">
             <![CDATA[
             SELECT
-               a.product_pk, a.product_name, a.product_price, a.product_store, a.product_stock_cnt,
+               a.product_pk, a.product_name, a.product_price, a.product_store, a.product_stock_cnt, a.product_detail,
                 b.original_file_name, b.stored_file_path
                FROM
                    product as a

@@ -40,15 +40,7 @@
                                     class="carousel-caption text-left"
                                     style="color: black"
                                 >
-                                    <!-- <h1>캐러셀 헤드라인</h1>
-                                    <p>어쩌고 저쩌고 가입하세요</p>
-                                    <p>
-                                        <a
-                                            class="btn btn-lg btn-primary"
-                                            href="#"
-                                            role="button"
-                                            >클릭해서 이동하기</a>
-                                    </p> -->
+
                                 </div>
                             </div>
                         </div>
@@ -63,16 +55,7 @@
                                     class="carousel-caption text-right"
                                     style="color: black"
                                 >
-                                    <!-- <h1>두번째 헤드라인</h1>
-                                    <p>쓰려면 쓰고 지우려면 지우고</p>
-                                    <p>
-                                        <a
-                                            class="btn btn-lg btn-primary"
-                                            href="#"
-                                            role="button"
-                                            >버튼으로 클릭</a
-                                        >
-                                    </p> -->
+
                                 </div>
                             </div>
                         </div>
@@ -87,15 +70,7 @@
                                     class="carousel-caption text-right"
                                     style="color: black"
                                 >
-                                    <!-- <h2>검색하세요</h2>
-                                    <p>
-                                        <a
-                                            class="btn btn-lg btn-primary"
-                                            href="#"
-                                            role="button"
-                                            >추후 수정</a
-                                        >
-                                    </p> -->
+
                                 </div>
                             </div>
                         </div>
@@ -138,12 +113,13 @@
                 <!-- 포토앨범 -->
                 <div class="row">
                     <div id="photoAlbum"
-                        class="card mb-2 box-shadow"
+                        class="card mb-4 box-shadow"
                         v-for="item in items"
                         v-bind:key="item.productPk"
                         style="margin-left: 20px"
+                        v-on:click="productDetail(item.productPk)"
                     >
-                        <!--210830 혜수 사진불러오기 추가 -->
+
                         <div class="img"> <div class="scale">
                         <img
                             class="card-img-top"
@@ -156,9 +132,7 @@
 
                         <div class="card-body">
                             <p class="card-text"></p>
-                            <h5 v-on:click="productDetail(item.productPk)">
-                                {{ item.productName }}
-                            </h5>
+                            <h5>{{ item.productName }}</h5>
                             <h5>{{ item.productPrice }} 원</h5>
                             <div
                                 class="
@@ -167,49 +141,12 @@
                                     align-items-center
                                 "
                             >
-                                <!-- <div class="btn-group">
-                                    <button
-                                        type="button"
-                                        class="btn btn-sm btn-outline-secondary"
-                                    >
-                                        View
-                                    </button>
-                                    <button
-                                        type="button"
-                                        class="btn btn-sm btn-outline-secondary"
-                                    >
-                                        Edit
-                                    </button>
-                                </div>
-                                <small class="text-muted">9 mins</small> -->
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
-        <!-- 210825 혜수 수정 -->
-        <!-- <div>
-        <p>상품 리스트 형식으로 보기</p>
-                <table class="table table-hover table-danger">
-                    <thead>
-                        <tr>
-                            <th>상품번호</th>
-                            <th>상품명</th>
-                            <th>가격</th>
-                        </tr>
-                    </thead>
-
-                    <tbody>
-                        <tr v-for = "item in items" v-bind:key = "item.productPk">
-                            <td> {{ item.productPk }}</td>
-                            <td class = "text-center" v-on:click="productDetail(item.productPk)"> {{ item.productName }}</td>
-                            <td> {{ item.productPrice }}</td>
-                        </tr>
-                    </tbody>
-                </table>
-    </div> -->
 
         <div class="content p-0"></div>
     </main>

@@ -11,26 +11,27 @@
 
                 <!-- 포토앨범 -->
                 <div class="row">
-                    <div
+                    <div id="photoAlbum"
                         class="card mb-4 box-shadow"
                         v-for="item in items"
                         v-bind:key="item.productPk"
                         style="margin-left: 20px"
+                        v-on:click="productDetail(item.productPk)"
                     >
-                        <!--210831 사진불러오기 추가 -->
+
+                        <div class="img"> <div class="scale">
                         <img
                             class="card-img-top"
                             alt="Thumbnail [100%x225]"
-                            style="height: 200px; width: 200px; display: block"
+                            style="height: 270px; width: 270px; display: block"
                             v-bind:src="item.storedFilePath"
                             data-holder-rendered="true"
                         />
+                        </div></div>
 
                         <div class="card-body">
                             <p class="card-text"></p>
-                            <h5 v-on:click="productDetail(item.productPk)">
-                                {{ item.productName }}
-                            </h5>
+                            <h5>{{ item.productName }}</h5>
                             <h5>{{ item.productPrice }} 원</h5>
                             <div
                                 class="
@@ -39,21 +40,6 @@
                                     align-items-center
                                 "
                             >
-                                <!-- <div class="btn-group">
-                                    <button
-                                        type="button"
-                                        class="btn btn-sm btn-outline-secondary"
-                                    >
-                                        View
-                                    </button>
-                                    <button
-                                        type="button"
-                                        class="btn btn-sm btn-outline-secondary"
-                                    >
-                                        Edit
-                                    </button>
-                                </div>
-                                <small class="text-muted">9 mins</small> -->
                             </div>
                         </div>
                     </div>

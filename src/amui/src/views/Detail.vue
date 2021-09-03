@@ -119,8 +119,10 @@
 
             <!-- 물품 정보 -->
             <div id="info" class="text-dark text-left px-3 py-4">
-                <div class="container" style="margin-top: 30px">
+                <div class="container center" style="margin-top: 30px">
                     {{ productDetail }}
+                    <img v-bind:src="storedFilePath">
+
                 </div>
             </div>
             <hr>

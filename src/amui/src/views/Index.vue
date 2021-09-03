@@ -146,7 +146,7 @@
                     >
                         <!--210830 혜수 사진불러오기 추가 -->
                         <div class="img"><div class="scale">
-                        <img
+                        <img v-on:click="productDetail(item.productPk)"
                             class="card-img-top"
                             alt="Thumbnail [100%x225]"
                             style="height: 260px; width: 260px; display: block"
