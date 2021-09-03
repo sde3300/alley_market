@@ -25,6 +25,7 @@ public class ProductDto {
 	private int orderCnt;
 	private int orderSum;
 	private int customerPk;
+	private String orderCmp;
 	
 //혜수추가(장바구니, 마이페이지용)
 	private String originalFileName;
