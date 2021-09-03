@@ -11,6 +11,9 @@ import am.dto.ReviewDto;
 
 public interface CustomerService {
 
+//	인덱스페이지 불러오기
+	List<ProductInfoDto> productInfoIndexPage() throws Exception;
+	
 //	메인페이지 불러오기
 	List<ProductInfoDto> productInfoMainPage() throws Exception;
 	

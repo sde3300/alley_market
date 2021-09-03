@@ -22,6 +22,14 @@ public class CustomerController {
 	@Autowired
 	private CustomerService cusService;
 	
+//	인덱스 불러오기
+	@RequestMapping(value="/productIndex", method=RequestMethod.GET)
+	public Object productIndexPage() throws Exception {
+		List<ProductInfoDto> dataList = cusService.productInfoIndexPage();
+		
+		return dataList;
+	}
+	
 //	메인페이지 불러오기
 	@RequestMapping(value="/productMain", method=RequestMethod.GET)
 	public Object productMainPage() throws Exception {

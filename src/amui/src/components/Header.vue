@@ -39,7 +39,7 @@
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
                     <!-- <a class="nav-link" href="#" v-on:click="moveMain">전체상품 <span class="sr-only">(current)</span></a> -->
-                    <a class="nav-link" href="#/">전체상품 <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="#/main">전체상품 <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#/p1board">밀키트</a>

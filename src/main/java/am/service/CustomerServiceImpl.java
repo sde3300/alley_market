@@ -18,6 +18,12 @@ public class CustomerServiceImpl implements CustomerService {
 	@Autowired
 	private CustomerMapper cusMapper;
 	
+//	인덱스페이지 불러오기
+	@Override
+	public List<ProductInfoDto> productInfoIndexPage() throws Exception {
+		return cusMapper.productInfoIndexPage();
+	}
+	
 //	메인페이지 불러오기
 	@Override
 	public List<ProductInfoDto> productInfoMainPage() throws Exception {

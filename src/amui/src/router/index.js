@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 
 import DetailVue from '../views/Detail.vue'
+import Index from '../views/Index.vue'
 import Main from '../views/Main.vue'
 import AdminMainVue from '../views/AdminMain.vue'
 import AdminProductStock from '../views/AdminProductStock.vue'
@@ -33,10 +34,15 @@ const routes = [
   // 혜수언니
   {
     path: '/',
+    name: 'Index',
+    component: Index
+  },
+  {
+    path: '/main',
     name: 'Main',
     component: Main
   },
-  {
+    {
     path: '/detail',
     name: 'Detail',
     component: DetailVue,
