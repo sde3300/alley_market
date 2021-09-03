@@ -10,14 +10,16 @@
       <select id="productInfoMainPage" resultType="am.dto.ProductInfoDto">
             <![CDATA[
                SELECT
-               a.product_pk, a.product_category_pk, a.product_name, a.product_price, 
-               b.original_file_name, b.stored_file_path
+	               a.product_pk, a.product_category_pk, a.product_name, a.product_price, 
+	               b.original_file_name, b.stored_file_path
                FROM
                   product as a
                JOIN
                   product_file as b
                ON
                   a.product_pk = b.idx
+               LIMIT 0, 20
+               
             ]]>
       </select> 
       
