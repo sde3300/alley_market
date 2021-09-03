@@ -131,7 +131,7 @@
             <!-- 캐러셀 끝 -->
         </section>
 
-        <div class="album py-5 bg-light">
+        <div class="album py-4">
             <div class="container">
                 <h2 class="main-title py-4">이런 상품은 어떠세요?</h2>
 
@@ -142,22 +142,25 @@
                         v-for="item in items"
                         v-bind:key="item.productPk"
                         style="margin-left: 20px"
+                        v-on:click="productDetail(item.productPk)"
                     >
                         <!--210830 혜수 사진불러오기 추가 -->
+                        <div class="img"><div class="scale">
                         <img
                             class="card-img-top"
                             alt="Thumbnail [100%x225]"
-                            style="height: 200px; width: 200px; display: block"
+                            style="height: 260px; width: 260px; display: block"
                             v-bind:src="item.storedFilePath"
                             data-holder-rendered="true"
                         />
+                        </div></div>
 
                         <div class="card-body">
-                            <p class="card-text">{{ item.productPk }}</p>
-                            <p v-on:click="productDetail(item.productPk)">
+                            <p class="card-text"></p>
+                            <h5>
                                 {{ item.productName }}
-                            </p>
-                            <p>{{ item.productPrice }}</p>
+                            </h5>
+                            <h5>{{ item.productPrice }} 원</h5>
                             <div
                                 class="
                                     d-flex
@@ -165,49 +168,13 @@
                                     align-items-center
                                 "
                             >
-                                <div class="btn-group">
-                                    <button
-                                        type="button"
-                                        class="btn btn-sm btn-outline-secondary"
-                                    >
-                                        View
-                                    </button>
-                                    <button
-                                        type="button"
-                                        class="btn btn-sm btn-outline-secondary"
-                                    >
-                                        Edit
-                                    </button>
-                                </div>
-                                <small class="text-muted">9 mins</small>
+
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
-        <!-- 210825 혜수 수정 -->
-        <!-- <div>
-        <p>상품 리스트 형식으로 보기</p>
-                <table class="table table-hover table-danger">
-                    <thead>
-                        <tr>
-                            <th>상품번호</th>
-                            <th>상품명</th>
-                            <th>가격</th>
-                        </tr>
-                    </thead>
-
-                    <tbody>
-                        <tr v-for = "item in items" v-bind:key = "item.productPk">
-                            <td> {{ item.productPk }}</td>
-                            <td class = "text-center" v-on:click="productDetail(item.productPk)"> {{ item.productName }}</td>
-                            <td> {{ item.productPrice }}</td>
-                        </tr>
-                    </tbody>
-                </table>
-    </div> -->
 
         <div class="content p-0"></div>
     </main>
@@ -252,7 +219,7 @@ export default {
     max-height: 90vh;
     min-height: 50vh;
 }
-#photoAlbum:hover {
-    border-inline: 6px solid rgb(255, 251, 215);
+#photoAlbum {
+    border: none;
 }
 </style>

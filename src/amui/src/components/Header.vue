@@ -1,6 +1,7 @@
 <template>
     <div class="header">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <nav class="navbar navbar-expand-lg navbar-light">
+            
         <!-- <span style="font-size: 1.5em;"><i class="fas fa-truck" v-on:click="moveMain"></i></span> <a class="navbar-brand" href="#" v-on:click="moveMain"> 골목시장</a> -->
         <span style="font-size: 1.5em;"><router-link to="/" id="routerlink"><i class="fas fa-truck"> 골목시장</i></router-link></span> 
         <!-- <a class="navbar-brand" href="#"> 골목시장</a> -->
@@ -30,12 +31,12 @@
             </ul>
         </div>
         </nav>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <nav class="navbar navbar-expand-lg navbar-light">
         <!-- <a class="navbar-brand" href="#">Navbar</a> -->
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
+        <div class="collapse navbar-collapse" id="navbarNav" style="font-size: 1.2em;">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
                     <!-- <a class="nav-link" href="#" v-on:click="moveMain">전체상품 <span class="sr-only">(current)</span></a> -->

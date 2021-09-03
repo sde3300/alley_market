@@ -131,33 +131,35 @@
             <!-- 캐러셀 끝 -->
         </section>
 
-        <div class="album py-5 bg-light">
+        <div class="album py-4">
             <div class="container">
                 <h2 class="main-title py-4">이런 상품은 어떠세요?</h2>
 
                 <!-- 포토앨범 -->
                 <div class="row">
                     <div id="photoAlbum"
-                        class="card mb-4 box-shadow"
+                        class="card mb-2 box-shadow"
                         v-for="item in items"
                         v-bind:key="item.productPk"
                         style="margin-left: 20px"
                     >
                         <!--210830 혜수 사진불러오기 추가 -->
+                        <div class="img"> <div class="scale">
                         <img
                             class="card-img-top"
                             alt="Thumbnail [100%x225]"
-                            style="height: 200px; width: 200px; display: block"
+                            style="height: 270px; width: 270px; display: block"
                             v-bind:src="item.storedFilePath"
                             data-holder-rendered="true"
                         />
+                        </div></div>
 
                         <div class="card-body">
-                            <p class="card-text">{{ item.productPk }}</p>
-                            <p v-on:click="productDetail(item.productPk)">
+                            <p class="card-text"></p>
+                            <h5 v-on:click="productDetail(item.productPk)">
                                 {{ item.productName }}
-                            </p>
-                            <p>{{ item.productPrice }}</p>
+                            </h5>
+                            <h5>{{ item.productPrice }} 원</h5>
                             <div
                                 class="
                                     d-flex
@@ -165,7 +167,7 @@
                                     align-items-center
                                 "
                             >
-                                <div class="btn-group">
+                                <!-- <div class="btn-group">
                                     <button
                                         type="button"
                                         class="btn btn-sm btn-outline-secondary"
@@ -179,7 +181,7 @@
                                         Edit
                                     </button>
                                 </div>
-                                <small class="text-muted">9 mins</small>
+                                <small class="text-muted">9 mins</small> -->
                             </div>
                         </div>
                     </div>
@@ -252,7 +254,29 @@ export default {
     max-height: 90vh;
     min-height: 50vh;
 }
-#photoAlbum:hover {
+/* #photoAlbum:hover {
     border-inline: 6px solid rgb(255, 251, 215);
+} */
+
+.scale {
+    transform: scale(1);
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -ms-transform: scale(1);
+    -o-transform: scale(1);
+    transition: all 0.3s ease-in-out;   /* 부드러운 모션을 위해 추가*/
 }
+.scale:hover {
+    transform: scale(1.2);
+    -webkit-transform: scale(1.2);
+    -moz-transform: scale(1.2);
+    -ms-transform: scale(1.2);
+    -o-transform: scale(1.2);
+}
+
+.card {
+    box-shadow: 1px 1px 20px -15px #ab98ab;
+}
+
+.img {width:260px; height:260px; overflow:hidden }   /* 부모를 벗어나지 않고 내부 이미지만 확대 */
 </style>

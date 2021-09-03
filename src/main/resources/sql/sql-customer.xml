@@ -18,7 +18,7 @@
                   product_file as b
                ON
                   a.product_pk = b.idx
-               LIMIT 0, 20
+               LIMIT 0, 16
                
             ]]>
       </select> 

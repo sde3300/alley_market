@@ -3,6 +3,7 @@
         <div class="container">
             <div class="container-sm">
                 <div class="row" style="margin-bottom: 50px">
+                    
                     <div class="col-6" id="detailPic">
                         <img
                             v-bind:src="storedFilePath"
@@ -16,15 +17,13 @@
                     <div class="col-6" id = "detailText">
                         <div class="container">
                             <div class="row text-left" >
-                                <div class="col-8" >
-                                <h1>{{ productName }}</h1>
-                                </div>
+                                <div class="col-8" > <h1>{{ productName }}</h1> </div>
                                 <div class="col text-right">
                                 <!--  공유하는 링크 넣기 -->
                                 <!-- <i class="fas fa-3x fa-external-link-square-alt"></i>  -->
                                 </div>
                             </div>
-
+                        <br>
                             <div class="row text-left">
                                 <div class="col-4">
                                 <h2>{{ productPrice }} 원</h2>
@@ -71,9 +70,9 @@
                                 <div class="col-6" style="text-align:left">
                                 <form name="form" method="get">
                                 수량 : 
-                                <input type="button" value=" - " v-on:click="priceDel()">
+                                <input type="button" class="btn btn-outline-success btn-sm" value=" - " v-on:click="priceDel()">
                                 <input type="text" name="amount" value="1" size="1" readonly v-model="orderCnt">
-                                <input type="button" value=" + " v-on:click="priceAdd()">
+                                <input type="button" class="btn btn-outline-success btn-sm" value=" + " v-on:click="priceAdd()">
                                 </form>
                                 </div>
                             
@@ -89,15 +88,16 @@
                                 <div class="col">
                                 </div>
                             </div>
-                            <div class="row" style="margin-top:50px">
+                            <div class="row" style="margin-top:20px">
                                 <div class="col-2" style="text-right">
                                 <!-- <i class="fab fa-2x fa-gratipay"></i> -->
                                 <!-- 찜하기 버튼? 모달창?-->
                                 </div>
                                 <div class="" style="margin:auto">
-                                    <button type="button" class="btn btn-success btn-lg" v-on:click="cartInsert" style="margin-right:10px" id="btnRe">장바구니</button>
+                                    <button type="button" class="btn btn-success btn-lg" v-on:click="cartInsert" style="margin-right:-250px" 
+                                    id="btnRe">장바구니</button>
                                     
-                                    <button type="button" class="btn btn-danger btn-lg" v-on:click="moveOrder" id="btndel">주문하기</button>
+                                    <!-- <button type="button" class="btn btn-danger btn-lg" v-on:click="moveOrder" id="btndel">주문하기</button> -->
                                 </div>
                             </div>
                     </div>
@@ -105,24 +105,25 @@
             </div>
         </div>
 
-            <div class="d-flex bg-dark" id="btnStyle">
+            <div class="d-flex" id="btnStyle">
                 <div class="btn flex-fill text-white py-3 px-4">
-                    <a href="#info">물품정보</a>
+                    <a href="#info"><h5 style="color: white">물품정보</h5></a>
                 </div>
                 <div class="btn flex-fill text-white py-3 px-4">
-                    <a href="#reviews">이용후기</a>
+                    <a href="#reviews"><h5 style="color: white">이용후기</h5></a>
                 </div>
                 <div class="btn flex-fill text-white py-3 px-4">
-                    <a href="#qna">물품문의</a>
+                    <a href="#qna"><h5 style="color: white">물품문의</h5></a>
                 </div>
             </div>
 
             <!-- 물품 정보 -->
-            <div id="info" class="bg-light text-dark text-left px-3 py-4">
+            <div id="info" class="text-dark text-left px-3 py-4">
                 <div class="container" style="margin-top: 30px">
                     {{ productDetail }}
                 </div>
             </div>
+            <hr>
 
             <!-- 이용 후기 -->
             <div class="table-responsive" id="reviews">
@@ -139,12 +140,9 @@
                     >
                         <div class="row">
                             <div class="col">
-                                재구매 별점<br /><br />
-
                                 <p><b>재구매의사 있어요</b></p>
-                                <br />
                                 <div
-                                    class="progress-bar"
+                                    class="progress-bar bg-success"
                                     role="progressbar"
                                     style="width: 75%"
                                     aria-valuenow="75"
@@ -163,7 +161,15 @@
                     </div>
                 </div>
 
-                <table class="table table-striped table-sm">
+                <table class="table table-sm">
+                    <colgroup>
+                        <col width = "*">
+                        <col width = "40%">
+                        <col width = "*">
+                        <col width = "*">
+                        <col width = "*">
+                    </colgroup>
+
                     <thead>
                         <tr>
                             <th>No.</th>
@@ -173,22 +179,19 @@
                             <th>별점</th>
                         </tr>
                     </thead>
+
+
                     <tbody>
-                        <!-- v-for = "item in items" v-bind:key = "item.productPk" -->
-                        <!-- <tr v-on:click="reviewRead(item.reviewPk)"> -->
-                        <tr v-for="item in reviews" v-bind:key="item.reviewPk">
-                            <td>{{ item.reviewPk }}</td>
-                            <td>
-                                <div
-                                    class=""
+
+                        <tr v-for="item in reviews" v-bind:key="item.reviewPk" class=""
                                     type=""
                                     data-toggle="collapse"
-                                    v-bind:data-target="
-                                        '#review' + item.reviewPk
-                                    "
+                                    v-bind:data-target="'#review' + item.reviewPk"
                                     aria-expanded="false"
-                                    aria-controls="collapseExample"
-                                >
+                                    aria-controls="collapseExample">
+                            <td>{{ item.reviewPk }}</td>
+                            <td>
+                                <div>
                                     {{ item.reviewTitle }}
                                 </div>
                                 <br />
@@ -207,8 +210,11 @@
                             <td>{{ item.reviewScore }}</td>
                         </tr>
                     </tbody>
+
+                    
                 </table>
             </div>
+            <hr>
 
             <!-- 물품 문의 -->
             <div class="table-responsive" id="qna">
@@ -229,8 +235,11 @@
                     외부 광고성 글은 삭제하고 있으니 양해를 부탁드립니다.<br />
                     <br />
 
-                    <div class="row">
+                    <div class="row" style="border: 1px solid lightgray; padding: 20px">
                         <div class="col-md mx-auto text-left">
+
+                            <h4> 문의 작성하기 </h4><br>
+
                             <div class="form-group">
                                 <input
                                     type="text"
@@ -264,19 +273,23 @@
                                     size="1"
                                 />
                             </div>
+                            <button type="button" class="btn btn btn-outline-secondary btn-lg btn-block" v-on:click="qnaInsert">
+                                문의 작성
+                            </button>
                         </div>
                     </div>
 
-                    <button
-                        type="button"
-                        class="btn btn btn-outline-secondary btn-lg btn-block"
-                        v-on:click="qnaInsert"
-                    >
-                        문의 작성
-                    </button>
+                    
                 </div>
 
-                <table class="table table-striped table-sm">
+                <table class="table table-sm">
+                        <colgroup>
+                            <col width = "*">
+                            <col width = "40%">
+                            <col width = "*">
+                            <col width = "*">
+                            <col width = "*">
+                        </colgroup>
                     <thead>
                         <tr>
                             <th>No.</th>
@@ -287,29 +300,18 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr v-for="item in qnas" v-bind:key="item.qnaPk">
-                            <!-- v-for로  -->
-                            <td>{{ item.qnaPk }}</td>
-                            <td>
-                                <div
-                                    class=""
+                        <tr v-for="item in qnas" v-bind:key="item.qnaPk" class=""
                                     type=""
                                     data-toggle="collapse"
                                     v-bind:data-target="'#qna' + item.qnaPk"
                                     aria-expanded="false"
-                                    v-bind:aria-controls="'qna' + item.qnaPk"
-                                >
-                                    {{ item.qnaTitle }}
-                                </div>
-                                <br />
-                                <div
-                                    class="collapse"
-                                    v-bind:id="'qna' + item.qnaPk"
-                                >
-                                    <div class="card card-body">
-                                        {{ item.qnaContents }}
-                                    </div>
-                                    <!-- <div class="collapse" id="'qna' + item.qnaPk"> -->
+                                    v-bind:aria-controls="'qna' + item.qnaPk">
+                            <td>{{ item.qnaPk }}</td>
+                            <td>
+                                <div>{{ item.qnaTitle }}</div>
+                                <br>
+                                <div class="collapse" v-bind:id="'qna' + item.qnaPk">
+                                <div class="card card-body">{{ item.qnaContents }}</div>
                                     <div>
                                         <div class="card card-body">
                                             {{ item.answerContents }}
@@ -325,7 +327,11 @@
                 </table>
             </div>
         </div>
+
+            <button type="button" class="btn btn-outline-secondary float-right" ><a href="#"><i class="fas fa-angle-double-up"></i></a></button>
+
     </section>
+    
 </template>
 
 
@@ -515,13 +521,36 @@ export default {
     text-decoration: none;
     text-decoration-color: aliceblue;
     text-decoration: underline none;
+    background-color: rgb(75, 75, 75);
 }
+
+#btnlo {
+    background-color: rgb(93, 141, 91);
+    color: white;
+    border-radius: 50px;
+}
+
 #likejumbotron {
     padding:2rem 1rem;
     margin-bottom:2rem;
     border-radius:.3rem
+}
 
-
+a:link {
+    color : black;
+    text-decoration: none;
+}
+a:visited {
+    color : black;
+    text-decoration: none;
+}
+a:hover {
+    color : black;
+    text-decoration: none;
+}
+a:active {
+    color : black;
+    text-decoration: none;
 }
 </style>
 

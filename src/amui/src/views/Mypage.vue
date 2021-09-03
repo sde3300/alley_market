@@ -8,6 +8,16 @@
         <br>
         <h2>구매 내역</h2>
         <table class="table">
+                    <colgroup>
+                            <col width = "*">
+                            <col width = "*">
+                            <col width = "15%">
+                            <col width = "10%">
+                            <col width = "*">
+                            <col width = "*">
+                            <col width = "*">
+                            <col width = "10%">
+                        </colgroup>
             <thead>
                 <tr>
                 <th></th>

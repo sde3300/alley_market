@@ -25,7 +25,7 @@
                         <textarea class="form-control-plaintext" id="exampleFormControlTextarea1"  rows="8" v-model="noticeContents">
                         </textarea>
                         <div>
-                            <img alt="Thumbnail [100%x225]" data-holder-rendered="true" v-bind:src="storedFilePath" style="height: 200px; width: 200px; display: block">
+                            <img alt="" v-bind:src="storedFilePath" id="noticeImg">
                         </div>
                     </div>
                 </div>
@@ -128,9 +128,10 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 #btnmodi {
     margin-right: 20px;
+    
 }
 
 .contents{
@@ -139,5 +140,16 @@ export default {
     text-align: left;
 }
 
+#noticeImg {
+    width: 600px;
+    height: 500px;
+    border: none;
+    display: block;
+}
+/* img {
+    width: 200px;
+    height: 200px;
+} */
+/* style="height: 200px; width: 200px; display: block" */
 
 </style>

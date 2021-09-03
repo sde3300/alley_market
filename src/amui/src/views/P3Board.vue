@@ -5,7 +5,7 @@
             
         </section>
 
-        <div class="album py-5 bg-light">
+        <div class="album py-5">
             <div class="container">
                 <h2 class="main-title py-4">축산물에 대한 검색 결과입니다. </h2>
 
@@ -27,11 +27,11 @@
                         />
 
                         <div class="card-body">
-                            <p class="card-text">{{ item.productPk }}</p>
-                            <p v-on:click="productDetail(item.productPk)">
+                            <p class="card-text"></p>
+                            <h5 v-on:click="productDetail(item.productPk)">
                                 {{ item.productName }}
-                            </p>
-                            <p>{{ item.productPrice }}</p>
+                            </h5>
+                            <h5>{{ item.productPrice }} 원</h5>
                             <div
                                 class="
                                     d-flex
@@ -39,7 +39,7 @@
                                     align-items-center
                                 "
                             >
-                                <div class="btn-group">
+                                <!-- <div class="btn-group">
                                     <button
                                         type="button"
                                         class="btn btn-sm btn-outline-secondary"
@@ -53,7 +53,7 @@
                                         Edit
                                     </button>
                                 </div>
-                                <small class="text-muted">9 mins</small>
+                                <small class="text-muted">9 mins</small> -->
                             </div>
                         </div>
                     </div>

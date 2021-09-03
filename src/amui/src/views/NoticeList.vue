@@ -27,7 +27,7 @@
             </table>
 
             <!-- 0902 : 페이징 -->
-                <nav aria-label="Page navigation example">
+                <nav aria-label="Page navigation example" style="">
                     <ul class="pagination" style="justify-content: center;">
                         <!-- 이전으로 --> 
                         <li class="page-item">
