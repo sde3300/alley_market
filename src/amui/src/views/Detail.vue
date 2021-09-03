@@ -5,9 +5,9 @@
                 <div class="row" style="margin-bottom: 50px">
                     <div class="col-6" id="detailPic">
                         <img
-                            src="https://shop.hansalim.or.kr/im/is/activeDesigner/050307006_content1.jpg"
+                            v-bind:src="storedFilePath"
                             class="rounded float-left"
-                            alt="..."
+                            alt="http://localhost:9000/#/에서 확인"
                             width="500px"
                             height="400px"
                         />
@@ -346,6 +346,7 @@ export default {
             qnas: [],
             reviews: [],
             items: [],
+            storedFilePath:''
         };
     },
     methods: {
@@ -445,6 +446,7 @@ export default {
                 obj.productStockCnt = res.data.productStockCnt;
                 obj.productStore = res.data.productStore;
                 obj.productDetail = res.data.productDetail;
+                obj.storedFilePath = res.data.storedFilePath;
             })
             .catch(function(err) {
                 console.log("axios 비동기 통신 오류");
