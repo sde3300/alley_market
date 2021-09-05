@@ -112,7 +112,7 @@
 	            notice_contents= #{noticeContents},
 	            update_date= NOW(),
 	            create_id= 'yoo'
-	         WHERE
+	         WHEREgodzhtm
 	            notice_pk = #{noticePk}
       
      	]]>
