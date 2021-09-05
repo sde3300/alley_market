@@ -37,7 +37,7 @@
 
                 <div class="row ">
                     <button type="button" class="btn btn col-sm-1 ml-auto" id="btnList" v-on:click="moveNoticeList">목록으로</button>
-                    <button type="button" class="btn btn col-sm-1 " id="btnmodi" v-on:click="noticeUpdate">수정하기</button>
+                    <button type="button" class="btn btn col-sm-1 " id="btnmodi" v-on:click="movenoticeUpdate(noticePk)">수정하기</button>
                     <button type="button" class="btn btn col-sm-1 " id="btndel" v-on:click="noticeDelete">삭제하기</button>
                 </div>
             </form> 
@@ -63,23 +63,24 @@ export default {
         moveNoticeList() {
             this.$router.push({ name:'NoticeList'});
         },
-        noticeUpdate() {
-            let obj =this;
-            this.$axios.put('http://localhost:9000/noticeUpdate', {
-                noticePk: this.noticePk,
-                noticeTitle: this.noticeTitle,
-                noticeContents: this.noticeContents,
-                createId: this.createId,
-                storedFilePath: this.storedFilePath
-            })
-            .then(function() {
-                console.log('비동기 통신 성공');
-                obj.$router.push({name:'NoticeList'});
-            })
-            .catch(function(err) {
-                console.log("axios 비동기 통신 오류");
-                console.log(err);
-            });
+        movenoticeUpdate(noticePk) {
+            this.$router.push({name: 'AdminNoticeUpdate', params: { noticePk: noticePk}})
+            // let obj =this;
+            // this.$axios.put('http://localhost:9000/noticeUpdate', {
+            //     noticePk: this.noticePk,
+            //     noticeTitle: this.noticeTitle,
+            //     noticeContents: this.noticeContents,
+            //     createId: this.createId,
+            //     storedFilePath: this.storedFilePath
+            // })
+            // .then(function() {
+            //     console.log('비동기 통신 성공');
+            //     obj.$router.push({name:'NoticeList'});
+            // })
+            // .catch(function(err) {
+            //     console.log("axios 비동기 통신 오류");
+            //     console.log(err);
+            // });
         },
         noticeDelete() {
             let obj = this;

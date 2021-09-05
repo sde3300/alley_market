@@ -21,6 +21,7 @@ import Order from '../views/Order.vue'
 import CartList from '../views/CartList.vue'
 import AdminNoticeList from '../views/AdminNoticeList.vue'
 import AdminNoticeWrite from '../views/AdminNoticeWrite.vue'
+import AdminNoticeUpdate from '../views/AdminNoticeUpdate.vue'
 import P1board from '../views/P1Board.vue'
 import P2board from '../views/P2Board.vue'
 import P3board from '../views/P3Board.vue'
@@ -160,7 +161,12 @@ const routes = [
     path: '/adminNoticeWrite',
     name: 'AdminNoticeWrite',
     component: AdminNoticeWrite
-  }
+  },
+  {
+    path: '/adminNoticeUpdate',
+    name: 'AdminNoticeUpdate',
+    component: AdminNoticeUpdate
+  },
 ]
 
 const router = new VueRouter({
