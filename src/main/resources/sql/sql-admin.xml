@@ -50,16 +50,15 @@
    		]]>
 	</insert>
 	
-	<!-- 이미지 등록 페이지-->
+	<!--게시판(공지사항, 리뷰, qna) 이미지 등록 페이지-->
 	<insert id="boardImageInsert" parameterType="am.dto.BoardFileDto">
 		<![CDATA[
 		
-<<<<<<< HEAD
 			INSERT INTO
 				board_file (board_category_pk, review_pk, notice_pk, qna_pk, original_file_name, stored_file_path, create_date)
 			VALUES
-=======
-	       SELECT 
+		]]>
+		<!-- SELECT 
 				a.notice_pk, a.notice_title, a.notice_contents, a.create_id, b.stored_file_path
 			FROM 
 				notice as a
@@ -68,10 +67,7 @@
 			ON 
 				a.notice_pk = b.notice_pk
 			WHERE 
-				a.notice_pk = #{noticePk}   
->>>>>>> master/정민_테스트
-			
-		]]>
+				a.notice_pk = #{noticePk}    -->
 		<foreach collection="list" item="item" separator=",">
 			
 			(

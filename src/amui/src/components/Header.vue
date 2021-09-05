@@ -17,16 +17,16 @@
                 <a class="nav-link"><router-link to="/adminMain" id="routerlink">관리자(임시)</router-link></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#" @click="moveNoticeList">공지사항</a>
+                <a class="nav-link" href="" @click="moveNoticeList">공지사항</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#" @click="moveLogin">로그인</a>
+                <a class="nav-link" href="" @click="moveLogin">로그인</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#" @click="moveJoin">회원가입</a>
+                <a class="nav-link" href="" @click="moveJoin">회원가입</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#" @click="moveMypage">마이페이지</a>
+                <a class="nav-link" href="" @click="moveMypage">마이페이지</a>
             </li>
             </ul>
         </div>
@@ -40,22 +40,22 @@
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
                     <!-- <a class="nav-link" href="#" v-on:click="moveMain">전체상품 <span class="sr-only">(current)</span></a> -->
-                    <a class="nav-link" href="#/main">전체상품 <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="/main">전체상품 <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#/p1board">밀키트</a>
+                    <a class="nav-link" href="/p1board">밀키트</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#/p2board">농/수산물</a>
+                    <a class="nav-link" href="/p2board">농/수산물</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#/p3board">축산물</a>
+                    <a class="nav-link" href="/p3board">축산물</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#/p4board">식품</a>
+                    <a class="nav-link" href="/p4board">식품</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#/p5board">기타</a>
+                    <a class="nav-link" href="/p5board">기타</a>
                 </li>
             </ul>
             <form class="form-inline my-2 my-lg-0">
