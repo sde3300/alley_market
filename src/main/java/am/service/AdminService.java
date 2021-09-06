@@ -30,13 +30,13 @@ public interface AdminService {
 	public Page<NoticeDto> getNotiList(int pageNo) throws Exception;
 
 //	공지사항 작성하기
-	void NoticeWrite(NoticeDto notice, MultipartHttpServletRequest mgsr) throws Exception;
+	void NoticeWrite(NoticeDto notice, MultipartHttpServletRequest mhsr) throws Exception;
 
 //	공지사항 상세내용 확인하기
 	NoticeDto NoticeDetail(int noticePk) throws Exception;
 
 //	공지사항 상세내용 수정하기
-	void noticeUpdate(NoticeDto noticeupdate) throws Exception;
+	void noticeUpdate(NoticeDto noticeupdate, MultipartHttpServletRequest mhsr) throws Exception;
 
 //	공지사항 상세내용 삭제하기
 	void noticeDelete(int noticePk) throws Exception;
@@ -48,7 +48,7 @@ public interface AdminService {
 	public Page<ProductDto> SelectStockList(int pageNo) throws Exception;
 	
 //	상품정보 등록하기
-	void ProductInsert(ProductDto productIn, MultipartHttpServletRequest mgsr) throws Exception;
+	void ProductInsert(ProductDto productIn, MultipartHttpServletRequest mhsr) throws Exception;
 
 //	상품이미지 등록하기
 //	void insertBoardImg(ProductDto imgin, MultipartHttpServletRequest mhsr) throws Exception;

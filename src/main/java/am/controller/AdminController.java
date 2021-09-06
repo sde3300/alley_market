@@ -61,7 +61,7 @@ public class AdminController {
 	//0902 혜수 : 공지사항 게시판 목록 확인 + 페이징 추가 
 	@RequestMapping(value="/noticeList", method=RequestMethod.GET)
 	public Object SelectNoticeBoardList(@RequestParam(required = false, defaultValue = "1") int pageNum) throws Exception {
-		PageInfo<NoticeDto> noticedataList = new PageInfo<NoticeDto>(adService.getNotiList(pageNum), 3);
+		PageInfo<NoticeDto> noticedataList = new PageInfo<NoticeDto>(adService.getNotiList(pageNum), 10);
 		return noticedataList;
 	}
 	
@@ -81,8 +81,8 @@ public class AdminController {
 	
 //	공지사항 수정하기
 	@RequestMapping(value="/noticeUpdate", method=RequestMethod.PUT)
-	public void noticeUpdateDetail(@RequestBody NoticeDto noticeupdate) throws Exception {
-		adService.noticeUpdate(noticeupdate);
+	public void noticeUpdateDetail(@RequestBody NoticeDto noticeupdate, MultipartHttpServletRequest mhsr) throws Exception {
+		adService.noticeUpdate(noticeupdate, mhsr);
 	}
 	
 //	공지사항 삭제하기

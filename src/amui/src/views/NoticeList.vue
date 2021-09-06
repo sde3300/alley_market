@@ -1,5 +1,5 @@
 <template>
-    <div class="container">
+    <div class="container" id="noticelist">
 
         <div class="jumbotron text-center">
             <h1>공지사항</h1>
@@ -27,7 +27,7 @@
             </table>
 
             <!-- 0902 : 페이징 -->
-                <nav aria-label="Page navigation example" style="">
+                <nav aria-label="Page navigation example" id="pagediv">
                     <ul class="pagination" style="justify-content: center;">
                         <!-- 이전으로 --> 
                         <li class="page-item">
@@ -143,8 +143,11 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 table {
     text-align: center;
+}
+#pagediv {
+    margin-top: 100px;
 }
 </style>

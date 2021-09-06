@@ -121,6 +121,9 @@ th {
 
 table {
     width: 1000px;
-    margin: auto;
+    margin: 50px auto 100px auto;
+}
+button {
+    margin-bottom: 50px;
 }
 </style>
