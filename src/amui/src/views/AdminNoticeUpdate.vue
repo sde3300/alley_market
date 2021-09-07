@@ -49,6 +49,7 @@ export default {
             noticeTitle:'',
             createId:'yoo',
             noticeContents:'',
+            updateDate:'',
             image:'',
             storedFilePath:'',
         }
@@ -67,10 +68,11 @@ export default {
             formData.append('boardCategoryPk', this.boardCategoryPk)
             formData.append('noticeTitle', this.noticeTitle)
             formData.append('createId', this.createId)
+            formData.append('noticePk', this.noticePk)
             formData.append('noticeContents', this.noticeContents)
             formData.append('image', this.image);
 
-            obj.$axios.put('http://localhost:9000/noticeUpdate', formData, {
+            obj.$axios.post('http://localhost:9000/noticeUpdate', formData, {
                 noticePk: this.noticePk,
                 noticeTitle: this.noticeTitle,
                 createdId: this.createId,
@@ -81,8 +83,8 @@ export default {
             })
             .then(function() {
                 console.log("비동기 통신 성공");
-                obj.$router.push({name:'noticeDetail',
-                query: {noticePk: obj.noticePk}});
+                obj.$router.push({name:'NoticeDetail',
+                params: {noticePk: obj.noticePk}});
                 
             })
             .catch(function(err) {
@@ -135,6 +137,7 @@ export default {
             obj.createId = res.data.createId;
             obj.noticeTitle = res.data.noticeTitle;
             obj.noticeContents = res.data.noticeContents;
+            obj.updateDate = res.data.updateDate;
             obj.storedFilePath = res.data.storedFilePath;
 
         })

@@ -3,7 +3,6 @@ package am.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -80,8 +79,8 @@ public class AdminController {
 	
 	
 //	공지사항 수정하기
-	@RequestMapping(value="/noticeUpdate", method=RequestMethod.PUT)
-	public void noticeUpdateDetail(@RequestBody NoticeDto noticeupdate, MultipartHttpServletRequest mhsr) throws Exception {
+	@RequestMapping(value="/noticeUpdate", method=RequestMethod.POST)
+	public void noticeUpdateDetail(NoticeDto noticeupdate, MultipartHttpServletRequest mhsr) throws Exception {
 		adService.noticeUpdate(noticeupdate, mhsr);
 	}
 	

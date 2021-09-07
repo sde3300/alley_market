@@ -22,11 +22,11 @@
                 <div class="form-group row">
                     <label for="text" class="col-sm-2 col-form-label">내용</label>
                     <div class="col-sm-10">
-                        <textarea class="form-control-plaintext" id="exampleFormControlTextarea1"  rows="8" v-model="noticeContents">
-                        </textarea>
-                        <div>
+                        <div id="imgdiv">
                             <img alt="" v-bind:src="storedFilePath" id="noticeImg">
                         </div>
+                        <textarea class="form-control-plaintext" id="exampleFormControlTextarea1"  rows="8" v-model="noticeContents">
+                        </textarea>
                     </div>
                 </div>
 
@@ -146,11 +146,14 @@ export default {
     height: 500px;
     border: none;
     display: block;
+    margin: 50px 0px;
 }
 /* img {
     width: 200px;
     height: 200px;
 } */
 /* style="height: 200px; width: 200px; display: block" */
-
+#imgdiv {
+    text-align: center;
+}
 </style>
