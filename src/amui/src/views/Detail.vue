@@ -9,8 +9,8 @@
                             v-bind:src="storedFilePath"
                             class="rounded float-left"
                             alt="http://localhost:9000/#/에서 확인"
-                            width="500px"
-                            height="400px"
+                            width="100%"
+                            height="100%"
                         />
                     </div>
 
@@ -90,8 +90,7 @@
                             </div>
                             <div class="row" style="margin-top:20px">
                                 <div class="col-2" style="text-right">
-                                <!-- <i class="fab fa-2x fa-gratipay"></i> -->
-                                <!-- 찜하기 버튼? 모달창?-->
+
                                 </div>
                                 <div class="" style="margin:auto">
                                     <button type="button" class="btn btn-success btn-lg" v-on:click="cartInsert" style="margin-right:-250px" 
@@ -118,19 +117,21 @@
             </div>
 
             <!-- 물품 정보 -->
+            <div class="container">
             <div id="info" class="text-dark text-left px-3 py-4">
                 <div class="container center" style="margin-top: 30px">
                     {{ productDetail }}
-                    <img v-bind:src="storedFilePath">
+                    <img v-bind:src="storedFilePath" id="imgDetail">
 
                 </div>
+            </div>
             </div>
             <hr>
 
             <!-- 이용 후기 -->
             <div class="table-responsive" id="reviews">
                 <div class="container text-left" id="likejumbotron">
-                    <h1><b>이용후기</b></h1>
+                    <h2><b>이용후기</b></h2>
                     <br />물품 이용 후 1개월 이내에 후기를 작성할 수
                     있습니다.<br />
                     일반문의, 물품 관련 질문은 물품문의 게시판에 남겨주시면
@@ -165,11 +166,11 @@
 
                 <table class="table table-sm">
                     <colgroup>
+                        <col width = "8%">
+                        <col width = "60%">
                         <col width = "*">
-                        <col width = "40%">
                         <col width = "*">
-                        <col width = "*">
-                        <col width = "*">
+                        <col width = "5%">
                     </colgroup>
 
                     <thead>
@@ -192,18 +193,11 @@
                                     aria-expanded="false"
                                     aria-controls="collapseExample">
                             <td>{{ item.reviewPk }}</td>
-                            <td>
-                                <div>
-                                    {{ item.reviewTitle }}
-                                </div>
-                                <br />
-                                <div
-                                    class="collapse"
-                                    v-bind:id="'review' + item.reviewPk"
-                                >
-                                    <div class="card card-body">
-                                        {{ item.reviewContents }}
-                                    </div>
+                            <td style="text-align: left;">
+                                <div>{{ item.reviewTitle }}</div>
+                                <br>
+                                <div class="collapse" v-bind:id="'review' + item.reviewPk">
+                                    <div class="card card-body">{{ item.reviewContents }}</div>
                                 </div>
                             </td>
 
@@ -221,7 +215,7 @@
             <!-- 물품 문의 -->
             <div class="table-responsive" id="qna">
                 <div class="container text-left" id="likejumbotron">
-                    <h1><b>물품문의</b></h1>
+                    <h2><b>Q&A</b></h2>
                     <br />
                     <h5>
                         <b
@@ -286,19 +280,19 @@
 
                 <table class="table table-sm">
                         <colgroup>
+                            <col width = "8%">
+                            <col width = "60%">
                             <col width = "*">
-                            <col width = "40%">
                             <col width = "*">
-                            <col width = "*">
-                            <col width = "*">
+                            <col width = "7%">
                         </colgroup>
                     <thead>
                         <tr>
                             <th>No.</th>
-                            <th>글 제목</th>
+                            <th>제목</th>
                             <th>작성자</th>
-                            <th>작성 날짜</th>
-                            <th>답변 여부</th>
+                            <th>작성날짜</th>
+                            <th>답변상태</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -309,7 +303,7 @@
                                     aria-expanded="false"
                                     v-bind:aria-controls="'qna' + item.qnaPk">
                             <td>{{ item.qnaPk }}</td>
-                            <td>
+                            <td style="text-align: left;">
                                 <div>{{ item.qnaTitle }}</div>
                                 <br>
                                 <div class="collapse" v-bind:id="'qna' + item.qnaPk">
@@ -330,7 +324,7 @@
             </div>
         </div>
 
-            <button type="button" class="btn btn-outline-secondary float-right" ><a href="#"><i class="fas fa-angle-double-up"></i></a></button>
+            <button type="button" class="btn btn-outline-secondary float-right" ><href="#"><i class="fas fa-angle-double-up"></i></button>
 
     </section>
     
@@ -538,7 +532,11 @@ export default {
     border-radius:.3rem
 }
 
-
+#imgDetail {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
 
 a:link {
     color : black;

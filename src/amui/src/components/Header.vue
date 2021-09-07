@@ -62,8 +62,8 @@
                 <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
                 &nbsp; &nbsp; &nbsp;
-                <span style="font-size: 2em; ">
-                    <i id="cart" class="fas fa-shopping-cart" href="#" v-on:click="moveCart"></i>
+                <span style="font-size: 2em; cursor:pointer;">
+                    <i id="cart" class="fas fa-shopping-cart" v-on:click="moveCart"></i>
                 </span>
             </form>
         </div>
