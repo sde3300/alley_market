@@ -234,7 +234,7 @@ export default {
                 totalPriceDelivery: this.totalPriceDelivery,
             })
             .then(function() {
-                console.log('비동기 통신 성공');
+                console.log('주문 비동기 통신 성공');
                 obj.$router.push({ name: 'Index' });
                 alert("주문이 완료되었습니다");
             })

@@ -37,17 +37,8 @@ public class CustomerController {
 		
 		return dataList;
 	}
-	
-////	상품 상세페이지 불러오기
-//	@RequestMapping(value="/productDetail", method=RequestMethod.GET)
-//	public Object productDetail(@RequestParam("productPk") int productPk) throws Exception {
-//		ProductDto product = cusService.productDetail(productPk);
-//				
-//		return product;
-//	}
-//	
-//	상품 상세페이지 불러오기 + 사진 
 
+//	상품 상세페이지 불러오기 + 사진 
 	@RequestMapping(value="/productDetail", method=RequestMethod.GET)
 	public Object productDetail(@RequestParam("productPk") int productPk) throws Exception {
 		ProductInfoDto product = cusService.productDetail(productPk);
