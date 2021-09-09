@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="am.mapper.LoginMapper">
+	<insert id="join" parameterType="am.dto.CustomersDto">
+		<![CDATA[
+			INSERT INTO 
+				customers (customer_email, customer_pw, customer_name, customer_phone, admin_yn)
+			VALUES 
+				(#{customerEmail}, #{customerPw}, #{customerName}, #{customerPhone}, 'N')
+		]]>
+	</insert>
+	
+	<select id="isUser" parameterType="am.dto.CustomersDto" resultType="int">
+		<![CDATA[
+			SELECT count(customer_email)
+			FROM customers
+			WHERE customer_email = #{customerEmail}
+			AND customer_pw = #{customerPw}
+		]]>
+	</select>
+	
+	<select id="login" parameterType="am.dto.CustomersDto" resultType="am.dto.CustomersDto">
+		<![CDATA[
+			SELECT customer_email, admin_yn, customer_name
+			FROM customers
+			WHERE customer_email = #{customerEmail}
+			AND customer_pw = #{customerPw}
+		]]>
+	</select>
+</mapper>
