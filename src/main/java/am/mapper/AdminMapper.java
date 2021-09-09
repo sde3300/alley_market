@@ -22,6 +22,9 @@ public interface AdminMapper {
 	
 //	회원관리 페이지에 페이징 추가 
 	Page<CustomersDto> SelectCustomerList() throws Exception;
+	
+//	회원삭제하기
+	void customersDeleteDetail(int customerPk) throws Exception;	
 
 ////	공지사항 리스트 불러오기(수정전)
 //	List<NoticeDto> SelectNoticeBoardList() throws Exception;

@@ -48,6 +48,11 @@ public class AdminController {
 	        return cusdataList;
 	    }
 	
+//	회원 삭제하기
+	    @RequestMapping(value="/customersDelete", method=RequestMethod.DELETE)
+	    public void CustomersDeleteDetail(@RequestParam("customerPk") int customerPk) throws Exception {
+	    	adService.customersDeleteDetail(customerPk);
+	    }
 	    
 //	공지사항 게시판 목록 확인하기 수정전
 //	@RequestMapping(value="/noticeList", method=RequestMethod.GET)
@@ -89,6 +94,7 @@ public class AdminController {
 	public void noticeDeleteDetail(@RequestParam("noticePk") int noticePk) throws Exception {
 		adService.noticeDelete(noticePk);
 	}
+	
 	
 ////	상품재고 목록 확인하기 (수정전)
 //	@RequestMapping(value="/stockList", method=RequestMethod.GET)

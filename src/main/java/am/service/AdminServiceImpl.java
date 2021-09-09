@@ -51,6 +51,12 @@ public class AdminServiceImpl implements AdminService{
 	     PageHelper.startPage(pageNo, 10);
 	     return adMapper.SelectCustomerList();
 	 }	
+	 
+//		회원삭제하기
+	 @Override
+	public void customersDeleteDetail(int customerPk) throws Exception {
+		 adMapper.customersDeleteDetail(customerPk);
+	 }
 	
 ////	공지사항 리스트 불러오기(수정전)
 //	@Override

@@ -11,14 +11,28 @@
 		<![CDATA[
 		
 			SELECT
-				customer_pk, customer_email, customer_phone, customer_name
+				customer_pk, customer_email, customer_phone, customer_name, admin_yn
 			FROM
 				customers
+			WHERE
+				deleted_yn = 'N'
 			ORDER BY
 				customer_pk asc
-				
 		]]>
 	</select>
+	
+	<!-- 회원 삭제(목록에서만 안 보이게 하는 삭제방법)-->
+	<update id="customersDeleteDetail" parameterType="int">
+		<![CDATA[ 
+		
+			UPDATE 
+				customers 
+			SET
+				deleted_yn = 'Y'
+			WHERE
+            	customer_pk = #{customerPk}
+		]]>
+	</update>
 	
 	<!--공지사항 리스트 페이지-->
 	<select id="SelectNoticeBoardList" resultType="am.dto.NoticeDto">
