@@ -1,7 +1,7 @@
 <template>
     <div class="container">
         <div class="jumbotron text-center">
-            <h1>회원관리</h1>
+            <h1>관리자 페이지</h1>
         </div>
         <hr>
         <div class="row">

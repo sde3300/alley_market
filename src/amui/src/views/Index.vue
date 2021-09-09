@@ -218,8 +218,13 @@ export default {
 .carousel-item img {
     max-height: 90vh;
     min-height: 50vh;
+    width: 100%;
+    
 }
 #photoAlbum {
     border: none;
+}
+#myCarousel {
+    width: 100%;
 }
 </style>

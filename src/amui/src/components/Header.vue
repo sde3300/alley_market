@@ -62,7 +62,7 @@
                 <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
                 &nbsp; &nbsp; &nbsp;
-                <span style="font-size: 2em; cursor:pointer;">
+                <span style="font-size: 1.8rem; cursor:pointer;">
                     <i id="cart" class="fas fa-shopping-cart" v-on:click="moveCart"></i>
                 </span>
             </form>
@@ -129,5 +129,9 @@ export default {
 } */
 #cart {
     margin-left: 10px;
+}
+.header {
+    width: 90%;
+    margin: auto;
 }
 </style>
