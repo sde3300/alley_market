@@ -1,8 +1,13 @@
 package am.controller;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import am.dto.CustomersDto;
@@ -28,6 +33,23 @@ public class LoginController {
 		}
 		
 		return loginUser;
+	}
+	
+//	아이디 중복확인
+	@GetMapping("/idCheck")
+	public Object idCheck(@RequestParam("customerEmail") String customerEmail) throws Exception {
+		
+		Map<String, Boolean> result = new HashMap<String, Boolean>();
+		int count = loginService.idCheck(customerEmail);
+		
+		if (count == 0) {
+			result.put("result", true);
+		}
+		else {
+			result.put("result", false);
+		}
+		
+		return result;
 	}
 
 }

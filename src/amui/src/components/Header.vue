@@ -14,7 +14,7 @@
                 <a class="nav-link" href="#">전체상품 <span class="sr-only">(current)</span></a>
             </li> -->
             <li class="nav-item">
-                <a class="nav-link"><router-link to="/adminMain" id="routerlink">관리자(임시)</router-link></a>
+                <a class="nav-link"><router-link to="/adminMain" id="routerlink">관리자</router-link></a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#" @click="moveNoticeList">공지사항</a>

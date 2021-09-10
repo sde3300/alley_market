@@ -15,19 +15,40 @@
 	
 	<select id="isUser" parameterType="am.dto.CustomersDto" resultType="int">
 		<![CDATA[
-			SELECT count(customer_email)
-			FROM customers
-			WHERE customer_email = #{customerEmail}
-			AND customer_pw = #{customerPw}
+			SELECT 
+				count(customer_email)
+			FROM 
+				customers
+			WHERE 
+				customer_email = #{customerEmail}
+			AND 
+				customer_pw = #{customerPw}
 		]]>
 	</select>
 	
 	<select id="login" parameterType="am.dto.CustomersDto" resultType="am.dto.CustomersDto">
 		<![CDATA[
-			SELECT customer_email, admin_yn, customer_name
-			FROM customers
-			WHERE customer_email = #{customerEmail}
-			AND customer_pw = #{customerPw}
+			SELECT 
+				customer_email, admin_yn, customer_name
+			FROM 
+				customers
+			WHERE 
+				customer_email = #{customerEmail}
+			AND 
+				customer_pw = #{customerPw}
 		]]>
 	</select>
+	
+	<!-- 아이디 중복확인 -->
+	<select id="idCheck" parameterType="String" resultType="int">
+		<![CDATA[
+			SELECT 
+				count(customer_email)
+			FROM 
+				customers
+			WHERE 
+				customer_email = #{customerEmail}
+		]]>
+	</select>
+	
 </mapper>

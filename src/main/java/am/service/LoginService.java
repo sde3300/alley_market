@@ -9,4 +9,6 @@ public interface LoginService {
 	int isUser(CustomersDto user) throws Exception;
 	
 	CustomersDto login(CustomersDto user) throws Exception;
+	
+	int idCheck(String customerEmail) throws Exception;
 }

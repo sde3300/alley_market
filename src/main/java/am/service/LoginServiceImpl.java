@@ -32,4 +32,10 @@ public class LoginServiceImpl implements LoginService {
 		
 		return loginMapper.login(user);
 	}
+	
+	@Override
+	public int idCheck(String customerEmail) throws Exception {
+		
+		return loginMapper.idCheck(customerEmail);
+	}
 }
