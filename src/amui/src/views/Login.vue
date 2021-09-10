@@ -33,7 +33,7 @@
                 </div>
                 <div id="btn">
                 <button type="button" class="btn btn  btn-lg btn-block" id="btnlo" v-on:click="login">로그인</button><br>
-                <button type="button" class="btn btn-secondary  btn-lg btn-block" id="btnjo">회원가입</button>
+                <button type="button" class="btn btn-secondary  btn-lg btn-block" id="btnjo" v-on:click="join">회원가입</button>
                 </div>
             </form>
         </div>
@@ -46,7 +46,8 @@ export default {
         return {
             customerEmail:'',
             customerPw:'',
-            customerPk:0,        
+            customerPk:0, 
+            customerName:'',
         }
     },
     methods: {
@@ -57,6 +58,7 @@ export default {
                 customerEmail: this.customerEmail,
                 customerPw: this.customerPw,
                 customerPk: this.customerPk,
+                customerName: this.customerName,
             })
             .then(function(res) {
                 console.log("axios로 비동기 통신 성공");
@@ -65,10 +67,13 @@ export default {
                     sessionStorage.setItem('customerEmail', res.data.customerEmail);
                     sessionStorage.setItem('adminYn', res.data.adminYn);
                     sessionStorage.setItem('customerPk', res.data.customerPk);
+                    sessionStorage.setItem('customerName', res.data.customerName);
                     if (res.data.adminYn == 'Y') {
+                        alert("관리자로 로그인되었습니다.");
                         obj.$router.push({ name : "AdminMain"});
-                    }
+                        }
                     else {
+                        alert("로그인되었습니다. 환영합니다!");
                         obj.$router.push({ name : "Index"});
                     }
                 }
@@ -82,7 +87,13 @@ export default {
                 console.log("axios 비동기 통신 오류");
                 console.log(err);
             });
-        }
+        },
+        
+        join() {
+            this.$router.push({
+                name: "Join",
+            });
+        },
     }
 }
 </script>

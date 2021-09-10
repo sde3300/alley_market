@@ -63,9 +63,9 @@
 		<insert id="reviewWrite" parameterType="am.dto.ReviewDto">
 			<![CDATA[
 				INSERT INTO review 
-    				(product_pk, review_title, review_contents, review_score, create_id, create_date)
+    				(product_pk, review_title, review_contents, review_score, create_date, customer_name)
 				VALUES
-					(#{productPk}, #{reviewTitle}, #{reviewContents}, #{reviewScore}, #{createId}, NOW())
+					(#{productPk}, #{reviewTitle}, #{reviewContents}, #{reviewScore}, NOW(), #{customerName})
       		]]>
 		</insert>
 
@@ -74,7 +74,7 @@
 			<![CDATA[
 				SELECT
 					review_pk, board_category_pk, review_title, review_contents, review_score,
-					create_id, product_pk,
+					customer_name, product_pk,
 					DATE_FORMAT(create_date, '%Y.%m.%d %H:%i') AS create_date,
 					DATE_FORMAT(update_date, '%Y.%m.%d %H:%i') AS update_date
 				FROM

@@ -22,7 +22,7 @@
                 <div class="form-group row">
                     <label for="text" class="col-sm-2 col-form-label">내용</label>
                     <div class="col-sm-10">
-                        <div id="imgdiv">
+                        <div id="imgdiv" class="" v-bind:class="{imgPath : isImgPath}">
                             <img alt="" v-bind:src="storedFilePath" id="noticeImg">
                         </div>
                         <textarea class="form-control-plaintext" id="exampleFormControlTextarea1"  rows="8" v-model="noticeContents">
@@ -37,8 +37,8 @@
 
                 <div class="row ">
                     <button type="button" class="btn btn col-sm-1 ml-auto" id="btnList" v-on:click="moveNoticeList">목록으로</button>
-                    <button type="button" class="btn btn col-sm-1 " id="btnmodi" v-on:click="movenoticeUpdate(noticePk)">수정하기</button>
-                    <button type="button" class="btn btn col-sm-1 " id="btndel" v-on:click="noticeDelete">삭제하기</button>
+                    <button type="button" class="btn btn col-sm-1 " id="btnmodi" v-bind:class="{active : isActive}" v-on:click="movenoticeUpdate(noticePk)">수정하기</button>
+                    <button type="button" class="btn btn col-sm-1 " id="btndel" v-bind:class="{active : isActive}" v-on:click="noticeDelete">삭제하기</button>
                 </div>
             </form> 
         </div>
@@ -56,7 +56,9 @@ export default {
             createDate:'',
             createId:'yoo',
             noticeContents:'',
-            storedFilePath:''
+            storedFilePath:'',
+            isActive: true,
+            isImgPath: false,
         }
     },
     methods: {
@@ -120,11 +122,22 @@ export default {
             obj.noticeContents = res.data.noticeContents;
             obj.storedFilePath = res.data.storedFilePath;
 
+            if (obj.storedFilePath == '' || obj.storedFilePath == null) {
+                obj.isImgPath = true;
+            }
+
         })
         .catch(function(err) {
             console.log('비동기통신 실패');
             console.log(err);
-        });  
+        });
+
+        if (sessionStorage.getItem('adminYn') == 'Y') {
+            this.isActive = false
+        }
+        else {
+            this.isActive = true;
+        }
     }
 }
 </script>
@@ -155,5 +168,13 @@ export default {
 /* style="height: 200px; width: 200px; display: block" */
 #imgdiv {
     text-align: center;
+}
+
+.active {
+    display: none;
+}
+
+.imgPath {
+    display: none;
 }
 </style>

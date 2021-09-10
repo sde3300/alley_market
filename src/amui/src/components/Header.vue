@@ -19,7 +19,7 @@
             <li class="nav-item">
                 <a class="nav-link" href="#" @click="moveNoticeList">공지사항</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item" v-bind:class="{login : isLogin}">
                 <a class="nav-link" href="#" @click="moveLogin">로그인</a>
             </li>
             <li class="nav-item">
@@ -28,7 +28,7 @@
             <li class="nav-item">
                 <a class="nav-link" href="#" @click="moveMypage">마이페이지</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item" v-bind:class="{logout : isLogout}">
                 <a class="nav-link" href="#" @click="Logout">로그아웃</a>
             </li>
             </ul>
@@ -79,7 +79,8 @@
 export default {
     data() {
         return {
-
+            isLogin: false,
+            isLogout: true,
         };
     },
     methods: {
@@ -120,12 +121,12 @@ export default {
             // sessionStorage.removeItem("adminYn");
             // sessionStorage.removeItem("customer_pk");
             sessionStorage.clear();
+            alert("로그아웃되었습니다.");
             this.$router.push({ name : "Index"});
-    }
-
+        }
     },
     mounted() {
-
+        
     },
 }
 </script>
@@ -143,5 +144,11 @@ export default {
 .header {
     width: 90%;
     margin: auto;
+}
+.login {
+    display: none;
+}
+.logout {
+    display: none;
 }
 </style>

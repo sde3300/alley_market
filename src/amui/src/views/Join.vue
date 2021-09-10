@@ -12,7 +12,7 @@
 
                 <div class="form-group">
                     <label for="customerPhone">전화번호</label>
-                    <input type="tel" class="form-control" id="customerPhone" aria-describedby="phoneHelp" placeholder="-를 제외하고 비밀번호를 입력해주세요" v-model="customerPhone">
+                    <input type="tel" class="form-control" id="customerPhone" aria-describedby="phoneHelp" placeholder="-를 제외하고 전화번호를 입력해주세요" v-model="customerPhone">
                 </div>
 
                 <div class="form-group">
@@ -96,7 +96,7 @@ export default {
                 .then(function() {
                     console.log('비동기 통신 성공');
                     obj.$router.push({ name: 'Main' });
-                        alert("회원가입이 완료되었습니다. 로그인해주세요.");
+                        alert("회원가입이 완료되었습니다! 로그인해주세요.");
                 })
                 .catch(function(err) {
                     console.log("비동기 통신 실패");
@@ -127,10 +127,10 @@ export default {
                     // console.log('비동기 통신 성공');
 
                     if (res.data.result == true) {
-                        alert("사용 가능한 정보입니다.");
+                        alert("사용가능한 이메일입니다.");
                     }
                     else {
-                        alert("이미 등록된 정보입니다.");
+                        alert("이미 등록된 이메일입니다.");
                     }
                 })
                 .catch(function(err) {

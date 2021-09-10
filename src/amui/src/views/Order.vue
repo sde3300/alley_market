@@ -236,7 +236,7 @@ export default {
                 customerPk: sessionStorage.getItem("customerPk"),
             })
             .then(function() {
-                console.log('주문 비동기 통신 성공');
+                console.log('주문 비동기 y통신 성공');
                 alert("주문이 완료되었습니다");
                 obj.$router.push({ name: 'Index' });
             })

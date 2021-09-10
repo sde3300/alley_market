@@ -58,8 +58,8 @@ export default {
             reviewTitle: "",
             reviewContents: "",
             reviewScore: 0,
-            createId: "",
-            createdDate: "작성자",
+            createdDate: "",
+            customerName: "",
         };
     },
     methods: {
@@ -72,6 +72,7 @@ export default {
                 reviewScore: this.reviewScore,
                 createdDate: this.createdDate,
                 createId: this.createId,
+                customerName: sessionStorage.getItem("customerName"),
             })
             .then(function() {
                 console.log("비동기 통신 성공");
