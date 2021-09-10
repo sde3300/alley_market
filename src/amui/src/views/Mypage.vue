@@ -62,6 +62,7 @@ export default {
     data() {
         return {
             myPageOrders: [],
+            customerPk: 0,
         }
     },
     methods: {
@@ -74,7 +75,8 @@ export default {
 
         obj.$axios.get("http://localhost:9000/myPageOrder", {
                 params: {
-                    customerPk: 3, // 상품 코드 입력부분이 현재 개발되지 않음
+                    // customerPk: customerPk, // 상품 코드 입력부분이 현재 개발되지 않음
+                    customerPk: sessionStorage.getItem("customerPk")
                 },
             })
             .then(function (res) {

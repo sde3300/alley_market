@@ -8,13 +8,13 @@
                 <div class="form-group row ">
                     <label for="staticEmail" class="col-sm-3 col-form-label">이메일</label>
                     <div class="col-sm-9">
-                    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+                    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com"  v-model="customerEmail">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="inputPassword" class="col-sm-3 col-form-label">비밀번호</label>
                     <div class="col-sm-9">
-                    <input type="password" class="form-control" id="inputPassword" placeholder="****">
+                    <input type="password" class="form-control" id="inputPassword" placeholder="****"  v-model="customerPw">
                     </div>
                 </div>
                 <!-- <div class="form-group row">
@@ -32,7 +32,7 @@
                     <label class="form-check-label" for="inlineCheckbox2">로그인유지</label>
                 </div>
                 <div id="btn">
-                <button type="button" class="btn btn  btn-lg btn-block" id="btnlo">로그인</button><br>
+                <button type="button" class="btn btn  btn-lg btn-block" id="btnlo" v-on:click="login">로그인</button><br>
                 <button type="button" class="btn btn-secondary  btn-lg btn-block" id="btnjo">회원가입</button>
                 </div>
             </form>
@@ -42,17 +42,59 @@
 
 <script>
 export default {
-    
+    data() {
+        return {
+            customerEmail:'',
+            customerPw:'',
+            customerPk:0,        
+        }
+    },
+    methods: {
+        login() {
+            let obj = this;
+
+            this.$axios.post("http://localhost:9000/login", {
+                customerEmail: this.customerEmail,
+                customerPw: this.customerPw,
+                customerPk: this.customerPk,
+            })
+            .then(function(res) {
+                console.log("axios로 비동기 통신 성공");
+
+                if (res.data.customerEmail != null) {
+                    sessionStorage.setItem('customerEmail', res.data.customerEmail);
+                    sessionStorage.setItem('adminYn', res.data.adminYn);
+                    sessionStorage.setItem('customerPk', res.data.customerPk);
+                    if (res.data.adminYn == 'Y') {
+                        obj.$router.push({ name : "AdminMain"});
+                    }
+                    else {
+                        obj.$router.push({ name : "Index"});
+                    }
+                }
+                else {
+                    alert("이메일이나 비밀번호를 다시입력해주세요.");
+                    obj.customerEmail = '';
+                    obj.customerPw = '';
+                }
+            })
+            .catch(function(err) {
+                console.log("axios 비동기 통신 오류");
+                console.log(err);
+            });
+        }
+    }
 }
 </script>
 
 <style scoped>
 #loginform {
-    margin-top: -50px;
+    margin-top: 40px;
     width: 70%;
     /* border: 1px solid lightgray; */
     border-radius: 20px;
     padding: 50px;
+    margin-bottom: 40px;
 }
 #btn {
     margin: 20px 0px;
@@ -72,5 +114,9 @@ export default {
     background-color: rgb(106, 110, 105);
     color: white;
     border-radius: 50px;
+}
+.form-check {
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 </style>

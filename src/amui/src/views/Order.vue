@@ -174,6 +174,7 @@ export default {
             totalPriceDelivery: "",
             orderProducts: [],
             cartLists: [],
+            customerPk: 0,
             } 
     }, 
     methods: {
@@ -232,6 +233,7 @@ export default {
                 orderAsk: this.orderAsk,
                 totalPrice: this.totalPrice,
                 totalPriceDelivery: this.totalPriceDelivery,
+                customerPk: sessionStorage.getItem("customerPk"),
             })
             .then(function() {
                 console.log('주문 비동기 통신 성공');
@@ -270,7 +272,7 @@ export default {
         obj.$axios
             .get("http://localhost:9000/cartList", {
                 params: {
-                    customerPk: 1, // 상품 코드 입력부분이 현재 개발되지 않음
+                    customerPk: sessionStorage.getItem("customerPk"), // 상품 코드 입력부분이 현재 개발되지 않음
                 },
             })
             .then(function (res) {

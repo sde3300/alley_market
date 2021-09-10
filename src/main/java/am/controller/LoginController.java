@@ -22,7 +22,7 @@ public class LoginController {
 	
 	@PostMapping("/login")
 	public Object login(@RequestBody CustomersDto user) throws Exception {
-		CustomersDto loginUser = null;
+		CustomersDto loginUser = new CustomersDto();
 		if (loginService.isUser(user) == 1) {
 			loginUser = loginService.login(user);
 		}

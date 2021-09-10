@@ -28,6 +28,9 @@
             <li class="nav-item">
                 <a class="nav-link" href="#" @click="moveMypage">마이페이지</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#" @click="Logout">로그아웃</a>
+            </li>
             </ul>
         </div>
         </nav>
@@ -112,6 +115,13 @@ export default {
                 query: { customerPk: customerPk },
             });
         },
+        Logout() {
+            // sessionStorage.removeItem("customerEmail");
+            // sessionStorage.removeItem("adminYn");
+            // sessionStorage.removeItem("customer_pk");
+            sessionStorage.clear();
+            this.$router.push({ name : "Index"});
+    }
 
     },
     mounted() {
