@@ -45,7 +45,7 @@ public class AdminController {
 	//0902 혜수 : 회원관리 게시판 글 확인 + 페이징 추가 
 	    @RequestMapping(value="/cusManage", method=RequestMethod.GET)
 	    public Object page(@RequestParam(required = false, defaultValue = "1") int pageNum) throws Exception {
-	        PageInfo<CustomersDto> cusdataList = new PageInfo<CustomersDto>(adService.getCusList(pageNum), 3);
+	        PageInfo<CustomersDto> cusdataList = new PageInfo<CustomersDto>(adService.getCusList(pageNum), 5);
 	        return cusdataList;
 	    }
 	
@@ -61,7 +61,7 @@ public class AdminController {
 	//0902 혜수 : 공지사항 게시판 목록 확인 + 페이징 추가 
 	@RequestMapping(value="/noticeList", method=RequestMethod.GET)
 	public Object SelectNoticeBoardList(@RequestParam(required = false, defaultValue = "1") int pageNum) throws Exception {
-		PageInfo<NoticeDto> noticedataList = new PageInfo<NoticeDto>(adService.getNotiList(pageNum), 3);
+		PageInfo<NoticeDto> noticedataList = new PageInfo<NoticeDto>(adService.getNotiList(pageNum), 5);
 		return noticedataList;
 	}
 	
@@ -102,7 +102,7 @@ public class AdminController {
 //	상품재고 목록 확인하기 + 페이징추가
 	@RequestMapping(value="/stockList", method=RequestMethod.GET)
 	public Object StockList(@RequestParam(required = false, defaultValue = "1") int pageNum) throws Exception {
-		PageInfo<ProductDto> stockdataList = new PageInfo<ProductDto>(adService.SelectStockList(pageNum), 3);
+		PageInfo<ProductDto> stockdataList = new PageInfo<ProductDto>(adService.SelectStockList(pageNum), 5);
 		return stockdataList;
 	}
 	
@@ -125,7 +125,7 @@ public class AdminController {
 //	관리자 문의리스트 불러오기 + 페이징추가
 	@RequestMapping(value="/qnaList", method=RequestMethod.GET)
 	public Object QnaList(@RequestParam(required = false, defaultValue = "1") int pageNum) throws Exception {
-		PageInfo<QnaDto> qnaList = new PageInfo<QnaDto>(adService.getqnaList(pageNum), 3);
+		PageInfo<QnaDto> qnaList = new PageInfo<QnaDto>(adService.getqnaList(pageNum), 5);
 		
 		return qnaList;
 	}

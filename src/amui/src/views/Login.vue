@@ -17,12 +17,6 @@
                     <input type="password" class="form-control" id="inputPassword" placeholder="****">
                     </div>
                 </div>
-                <div class="form-group row">
-                    <label for="inputPassword" class="col-sm-3 col-form-label">비밀번호 확인</label>
-                    <div class="col-sm-9">
-                    <input type="password" class="form-control" id="inputPassword" placeholder="****">
-                    </div>
-                </div>
                 <div class="form-check form-check-inline">
                     <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
                     <label class="form-check-label" for="inlineCheckbox1">아이디저장</label>

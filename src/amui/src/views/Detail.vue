@@ -324,7 +324,7 @@
             </div>
         </div>
 
-            <button type="button" class="btn btn-outline-secondary float-right" ><href="#"><i class="fas fa-angle-double-up"></i></button>
+            <!-- <button type="button" class="btn btn-outline-secondary float-right" ><href="#"><i class="fas fa-angle-double-up"></i></button> -->
 
     </section>
     
