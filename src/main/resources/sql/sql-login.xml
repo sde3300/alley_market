@@ -29,7 +29,7 @@
 	<select id="login" parameterType="am.dto.CustomersDto" resultType="am.dto.CustomersDto">
 		<![CDATA[
 			SELECT 
-				customer_email, admin_yn, customer_name
+				customer_email, admin_yn, customer_name, customer_pk
 			FROM 
 				customers
 			WHERE 

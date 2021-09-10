@@ -57,13 +57,14 @@ export default {
         return {
             orderDetailPk: 0,
             cartLists: [],
+            customerPk: 0
         };
     },
     methods: {
-        moveOrder(customerPk) {
+        moveOrder() {
             this.$router.push({
                 name: "Order",
-                query: { customerPk: customerPk },
+                query: { customerPk: sessionStorage.getItem("customerPk") },
             });
         },
         cartDelete(orderDetailPk) {
@@ -89,7 +90,7 @@ export default {
         let obj = this;
         obj.$axios.get("http://localhost:9000/cartList", {
                 params: {
-                    customerPk: 1, // 상품 코드 입력부분이 현재 개발되지 않음
+                    customerPk: sessionStorage.getItem("customerPk"), // 상품 코드 입력부분이 현재 개발되지 않음
                 },
             })
             .then(function (res) {

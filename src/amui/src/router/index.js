@@ -84,7 +84,7 @@ const routes = [
   {
     path: '/login',
     name: 'Login',
-    component: Login
+    component: Login,
   },
   {
     path: '/join',
@@ -95,7 +95,23 @@ const routes = [
   {
   path: '/adminMain',
   name: 'AdminMain',
-  component: AdminMainVue
+  component: AdminMainVue,
+  beforeEnter: function(to, from, next) {
+
+    if (sessionStorage.getItem("customerEmail") != null) {
+      if (sessionStorage.getItem("adminYn") == "Y") {
+        next();
+      }
+      // else if (sessionStorage.getItem("adminYn") == "Y"){
+      //   alert("관리자로 인증되었습니다.");
+
+      // }
+    }
+    else {
+      alert("로그인이 필요한 서비스 입니다.");
+      router.push({ name : "Login" });
+    }
+  }
   },
   {
     path: '/adminProductStock',
@@ -125,7 +141,23 @@ const routes = [
   {
     path: '/mypage',
     name: 'Mypage',
-    component: Mypage
+    component: Mypage,
+    beforeEnter: function(to, from, next) {
+
+      if (sessionStorage.getItem("customerEmail") != null) {
+        if (sessionStorage.getItem("adminYn") == "N") {
+          next();
+        }
+        // else if (sessionStorage.getItem("adminYn") == "Y"){
+        //   alert("관리자로 인증되었습니다.");
+
+        // }
+      }
+      else {
+        alert("로그인이 필요한 서비스 입니다.");
+        router.push({ name : "Login" });
+      }
+    }
   },
   {
     path: '/adminProductInsert',
