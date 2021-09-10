@@ -3,7 +3,6 @@ package am.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -49,6 +48,11 @@ public class AdminController {
 	        return cusdataList;
 	    }
 	
+//	회원 삭제하기
+	    @RequestMapping(value="/customersDelete", method=RequestMethod.DELETE)
+	    public void CustomersDeleteDetail(@RequestParam("customerPk") int customerPk) throws Exception {
+	    	adService.customersDeleteDetail(customerPk);
+	    }
 	    
 //	공지사항 게시판 목록 확인하기 수정전
 //	@RequestMapping(value="/noticeList", method=RequestMethod.GET)
@@ -61,7 +65,8 @@ public class AdminController {
 	//0902 혜수 : 공지사항 게시판 목록 확인 + 페이징 추가 
 	@RequestMapping(value="/noticeList", method=RequestMethod.GET)
 	public Object SelectNoticeBoardList(@RequestParam(required = false, defaultValue = "1") int pageNum) throws Exception {
-		PageInfo<NoticeDto> noticedataList = new PageInfo<NoticeDto>(adService.getNotiList(pageNum), 5);
+		PageInfo<NoticeDto> noticedataList = new PageInfo<NoticeDto>(adService.getNotiList(pageNum), 10);
+		
 		return noticedataList;
 	}
 	
@@ -80,9 +85,9 @@ public class AdminController {
 	
 	
 //	공지사항 수정하기
-	@RequestMapping(value="/noticeUpdate", method=RequestMethod.PUT)
-	public void noticeUpdateDetail(@RequestBody NoticeDto noticeupdate) throws Exception {
-		adService.noticeUpdate(noticeupdate);
+	@RequestMapping(value="/noticeUpdate", method=RequestMethod.POST)
+	public void noticeUpdateDetail(NoticeDto noticeupdate, MultipartHttpServletRequest mhsr) throws Exception {
+		adService.noticeUpdate(noticeupdate, mhsr);
 	}
 	
 //	공지사항 삭제하기
@@ -90,6 +95,7 @@ public class AdminController {
 	public void noticeDeleteDetail(@RequestParam("noticePk") int noticePk) throws Exception {
 		adService.noticeDelete(noticePk);
 	}
+	
 	
 ////	상품재고 목록 확인하기 (수정전)
 //	@RequestMapping(value="/stockList", method=RequestMethod.GET)

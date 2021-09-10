@@ -42,8 +42,8 @@
             </div>
 
                 <div class="row">
-                    <button type="button" class="btn btn-warning col-sm-1" v-on:click="answerUpdate">등록하기</button> &nbsp;&nbsp;&nbsp;
-                    <button type="button" class="btn btn-primary col-sm-1" v-on:click="moveQnaList">목록으로</button>
+                    <button type="button" class="btn btn-warning col-sm-1" v-on:click="answerUpdate" id="btnwrite">등록하기</button> &nbsp;&nbsp;&nbsp;
+                    <button type="button" class="btn btn-primary col-sm-1" v-on:click="moveQnaList" id="btnList">목록으로</button>
                 </div>
             </form> 
         </div>

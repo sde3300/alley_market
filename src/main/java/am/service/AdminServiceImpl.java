@@ -48,9 +48,15 @@ public class AdminServiceImpl implements AdminService{
 	//회원관리 페이지 불러오기에 페이징추가
 	 @Override
 	 public Page<CustomersDto> getCusList(int pageNo) throws Exception {
-	     PageHelper.startPage(pageNo, 3);
+	     PageHelper.startPage(pageNo, 10);
 	     return adMapper.SelectCustomerList();
 	 }	
+	 
+//		회원삭제하기
+	 @Override
+	public void customersDeleteDetail(int customerPk) throws Exception {
+		 adMapper.customersDeleteDetail(customerPk);
+	 }
 	
 ////	공지사항 리스트 불러오기(수정전)
 //	@Override
@@ -61,7 +67,7 @@ public class AdminServiceImpl implements AdminService{
 //	공지사항 리스트 불러오기에 페이징 추가
 	@Override
 	public Page<NoticeDto> getNotiList(int pageNo) throws Exception {
-	     PageHelper.startPage(pageNo, 3);
+	     PageHelper.startPage(pageNo, 10);
 	     return adMapper.SelectNoticeBoardList();	
 	}
 	
@@ -84,8 +90,13 @@ public class AdminServiceImpl implements AdminService{
 	
 //	공지사항 상세내용 수정하기
 	@Override
-	public void noticeUpdate(NoticeDto noticeupdate) throws Exception {
+	public void noticeUpdate(NoticeDto noticeupdate, MultipartHttpServletRequest mhsr) throws Exception {
 		adMapper.noticeUpdate(noticeupdate);
+		List<BoardFileDto> list = amboardFileUtils.parseFileInfo(noticeupdate.getBoardCategoryPk(), noticeupdate.getNoticePk(), mhsr);
+		
+		if (CollectionUtils.isEmpty(list) == false) {
+			adMapper.boardImageInsert(list);
+		}
 	}
 	
 //	공지사항 상세내용 삭제하기
@@ -103,7 +114,7 @@ public class AdminServiceImpl implements AdminService{
 //	상품재고 목록 확인하기 + 페이징추가
 	@Override
 	public Page<ProductDto> SelectStockList(int pageNo) throws Exception {
-	     PageHelper.startPage(pageNo, 3);
+	     PageHelper.startPage(pageNo, 10);
 		return adMapper.SelectStockList();
 	}
 	
@@ -128,7 +139,7 @@ public class AdminServiceImpl implements AdminService{
 //	관리자 문의리스트 불러오기 + 페이징추가
 	@Override
 	public Page<QnaDto> getqnaList(int pageNo) throws Exception {
-	     PageHelper.startPage(pageNo, 3);
+	     PageHelper.startPage(pageNo, 10);
 		return adMapper.SelectqnaList();
 	}
 }

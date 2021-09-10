@@ -201,7 +201,7 @@
                                 </div>
                             </td>
 
-                            <td>{{ item.createId }}</td>
+                            <td>{{ item.customerName }}</td>
                             <td>{{ item.createDate }}</td>
                             <td>{{ item.reviewScore }}</td>
                         </tr>
@@ -350,6 +350,7 @@ export default {
             reviews: [],
             items: [],
             storedFilePath:"",
+            customerName: "",
         };
     },
     methods: {
@@ -406,7 +407,7 @@ export default {
                     productPk: this.productPk,
                     orderCnt: this.orderCnt,
                     orderSum: this.orderSum,
-                    orderPk: this.orderPk,
+                    customerPk: sessionStorage.getItem("customerPk")
                 })
                 .then(function () {
                     console.log("비동기 통신 성공");

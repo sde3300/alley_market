@@ -13,13 +13,13 @@
             <!-- <li class="nav-item active">
                 <a class="nav-link" href="#">전체상품 <span class="sr-only">(current)</span></a>
             </li> -->
-            <!-- <li class="nav-item">
-                <a class="nav-link"><router-link to="/adminMain" id="routerlink">관리자(임시)</router-link></a>
-            </li> -->
+            <li class="nav-item">
+                <a class="nav-link"><router-link to="/adminMain" id="routerlink">관리자</router-link></a>
+            </li>
             <li class="nav-item">
                 <a class="nav-link" href="#" @click="moveNoticeList">공지사항</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item" v-bind:class="{login : isLogin}">
                 <a class="nav-link" href="#" @click="moveLogin">로그인</a>
             </li>
             <li class="nav-item">
@@ -27,6 +27,9 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#" @click="moveMypage">마이페이지</a>
+            </li>
+            <li class="nav-item" v-bind:class="{logout : isLogout}">
+                <a class="nav-link" href="#" @click="Logout">로그아웃</a>
             </li>
             </ul>
         </div>
@@ -62,7 +65,7 @@
                 <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
                 &nbsp; &nbsp; &nbsp;
-                <span style="font-size: 2em; cursor:pointer;">
+                <span style="font-size: 1.8rem; cursor:pointer;">
                     <i id="cart" class="fas fa-shopping-cart" v-on:click="moveCart"></i>
                 </span>
             </form>
@@ -76,7 +79,8 @@
 export default {
     data() {
         return {
-
+            isLogin: false,
+            isLogout: true,
         };
     },
     methods: {
@@ -112,10 +116,17 @@ export default {
                 query: { customerPk: customerPk },
             });
         },
-
+        Logout() {
+            // sessionStorage.removeItem("customerEmail");
+            // sessionStorage.removeItem("adminYn");
+            // sessionStorage.removeItem("customer_pk");
+            sessionStorage.clear();
+            alert("로그아웃되었습니다.");
+            this.$router.push({ name : "Index"});
+        }
     },
     mounted() {
-
+        
     },
 }
 </script>
@@ -129,5 +140,15 @@ export default {
 } */
 #cart {
     margin-left: 10px;
+}
+.header {
+    width: 90%;
+    margin: auto;
+}
+.login {
+    display: none;
+}
+.logout {
+    display: none;
 }
 </style>

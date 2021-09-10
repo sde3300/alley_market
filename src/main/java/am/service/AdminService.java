@@ -20,9 +20,12 @@ public interface AdminService {
 //	회원관리 페이지 불러오기 (수정전)
 //	List<CustomersDto> SelectCustomerList() throws Exception;
 
-//회원관리 페이지 불러오기에 페이징 추가
+//	회원관리 페이지 불러오기에 페이징 추가
 	 public Page<CustomersDto> getCusList(int pageNo) throws Exception;
 
+//	회원삭제하기
+	void customersDeleteDetail(int customerPk) throws Exception;	
+		
 //	공지사항 리스트 불러오기(수정전)
 //	List<NoticeDto> SelectNoticeBoardList() throws Exception;
 	
@@ -30,13 +33,13 @@ public interface AdminService {
 	public Page<NoticeDto> getNotiList(int pageNo) throws Exception;
 
 //	공지사항 작성하기
-	void NoticeWrite(NoticeDto notice, MultipartHttpServletRequest mgsr) throws Exception;
+	void NoticeWrite(NoticeDto notice, MultipartHttpServletRequest mhsr) throws Exception;
 
 //	공지사항 상세내용 확인하기
 	NoticeDto NoticeDetail(int noticePk) throws Exception;
 
 //	공지사항 상세내용 수정하기
-	void noticeUpdate(NoticeDto noticeupdate) throws Exception;
+	void noticeUpdate(NoticeDto noticeupdate, MultipartHttpServletRequest mhsr) throws Exception;
 
 //	공지사항 상세내용 삭제하기
 	void noticeDelete(int noticePk) throws Exception;
@@ -48,7 +51,7 @@ public interface AdminService {
 	public Page<ProductDto> SelectStockList(int pageNo) throws Exception;
 	
 //	상품정보 등록하기
-	void ProductInsert(ProductDto productIn, MultipartHttpServletRequest mgsr) throws Exception;
+	void ProductInsert(ProductDto productIn, MultipartHttpServletRequest mhsr) throws Exception;
 
 //	상품이미지 등록하기
 //	void insertBoardImg(ProductDto imgin, MultipartHttpServletRequest mhsr) throws Exception;
@@ -57,6 +60,8 @@ public interface AdminService {
 //	List<QnaDto> qnaList() throws Exception;
 	
 //	관리자 문의리스트 불러오기 + 페이징추가
-	public Page<QnaDto> getqnaList(int pageNo) throws Exception;	
+	public Page<QnaDto> getqnaList(int pageNo) throws Exception;
+
+
 
 }

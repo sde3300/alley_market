@@ -63,9 +63,9 @@
 		<insert id="reviewWrite" parameterType="am.dto.ReviewDto">
 			<![CDATA[
 				INSERT INTO review 
-    				(product_pk, review_title, review_contents, review_score, create_id, create_date)
+    				(product_pk, review_title, review_contents, review_score, create_date, customer_name)
 				VALUES
-					(#{productPk}, #{reviewTitle}, #{reviewContents}, #{reviewScore}, #{createId}, NOW())
+					(#{productPk}, #{reviewTitle}, #{reviewContents}, #{reviewScore}, NOW(), #{customerName})
       		]]>
 		</insert>
 
@@ -74,7 +74,7 @@
 			<![CDATA[
 				SELECT
 					review_pk, board_category_pk, review_title, review_contents, review_score,
-					create_id, product_pk,
+					customer_name, product_pk,
 					DATE_FORMAT(create_date, '%Y.%m.%d %H:%i') AS create_date,
 					DATE_FORMAT(update_date, '%Y.%m.%d %H:%i') AS update_date
 				FROM
@@ -162,7 +162,7 @@
 	            ON 
 	            	a.product_pk = c.idx
 	            AND
-	               b.customer_pk = 6
+	               b.customer_pk = #{customerPk}
 	
 	         ]]>
 	      </select>
@@ -173,7 +173,7 @@
 				INSERT INTO
 					orders (customer_pk, order_name, order_phone, zip, addr1, addr2, order_date, order_ask, total_price, total_price_delivery)
 				VALUES
-					(6, #{orderName}, #{orderPhone}, #{zip}, #{addr1}, #{addr2}, NOW(), #{orderAsk}, #{totalPrice}, #{totalPriceDelivery})
+					(#{customerPk}, #{orderName}, #{orderPhone}, #{zip}, #{addr1}, #{addr2}, NOW(), #{orderAsk}, #{totalPrice}, #{totalPriceDelivery})
 			]]>
 		</insert>
 
@@ -186,7 +186,7 @@
 					order_pk = #{orderPk},
 					order_cmp = 'Y'
 				WHERE
-					customer_pk = 6
+					customer_pk = #{customerPk}
 				AND
 					order_pk is NULL
 				AND order_cmp = 'N'
@@ -201,7 +201,7 @@
 				INSERT INTO
 					orders_detail (customer_pk, product_pk, order_cnt, order_sum)
 				VALUES
-					(6, #{productPk}, #{orderCnt}, #{orderSum})
+					(#{customerPk}, #{productPk}, #{orderCnt}, #{orderSum})
 			]]>
 		</insert>
 
@@ -224,7 +224,7 @@
 	            ON 
 	            	a.product_pk = c.idx
 	            AND
-	              	b.customer_pk = 6
+	              	b.customer_pk = #{customerPk}
 	            AND 
 	            	b.order_cmp = 'N'
 	         ]]>
@@ -258,7 +258,7 @@
             ON 
             	a.product_pk = c.idx
             AND
-               	b.customer_pk = 6
+               	b.customer_pk = #{customerPk}
             AND
 				b.order_pk is NOT NULL
             ]]>
