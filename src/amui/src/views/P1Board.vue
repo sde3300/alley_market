@@ -15,7 +15,7 @@
                         class="card mb-4 box-shadow"
                         v-for="item in items"
                         v-bind:key="item.productPk"
-                        style="margin-left: 20px"
+                        style="margin-left: 20px; margin-left: 20px; width: 260px;"
                         v-on:click="productDetail(item.productPk)"
                     >
 

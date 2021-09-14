@@ -41,6 +41,8 @@
 </template>
 
 <script>
+import eventBus from '../plugins/eventBus'
+
 export default {
     data() {
         return {
@@ -71,10 +73,12 @@ export default {
                     if (res.data.adminYn == 'Y') {
                         alert("관리자로 로그인되었습니다.");
                         obj.$router.push({ name : "AdminMain"});
+                        eventBus.$emit('adminLogin', true);
                         }
                     else {
                         alert("로그인되었습니다. 환영합니다!");
                         obj.$router.push({ name : "Index"});
+                        eventBus.$emit('cusLogin', true);
                     }
                 }
                 else {

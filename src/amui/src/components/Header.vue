@@ -13,7 +13,7 @@
             <!-- <li class="nav-item active">
                 <a class="nav-link" href="#">전체상품 <span class="sr-only">(current)</span></a>
             </li> -->
-            <li class="nav-item">
+            <li class="nav-item" v-bind:class="{ adminMenu : isAdminMenu }">
                 <a class="nav-link"><router-link to="/adminMain" id="routerlink">관리자</router-link></a>
             </li>
             <li class="nav-item">
@@ -22,7 +22,7 @@
             <li class="nav-item" v-bind:class="{login : isLogin}">
                 <a class="nav-link" href="#" @click="moveLogin">로그인</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item" v-bind:class="{ join : isJoin }">
                 <a class="nav-link" href="#" @click="moveJoin">회원가입</a>
             </li>
             <li class="nav-item">
@@ -76,11 +76,16 @@
 </template>
 
 <script>
+import eventBus from '../plugins/eventBus'
+
 export default {
     data() {
         return {
             isLogin: false,
             isLogout: true,
+            isAdminMenu: true,
+            isJoin: false,
+
         };
     },
     methods: {
@@ -123,11 +128,33 @@ export default {
             sessionStorage.clear();
             alert("로그아웃되었습니다.");
             this.$router.push({ name : "Index"});
+
+            this.isLogin = false;
+            this.isLogout = true;
+            this.isJoin = false;
+            this.isAdminMenu = true;
         }
     },
     mounted() {
-        
+        let obj = this;
+
+        eventBus.$on('cusLogin', function(val) {
+            obj.isLogin = val;
+            obj.isLogout = !val;
+            obj.isJoin = val;
+        });
+
+        eventBus.$on('adminLogin', function(val) {
+            obj.isLogin = val;
+            obj.isLogout = !val;
+            obj.isJoin = val;
+            obj.isAdminMenu = !val;
+        });
     },
+    beforeDestroy() {
+        eventBus.$off('adminLogin');
+        eventBus.$off('cusLogin');
+    }
 }
 </script>
 
@@ -145,10 +172,7 @@ export default {
     width: 90%;
     margin: auto;
 }
-.login {
-    display: none;
-}
-.logout {
+.login, .logout, .adminMenu, .join {
     display: none;
 }
 </style>

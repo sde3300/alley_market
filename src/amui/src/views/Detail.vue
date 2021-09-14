@@ -411,7 +411,7 @@ export default {
                 })
                 .then(function () {
                     console.log("비동기 통신 성공");
-                    obj.$router.go(obj.$router.currentRouter);
+                    // obj.$router.go(obj.$router.currentRouter);
                     alert("상품이 장바구니에 담겼습니다.");
                 })
                 .catch(function (err) {
