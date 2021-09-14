@@ -73,7 +73,7 @@ export default {
     mounted() {
         let obj = this;
 
-        obj.$axios.get("http://localhost:9000/myPageOrder", {
+        obj.$axios.get("http://18.220.212.146:9000/myPageOrder", {
                 params: {
                     // customerPk: customerPk, // 상품 코드 입력부분이 현재 개발되지 않음
                     customerPk: sessionStorage.getItem("customerPk")
