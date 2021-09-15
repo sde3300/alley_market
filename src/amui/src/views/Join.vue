@@ -87,7 +87,7 @@ export default {
             if (this.validationCheck() == false) {
 
                 // obj.$axios.post('http://localhost:9000/join', {
-                obj.$axios.post('http://18.222.233.235:9000/join', {
+                obj.$axios.post('/join', {
                 customerEmail: this.customerEmail,
                 customerPw: this.customerPw,
                 customerName: this.customerName,
@@ -120,7 +120,7 @@ export default {
             let regExp = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i; // 검증에 사용할 정규식 변수 regExp에 저장
             if (emailVal.match(regExp) != null) {
                 // obj.$axios.get('http://localhost:9000/idCheck', {
-                obj.$axios.get('http://18.222.233.235:9000/idCheck', {
+                obj.$axios.get('/idCheck', {
                     params: {
                         customerEmail: this.customerEmail
                     }

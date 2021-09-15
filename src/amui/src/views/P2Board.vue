@@ -70,7 +70,7 @@ export default {
 
         obj.$axios
             // .get("http://localhost:9000/productb2")
-            .get("http://18.222.233.235:9000/productb2")
+            .get("/productb2")
             .then(function (res) {
                 console.log("axios로 비동기 통신 성공");
                 obj.items = res.data;

@@ -87,7 +87,7 @@ export default {
         noticeDelete() {
             let obj = this;
             // this.$axios.delete('http://localhost:9000/noticeDelete', {
-            this.$axios.delete('http://18.222.233.235:9000/noticeDelete', {
+            this.$axios.delete('/noticeDelete', {
                 params: {
                     noticePk: this.noticePk
                 }
@@ -109,7 +109,7 @@ export default {
         obj.noticePk = obj.$route.params.noticePk;
 
         // obj.$axios.get('http://localhost:9000/noticeDetail', {
-        obj.$axios.get('http://18.222.233.235:9000/noticeDetail', {
+        obj.$axios.get('/noticeDetail', {
             params: {
                 noticePk: obj.noticePk
             }

@@ -71,7 +71,7 @@ export default {
             formData.append('image', this.image);
 
             // obj.$axios.post('http://localhost:9000/noticeWrite', formData, {
-            obj.$axios.post('http://18.222.233.235:9000/noticeWrite', formData, {
+            obj.$axios.post('/noticeWrite', formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 }

@@ -117,7 +117,7 @@ export default {
             formData.append('image', this.image);
             
             // obj.$axios.post('http://localhost:9000/productInsert', formData, {
-            obj.$axios.post('http://18.222.233.235:9000/productInsert', formData, {
+            obj.$axios.post('/productInsert', formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 }

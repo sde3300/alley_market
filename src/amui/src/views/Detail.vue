@@ -384,7 +384,7 @@ export default {
         qnaInsert() {
             let obj = this;
             // obj.$axios.post("http://localhost:9000/qnaInsert", {
-            obj.$axios.post("http://18.222.233.235:9000/qnaInsert", {
+            obj.$axios.post("/qnaInsert", {
                     productPk: this.productPk,
                     qnaTitle: this.qnaTitle,
                     qnaContents: this.qnaContents,
@@ -405,7 +405,7 @@ export default {
         cartInsert() {
             let obj = this;
             // obj.$axios.post("http://localhost:9000/cartInsert", {
-            obj.$axios.post("http://18.222.233.235:9000/cartInsert", {
+            obj.$axios.post("/cartInsert", {
                     productPk: this.productPk,
                     orderCnt: this.orderCnt,
                     orderSum: this.orderSum,
@@ -438,7 +438,7 @@ export default {
         this.productPk = this.$route.query.productPk;
 
         // obj.$axios.get("http://localhost:9000/productDetail", {
-        obj.$axios.get("http://18.222.233.235:9000/productDetail", {
+        obj.$axios.get("/productDetail", {
             params: {
                 productPk: obj.$route.query.productPk,
                 },
@@ -460,7 +460,7 @@ export default {
             });
 
         // obj.$axios.get("http://localhost:9000/reviewRead", {
-        obj.$axios.get("http://18.222.233.235:9000/reviewRead", {
+        obj.$axios.get("/reviewRead", {
                 params: {
                     productPk: obj.productPk,
                 },
@@ -476,7 +476,7 @@ export default {
 
         obj.$axios
             // .get("http://localhost:9000/qnaRead", {
-            .get("http://18.222.233.235:9000/qnaRead", {
+            .get("/qnaRead", {
                 params: {
                     productPk: obj.productPk,
                 },

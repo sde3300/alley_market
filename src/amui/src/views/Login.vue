@@ -64,7 +64,7 @@ export default {
             let obj = this;
 
             // this.$axios.post("http://localhost:9000/login", {
-            this.$axios.post("http://18.222.233.235:9000/login", {
+            this.$axios.post("/login", {
                 customerEmail: this.customerEmail,
                 customerPw: this.customerPw,
                 customerPk: this.customerPk,

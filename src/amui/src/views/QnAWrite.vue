@@ -72,7 +72,7 @@ export default {
             let obj = this;
 
             // obj.$axios.put('http://localhost:9000/answerUpdate', {
-            obj.$axios.put('http://18.222.233.235:9000/answerUpdate', {
+            obj.$axios.put('/answerUpdate', {
                 qnaPk: this.qnaPk,
                 answerContents: this.answerContents,
                 answerYn: this.answerYn,
@@ -94,7 +94,7 @@ export default {
         obj.qnaPk = obj.$route.query.qnaPk;
 
         // obj.$axios.get("http://localhost:9000/qnaDetail", {
-        obj.$axios.get("http://18.222.233.235:9000/qnaDetail", {
+        obj.$axios.get("/qnaDetail", {
             params: {
                 qnaPk: obj.qnaPk,
             },
