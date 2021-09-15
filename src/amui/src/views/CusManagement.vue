@@ -80,7 +80,7 @@ export default {
                 },
         mounted() {
             let obj = this;
-            this.$axios.get("http://localhost:9000/cusManage")
+            this.$axios.get("http://18.220.212.146:9000/cusManage")
             .then(function(res) {
                 console.log("axios로 비동기 통신 성공");
                 // this.items = res.data;
@@ -111,7 +111,7 @@ export default {
         methods: {
             paging(pageNum) {
                 let obj = this;
-                this.$axios.get("http://localhost:9000/cusManage", {
+                this.$axios.get("http://18.220.212.146:9000/cusManage", {
                     params: {
                         pageNum: pageNum
                     }
@@ -147,7 +147,7 @@ export default {
                 let obj = this;
                 // obj.orderDetailPk = obj.$route.query.orderDetailPk;
 
-                this.$axios.delete('http://localhost:9000/customersDelete', {
+                this.$axios.delete('http://18.220.212.146:9000/customersDelete', {
                     params: {
                         customerPk: customerPk
                     }

@@ -72,7 +72,8 @@ export default {
             formData.append('noticeContents', this.noticeContents)
             formData.append('image', this.image);
 
-            obj.$axios.post('http://localhost:9000/noticeUpdate', formData, {
+            // obj.$axios.post('http://localhost:9000/noticeUpdate', formData, {
+            obj.$axios.post('http://18.220.212.146:9000/noticeUpdate', formData, {
                 noticePk: this.noticePk,
                 noticeTitle: this.noticeTitle,
                 createdId: this.createId,
@@ -124,7 +125,7 @@ export default {
         //this.boardIdx = this.$route.params.boardIdx;
         obj.noticePk = obj.$route.params.noticePk;
 
-        obj.$axios.get('http://localhost:9000/noticeDetail', {
+        obj.$axios.get('http://18.220.212.146:9000/noticeDetail', {
             params: {
                 noticePk: obj.noticePk
             }

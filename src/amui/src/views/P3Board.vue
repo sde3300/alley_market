@@ -15,7 +15,7 @@
                         class="card mb-4 box-shadow"
                         v-for="item in items"
                         v-bind:key="item.productPk"
-                        style="margin-left: 20px"
+                        style="margin-left: 20px; margin-left: 20px; width: 260px;"
                         v-on:click="productDetail(item.productPk)"
                     >
 
@@ -69,7 +69,7 @@ export default {
         let obj = this;
 
         obj.$axios
-            .get("http://localhost:9000/productb3")
+            .get("http://18.220.212.146:9000/productb3")
             .then(function (res) {
                 console.log("axios로 비동기 통신 성공");
                 obj.items = res.data;

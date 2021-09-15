@@ -72,7 +72,8 @@ export default {
 
     mounted() {
         let obj = this;
-        this.$axios.get("http://localhost:9000/noticeList")
+        // this.$axios.get("http://localhost:9000/noticeList")
+        this.$axios.get("http://18.220.212.146:9000/noticeList")
         .then(function(res) {
             console.log("axios로 비동기 통신 성공");
                     obj.items = res.data.list;
@@ -113,7 +114,8 @@ export default {
         },
             paging(pageNum) {
             let obj = this;
-            this.$axios.get("http://localhost:9000/noticeList", {
+            // this.$axios.get("http://localhost:9000/noticeList", {
+                this.$axios.get("http://18.220.212.146:9000/noticeList", {
                 params: {
                     pageNum: pageNum
                 }
