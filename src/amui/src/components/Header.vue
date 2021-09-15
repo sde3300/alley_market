@@ -13,22 +13,26 @@
             <!-- <li class="nav-item active">
                 <a class="nav-link" href="#">전체상품 <span class="sr-only">(current)</span></a>
             </li> -->
-            <li class="nav-item" v-bind:class="{ adminMenu : isAdminMenu }">
+            <!-- <li class="nav-item" v-bind:class="{ adminMenu : isAdminMenu }"> -->
+            <li class="nav-item">
                 <a class="nav-link"><router-link to="/adminMain" id="routerlink">관리자</router-link></a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#" @click="moveNoticeList">공지사항</a>
             </li>
-            <li class="nav-item" v-bind:class="{login : isLogin}">
+            <!-- <li class="nav-item" v-bind:class="{login : isLogin}"> -->
+            <li class="nav-item">
                 <a class="nav-link" href="#" @click="moveLogin">로그인</a>
             </li>
-            <li class="nav-item" v-bind:class="{ join : isJoin }">
+            <!-- <li class="nav-item" v-bind:class="{ join : isJoin }"> -->
+            <li class="nav-item">
                 <a class="nav-link" href="#" @click="moveJoin">회원가입</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#" @click="moveMypage">마이페이지</a>
             </li>
-            <li class="nav-item" v-bind:class="{logout : isLogout}">
+            <!-- <li class="nav-item" v-bind:class="{logout : isLogout}"> -->
+            <li class="nav-item">
                 <a class="nav-link" href="#" @click="Logout">로그아웃</a>
             </li>
             </ul>
@@ -76,17 +80,17 @@
 </template>
 
 <script>
-import eventBus from '../plugins/eventBus'
+// import eventBus from '../plugins/eventBus'
 
 export default {
     data() {
-        return {
-            isLogin: false,
-            isLogout: true,
-            isAdminMenu: true,
-            isJoin: false,
+        // return {
+        //     isLogin: false,
+        //     isLogout: true,
+        //     isAdminMenu: true,
+        //     isJoin: false,
 
-        };
+        // };
     },
     methods: {
         // moveMain () {
@@ -122,39 +126,36 @@ export default {
             });
         },
         Logout() {
-            // sessionStorage.removeItem("customerEmail");
-            // sessionStorage.removeItem("adminYn");
-            // sessionStorage.removeItem("customer_pk");
             sessionStorage.clear();
             alert("로그아웃되었습니다.");
             this.$router.push({ name : "Index"});
 
-            this.isLogin = false;
-            this.isLogout = true;
-            this.isJoin = false;
-            this.isAdminMenu = true;
+            // this.isLogin = false;
+            // this.isLogout = true;
+            // this.isJoin = false;
+            // this.isAdminMenu = true;
         }
     },
-    mounted() {
-        let obj = this;
+    // mounted() {
+    //     let obj = this;
 
-        eventBus.$on('cusLogin', function(val) {
-            obj.isLogin = val;
-            obj.isLogout = !val;
-            obj.isJoin = val;
-        });
+    //     eventBus.$on('cusLogin', function(val) {
+    //         obj.isLogin = val;
+    //         obj.isLogout = !val;
+    //         obj.isJoin = val;
+    //     });
 
-        eventBus.$on('adminLogin', function(val) {
-            obj.isLogin = val;
-            obj.isLogout = !val;
-            obj.isJoin = val;
-            obj.isAdminMenu = !val;
-        });
-    },
-    beforeDestroy() {
-        eventBus.$off('adminLogin');
-        eventBus.$off('cusLogin');
-    }
+    //     eventBus.$on('adminLogin', function(val) {
+    //         obj.isLogin = val;
+    //         obj.isLogout = !val;
+    //         obj.isJoin = val;
+    //         obj.isAdminMenu = !val;
+    //     });
+    // },
+    // beforeDestroy() {
+    //     eventBus.$off('adminLogin');
+    //     eventBus.$off('cusLogin');
+    // }
 }
 </script>
 
@@ -172,7 +173,7 @@ export default {
     width: 90%;
     margin: auto;
 }
-.login, .logout, .adminMenu, .join {
+/* .login, .logout, .adminMenu, .join {
     display: none;
-}
+} */
 </style>

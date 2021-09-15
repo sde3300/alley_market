@@ -77,7 +77,8 @@ export default {
 
     mounted() {
         let obj = this;
-        this.$axios.get("http://18.220.212.146:9000/stockList")
+        // this.$axios.get("http://localhost:9000/stockList")
+        this.$axios.get("http://18.222.233.235:9000/stockList")
         .then(function(res) {
             console.log("axios로 비동기 통신 성공");
                                 obj.items = res.data.list;
@@ -108,9 +109,10 @@ export default {
         moveProductInsert() {
             this.$router.push({name: 'AdminProductInsert'});
         },
-           paging(pageNum) {
+            paging(pageNum) {
             let obj = this;
-            this.$axios.get("http://18.220.212.146:9000/stockList", {
+            // this.$axios.get("http://localhost:9000/stockList", {
+            this.$axios.get("http://18.222.233.235:9000/stockList", {
                 params: {
                     pageNum: pageNum
                 }

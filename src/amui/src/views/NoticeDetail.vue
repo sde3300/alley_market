@@ -54,7 +54,7 @@ export default {
             noticePk:0,
             noticeTitle:'',
             createDate:'',
-            createId:'yoo',
+            createId:'admin',
             noticeContents:'',
             storedFilePath:'',
             isActive: true,
@@ -86,7 +86,8 @@ export default {
         },
         noticeDelete() {
             let obj = this;
-            this.$axios.delete('http://18.220.212.146:9000/noticeDelete', {
+            // this.$axios.delete('http://localhost:9000/noticeDelete', {
+            this.$axios.delete('http://18.222.233.235:9000/noticeDelete', {
                 params: {
                     noticePk: this.noticePk
                 }
@@ -107,7 +108,8 @@ export default {
         //this.boardIdx = this.$route.params.boardIdx;
         obj.noticePk = obj.$route.params.noticePk;
 
-        obj.$axios.get('http://18.220.212.146:9000/noticeDetail', {
+        // obj.$axios.get('http://localhost:9000/noticeDetail', {
+        obj.$axios.get('http://18.222.233.235:9000/noticeDetail', {
             params: {
                 noticePk: obj.noticePk
             }

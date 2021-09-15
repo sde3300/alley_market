@@ -223,7 +223,8 @@ export default {
         },
         orderInsert() {
             let obj = this;
-            obj.$axios.post('http://18.220.212.146:9000/orderInsert', {
+            // obj.$axios.post('http://localhost:9000/orderInsert', {
+            obj.$axios.post('http://18.222.233.235:9000/orderInsert', {
                 orderName: this.orderName,
                 orderPhone: this.orderPhone,
                 zip: this.zip,
@@ -271,7 +272,8 @@ export default {
         let obj = this;
 
         obj.$axios
-            .get("http://18.220.212.146:9000/cartList", {
+            // .get("http://localhost:9000/cartList", {
+            .get("http://18.222.233.235:9000/cartList", {
                 params: {
                     customerPk: sessionStorage.getItem("customerPk"), // 상품 코드 입력부분이 현재 개발되지 않음
                 },

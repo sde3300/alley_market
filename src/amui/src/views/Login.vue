@@ -35,6 +35,13 @@
                 <button type="button" class="btn btn  btn-lg btn-block" id="btnlo" v-on:click="login">로그인</button><br>
                 <button type="button" class="btn btn-secondary  btn-lg btn-block" id="btnjo" v-on:click="join">회원가입</button>
                 </div>
+
+                <div id="id">
+                        <h5>관리자</h5>
+                        <p>admin@gmail.com/0000</p>
+                        <h5>회원대표</h5>
+                        <p>yoo@gmail.com/1234</p>
+                </div>
             </form>
         </div>
     </div>
@@ -56,7 +63,8 @@ export default {
         login() {
             let obj = this;
 
-            this.$axios.post("http://18.220.212.146:9000/login", {
+            // this.$axios.post("http://localhost:9000/login", {
+            this.$axios.post("http://18.222.233.235:9000/login", {
                 customerEmail: this.customerEmail,
                 customerPw: this.customerPw,
                 customerPk: this.customerPk,
@@ -133,5 +141,11 @@ export default {
 .form-check {
     margin-top: 20px;
     margin-bottom: 20px;
+}
+#id {
+    border: 1px solid darkgray;
+    text-align: center;
+    color: gray;
+    padding: 20px;
 }
 </style>

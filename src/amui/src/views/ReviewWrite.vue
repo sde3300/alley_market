@@ -65,7 +65,8 @@ export default {
     methods: {
         ReviewInsert() {
             let obj = this;
-            obj.$axios.post('http://18.220.212.146:9000/reviewWrite', {
+            // obj.$axios.post('http://localhost:9000/reviewWrite', {
+            obj.$axios.post('http://18.222.233.235:9000/reviewWrite', {
                 productPk: this.productPk,
                 reviewTitle: this.reviewTitle,
                 reviewContents: this.reviewContents,

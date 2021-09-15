@@ -71,7 +71,8 @@ export default {
             let obj = this;
             // obj.orderDetailPk = obj.$route.query.orderDetailPk;
 
-            this.$axios.delete('http://18.220.212.146:9000/cartDelete', {
+            // this.$axios.delete('http://localhost:9000/cartDelete', {
+            this.$axios.delete('http://18.222.233.235:9000/cartDelete', {
                 params: {
                     orderDetailPk: orderDetailPk
                 }
@@ -88,7 +89,8 @@ export default {
     },
     mounted() {
         let obj = this;
-        obj.$axios.get("http://18.220.212.146:9000/cartList", {
+        // obj.$axios.get("http://localhost:9000/cartList", {
+        obj.$axios.get("http://18.222.233.235:9000/cartList", {
                 params: {
                     customerPk: sessionStorage.getItem("customerPk"), // 상품 코드 입력부분이 현재 개발되지 않음
                 },

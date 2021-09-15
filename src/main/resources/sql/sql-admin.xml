@@ -115,7 +115,7 @@
 	            notice_title= #{noticeTitle},
 	            notice_contents= #{noticeContents},
 	            update_date= NOW(),
-	            create_id= 'yoo'
+	            create_id= 'admin'
 	         WHERE
 	            notice_pk = #{noticePk}
       

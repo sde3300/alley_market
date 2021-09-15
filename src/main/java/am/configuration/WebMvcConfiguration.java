@@ -26,7 +26,7 @@ public class WebMvcConfiguration implements WebMvcConfigurer {
 	// 이미지 넣기(외부파일 경로 설정)
 	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
-		String imgPath = "file:///" + uploadImagePath;
+		String imgPath = "file:" + uploadImagePath;
 
 //		registry.addResourceHandler("/outsideImg/**").addResourceLocations("file:///C:/AMPROJECT/outsideImages/");
 

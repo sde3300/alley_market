@@ -47,7 +47,7 @@ export default {
             // noticePk:0,
             boardCategoryPk:'b1',
             noticeTitle:'',
-            createId:'yoo',
+            createId:'admin',
             noticeContents:'',
             image:'',
         }
@@ -70,7 +70,8 @@ export default {
             formData.append('noticeContents', this.noticeContents)
             formData.append('image', this.image);
 
-            obj.$axios.post('http://18.220.212.146:9000/noticeWrite', formData, {
+            // obj.$axios.post('http://localhost:9000/noticeWrite', formData, {
+            obj.$axios.post('http://18.222.233.235:9000/noticeWrite', formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 }
